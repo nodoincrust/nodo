@@ -1,0 +1,385 @@
+/*
+Name: Custom css
+Created By: Shubhangi Mate
+Created Date: 23 july 2014
+Description: 
+*/
+body 
+      {
+            font-size:14px;
+      }
+         .container-fluid
+      {
+          width: 85% !important;
+          margin: 0px auto;
+      }
+      .menu_list
+      {
+          list-style-type: none;
+          margin: 10px 0px;
+          display: inline-block;
+          width: 100%;
+      }
+      .menu_options
+      {
+         float: right;
+         padding: 7px 9px;
+      }
+      #dms_logo
+      {
+        /* width: 80%;
+          height:80%;*/
+          width: 65% !important;
+      }
+      nav
+      {
+          margin: 15px 0px;
+      }
+    .activeDroppable {
+      background-color: #eeffee;
+    }
+    .hoverDroppable {
+      background-color: lightgreen;
+    }
+    .draggableField {
+      /* float: left; */
+      
+    }
+    .draggableField > input, .checkboxgroup, .selectmultiple, .radiogroup { /*button,select, */
+      margin-top: 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    /*.draggableField:hover{
+      background-color: #ccffcc;
+    }*/
+    .control-label {
+      width: 100px;
+    }
+    .selectorField 
+    {
+        z-index: 9999 !important;
+    }
+    .selectorField .textbox b, .selectorField .password b, .selectorField .combobox b, .selectorField .radiogroup b, .selectorField .checkboxgroup b, .selectorField .selectmultiple b,
+    .selectorField .displaydate b, .selectorField .displaytext b, .selectorField .upload b, .selectorField .labelbox b, .selectorField .frame b, .selectorField .multilinelabel b ,
+    .selectorField .imagebox b, .selectorField .tablebox b{
+      position:relative; top:3px; left: 0px; width: 30px; height: 16px; display: inline-block; background-image: url("../img/sprite.png"); background-repeat: no-repeat; 
+    }
+     .selectorField .password b, .selectorField .textbox b, .selectorField .labelbox b {
+      background-position: -4px -549px;
+    }
+    .selectorField .displaytext b
+    {
+        background-position: -2px -585px;
+    }
+    .selectorField .combobox b {
+      background-position: -2px -722px;
+    }
+    .selectorField .radiogroup b {
+      background-position: -2px -619px;
+    }
+    .selectorField .checkboxgroup b {
+      background-position: -2px -688px;
+    }
+    .selectorField .selectmultiple b {
+      background-position: -2px -1082px;
+    }
+    .selectorField .displaydate b {
+      background-position: -2px -975px;
+    }
+    .selectorField .upload b{
+        background-position: -2px -938px;
+    }
+    .selectorField .frame b{
+        background-position: -2px -9px; 
+    }
+    .selectorField .multilinelabel b{
+        background-position: -2px -47px;
+    }
+    .selectorField .imagebox b{
+        background-position: -2px -758px;
+    }
+    .selectorField .tablebox b{
+        background-position: -2px -1082px;
+    }
+    .well-mini {
+      margin: 4px;
+      padding: 2px;
+      border-radius: 6px;
+      width: 160px;
+      cursor: pointer;
+    }
+    .draggableField:hover .well-mini {
+      background-color: #ccffcc;
+    }
+    .modele {
+      display:none;
+    }
+    .forms_lbl
+    {
+       width: 100%;
+       text-align: left !important;
+    }
+    .modal.fade.in
+    {
+        top:10%;
+    }
+    .modal.fade
+    {
+        transition: opacity .3s linear,top .3s ease-out;
+    }
+    .modal
+    {
+        left: 50%;
+        z-index: 1050;
+        width: 560px;
+        margin-left: -280px;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,0.3);
+        border-radius: 6px;
+        outline:0;
+        box-shadow:0 3px 7px rgba(0,0,0,0.3);
+        background-clip: padding-box;
+    }
+    .modal-header
+    {
+        padding: 9px 15px;
+        border-bottom: 1px solid #eee;
+    }
+    .modal-header h3{
+        margin: 0;
+        line-height: 30px;
+    }
+    .modal-body
+    {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .modal-footer
+    {
+        padding: 14px 15px 15px;
+        margin-bottom: 0;
+        text-align: right;
+        background-color: #f5f5f5;
+        border-top: 1px solid #ddd;
+    }
+    .modal-open .modal
+    {
+        overflow-x: no-display;
+        overflow-y: no-display;
+       /*bottom: none !important;*/
+    }
+    .row
+    {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .input-large
+    {
+        margin-bottom: 15px;
+    }
+    #divDeleteTableau
+    {
+        z-index: 9999;
+    }
+    input{
+        
+        border: 1px solid #ccc;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    }
+    .header_nav
+    {
+        box-shadow:0 1px 3px #ddd;
+        border-color: #e7e7e7;
+        border-width: 0 0 1px;
+    }
+    .content
+    {
+        padding: 2% 0;
+    }
+    .draggableField
+    {
+        margin-bottom: 15px;
+    }
+    #selected-content .droppedField
+    {
+        padding: 5px 0px;
+    }
+    .row [class*="col-md-"]
+    {
+        min-height: 30px;
+    }
+    .row-fluid
+    {
+        width: 100%;
+    }
+    input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input
+    {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        transition: border linear .2s,box-shadow linear .2s;
+        border-radius: 4px;
+        vertical-align: middle;
+        line-height:20px;
+        margin-bottom:10px;
+        padding:4px 6px;
+        height: 20px;
+        min-height: 30px;
+    }
+    textarea{
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        transition: border linear .2s,box-shadow linear .2s;
+        border-radius: 4px;
+        vertical-align: middle;
+    }
+    .tbl_td
+    {
+        border:none !important;
+        box-shadow: none !important;
+        transition:0 !important;
+        margin-bottom: 0 !important;
+        padding:4px 6px;
+        height: 20px;
+        min-height: 20px !important;
+        width: 120px;
+    }
+    .form_table
+    {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+        width: auto;
+        padding: 0 !important;
+    }
+    label
+    {
+        font-weight: normal;
+    }
+    .requiredcls
+    {
+        display: none;
+        float: left;
+        color: red;
+    }
+    #handlebars-textbox-help
+    {
+        margin-left: 5px;
+    }
+    .fontbox
+    {
+        padding: 4px 6px;
+        background-color: #ccc;
+        border-radius: 4px;
+    }
+    .boldfont
+    {
+        font-weight: bold;
+    }
+    .italicfont
+    {
+        font-weight: normal;
+        font-style: italic; 
+    }
+    .smalllabel
+    {
+        font-size: 12px;
+    }
+    .midlabel
+    {
+        font-size: 14px;
+    }
+    .largelabel
+    {
+        font-size: 16px;
+    }
+    .smalltitle
+    {
+        font-size: 22px;
+    }
+    .midtitle
+    {
+        font-size: 24px;
+    }
+    .largetitle
+    {
+        font-size: 26px;
+    }
+    .inline_radio
+    {
+        display: inline-block !important;
+        margin-right: 3%;
+    }
+    .block_radio
+    {
+        display: block !important;
+    }
+    .length_limitbox
+    {
+        width:60px;
+    }
+    .length_base
+    {
+        margin-left: 3%;
+    }
+    .smallletter
+    {
+        font-weight: bold;
+        font-size: 12px;
+    }
+    
+    .mediumletter
+    {
+        font-weight: bold;
+        font-size: 14px;
+    }
+    
+    .largeletter
+    {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    
+    .image_container
+    {
+        width: 150px;
+        height: 90px;
+        border: 1px solid black;
+        text-align: center;
+    }
+    #form-title-div img{
+        height: 75px;
+        vertical-align: none;
+        margin-bottom: 10px;
+    }
+    .table_div
+    {
+        overflow-x: auto;
+        overflow-y: auto;
+/*        overflow-x: scroll;
+        overflow-y: scroll;*/
+    }
+    .label_req
+        {
+            float: left;
+        }
+    .tbl_btn
+    {
+        display: none !important;
+        margin-top: 10px
+    }
+/*    .tbl_label
+    {
+        display: block !important;
+    }*/
+    
+/*    .framebox
+    {
+        width: 100%;
+        height: auto;
+        float: left;
+        border: 1px solid green;
+    }*/
+
+

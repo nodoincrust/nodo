@@ -1,0 +1,180 @@
+<html lang="en-US"><head><meta charset="UTF-8"><title>Template Form</title><link  rel="stylesheet" href="bootstrap/css/bootstrap.min.css" media="screen"><script type="text/javascript" src="js/dmstree_js/doc_temp_valid.js"></script><script>$( document ).ready(function(){ $(".datepicker").datepicker({dateFormat: "dd-mm-yy"}); $("#doc_template .droppedField").each(function(){ if(($(this).find(".table_div").length) != 0) { if(($(this).find(".addstatus").val()) == "cols"){ $(this).find(".tbl_btn").css("display","block"); }} })});</script></head><body><style>
+
+        /* Styles that are also copied for Preview */
+        .control-label {
+            display: inline-block !important;
+            padding-top: 5px;
+            text-align: left;
+            vertical-align: baseline;
+            padding-right: 10px;
+        }
+        .droppedField {
+            padding-left:5px;
+        }
+        .droppedField > input,.checkboxgroup, .selectmultiple, .radiogroup { /*button, select, */ 
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .action-bar .droppedField {
+            float: left;
+            padding-left:5px;
+        }
+        .btn:hover {
+            color: #333;
+            text-decoration: none;
+            background-position: 0 -15px;
+        }
+        .framebox {
+            border: 1px solid rgb(231, 231, 231);
+        }
+        .row {
+            margin-left: 0 !important;
+        }
+        .droppedField {
+            margin: 0 0 15px;
+        }
+        .form_btn .btn {
+            float: right;
+            margin-right: 10px;
+        }
+        .boldfont {
+            font-weight: bold;
+        }
+        .italicfont {
+            font-weight: normal;
+            font-style: italic; 
+        }
+        .inline_radio {
+            display: inline-block !important;
+            margin-right: 3%;
+        }
+        .block_radio {
+            display: block !important;
+        }
+        .label_req {
+            float: left;
+        }
+        .textbox_err_msg {
+            color: red;
+            margin-left: 5px;
+        }
+        .requiredcls {
+            display: none;
+            float: left;
+            color: red;
+        }
+        .manditory_fields {
+            color: red;
+        }
+        .bottom_note {
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin-top: 10px;
+        }
+        .smalltitle {
+            font-size: 22px;
+        }
+        .midtitle  {
+            font-size: 24px;
+        }
+        .largetitle {
+            font-size: 26px;
+        }
+        .temp_title {
+            margin: 0 !important;
+            padding-top: 40px;
+        }
+        .form_table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            width: auto;
+            padding: 0 !important;
+        }
+        .tbl_td {
+            border:none !important;
+            box-shadow: none !important;
+            transition:0 !important;
+            margin-bottom: 0 !important;
+            padding:4px 6px;
+            height: 20px;
+            min-height: 20px !important;
+            width: 120px;
+        }
+        .table_div {
+            overflow-x: auto;
+            overflow-y: auto;
+        }
+        .tbl_btn {
+            display: none;
+            margin-top: 10px 
+        }
+        .required_msg {
+            color: red;
+        }
+        .template_txtarea {
+            width: 100% !important;
+        }
+        input[type="radio"],input[type="checkbox"] {
+            margin: 0px !important;
+        }
+    
+</style>
+<form name="doc_template" id="doc_template" class="doc_template" style="width:800px; margin:10px auto;"><legend><p class="boldfont  temp_title">Date Template</p></legend><p>Convert Normal date in Mongodb date  and store it in ISO Format date in database.</p>
+                    
+                    <!-- Action bar - Suited for buttons on form -->
+                    <div class="row row-fluid" style="z-index: 61;">
+			<div class="col-md-12 span12 action-bar droppedFields" style="min-height: 80px; z-index: 127;"><div class="droppedField row row-fluid" style="z-index: 57;" id="CTRL-DIV-1001">
+			<div class="col-md-12 span12" style="z-index: 93;"><label class="control-label forms_lbl ctrl-label">Date Information</label></div>
+			<input type="hidden" value="" class="label_font">
+			<input type="hidden" value="CTRL-DIV-1001" class="label_id">
+			<input type="hidden" value="" class="label_size">
+                    </div><div class="droppedField row row-fluid" style="z-index: 55;" id="CTRL-DIV-1002">
+			<div class="col-md-3 span3" style="z-index: 96;"> 
+                            <div class="row row-fluid" style="z-index: 51;"><label class="control-label label_req">Username</label><label class="label_req requiredcls">*</label></div>
+                        </div>
+			<div class="col-md-9 span9" style="z-index: 98;">
+                            <input type="text" placeholder="write text here..." class="ctrl-textbox cntrol_comp" minlength="" maxlength="" onkeyup="display_minmaxlen_err(this)" name="Username"><span class="textbox_err_msg"></span>
+                            <p class="required_msg"></p>
+                            <p class="control_help"></p>
+                            <input type="hidden" class="hiddenObligatoire" value="false">
+                            <input type="hidden" class="min_length" value="">
+                            <input type="hidden" class="max_length" value="">
+			</div>
+                    </div><div class="droppedField row row-fluid" style="z-index: 49;" id="CTRL-DIV-1003">
+			<div class="col-md-3 span3" style="z-index: 101;">
+                            <div class="row" style="z-index: 45;"><label class="control-label label_req">Project Assign</label><label class="label_req requiredcls">*</label></div>
+                        </div>
+			<div class="col-md-9 span9" style="z-index: 103;">
+                            <select class="ctrl-combobox cntrol_comp" name="Project_Assign"><option>Option 1</option><option>Option 2</option><option>Option 3</option></select>
+                            <p class="required_msg"></p>    
+                            <input type="hidden" class="hiddenObligatoire" value="false">
+			</div>
+                    </div><div class="droppedField row row-fluid" style="z-index: 43;" id="CTRL-DIV-1004">
+			<div class="col-md-3 span3" style="z-index: 106;">
+                            <div class="row" style="z-index: 39;"><label class="label_req control-label" style="vertical-align:top">Gender</label><label class="label_req requiredcls">*</label></div>
+                        </div>
+			<div style="display: inline-block; z-index: 108;" class="ctrl-radiogroup cntrol_comp col-md-9 span9"><span style="display:block;" class="inline_radio"><input type="radio" name="Gender" value="Male">Male</span><span style="display:block;" class="inline_radio"><input type="radio" name="Gender" value="Female">Female</span></div>
+			<p class="required_msg"></p>
+			<input type="hidden" class="hiddenObligatoire" value="false">
+			<input type="hidden" class="rd_display" value="inline_radio">
+                    </div><div class="droppedField row row-fluid" style="z-index: 38;" id="CTRL-DIV-1005">
+			<div class="col-md-3 span3" style="z-index: 113;">
+                            <label class="control-label">Start date</label><label class="label_req requiredcls">*</label>
+                        </div>
+			<div class="col-md-9 span9" style="z-index: 115;">
+                            <span class="ctrl-date"><input class="cntrol_comp datepicker" type="text" id="datectrl-1005" name="Start_date"></span>
+			</div>
+			<p class="required_msg"></p>
+                    </div><div class="droppedField row row-fluid" style="z-index: 70;" id="CTRL-DIV-1006">
+			<div class="col-md-3 span3" style="z-index: 114;">
+                            <label class="control-label">End date</label><label class="label_req requiredcls">*</label>
+                        </div>
+			<div class="col-md-9 span9" style="z-index: 116;">
+                            <span class="ctrl-date"><input class="cntrol_comp datepicker" type="text" id="datectrl-1006" name="End_date"></span>
+			</div>
+			<p class="required_msg"></p>
+                    </div></div>
+                    </div>
+                    <div class="row form_btn"><input type="button" class="btn btn-danger" value="Reset" onclick="#"></div><div class="row bottom_note"><p><b>Note:</b></p><p>The fields with <span class="manditory_fields"> * </span>are required/manditory fields.</p></div>
+</form></body></html>
