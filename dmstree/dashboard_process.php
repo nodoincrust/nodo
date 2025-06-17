@@ -67,9 +67,9 @@ $filterdata = $g1->get_mongodb->nextfilterdashboarddata($tenantid,$userdepartid,
 //print_r($filterdata['result']);
 $dochtml = '';
 
- if($filterdata['result'] != null)
- {
-     foreach ($filterdata['result'] as $dockey) {
+if(is_array($filterdata) && isset($filterdata['result']) && $filterdata['result'] != null)
+{
+    foreach ($filterdata['result'] as $dockey) {
                     $templatename = '';
                     $htmltemplate = '';
                     $htmltemppath = '';

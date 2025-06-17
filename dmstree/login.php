@@ -40,7 +40,7 @@
                                 <div class="form-group row ">
                                     <label for="txt_user_name" class="col-md-3 control-label">Password</label>
                                         <div class="col-md-7">
-                                            <input type="password" class="form-control" id="txt_user_name" placeholder="Password" name="password" value="" autocomplete="off">
+                                            <input type="password" class="form-control" id="txt_user_name_" placeholder="Password" name="password" value="" autocomplete="off">
                                         </div>
                                 </div> 
                                 <div class="form-group row">

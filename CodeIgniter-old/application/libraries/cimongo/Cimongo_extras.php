@@ -66,9 +66,18 @@ class Cimongo_extras extends Cimongo_base{
 		if (empty($collection)) {
 			show_error("No Mongo collection selected to insert into", 500);
 		}
-		try{
+		try {
+			// $c = $this->db->selectCollection($collection);
+			// return $c->aggregate($opt);
+			
 			$c = $this->db->selectCollection($collection);
-			return $c->aggregate($opt);
+			// Create the aggregation command with cursor option
+			$command = array(
+				'aggregate' => $collection,
+				'pipeline' => $opt,
+				'cursor' => new stdClass()  // Empty object for cursor option
+			);
+			return $this->db->command($command);
 		} catch (MongoException $e) {
 			show_error("MongoDB failed: {$e->getMessage()}", 500);
 		}

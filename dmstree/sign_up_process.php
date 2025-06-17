@@ -7,6 +7,7 @@
 					$g1 = new Get_mongodb();
 	if(isset($_POST['package_type']))
 	{
+		// var_dump($_POST['package_type']);
 		$packname = array();
 		$packis   = array();
 		$packageType = strip_tags(trim($_POST['package_type']));
@@ -127,7 +128,7 @@
                                                                                                                     'AddedBy'=>$admin_name
 						));
 			$result=$g1->get_mongodb->setUserInfo($doc);
-			echo $result;
+			//echo $result;
 			
 		}
 		if($type=='Individual')

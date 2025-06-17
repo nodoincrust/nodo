@@ -116,7 +116,10 @@ $activepackspace = (float)$activepackspace;
                             }
                     });
                   var directoryspace = <?php echo $tenantspace?>;
+                  console.log(directoryspace);
                   var tenantspace    = <?php echo $activepackspace?>;
+                //   tenantspace = 999999999;
+                  console.log(tenantspace);
                   if(parseFloat(directoryspace) >= parseFloat(tenantspace))
                       {
                           //alert('dir'+directoryspace);
@@ -619,8 +622,9 @@ $activepackspace = (float)$activepackspace;
                     $htmltemplate = '';
                     $htmltemppath = '';
                     $isprivate = '';
+                    $filetype = '';
                     $documentid        = $dockey['_id'] ;
-                    $doclatestrevision = $dockey['LatestRevision'] ;
+                    $doclatestrevision = isset($dockey['LatestRevision']) ? $dockey['LatestRevision'] : '';
                     $documentName      = $dockey['DocumentName'];
                      if(array_key_exists('IsPrivate',$dockey)){
                         $isprivate         = $dockey['IsPrivate'];
@@ -676,7 +680,7 @@ $activepackspace = (float)$activepackspace;
                             $filetype     = $filenametype[1]; 
                         } 
                         else {
-                            $filtetype = '';
+                            $filetype = '';
                         }
                         
                         if (array_key_exists('UploadDate', $dockey['DocumentInfo'])) {
@@ -886,7 +890,7 @@ $activepackspace = (float)$activepackspace;
                             $filetype     = $filenametype[1]; 
                         } 
                         else {
-                            $filtetype = '';
+                            $filetype = '';
                         }
                         
                         if (array_key_exists('UploadDate', $dockey['DocumentInfo'])) {

@@ -88,11 +88,14 @@
     $path='DMSTree_clients/'.$actualtenantnm.'_'.$tenantid; 
     $ar=getDirectorySize($path);
     $tenantspace = sizeFormat($ar['size']);
+    // var_dump($tenantspace);
     $tenantspace = (float)$tenantspace;
     $filesize = (float)fileSizeInMB($ar['size']);
+    // var_dump($filesize);
     $activepackspace = $g1->get_mongodb->getActivePackageSize($tenantid);
     $activepackspace = (float)$activepackspace;
-     
+    //  var_dump($activepackspace);
+    //  die();
      
     $companytags = array();
        $usertagdata = $g1->get_mongodb->companytagData($tenantid);
@@ -269,6 +272,8 @@
                         }
                 var directoryspace = <?php echo $tenantspace?>;
                 var tenantspace    = <?php echo $activepackspace?>;
+                // Always allow uploads by setting a very large tenant space
+                // tenantspace = 999999999;
                 if(parseFloat(directoryspace) >= parseFloat(tenantspace))
                 {
                           $('input').attr('disabled','disabled');
@@ -869,7 +874,7 @@
                         <div class="form-group row">
                             <div class="col-md-12 col-sm-12">
                                 <input type="button" class="btn btn-success ctrl-btn btn-space" value="Save" onclick="validate_uploaddocument(this);">
-                                <input type="reset" class="btn btn-primary btn-space" value="Reset" > <!-- onclick="reset_upload();"-->
+                                <input type="reset" class="btn btn-primary btn-space" value="Reset" onclick="reset_upload();">
                                 <input type="button" class="btn ctrl-btn btn-space " value="Cancel" onclick="canel_operation();">
 
                             </div>
@@ -892,8 +897,12 @@
         
          <!--------- dash board footer------------------------------------------------>
         <?php include_once 'footer.php'?>
-
         <script type="text/javascript" src="js/dmstree_js/doc_temp_valid.js"></script>
         <script type="text/javascript" src="js/dmstree_js/uplaod_page.js"></script>
+        <script type="text/javascript">
+            function reset_upload(){
+                location.reload();
+            }
+        </script>
     </body>
 </html>

@@ -1,6 +1,6 @@
 /*!
  * Bootstrap v3.2.0 (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
+ * Copyright 2011-2025 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -5379,7 +5379,7 @@ button.close {
   position: fixed;
   top: 0;
   right: 0;
-/*  bottom: 0;*/
+  bottom: 0;
   left: 0;
   z-index: 1050;
   display: none;
@@ -5965,10 +5965,10 @@ button.close {
   float: left !important;
 }
 .hide {
-  display: none ; /*!important*/
+  display: none !important;
 }
 .show {
-  display: block ; /*!important*/
+  display: block !important;
 }
 .invisible {
   visibility: hidden;

@@ -54,10 +54,15 @@ class Get_mongodb extends CI_Model {
         function getActivePackageSize($tenantid, $collection = 'TenantInfo')
         {
                 $tenantid       = (int)$tenantid;
+                // var_dump($tenantid);
                 $wherecond      = array("_id" => $tenantid,"PackageInfo.DurationOrSize" => 'Size');//, "PackageInfo.IsActivePackage" => true);
                 $selectcond     = array("PackageInfo.PackageSizeInGB");
+                // var_dump($selectcond);
                 $packagequery   = $this->cimongo->select($selectcond)->where($wherecond)->get($collection);
+                // var_dump($packagequery);
+                // die();
                 $packagequeryresult = $packagequery->result_array();
+                $test = 0;
                 foreach ($packagequeryresult as $packagevalue) {
                     if(array_key_exists('PackageInfo',$packagevalue))
                     {
@@ -1415,6 +1420,11 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
 //            }
                 //$subwherecondarr[]=  array('DocumentInfo.IsArchived'=>false);
                 $whercond = array('$and' => $subwherecondarr);
+                if (count($subwherecondarr) > 1) {
+                    $whercond = array('$and' => $subwherecondarr);
+                } else {
+                    $whercond = $subwherecondarr[0];
+                }
               
               if($documentlimit == 'all_revision')
                 {
@@ -1467,8 +1477,7 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
                         array(
                             '$sort' => array(
                                                     'DocumentInfo.UploadDate' => -1,
-                                                    'DocumentInfo.RevisionNo' => -1,
-                                                    'DocumentInfo.Comments.CommentDate' => -1
+                                                    'DocumentInfo.RevisionNo' => -1
                                             )
                         ),
                         array(
@@ -1478,7 +1487,16 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
                 }
               
             $cursor = $this->cimongo->aggregate($collection,$pipeline);
-            return $cursor['result'];
+            
+            // Check if cursor is valid and has 'result' key
+            if ($cursor && isset($cursor['result'])) {
+                return array('result' => $cursor['result']);
+            } else {
+                // Log the error for debugging
+                error_log("MongoDB aggregation failed or returned invalid result. Cursor: " . print_r($cursor, true));
+                // Return empty array if no results or error occurred
+                return array('result' => array());
+            }
                 //return $whercond;
                 
         }
@@ -2523,9 +2541,19 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
                             '$limit' => 5
                         )
                     );
-            $cursor = $this->cimongo->aggregate($collection,$pipeline);
-            return $cursor;
-            
+                    // $cursor = $this->cimongo->aggregate($collection,$pipeline);
+                    // return $cursor;
+                    
+            $result = $this->cimongo->aggregate($collection,$pipeline);
+            // Handle the cursor result
+            if (isset($result['result']) && is_array($result['result'])) {
+                return array('result' => $result['result']);
+            }
+            // For newer MongoDB versions that return a cursor
+            if (isset($result['cursor']) && isset($result['cursor']['firstBatch'])) {
+                return array('result' => $result['cursor']['firstBatch']);
+            }
+            return array('result' => array());
         }
         
         
@@ -2554,8 +2582,7 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
                         array(
                             '$sort' => array(
                                                     'DocumentInfo.UploadDate' => -1,
-                                                    'DocumentInfo.RevisionNo' => -1,
-                                                    'DocumentInfo.Comments.CommentDate' => -1
+                                                    'DocumentInfo.RevisionNo' => -1
                                             )
                         ),
                       array(
@@ -2566,7 +2593,7 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
                         )
                     );
             $cursor = $this->cimongo->aggregate($collection,$pipeline);
-            return $cursor;
+            return $cursor['result'];
             
 //            $cursor = $this->cimongo->aggregate($collection,$pipeline);
 //            return $cursor;

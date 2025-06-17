@@ -249,5 +249,10 @@
         <?php include_once 'footer.php'?>
 		<script type="text/javascript" src="js/dmstree_js/doc_temp_valid.js"></script>
 		<script type="text/javascript" src="js/dmstree_js/upload_template_page.js"></script>
+        <script type="text/javascript">
+            function reset_upload(){
+                location.reload();
+            }
+        </script>
     </body>
 </html>
