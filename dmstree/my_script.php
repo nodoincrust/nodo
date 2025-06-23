@@ -1,6 +1,6 @@
 <?php
-//ob_start();
-//session_start();
+ob_start();
+session_start();
 
 require('../CodeIgniter-old/external.php');
 $ci =& get_instance();

@@ -634,10 +634,10 @@ $activepackspace = (float)$activepackspace;
                     if( $userrole == 'Admin' ){
                     if(array_key_exists('TemplateId',$dockey)){
                        $doctemplate  = $dockey['TemplateId'];
-                       $templatename['tempresult'] = $g1->get_mongodb->templatenameData($tenantid,$userdepartid,$doctemplate); 
-                       if($templatename['tempresult'] != 0)
+                       $templatename_result = $g1->get_mongodb->templatenameData($tenantid,$userdepartid,$doctemplate); 
+                       if($templatename_result != 0)
                        {
-                           foreach ($templatename['tempresult'] as $tempkey) {
+                           foreach ($templatename_result as $tempkey) {
                                 if(array_key_exists('HtmlFileName',$tempkey))
                                 {
                                         $htmltemplate = $tempkey['HtmlFileName'];
@@ -844,10 +844,10 @@ $activepackspace = (float)$activepackspace;
               else if($isprivate == '' ){
                     if(array_key_exists('TemplateId',$dockey)){
                        $doctemplate  = $dockey['TemplateId'];
-                       $templatename['tempresult'] = $g1->get_mongodb->templatenameData($tenantid,$userdepartid,$doctemplate); 
-                       if($templatename['tempresult'] != 0)
+                       $templatename_result = $g1->get_mongodb->templatenameData($tenantid,$userdepartid,$doctemplate); 
+                       if($templatename_result != 0)
                        {
-                           foreach ($templatename['tempresult'] as $tempkey) {
+                           foreach ($templatename_result as $tempkey) {
                                 if(array_key_exists('HtmlFileName',$tempkey))
                                 {
                                         $htmltemplate = $tempkey['HtmlFileName'];

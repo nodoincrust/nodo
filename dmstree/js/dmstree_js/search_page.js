@@ -102,7 +102,14 @@ $(function () {
                         }
 		  });
 				
-
+    // Show/hide template select when Template Data checkbox is toggled
+    $('#template_data').on('change', function() {
+        if ($(this).is(':checked')) {
+            $('.tempdata_txtbox').show();
+        } else {
+            $('.tempdata_txtbox').hide().val('');
+        }
+    });
 });   
 
    
@@ -739,70 +746,54 @@ function display_search_result(tenantid, departid)
                  else
                      {
                         $('.error_msg').css('display','none'); 
-                        var data = $.parseJSON(response);
-                        //alert(data);
+                        var data = response;
                         var documenthtml = '';
                         var templatelist = $('.templatenamearr').val();
                         templatelist = templatelist.split('::');
                         for(var docindex = 0; docindex < data.length; docindex++)
                             {
-                                var documentid = data[docindex]._id['$id'];
+                                var documentid = (data[docindex]._id && data[docindex]._id['$id']) ? data[docindex]._id['$id'] : '';
                                 var docname    = data[docindex].DocumentName;
-                                //alert(data[docindex].DocumentName+'----'+data[docindex].TemplateId);
-                                 var templateid;
+                                var templateid;
                                 if('TemplateId' in data[docindex]){
-                                    //alert('in');
                                     templateid = data[docindex].TemplateId.$id;
-                                    //alert(templateid);
                                 }
-//                                var docinfoobj = data[docindex].DocumentInfo;
-//                                var docinfolen = data[docindex].DocumentInfo.length;
-//                                for(var docinfoindex = 0; docinfoindex < docinfolen; docinfoindex++)
-//                                 {
-                                     var revisionno = data[docindex].DocumentInfo.RevisionNo;
-                                     var filename   = data[docindex].DocumentInfo.FileName;
-                                     var docexpire  = data[docindex].DocumentInfo.UploadDate;
-                                     var docexpsec  = docexpire.sec;
-                                     var t = new Date(1970,0,1);
-                                         t.setSeconds(docexpsec);
-                                     var revdate  =moment(t).format('L');
-                                     var fileext    = filename.split(".");
-                                     var filetype   = fileext[1];
-//                                     if(filetype == 'docx')
-//                                         filetype = 'doc';
-//                                     else if(filetype == 'xlsx')
-//                                         filetype = 'xls';
-//                                     else
-//                                         filetype = filetype;
-                                     
-                                     var templatename = '';
-                                     var templatfilename = ''; 
-                                     //alert(templateid);
-                                     if(templateid != ''){
-                                                        for(var tempindex = 0; tempindex <templatelist.length; tempindex++)
-                                                            {
-                                                                var templateinfo = templatelist[tempindex].split('||');
-                                                                if(templateinfo[1] == templateid)
-                                                                {
-                                                                    templatename    = templateinfo[0];
-                                                                    templatfilename = templateinfo[2];
-                                                                }    
-                                                            }
-                                                      }   
-                                                      documenthtml += '<div class=" well div-padding-top div-padding-well">';
-                                                      documenthtml += '<div class="row div-margin">';
-                                  if(filetype != ''){ documenthtml += '<div class="col-md-2"><img src="file_icons/'+filetype+'.png" class="fileextension" style=" height: 60px; width: 90px; border: 1px #e5e5e5;"></div>';}
-                                                      documenthtml += '<div class="col-md-9">';
-                                  if(docname != '') { documenthtml += '<p class="documentname">Document Name:<a onclick="dynamicURL(\''+docname+'\',\''+revisionno+'\',\''+templatfilename+'\',\''+documentid+'\');" rel="facebox">'+docname+'</a><span class=docid" style="display:none">'+documentid+'</span></p>';}
-                                                      documenthtml += '<p class="documentrev">Document latest revision:<span>'+revisionno+'</span></p>';
-                                  if(templateid != '' && templatename != ''){ documenthtml += '<p>Document Template:<span>'+templatename+'</span></p>'; }
-                                  if(revdate != ''){  documenthtml += '<p class="documentdate">Document Date:<span>'+revdate+'</span></p>';}
-                                                      documenthtml += '</div>';
-                                                      documenthtml += '<div class="col-md-1"><input type="checkbox" name="search_check" value="'+docname+'::'+revisionno+'" style="margin:auto"></div>';
-                                                      documenthtml += '</div>';
-                                                      documenthtml += '</div>';
-//                                 }   
-                              
+                                // Use the first DocumentInfo element
+                                var docInfo = (data[docindex].DocumentInfo && data[docindex].DocumentInfo.length > 0) ? data[docindex].DocumentInfo[0] : {};
+                                var revisionno = docInfo.RevisionNo;
+                                var filename   = docInfo.FileName;
+                                var docexpire  = docInfo.UploadDate;
+                                var docexpsec  = docexpire ? docexpire.sec : '';
+                                var t = new Date(1970,0,1);
+                                if(docexpsec !== '') t.setSeconds(docexpsec);
+                                var revdate  = docexpsec !== '' ? moment(t).format('L') : '';
+                                var fileext    = filename ? filename.split(".") : ['',''];
+                                var filetype   = fileext[1] || '';
+                                var templatename = '';
+                                var templatfilename = '';
+                                if(templateid != ''){
+                                    for(var tempindex = 0; tempindex <templatelist.length; tempindex++)
+                                    {
+                                        var templateinfo = templatelist[tempindex].split('||');
+                                        if(templateinfo[1] == templateid)
+                                        {
+                                            templatename    = templateinfo[0];
+                                            templatfilename = templateinfo[2];
+                                        }
+                                    }
+                                }
+                                documenthtml += '<div class=" well div-padding-top div-padding-well">';
+                                documenthtml += '<div class="row div-margin">';
+                                if(filetype != ''){ documenthtml += '<div class="col-md-2"><img src="file_icons/'+filetype+'.png" class="fileextension" style=" height: 60px; width: 90px; border: 1px #e5e5e5;"></div>';}
+                                documenthtml += '<div class="col-md-9">';
+                                if(docname != '') { documenthtml += '<p class="documentname">Document Name:<a onclick="dynamicURL(\''+docname+'\',\''+revisionno+'\',\''+templatfilename+'\',\''+documentid+'\');" rel="facebox">'+docname+'</a><span class=docid" style="display:none">'+documentid+'</span></p>';}
+                                documenthtml += '<p class="documentrev">Document latest revision:<span>'+revisionno+'</span></p>';
+                                if(templateid != '' && templatename != ''){ documenthtml += '<p>Document Template:<span>'+templatename+'</span></p>'; }
+                                if(revdate != ''){  documenthtml += '<p class="documentdate">Document Date:<span>'+revdate+'</span></p>';}
+                                documenthtml += '</div>';
+                                documenthtml += '<div class="col-md-1"><input type="checkbox" name="search_check" value="'+docname+'::'+revisionno+'" style="margin:auto"></div>';
+                                documenthtml += '</div>';
+                                documenthtml += '</div>';
                             }
                         $('#search_result_container').html(documenthtml);
                      }
