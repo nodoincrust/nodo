@@ -41,7 +41,11 @@ if(isset($_SESSION['usertenant']))
 }
 //$tenantid          = $_POST['tenantid'];
 $tenantid          = (int)$tenantid;
-if(isset($_POST['departmenid']))        {$departmenid       = $_POST['departmenid'];   $departmenid= (int)$departmenid; } else{$departmenid = '';}
+if(isset($_SESSION['userdepartmentid'])) {
+    $departmenid = (int)$_SESSION['userdepartmentid'];
+} else {
+    $departmenid = '';
+}
 if(isset($_POST['tempid']))             {$tempid            = $_POST['tempid'];             } else{ $tempid  ='';          }
 if(isset($_POST['labelarray']))         {$labelarray        = $_POST['labelarray'];         }
 if(isset($_POST['textnamearray']))      {$textnamearray     = $_POST['textnamearray'];      }
