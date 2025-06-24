@@ -724,7 +724,7 @@ $activepackspace = (float)$activepackspace;
                             echo '<div class="well div-padding-top">';
                             echo '<div class="row">';
                             echo '<div class="col-md-2">';
-                            echo '<div class="div-padding fileextension"><img src="img/file_icons/'.$filetype.'.png" style=" height: 60px; width: 80px; border: 1px #e5e5e5;">';
+                            echo '<div class="div-padding fileextension"><img src="img/file_icons/'.$filetype.'.png" style=" height: 60px; width: 80px;object-fit:contain; border: 1px #e5e5e5;">';
                             echo '</div></div>';
                             echo '<div class="col-md-8">';
                             if($documentName != ''){ echo '<p class="documentname">Document Name:<a onclick=\'dynamicURL("'.$documentName.'","'.$revisionNo.'","'.$htmltemplate.'","'.$documentid.'")\'>'.$documentName.'</a><span class="docid" style="display:none">'.$documentid.'</span></p>'; }

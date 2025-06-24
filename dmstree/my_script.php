@@ -37,14 +37,21 @@ $g1 = new Get_mongodb();
                         $loginUser = $userkey['Name'];
                         $userrole = $userkey['UserRole'];
                         $userdepartmentid = '';
+                        if(array_key_exists('DepartmentId',$userkey))
+                        {
+                           $userdepartmentid = $userkey['DepartmentId']; 
+                        }
+                        $currentDepartmentId = ($userdepartmentid !== '') ? (int)$userdepartmentid : 0;
+                        $newDepartmentId = $currentDepartmentId + 1;
+                        // Update UserData
+                        $g1->get_mongodb->updateUserDepartmentId($userid, $newDepartmentId);
+                        // Update DocumentMetaData for this user/tenant
+                        $g1->get_mongodb->updateDocumentDepartmentId($tenantId, $userid, $newDepartmentId);
+                        $userdepartmentid = $newDepartmentId;
                         //$loginUsername = $userkey['Name'];
                         $collectionUsername = $userkey['LoginInfo']['EmailId'];
                         $collectionPassword = $userkey['LoginInfo']['Password'];
                         $tenantid = $userkey['TenantId'];
-                        if(array_key_exists('DepartmentId',$userkey))
-                        {
-                           $userdepartmentid = $userkey['DepartmentId']; 
-                        }        
                         $tenantuserdata = $g1->get_mongodb->tenantUserData($tenantid);
                         //var_dump($tenantuserdata);
                         }

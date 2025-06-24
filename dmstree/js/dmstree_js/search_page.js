@@ -784,7 +784,7 @@ function display_search_result(tenantid, departid)
                                 }
                                 documenthtml += '<div class=" well div-padding-top div-padding-well">';
                                 documenthtml += '<div class="row div-margin">';
-                                if(filetype != ''){ documenthtml += '<div class="col-md-2"><img src="file_icons/'+filetype+'.png" class="fileextension" style=" height: 60px; width: 90px; border: 1px #e5e5e5;"></div>';}
+                                if(filetype != ''){ documenthtml += '<div class="col-md-2"><img src="file_icons/'+filetype+'.png" class="fileextension" style=" height: 60px; width: 90px; object-fit:contain; border: 1px #e5e5e5;"></div>';}
                                 documenthtml += '<div class="col-md-9">';
                                 if(docname != '') { documenthtml += '<p class="documentname">Document Name:<a onclick="dynamicURL(\''+docname+'\',\''+revisionno+'\',\''+templatfilename+'\',\''+documentid+'\');" rel="facebox">'+docname+'</a><span class=docid" style="display:none">'+documentid+'</span></p>';}
                                 documenthtml += '<p class="documentrev">Document latest revision:<span>'+revisionno+'</span></p>';

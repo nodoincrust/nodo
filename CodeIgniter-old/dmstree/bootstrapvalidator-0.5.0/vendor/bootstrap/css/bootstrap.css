@@ -1672,7 +1672,7 @@ input[type="range"] {
 }
 select[multiple],
 select[size] {
-  height: auto;
+  height: 50px;
 }
 input[type="file"]:focus,
 input[type="radio"]:focus,

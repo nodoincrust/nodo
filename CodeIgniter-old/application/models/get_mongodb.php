@@ -27,8 +27,7 @@ class Get_mongodb extends CI_Model {
                 /*return json_encode($userdataResponse);*/
                 $this->session->set_userdata('loginresult', $loginresult); 
                 // $this->session->userdata('loginresult');
-                  error_log('AGGREGATION PIPELINE: ' . print_r($pipeline, true));
-                  error_log('AGGREGATION RESULT: ' . print_r($cursor, true));
+                
                 if($loginresult_row > 0)
                     return $loginresult;
                 else 
@@ -2071,7 +2070,27 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
 //            return $cursor;
         }
         
-        
-        
+        // Update DepartmentId in UserData
+        function updateUserDepartmentId($userid, $newDepartmentId, $collection = 'UserData') {
+            $criteria = array('_id' => new MongoID($userid));
+            $update = array('DepartmentId' => $newDepartmentId);
+            return $this->cimongo->set($update)->where($criteria)->update($collection);
+        }
+
+        // Update DepartmentId in DocumentMetaData for all documents of this user/tenant
+        function updateDocumentDepartmentId($tenantid, $userid, $newDepartmentId, $collection = 'DocumentMetaData') {
+            $criteria = array('TenantId' => $tenantid, 'DocumentInfo.UserId' => new MongoID($userid));
+            $update = array('DepartmentId' => $newDepartmentId);
+            return $this->cimongo->set($update)->where($criteria)->update($collection, array('multiple' => TRUE));
+        }
+
+        // Atomically increment DepartmentId in UserData
+        function incrementUserDepartmentId($userid, $collection = 'UserData') {
+            $criteria = array('_id' => new MongoID($userid));
+            $update = array('$inc' => array('DepartmentId' => 1));
+            // Use the native MongoDB driver for atomic increment
+            return $this->db->selectCollection($collection)->update($criteria, $update, array('w' => 1));
+        }
+
 }
 ?>
