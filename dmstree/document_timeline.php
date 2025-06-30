@@ -162,7 +162,7 @@
                 <div class="well cbp_tmlabel" >
                     <div class="row">
                         <div class="col-md-2">
-                            <img src="img/file_icons/<?php echo $filetype; ?>.png" style=" height: 100px; width: 120px; border: 1px #e5e5e5;" class="">
+                            <img src="img/file_icons/<?php echo $filetype; ?>.png" style=" height: 100px; object-fit: contain;width: 120px; border: 1px #e5e5e5;" class="">
                         </div>
                         <div class="col-md-10">
                             <p class="documentname">Document Name : <a onclick=dynamicURL("<?php echo $documentName.'","'.$revisionNo.'","'.$htmltemplate.'","'.$key['_id'].'")>'.$documentName;?></a></p>

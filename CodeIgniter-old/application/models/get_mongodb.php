@@ -2064,7 +2064,11 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
                         )
                     );
             $cursor = $this->cimongo->aggregate($collection,$pipeline);
-            return $cursor['result'];
+            if (isset($cursor['result'])) {
+                return $cursor['result'];
+            } else {
+                return array();
+            }
             
 //            $cursor = $this->cimongo->aggregate($collection,$pipeline);
 //            return $cursor;

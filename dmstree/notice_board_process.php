@@ -20,7 +20,7 @@
        	date_default_timezone_set('Asia/Calcutta');
 	$currDate = date('Y-m-d h:i:s');
 	$currDate = new MongoDate(strtotime($currDate));
-        echo $_FILES["notice_img"]["name"];
+        
         if(empty($_FILES["notice_img"]["name"]))
 	{
 		$category = $_POST['category'];
@@ -44,7 +44,7 @@
                 $date = date($date);
                 $expiryDate = new MongoDate(strtotime($date));
     		move_uploaded_file($_FILES["notice_img"]["tmp_name"],$location.$_FILES["notice_img"]["name"]);
-                echo $_FILES["notice_img"]["name"];
+                $img = $_FILES["notice_img"]["name"];
 		$result = $g1->get_mongodb->setNoticeInfo($category,$title,$description,$img,$currDate,$expiryDate,$userId,$tenantId);
 	}
 	

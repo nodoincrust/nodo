@@ -1,4 +1,3 @@
-
 /*
  * Name: 
  * Date: 3/9/2014
@@ -94,134 +93,120 @@ function clearForm(){
 
 function saveNotice()
 {
+	console.log('saveNotice function called');
 	var category = $('#list').val();
 	var title = $('#txt_notice_title').val();
 	var description = $('#txt_notice_description').val();
 	var img = $('#notice_image').attr('src');
 	var expiry_date = $('#expiry_date').val();
-	 var file_selected = document.getElementById('txt_notice_image');
-	 var files = file_selected.files;
-	 $('#form_notice').bootstrapValidator('validate');
-	 if(img != '')
-	 {	
-
-			 if (!files[0].type.match('image.*'))
-			 {
-				 alert('invalid');
-				 file_selected.value = "";
-				 $('#myModal img').attr('src','');
-			 }
-			 else{
-				 if(flag)
-				 {
-//					 alert("hi1");
-					 $('#form_notice').submit(function(e){
-                                         var formData = new FormData(this);
-                                         $.ajax({
-                                                url: "notice_board_process.php",
-                                                type: "POST",
-                                                data:  formData,
-                                                mimeType:"multipart/form-data",
-                                                contentType: false,
-                                                cache: false,
-                                                processData:false,
-                                                success: function(data)
-                                            {
-                                                var actiontext = '';
-                                                actiontext = "New Notice create and send successfully.";
-                                                    $.ajax({
-                                                        type: "POST",
-                                                        data: {
-                                                            actiontext : actiontext
-                                                        },
-                                                        url: "track_history.php",
-                                                        success: function(response){ 
-                                                            alert('Notice create and save Successfully.');
-                                                        }   
-                                                    });
-					 //alert("hi2");			
-					 $('#sub').prop('data-dismiss','modal');
-					 $('#list').val("");
-					 $('#txt_notice_title').val("");
-					 $('#txt_notice_description').val("");
-					 $('#txt_notice_image').val("");
-					 $('#notice_image').attr('src','');
-					 $('#myModal').modal('hide');
-				
-				 }
-                                         });
-                                         e.preventDefault();
-                                         });
-                                         }
+	var file_selected = document.getElementById('txt_notice_image');
+	var files = file_selected.files;
+	
+	console.log('Form values:', {category, title, description, img, expiry_date});
+	
+	// Validate the form
+	$('#form_notice').bootstrapValidator('validate');
+	
+	// Check if validation passed
+	if(flag)
+	{
+		console.log('Validation passed, proceeding with submission');
+		if(img != '')
+		{	
+			console.log('Processing with image');
+			// Check if file is selected and is an image
+			if (files.length > 0) {
+				if (!files[0].type.match('image.*'))
+				{
+					alert('Please select a valid image file');
+					file_selected.value = "";
+					$('#notice_image').attr('src','');
+					return;
+				}
+			}
+			
+			// Submit form with image
+			var formData = new FormData($('#form_notice')[0]);
+			console.log('Submitting form with image via AJAX');
+			$.ajax({
+				url: "notice_board_process.php",
+				type: "POST",
+				data: formData,
+				mimeType:"multipart/form-data",
+				contentType: false,
+				cache: false,
+				processData:false,
+				success: function(data)
+				{
+					console.log('Success response:', data);
+					var actiontext = "New Notice create and send successfully.";
+					$.ajax({
+						type: "POST",
+						data: {
+							actiontext : actiontext
+						},
+						url: "track_history.php",
+						success: function(response){ 
+							alert('Notice create and save Successfully.');
+							clearForm();
+							$('#myModal').modal('hide');
+							location.reload();
+						}   
+					});
+				},
+				error: function(xhr, status, error) {
+					console.error('AJAX error:', error);
+					alert('Error saving notice: ' + error);
+				}
+			});
 		}
-	 }
-	 else if(img == '')
-	 {
-		 if(flag)
-		 {
-                     var type= 'no_img';
-			 $.ajax({
-			 type: "POST",
-			 data:{
-					 category:category,
-					 title:title,
-					 description:description,
-					 img:img,
-                                         date:expiry_date,
-                                         type:type 
-                              },
-				 //dataType: "json",
-				 url: "notice_board_process.php",
-				 success:function(response){
-					 alert(response);
-                                         var actiontext = '';
-                                         actiontext = "New Notice create and send successfully.";
-                                            $.ajax({
-                                                type: "POST",
-                                                data: {
-                                                    actiontext : actiontext
-                                                },
-                                                url: "track_history.php",
-                                                success: function(response){ 
-                                                    alert('Notice create and save Successfully.');
-                                                }   
-                                            });
-					 location.reload();
-				 }
-			 });
-			 $('#sub').prop('data-dismiss','modal');
-			 $('#list').val("");
-			 $('#txt_notice_title').val("");
-			 $('#txt_notice_description').val("");
-			 $('#txt_notice_image').val("");
-			 $('#notice_image').attr('src','');
-			 $('#myModal').modal('hide');
-				
-                }
-	 }
-
+		else if(img == '')
+		{
+			console.log('Processing without image');
+			// Submit form without image
+			var type = 'no_img';
+			$.ajax({
+				type: "POST",
+				data:{
+					category: category,
+					title: title,
+					description: description,
+					img: img,
+					date: expiry_date,
+					type: type 
+				},
+				url: "notice_board_process.php",
+				success: function(response){
+					console.log('Success response:', response);
+					var actiontext = "New Notice create and send successfully.";
+					$.ajax({
+						type: "POST",
+						data: {
+							actiontext : actiontext
+						},
+						url: "track_history.php",
+						success: function(response){ 
+							alert('Notice create and save Successfully.');
+							clearForm();
+							$('#myModal').modal('hide');
+							location.reload();
+						}   
+					});
+				},
+				error: function(xhr, status, error) {
+					console.error('AJAX error:', error);
+					alert('Error saving notice: ' + error);
+				}
+			});
+		}
+	}
+	else
+	{
+		console.log('Validation failed');
+		alert('Please fill all required fields correctly');
+	}
 }
 
-
-$("#form_notice").submit(function(e)
-{
-	var formObj = $(this);
-		var formData = new FormData(formObj);
-		$.ajax({
-        	url: "notice_board_process.php",
-			type: "POST",
-			data:  formData,
-			mimeType:"multipart/form-data",
-			contentType: false,
-    	    cache: false,
-			processData:false,
-			success: function(data)
-		    {
-				alert(data);
-		    }	        
-	   });
-        e.preventDefault();
-});
 
 /*
  * Summary : To show read more on click 
