@@ -127,7 +127,7 @@
                 </div>
                 <div class="well div-padding-top">
                     <div class="row">
-                        <div class="col-md-12 col-sm-12 form_title "><h2 class="text-muted hr-margin"><b> Template List</b></h2></div>
+                        <div class="col-md-12 col-sm-12 form_title "><h2 class="text-muted hr-margin"><b style="color: #9AD94B;"> Template List</b></h2></div>
                     </div>
                 </div>
                 <div class="well" >

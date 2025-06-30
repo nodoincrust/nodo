@@ -55,11 +55,11 @@
 	<script type="text/javascript" src="js/dmstree_js/jquery.textover.js"></script>
 	<script src="chosen_v1.2.0/chosen.jquery.js"></script>
          <style>
-            .row
+            /* .row
             {
                 margin-left:  0 !important;
                 margin-right: 0 !important;
-            }
+            } */
             .demo-box {
                     text-align: left;
                     margin: 2em auto;
@@ -135,19 +135,26 @@
 		<!----------- Header page--------------------------------------------->
 		<?php include_once 'header.php'; ?> 
         <div class="row row-margin">
-            <div class="col-md-3 col-sm-3 div-padding-top" id="body1">
+            <div class="col-md-3 col-sm-3" id="body1">
+                <!-- <div class="col-md-3 col-sm-3 div-padding-top" id="body1"> -->
                 <!--------- dash board side menu------------------------------------------------>
                 <?php include_once'dash_menu.php'?>  
             </div>
             <div class="col-md-9 col-sm-9 div-padding-left" id="body-content">
                 <!--------- dash board body------------------------------------------------> 
-                <div class="row">
+                <!-- <div class="row">
                         <p class="spaceerror col-md-12" style="color:red"> </p>
+                </div> -->
+                <div class="upload_temp div-padding-top">
+                    <!-- <div class="upload_temp div-padding-top"> -->
+                    <div class="row">
+						 <div class="col-md-12 col-sm-12 form_title" ><h2 class="text-muted upload_doc_cls"><b>Upload Template</b></h2></div>
+					</div>
                 </div>
 				<div class="well div-padding-top">
-					<div class="row">
-						 <div class="col-md-12 col-sm-12 form_title "><h2 class="text-muted"><b>Upload Template</b></h2></div>
-					</div>
+					<!-- <div class="row">
+						 <div class="col-md-12 col-sm-12 form_title" ><h2 class="text-muted upload_doc_cls"><b>Upload Template</b></h2></div>
+					</div> -->
 					<div class="row">
 						<form id='uploadtemplate' method="post" class=" form-action" action="" enctype="multipart/form-data">
 							<input type="hidden" name="count" value="2" id="hin" />
@@ -202,7 +209,7 @@
 							<div class="form-group row space">
 								<label for="txt_template" class="col-md-3 col-sm-3 control-label">Template</label>
 								<div class="col-md-6 col-sm-6">	
-									<select size="3" id="select_template" name="listbox" class="form-control template col-md-6 col-sm-6" onchange="display_template(this.value)">
+									<select size="3" id="select_template" style="border:1px solid #c5e86c !important;" name="listbox" class="form-control template col-md-6 col-sm-6" onchange="display_template(this.value)">
                                                                             <option value=''>None</option>
 										<?php
                                                                                         $templatedata['tempresult'] = $g1->get_mongodb->getTemplateslist($tenantId,$userdepartid);
@@ -229,9 +236,12 @@
 							<!---------end--------------->
 							<div class="form-group row">
 								<div class="col-md-12 col-sm-12">
-									<input type = "button" class="btn btn-success ctrl-btn" id="uplaod_document" onclick="validate_uploaddocument(this)" value ="Save" />
-									<input type="reset" class="btn btn-primary " value="Reset" onclick="reset_upload();">
-									<input type="button" class="btn ctrl-btn " value="Cancel" onclick="reload_page();">
+									<!-- <input type = "button" class="btn btn-success ctrl-btn save_btn_bg" id="uplaod_document" onclick="validate_uploaddocument(this)" value ="Save" />
+									<input type="reset" class="btn btn-primary save_btn_bg" value="Reset" onclick="reset_upload();">
+									<input type="button" class="btn ctrl-btn save_btn_bg_cancel" value="Cancel" onclick="reload_page();"> -->
+                                    			<input type = "button" class="save_btn_bg_cancel" id="uplaod_document" onclick="validate_uploaddocument(this)" value ="Save" />
+									<input type="reset" class="save_btn_bg_cancel" value="Reset" onclick="reset_upload();">
+									<input type="button" class="save_btn_bg_cancel" value="Cancel" onclick="reload_page();">
 								</div>
 							</div>
 							<input type="hidden" name="tenantname" class="tenantname" value="<?php echo $tenantname;?>">

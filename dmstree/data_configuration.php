@@ -205,13 +205,22 @@
                 <?php include_once'dash_menu.php'?>  
             </div>
             <div class="col-md-9 col-sm-9 ">
-                <div class="row">
+                <!-- <div class="row">
                     <p class="spaceerror col-md-12" style="color:red"> </p>
-                </div>
-                <div class="div-padding-top well">
-                <div class="row">
-                        <div class="col-md-12 col-sm-12 form_title "><h3 class="text-muted space" ><b>Data Configuration</b></h3></div>
-                </div>
+                </div> -->
+                <div class="checkout_doc div-padding-top">
+              <div class="row">
+                        <div class="col-md-12 col-sm-12 form_title "><h2 class="text-muted hr-margin upload_doc_cls"><b>Data Configuration</b></h2></div>
+                    </div>
+                    </div>
+                    
+                <!-- <div class="div-padding-top well"> -->
+
+                <!-- <div class="row"> -->
+                        <!-- <div class="col-md-12 col-sm-12 form_title "><h3 class="text-muted space" ><b style="color: #9AD94B
+">Data Configuration</b></h3></div> -->
+                <!-- </div> -->
+        <!-- </div> -->
                 <fieldset>
                     <div class="row form-group">
                         <label for="sel_std_list" class="col-md-3 control-label text-muted">Manage STD List</label>  
@@ -233,7 +242,7 @@
                         </div>-->
                     </div>
                     <!-- Button trigger modal -->
-                    <button class="btn btn-info" id ="btn_std_add" data-toggle="modal" data-target="#add_std_list"> Add</button>
+                    <button class="save_btn_bg_cancel" id ="btn_std_add" data-toggle="modal" data-target="#add_std_list"> Add</button>
                 <!-- Modal -->
                 <div class="modal fade" id="add_std_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -306,7 +315,7 @@
                     </div>
                 </div>
 								
-                <button class="btn btn-primary" id="btn_std_update" data-toggle="modal" data-target="#update_std_list">Update</button>
+                <button class="save_btn_bg_cancel" id="btn_std_update" data-toggle="modal" data-target="#update_std_list">Update</button>
                 <!-- Modal -->
                 <div class="modal fade" id="update_std_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -388,7 +397,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-danger" id="btn_std_delete" data-toggle="modal" data-target="#delete_std_list">Delete</button>
+                <button class="save_btn_bg_cancel" id="btn_std_delete" data-toggle="modal" data-target="#delete_std_list">Delete</button>
                 <!-- Modal -->
                     <div class="modal fade" id="delete_std_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -485,7 +494,8 @@
             <label for="sel_photo_gallary" class="col-md-3 control-label text-muted">Manage Photo Gallary</label>  
             </div>
             <div class="row"> 
-                <button class="btn btn-info" id ="btn_add" style="margin-left:2%" onclick="show_photogalleryfor();">Add Photo</button>
+                <!-- <button class="btn btn-info" id ="btn_add" style="margin-left:2%" onclick="show_photogalleryfor();">Add Photo</button> -->
+                 <button class="save_btn_bg_cancel" id ="btn_add" style="margin-left:2%" onclick="show_photogalleryfor();">Add Photo</button>
             </div>
             <div class=" row manage_photo_gallery" style="padding:2%">
                 <div class ="col-md-12">

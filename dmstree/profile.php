@@ -86,35 +86,66 @@
                       }
             });  
         </script>
+		<style>
+			
+			.navbar-nav li .prof_cls {
+    font-size: 16px;
+    color: #fff;
+    padding: 10px;
+	margin-top: 14px;
+}
+.navbar-nav li .pass_cls {
+    font-size: 16px;
+    color: #fff;
+    padding: 10px;
+	margin-top: 14px;
+}
+
+.navbar-nav li a.active {
+    background: #c4d1dc; /* Active button background */
+}
+
+.navbar-nav li a.inactive {
+    background: #F8FF8A; /* Inactive button background */
+}
+		</style>
     </head>
     <body >
     <!----------- Header page--------------------------------------------->
 	<div id="header">
 		<?php include_once 'header.php'; ?> 
 	</div>	
-        <div class="row row-margin  div-padding-top">
+        <div class="row row-margin">
+			<!-- <div class="row row-margin  div-padding-top"> -->
 			<div class="col-md-3">
             <!--------- dash board side menu------------------------------------------------>
                 <?php include_once'dash_menu.php'?>  
             </div>
             <div class="col-md-9 div-padding-top">
-            <div class="row">
+            <!-- <div class="row">
                 <p class="spaceerror col-md-12" style="color:red"> </p>
-            </div>    
-				<div class="well well-padding">
+            </div>     -->
+			<div class="upload_temp well-padding">
+				<!-- <div class="well well-padding"> -->
 					<div class="row">
-						<div class="col-md-12 form_title "><h3 class="text-muted">Profile</h3></div>
-					</div>
-					<div class="row">
-						<div class="row">
-							<div class="col-md-11">
-								<ul class="nav navbar-nav navbar-right">
-									<li><a onclick="show('profile');">Profile</a></li>
-									<li><a onclick="show('password');">Password</a></li>
+						<div class="col-md-12 prof_form_title"><h3 class="text-muted upload_doc_cls">Profile</h3>
+					<ul class="nav navbar-nav navbar-right">
+									<li><a id="profileBtn" class="prof_cls active"onclick="show('profile');">Profile</a></li>
+									<li><a  id="passwordBtn" class="pass_cls inactive" onclick="show('password');">Password</a></li>
 								</ul>
 							</div>
-						</div>
 					</div>
+					<!-- commented below code for show only one row  -->
+					<!-- <div class="row">
+						<div class="row"> -->
+							<!-- <div class="col-md-11"> -->
+								<!-- <ul class="nav navbar-nav navbar-right">
+									<li><a id="profileBtn" class="prof_cls active"onclick="show('profile');">Profile</a></li>
+									<li><a  id="passwordBtn" class="pass_cls inactive" onclick="show('password');">Password</a></li>
+								</ul> -->
+							<!-- </div> -->
+						<!-- </div>
+					</div> -->
 				</div>
 				<div class="well" id="profile_profile">
 					<?php  $userid = $_SESSION['userid']; $userinfo=$g1->get_mongodb->getUserInfo($userid); $tenantInfo = $g1->get_mongodb->getTenantInfo($userinfo[0]["TenantId"]);?>
@@ -169,9 +200,12 @@
 								</div>
 							</div>
 							<div class="form-group row space">
-								<input type="button"  class="btn-hide btn btn-success ctrl-btn btn-space" value="Save" onclick="save_changes();"/>
-                                                                <input type="reset"  class="btn-hide btn ctrl-btn btn-space" value="Reset" onclick="cancel_changes();"/>
-								<input type="button" class="btn ctrl-btn btn-space" value="Edit"  onclick="edit_form();"/>
+								<!-- <input type="button"  class="btn-hide btn btn-success ctrl-btn btn-space" value="Save" onclick="save_changes();"/>
+                                 <input type="reset"  class="btn-hide btn ctrl-btn btn-space" value="Reset" onclick="cancel_changes();"/> -->
+								 <input type="button"  class="save_btn_bg_cancel" value="Save" onclick="save_changes();"/>
+                                 <input type="reset"  class="save_btn_bg_cancel" value="Reset" onclick="cancel_changes();"/>
+								<!-- <input type="button" class="btn ctrl-btn btn-space" value="Edit"  onclick="edit_form();"/> -->
+								 <input type="button" class="save_btn_bg_cancel" value="Edit"  onclick="edit_form();"/>
 							</div>	
 						</form>
 					</div>

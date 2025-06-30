@@ -142,7 +142,7 @@ if(is_array($filterdata) && isset($filterdata['result']) && $filterdata['result'
                         }
                         $dochtml .= '<div class="well div-padding-top">';
                         $dochtml .= '<div class="row">';
-                        $dochtml .= '<div class="col-md-2">';
+                        $dochtml .= '<div class="col-md-2 ">';
                         $dochtml .= '<div class="div-padding fileextension"><img src="img/file_icons/'.$filetype.'.png" style=" height: 60px; width: 80px;object-fit:contain; border: 1px #e5e5e5;">';
                         $dochtml .= '</div></div>';
                         $dochtml .= '<div class="col-md-8">';
@@ -154,8 +154,8 @@ if(is_array($filterdata) && isset($filterdata['result']) && $filterdata['result'
                                                                                     <input type="hidden" class="doctemppath" value="'.$htmltemppath.'"></p>';}
                         $dochtml .= '</div>';
                         $dochtml .= '<div class="col-md-2">';
-                        $dochtml .= '<p><button type="button" class="revsioncomment" onclick="makefocusComment(this);" value="Comments"><span class="glyphicon glyphicon-comment"> </span> Comments</button></p>
-                              <p><button type="button" class="revsiontags" onclick="makefocusTag(this);" value="Tags"><span class="glyphicon glyphicon-tag"> </span> Tags</button></p>';
+                        $dochtml .= '<p><button type="button" class="revsioncomment comments_tags" onclick="makefocusComment(this);" value="Comments"><span class="glyphicon glyphicon-comment"> </span> Comments</button></p>
+                              <p><button type="button" class="revsiontags comments_tags" onclick="makefocusTag(this);" value="Tags"><span class="glyphicon glyphicon-tag"> </span> Tags</button></p>';
                         if($currstatus == 'CheckedIn')
                         {
                         $dochtml .= '<p><button type="button" class="revsionstatus" onclick="redirecttoupload(this)" value="'.$currstatus.'"><span class="glyphicon glyphicon-bookmark"> </span> '.$currstatus.'</button></p>';
@@ -182,7 +182,7 @@ if(is_array($filterdata) && isset($filterdata['result']) && $filterdata['result'
                         }        
                         $dochtml .= '<div class="row comment div-margin">
                               <div class="col-md-6">
-                              <div class="row-fluid"><a class="docsubsec_title">View More Comments('.$totalcomments.')</a></div>';
+                              <div class="row-fluid"><a class="docsubsec_title upload_doc_cls">View More Comments('.$totalcomments.')</a></div>';
                         
                         if(array_key_exists('Comments', $dockey['DocumentInfo']))
                         {        
@@ -237,7 +237,7 @@ if(is_array($filterdata) && isset($filterdata['result']) && $filterdata['result'
                         }
                         $dochtml .=  '<div class="form-group row-fluid add-comment">
                                 <div class="col-md-9 ">
-                                <input type="text" class="form-control txt_comment1 document_commentbox"  id="txt_comment1" placeholder="Comment" name="" autofocus/>
+                                <input type="text" class="form-control txt_comment1 document_commentbox document_border"  id="txt_comment1" placeholder="Comment" name="" autofocus/>
                                 </div>
                                 <div class="col-md-2">
                                 <input type="button" id="btn_comment" class="btn ctrl-btn btn_comment" value="Comment" onclick="add_comment(this)">
@@ -245,7 +245,7 @@ if(is_array($filterdata) && isset($filterdata['result']) && $filterdata['result'
                              </div> ';
                        $dochtml .=   '</div>
                                 <div class="col-md-6">
-                                <div class="row-fluid"><a class="docsubsec_title">View More Tags('.$totaltagcount.') </a></div>
+                                <div class="row-fluid"><a class="docsubsec_title upload_doc_cls">View More Tags('.$totaltagcount.') </a></div>
                                 <div class="row-fluid" style="padding:5px 0px;border-top: 1px solid #B8BFBC;">
                                     <div class="tag_selectbox col-md-9">
                                     <select name="colors" class="form-control chosen-select" multiple data-placeholder="select tags">';

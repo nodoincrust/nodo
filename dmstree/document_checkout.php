@@ -231,6 +231,9 @@
             .chosen-container{
                 width:100% !important;
             }
+            .img_icon{
+                filter: brightness(0) invert(1);
+            }
         </style>    
         <script src="facebox-master/src/facebox.js" type="text/javascript"></script>
 
@@ -238,16 +241,18 @@
     <body>
         <?php include_once 'header.php'; ?> 
         <div class="row row-margin">
-            <div class="col-md-3 col-sm-3 div-padding-top" id="body1">
+            <div class="col-md-3 col-sm-3" id="body1">
+            <!-- <div class="col-md-3 col-sm-3 div-padding-top" id="body1"> -->
                 <?php include_once'dash_menu.php'?>  
             </div>
             <div class="col-md-9 col-sm-9 div-padding-left" id="body-content">
-                <div class="row">
+                <!-- <div class="row">
                     <p class="spaceerror col-md-12" style="color:red"> </p>
-                </div>
-                <div class="well div-padding-top">
+                </div> -->
+                <div class="checkout_doc div-padding-top">
+                <!-- <div class="well div-padding-top"> -->
                     <div class="row">
-                        <div class="col-md-12 col-sm-12 form_title "><h2 class="text-muted hr-margin"><b>Checkout Document</b></h2></div>
+                        <div class="col-md-12 col-sm-12 form_title "><h2 class="text-muted hr-margin upload_doc_cls"><b>Checkout Document</b></h2></div>
                     </div>
                     <form action="upload.php" name="revisionForm" id="revisionForm" method="post">
                         <input type="hidden" value="" name="docinfo" id="docinfo">
@@ -319,18 +324,20 @@
                                         </div>
                                         <div class="col-md-8">
                                             <?php
-                                            if($documentName != ''){ echo '<p class="documentname">Document Name:<a onclick=\'dynamicURL("'.$documentName.'","'.$revisionNo.'","'.$htmltemplate.'","'.$key['_id'].'")\'>'.$documentName.'</a></p>'; }
-                                            echo '<p class="documentrev">Document latest revision:<span>'.$revisionNo.'</span></p>'; 
+                                            if($documentName != ''){ echo '<p class="documentname" style="color:#c5e86c;font-size:17px">Document Name:<a onclick=\'dynamicURL("'.$documentName.'","'.$revisionNo.'","'.$htmltemplate.'","'.$key['_id'].'")\'>'.$documentName.'</a></p>'; }
+                                            echo '<p class="documentrev" style="color:#c5e86c;font-size:17px">Document latest revision:<span>'.$revisionNo.'</span></p>'; 
                                             echo '<input type="hidden" class="privateflag" value="'.$isprivate.'">';
-                                            if($templatename != ''){ echo '<p>Document Template:<span class ="tempname">'.$templatename.'</span></p>'; }
-                                            if($docDate != '') { echo '<p>Date:<span>'.$docDate.'</span></p>'; }
+                                            if($templatename != ''){ echo '<p style="color:#c5e86c;font-size:17px">Document Template:<span class ="tempname">'.$templatename.'</span></p>'; }
+                                            if($docDate != '') { echo '<p style="color:#c5e86c;font-size:17px">Date:<span>'.$docDate.'</span></p>'; }
                                             if($htmltemplate !='' && $htmltemppath != ''){echo '<p><input type="hidden" class="doctemp" value="'.$htmltemplate.'"><input type="hidden" class="doctemppath" value="'.$htmltemppath.'"></p>';}
                                             ?>
                                         </div>
                                         <div class="col-md-2 "><!--checkin-->
-                                            <p><button type="button" onclick="makefocusComment(this);" value="Comments"><span class="glyphicon glyphicon-comment"> </span> Comments</button></p>
-                                            <p><button type="button" onclick="makefocusTag(this);" value="Tags"><span class="glyphicon glyphicon-tag"> </span> Tags</button></p>
-                                            <p><button type="button" onclick="makerevision(this);"><span class="glyphicon glyphicon-tag"> </span> Check In <!--'.$currstatus.'onclick="makerevision(this);"--></button></p>
+                                            <!-- <p><button type="button" class="comments_tags"  onclick="makefocusComment(this);" value="Comments"><span class="glyphicon glyphicon-comment"> </span> Comments</button></p>
+                                            <p><button type="button" class="comments_tags"  onclick="makefocusTag(this);" value="Tags"><span class="glyphicon glyphicon-tag"> </span> Tags</button></p> -->
+                                            <p><button type="button" class="comments_tags"  onclick="makefocusComment(this);" value="Comments"> <img src="img/Comments.png" alt="" class="img_icon">Comments</button></p>
+                                            <p><button type="button" class="comments_tags"  onclick="makefocusTag(this);" value="Tags"> <img src="img/Tags.png" alt="" class="img_icon"> Tags</button></p>
+                                            <p><button type="button" class="comments_tags"  onclick="makerevision(this);"><img src="img/Checkout.png" alt="" class="img_icon"> Check In <!--'.$currstatus.'onclick="makerevision(this);"--></button></p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -421,7 +428,7 @@
                                                             </select>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <input type="button" id="btn_tag" class="btn ctrl-btn" value="Save Tags" onclick="add_tags(this)">
+                                                            <input type="button" id="btn_tag btn_tags" class="btn ctrl-btn btn_tags" value="Save Tags" onclick="add_tags(this)">
                                                         </div>
                                                     </div>
                                                 </div>

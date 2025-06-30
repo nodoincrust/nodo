@@ -127,22 +127,46 @@
 
 function show(text)
 {
+     $('#profileBtn').removeClass('active').addClass('inactive');
+    $('#passwordBtn').removeClass('active').addClass('inactive');
 	switch(text)
 	{
 		case 'password':$('#profile_timeline').css("display", "none");
 						$('#profile_password').css("display", "block");
 						$('#profile_profile').css("display", "none");
 						$('#profile_notification').css("display", "none");
-						
+						 $('#passwordBtn').removeClass('inactive').addClass('active');
 						break;
 		case 'profile':$('#profile_timeline').css("display", "none");
 						$('#profile_password').css("display", "none");
 						$('#profile_profile').css("display", "block");
 						$('#profile_notification').css("display", "none");
-						
+						  $('#profileBtn').removeClass('inactive').addClass('active');
 						break;
 	}
 }
+// function show(text) {
+//     // Remove 'active-link' class from all navbar links
+//     $('.navbar-nav a').removeClass('active-link');
+
+//     // Hide all sections by default
+//     $('#profile_timeline').hide();
+//     $('#profile_password').hide();
+//     $('#profile_profile').hide();
+//     $('#profile_notification').hide();
+
+//     switch (text) {
+//         case 'password':
+//             $('#profile_password').show();
+//             $('a[onclick="show(\'password\');"]').addClass('active-link');
+//             break;
+//         case 'profile':
+//             $('#profile_profile').show();
+//             $('a[onclick="show(\'profile\');"]').addClass('active-link');
+//             break;
+//     }
+// }
+
 /*
  * Summary : This function is used to hide all page except time-line
  */
@@ -298,7 +322,8 @@ function edit_form()
 {
 	$( "form input:text" ).css({
 		background: "white",
-		border: "1px solid #ccc"
+		// border: "1px solid #ccc"
+        border:"1px solid #c5e86c"
 	});
 	$( "form input:text" ).removeAttr("readonly");
 	$(".btn-hide").css("display","inline-block");

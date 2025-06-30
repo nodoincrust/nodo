@@ -155,11 +155,14 @@
         <script src="chosen_v1.2.0/chosen.jquery.js"></script>
        
         <style>
-            .row
+            /* .row
             {
                 margin-left:  0 !important;
                 margin-right: 0 !important;
-            }
+            } */
+             .tag_border{
+                border:1px solid #c5e86c !important;
+             }
             .demo-box {
                     text-align: left;
                     margin: 2em auto;
@@ -617,17 +620,23 @@
 
         <?php include_once 'header.php'; ?> 
         <div class="row row-margin">
-        <div class="col-md-3 col-sm-3 div-padding-top" id="body1">
+        <!-- <div class="col-md-3 col-sm-3 div-padding-top" id="body1"> -->
+            <div class="col-md-3 col-sm-3" id="body1">
                 <?php include_once'dash_menu.php'?>  
         </div>
         <div class="col-md-9 col-sm-9 div-padding-left" id="body-content">
-            <div class="row">
+            <!-- <div class="row">
                 <p class="spaceerror col-md-12" style="color:red"> </p>
-            </div> 
-             <div class="well div-padding-top">
-                <div class="row">
-                     <div class="col-md-12 col-sm-12 form_title "><h2 class="text-muted"><b>Upload Document</b></h2></div>
+            </div>  -->
+            <div class="upload_temp div-padding-top" >
+                 <div class="row">
+                     <div class="col-md-12 col-sm-12 form_title "><h2 class="text-muted upload_doc_cls"><b>Upload Document</b></h2></div>
                 </div>
+            </div>
+             <div class="well div-padding-top">
+                <!-- <div class="row">
+                     <div class="col-md-12 col-sm-12 form_title "><h2 class="text-muted upload_doc_cls"><b>Upload Document</b></h2></div>
+                </div> -->
                 
                 <div class="div-padding">
                      <?php  if($docName != ''){ 
@@ -670,7 +679,7 @@
                      </div>
                       <?php } ?>  
                          <?php if($userrole == 'Admin'){?> 
-                         <div class="row">
+                         <!-- <div class="row">
                          <div class="col-md-4">
                              <div class="radio">
                                  <label>
@@ -679,16 +688,36 @@
                                  </label>
                              </div>
                          </div>
-                         </div>
-                        <?php } ?>
-                     <div class="form-group row" id="single_add">
+                         </div> -->
+                            <div class="form-group row" id="single_add">
                          <label class="col-md-3" for="txt_tag">Browse Files</label>
                          <div class="input-group col-md-9 col-md" id="browse_file_group">
                              <div class="row" id="file_record1">
-                                     <span class="col-md-10"><input type="file" name="sfile1" id="doc_file1" class="form-control upload_control " /></span><!--<span class="col-md-2"><img src="file_icons/ico_cancel.png" class="cancel_file1" onclick="delete_filerecord(this)"></span>-->
+                                     <span class="col-md-10"><input type="file" name="sfile1" id="doc_file1" class="form-control upload_control " /></span>
+                                     <!--<span class="col-md-2"><img src="file_icons/ico_cancel.png" class="cancel_file1" onclick="delete_filerecord(this)"></span>-->
                              </div>	
                          </div>
                      </div>
+                        <?php } ?>
+                     <!-- <div class="form-group row" id="single_add">
+                         <label class="col-md-3" for="txt_tag">Browse Files</label>
+                         <div class="input-group col-md-9 col-md" id="browse_file_group">
+                             <div class="row" id="file_record1"> -->
+                                     <!-- <span class="col-md-10"><input type="file" name="sfile1" id="doc_file1" class="form-control upload_control " /></span> -->
+                                     <!--<span class="col-md-2"><img src="file_icons/ico_cancel.png" class="cancel_file1" onclick="delete_filerecord(this)"></span>-->
+                             <!-- </div>	
+                         </div>
+                     </div> -->
+                     <div class="row">
+                         <div class="col-md-4">
+                             <div class="radio row mark_checkbox">
+                                 <label>
+                                     <input type="checkbox" name="" id="makeprivate" value="" onchange="">
+                                   <strong>Mark As Private</strong>  
+                                 </label>
+                             </div>
+                         </div>
+                         </div>
                      <div class="form-group row" id="mulitiple_add" style="display:none">
                          <div class=" col-md-9 col-md-offset-3">
                              <span><img src="img/add-icon.png" alt="add-icon" onclick="add_browse_control()" class="add_browse_btn"></span><input type="button" onclick="add_browse_control()" value="    Add Document">
@@ -748,7 +777,7 @@
                              $templatedata['tempresult'] = $g1->get_mongodb->getTemplateslist($tenantid,$userdepartid);
                              if ($templatedata['tempresult'] != '0') {
 
-                                 echo '<select size="3" name="templatelistbox" class="template col-md-6 col-sm-6" onchange="display_template(this.value)">';
+                                 echo '<select size="3" name="templatelistbox" style="border:1px solid #c5e86c !important;" class="template col-md-6 col-sm-6" onchange="display_template(this.value)">';
                                  echo '<option value= "">None</option>';
                                  foreach ($templatedata['tempresult'] as $tempName) {
                                      $templateid = $tempName['_id'];
@@ -779,8 +808,8 @@
                                                 
                             <div class='col-md-6 col-sm-6' id='date9'>
                                 <div class='input-group date' id='datetimepicker' data-date-format="DD/MM/YYYY">
-                                    <input type='text' class="form-control date1 docexpirydate" name="date" readonly/>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                                    <input type='text' style="border:1px solid #c5e86c !important;" class="form-control date1 docexpirydate" name="date" readonly/>
+                                    <span class="input-group-addon" style="background:#a6d661"><span class="glyphicon glyphicon-time"></span>
                                     </span>
                                 </div>
                             </div>
@@ -804,7 +833,7 @@
                                                     $photo = $g1->get_mongodb->getPhotoList($tenantid);
                                                    // print_r($photo);
                                            ?>
-                                                    <select class="form-control selectpicker" id="gallary" onchange="phototaging();">
+                                                    <select class="form-control selectpicker" id="gallary" onchange="phototaging();" style="border:1px solid #c5e86c !important">
                                                         <option value=""></option>
                                                         <?php 
                                                             

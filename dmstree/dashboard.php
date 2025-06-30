@@ -543,9 +543,17 @@ $activepackspace = (float)$activepackspace;
                 height: 10% !important;
                 overflow: auto;
             }
+            .btn_tags{
+                 background: #c5e86c;
+                color: #ffffff;
+                border: 1px solid #c5e86c;
+            }
             #btn_tag
             {
                 margin-top:7px!important;
+            }
+            .img_icon{
+                filter: brightness(0) invert(1);
             }
         </style>    
     </head>
@@ -703,7 +711,7 @@ $activepackspace = (float)$activepackspace;
                         echo '<div class="col-md-2">';
                         echo '<div class="div-padding fileextension"><img src="img/file_icons/'.$filetype.'.png" style=" height: 60px; width: 80px;object-fit:contain; border: 1px #e5e5e5;">';
                         echo '</div></div>';
-                        echo '<div class="col-md-8">';
+                        echo '<div class="col-md-8 document_fields">';
                         if($documentName != ''){ echo '<p class="documentname">Document Name:<a onclick=\'dynamicURL("'.$documentName.'","'.$revisionNo.'","'.$htmltemplate.'","'.$documentid.'")\'>'.$documentName.'</a><span class="docid" style="display:none">'.$documentid.'</span></p>'; }
                         echo '<p class="documentrev">Document latest revision:<span>'.$revisionNo.'</span></p>'; 
                         echo '<input type="hidden" class="privateflag" value="'.$isprivate.'">';
@@ -713,15 +721,16 @@ $activepackspace = (float)$activepackspace;
                                                                                <input type="hidden" class="doctemppath" value="'.$htmltemppath.'"></p>';}
                         echo '</div>';
                         echo '<div class="col-md-2">';
-                        echo '<p><button type="button" class="revsioncomment" onclick="makefocusComment(this);" value="Comments"><span class="glyphicon glyphicon-comment"> </span> Comments</button></p>
-                              <p><button type="button" class="revsiontags" onclick="makefocusTag(this);" value="Tags"><span class="glyphicon glyphicon-tag"> </span> Tags</button></p>';
+                        echo '<p><button type="button" class="revsioncomment comments_tags" onclick="makefocusComment(this);" value="Comments">
+                         <img src="img/Comments.png" alt="" class="img_icon"> Comments</button></p>
+                              <p><button type="button" class="revsiontags comments_tags" onclick="makefocusTag(this);" value="Tags"><img src="img/Tags.png" alt="" class="img_icon"> Tags</button></p>';
                         if($currstatus == 'CheckedIn')
                         {
-                        echo '<p><button type="button" class="revsionstatus" onclick="redirecttoupload(this)" value="'.$currstatus.'"><span class="glyphicon glyphicon-bookmark"> </span>Check Out</button></p>';
+                        echo '<p><button type="button" class="revsionstatus" onclick="redirecttoupload(this)" value="'.$currstatus.'"><img src="img/Checkout.png" alt="" class="img_icon">Check Out</button></p>';
                         echo '<input type="hidden" class="doccumentid" value="'.$dockey['_id'].'-'.$revisionNo.'-'.$isprivate.'">';
                         
-                        echo '<p><button type="button" class="add_to_bouquet" value="Add to Bouquet" onclick="showDialog(this)"><span class="glyphicon glyphicon-cloud-upload" style="float:left"> </span> Add to Bouquet</button></p>
-                              <p><button type="button" class="add_to_archive" value="Add to Archive" onclick="addToArchive(this);"><span class="glyphicon glyphicon-briefcase"> </span> Add to Archive</button></p>';
+                        echo '<p><button type="button" class="add_to_bouquet" value="Add to Bouquet" onclick="showDialog(this)"><img src="img/Add to Bouquet.png" alt="" class="img_icon"> Add to Bouquet</button></p>
+                              <p><button type="button" class="add_to_archive" value="Add to Archive" onclick="addToArchive(this);"><img src="img/Move to Archive.png" alt="" class="img_icon"> Add to Archive</button></p>';
                         }
                         else
                         {
@@ -741,7 +750,7 @@ $activepackspace = (float)$activepackspace;
                         }        
                         echo '<div class="row comment div-margin">
                               <div class="col-md-6">
-                              <div class="row-fluid"><a class="docsubsec_title">View More Comments('.$totalcomments.')</a></div>';
+                              <div class="row-fluid"><a class="docsubsec_title upload_doc_cls">View More Comments('.$totalcomments.')</a></div>';
                         
                         if(array_key_exists('Comments', $dockey['DocumentInfo']))
                         {        
@@ -796,15 +805,15 @@ $activepackspace = (float)$activepackspace;
                         }
                         echo  '<div class="form-group row-fluid add-comment">
                                 <div class="col-md-9 ">
-                                <input type="text" class="form-control txt_comment1 document_commentbox"  id="txt_comment1" placeholder="Comment" name="" autofocus/>
+                                <input type="text" class="form-control txt_comment1 document_commentbox document_border"  id="txt_comment1" placeholder="Comment" name="" autofocus/>
                                 </div>
                                 <div class="col-md-2">
-                                <input type="button" id="btn_comment" class="btn ctrl-btn btn_comment" value="Comment" onclick="add_comment(this)">
+                                <input type="button" id="btn_comment" class="save_btn_bg_cancel" value="Comment" onclick="add_comment(this)">
                                 </div>
                              </div> ';
                        echo   '</div>
                                 <div class="col-md-6">
-                                <div class="row-fluid"><a class="docsubsec_title">View More Tags('.$totaltagcount.') </a></div>
+                                <div class="row-fluid"><a class="docsubsec_title upload_doc_cls">View More Tags('.$totaltagcount.') </a></div>
                                 <div class="row-fluid" style="padding:5px 0px;border-top: 1px solid #B8BFBC;">
                                     <div class="tag_selectbox col-md-9">
                                     <select name="colors" class="form-control chosen-select" multiple data-placeholder="select tags">';
@@ -832,7 +841,7 @@ $activepackspace = (float)$activepackspace;
                        echo   ' </select>
                                 </div>
                                 <div class="col-md-2">
-                                <input type="button" id="btn_tag" class="btn ctrl-btn btn_tags" value="Save Tags" onclick="add_tags(this)">
+                                <input type="button" id="btn_tag" class="save_btn_bg_cancel" value="Save Tags" onclick="add_tags(this)">
                                 </div>';
                        echo    '</div>
                                 </div>
@@ -923,7 +932,7 @@ $activepackspace = (float)$activepackspace;
                                                                                <input type="hidden" class="doctemppath" value="'.$htmltemppath.'"></p>';}
                         echo '</div>';
                         echo '<div class="col-md-2">';
-                        echo '<p><button type="button" class="revsioncomment" onclick="makefocusComment(this);" value="Comments"><span class="glyphicon glyphicon-comment"> </span> Comments</button></p>
+                        echo '<p><button type="button" class="revsioncomment comments_tags" onclick="makefocusComment(this);" value="Comments"><span class="glyphicon glyphicon-comment"> </span> Comments</button></p>
                               <p><button type="button" class="revsiontags" onclick="makefocusTag(this);" value="Tags"><span class="glyphicon glyphicon-tag"> </span> Tags</button></p>';
                         if($currstatus == 'CheckedIn')
                         {
