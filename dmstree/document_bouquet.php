@@ -251,34 +251,41 @@ if(isset($_POST['docform']))
     <?php include_once'dash_menu.php'?>  
     </div>
  
-	<div class="col-md-9 col-sm-9 div-padding-left">
-            <div class="row">
+	<div class="col-md-9 col-sm-9">
+        <!-- <div class="col-md-9 col-sm-9 div-padding-left"> -->
+            <!-- <div class="row">
                 <p class="spaceerror col-md-12" style="color:red"> </p>
-            </div>
+            </div> -->
             <div class="well div-padding-top div-padding-well"> 
             <div class="row">
-		<div class="col-md-12 col-sm-12 form_title"><h3 class="hr-margin text-muted"><b>Create Document Bouquet</b></h3></div>
+		<div class="col-md-12 col-sm-12 form_title"><h3 class="hr-margin text-muted upload_doc_cls"><b>Create Document Bouquet</b></h3></div>
             </div>
+        </div>
+            <div class="well div-padding-top div-padding-well"> 
+            <!-- <div class="row">
+		<div class="col-md-12 col-sm-12 form_title"><h3 class="hr-margin text-muted upload_doc_cls"><b>Create Document Bouquet</b></h3></div>
+            </div> -->
             <div class="row">
 		<div class="col-md-12 col-sm-12">
                 <form name="bouquetnameForm" id="bouquetnameForm" method="post" action="search.php">
-                    <input type="hidden" id="bouquetname" name="bouquetname" value="">
+                    <input type="hidden" id="bouquetname" name="bouquetname" value="" style="border:1px solid #c5e86c !important;">
                 </form>    
 		<form name="bouquetForm" id="bouquetForm" action="" method="post">
                     <div class="form-group row add-comment">
 			<label for="txt_bouquet_name" class="col-md-3 col-sm-3 control-label">Bouquet Name</label>
 			<div class="col-md-6 col-sm-6 ">
-                            <input type="text" class="form-control txt_comment1" id="txt_bouquet_name" placeholder="Bouquet Name" name="" value="<?php if(isset($bouquet_docname)) echo $bouquet_docname;?>">
+                            <input type="text" class="form-control txt_comment1" style="border:1px solid #c5e86c !important;" id="txt_bouquet_name" placeholder="Bouquet Name" name="" value="<?php if(isset($bouquet_docname)) echo $bouquet_docname;?>">
 			</div>
 			<div class="col-md-2 col-sm-2">
-                            <input type="button" class="btn ctrl-btn" value ="Add Document" onclick="redirect_tosearchPage();" />
+                            <!-- <input type="button" class="btn ctrl-btn save_btn_bg" value ="Add Document" onclick="redirect_tosearchPage();" /> -->
+                             <input type="button" class="save_btn_bg_cancel" value ="Add Document" onclick="redirect_tosearchPage();" />
 			</div>
                     </div>
                     <div class="form-group row add-comment"></div>
 		</form>
                     <div class="row">
                     <label class="col-md-3">Bouquet Description</label>
-                    <textarea class="col-md-8 bouquet_desp"rows="3" cols="50" placeholder="Master Document Description" value=""><?php if(isset($bouquet_desc)) echo $bouquet_desc;?></textarea>
+                    <textarea style="border:1px solid #c5e86c !important;" class="col-md-8 bouquet_desp"rows="3" cols="50" placeholder="Master Document Description" value=""><?php if(isset($bouquet_desc)) echo $bouquet_desc;?></textarea>
                     </div>
 		</div>
             </div>
@@ -360,8 +367,10 @@ if(isset($_POST['docform']))
             ?>
             <div class="row">
             <div class="col-md-12 col-sm-12">
-			<input type="button" value="Save" class="btn btn-success" onclick="save_bouquet();"/>
-			<input type="button" value="Cancel" class="btn ctrl-btn" onclick="clear_page();"/>
+			<!-- <input type="button" value="Save" class="btn btn-success save_btn_bg" onclick="save_bouquet();"/>
+			<input type="button" value="Cancel" class="btn ctrl-btn save_btn_bg_cancel" onclick="clear_page();"/> -->
+            <input type="button" value="Save" class="save_btn_bg_cancel" onclick="save_bouquet();"/>
+			<input type="button" value="Cancel" class="save_btn_bg_cancel" onclick="clear_page();"/>
             </div>
             </div>    
 			

@@ -123,7 +123,7 @@
                             <p class="spaceerror col-md-12" style="color:red"> </p>
             </div> 
             <div class="div-padding-top" style="margin-bottom: 10px;">
-                    <button class="btn" data-toggle="modal" data-target="#myModal"> Report a problem</button>
+                    <button class="btn" data-toggle="modal" data-target="#myModal" style="background-color: #e6e6e6;"> Report a problem</button>
             </div>    
                 <div class="problem">
                     <?php 

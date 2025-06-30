@@ -29,9 +29,13 @@ if(isset($_SESSION['usertenant']))
 </script>    
 <div class="header_nav">  
     <div class="header-container ">
-        <div class="row row-margin">
-            <!------ Company logo --------------------------------->
-            <div class="col-md-3"><img src="img/LOGO-2.jpg" alt="Logo_image" id="dms_logo" width="230" height="75"></div>
+        <div class="row row-margin row_class_img">
+                    <!------ Company logo --------------------------------->
+            <div class="col-md-3 logo_cls">
+                <div class="logo_container">
+                <img src="img/LOGO-2.jpg" alt="Logo_image" id="dms_logo" width="210" height="75">
+                </div>
+            </div>
             <div class="col-md-9 txt-padding ">
                 <div class="row pull-right">
                     <div class="col-md-12 ">
@@ -40,9 +44,8 @@ if(isset($_SESSION['usertenant']))
                                         
                     </div>
                  </div>
-                 <div class="row ">
-                    <div class="col-md-12 ">
-                        <nav class="navbar">
+                 <div class="row row_class">
+                     <nav class="navbar">
                                     <div class="navbar-header">
                                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
                                         <span class="sr-only">Toggle navigation</span>
@@ -53,20 +56,48 @@ if(isset($_SESSION['usertenant']))
                                     </div>
 
                                     <!-- Top menus -->
-                                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                                    <ul class="nav navbar-nav navbar-right">
+                                    <div class="collapse navbar-collapse navbar_cont_div" id="navbar-collapse-1">
+                                    <ul class="nav navbar-nav navbar-right navbar_ul">
                                         <?php
+                                        $current_page = basename($_SERVER['PHP_SELF']);
                                         if ($tenantid != -999) {
+                                                    $is_active = ($current_page == 'dashboard.php') ? 'active-nav' : '';
                                         ?>
-                                            <li><a href="dashboard.php">Dashboard</a></li>
-                                            <li><a href="upload.php">Upload Document</a></li>
-                                            <li><a href="upload_template.php">Upload Template</a></li>
-                                            <li><a href="search.php">SMART Search</a></li>
-                                            <li><a href="document_bouquet.php" onclick="clear_session_var();">Create Bouquet</a></li>
-                                            <li><a href="document_checkout.php">Document Checkout</a></li>
-                                            <li><a href="profile.php">Edit Profile</a></li>
-                                            <li><a href="logout.php">Logout</a></li>
-                                       <?php
+                                        <div class="li_div">
+                                            <li class="list1 <?= ($current_page == 'dashboard.php') ? 'active-nav' : '' ?>">
+                                            <img src="img/Dashboard.png" alt="">
+                                            <a href="dashboard.php" class="list_of_nav2">Dashboard</a>
+                                            </li>
+                                            <li class="list2 <?= ($current_page == 'upload.php') ? 'active-nav' : '' ?>">
+                                             <img src="img/Upload Document.png" alt="">
+                                             <a href="upload.php" class="list_of_nav2">Upload Document</a>
+                                                 </li>
+                                             <li class="list3 <?= ($current_page == 'upload_template.php') ? 'active-nav' : '' ?>">
+                                                <img src="img/Upload Template.png" alt="">
+                                             <a href="upload_template.php" class="list_of_nav2">Upload Template</a>
+                                            </li>
+                                          <li class="list4 <?= ($current_page == 'search.php') ? 'active-nav' : '' ?>">
+                                          <img src="img/Search.png" alt="">
+                                          <a href="search.php" class="list_of_nav2">SMART Search</a>
+                                          </li>
+                                          <li class="list5 <?= ($current_page == 'document_bouquet.php') ? 'active-nav' : '' ?>">
+                                            <img src="img/bouquet.png" alt="">
+                                          <a href="document_bouquet.php" onclick="clear_session_var();" class="list_of_nav2">Create Bouquet</a>
+                                         </li>
+                                        <li class="list6 <?= ($current_page == 'document_checkout.php') ? 'active-nav' : '' ?>">
+                                          <img src="img/Checkout Document.png" alt="">
+                                         <a href="document_checkout.php" class="list_of_nav2">Document Checkout</a>
+                                         </li>
+                                        <li class="list7 <?= ($current_page == 'profile.php') ? 'active-nav' : '' ?>">
+                                      <img src="img/Edit Profile.png" alt="">
+                                      <a href="profile.php" class="list_of_nav2">Edit Profile</a>
+                                      </li>
+                                     <li class="list8 <?= ($current_page == 'logout.php') ? 'active-nav' : '' ?>">
+                                        <img src="img/logout.png" alt="">
+                                 <a href="logout.php" class="list_of_nav2">Logout</a>
+                                </li>
+                                     </div>
+                                      <?php
                                         } 
                                         else if ($tenantid == -999) {
                                        ?>
@@ -76,11 +107,18 @@ if(isset($_SESSION['usertenant']))
                                        <?php
                                             }
                                         ?>
+                                        </div>
                                     </ul>                
-                                    </div><!-- Top Menu ends -->
+                                    </div>
+                                    <!-- Top Menu ends -->
                                 </nav>
-                     </div>
-                 </div>
+                     
+                            </div>
+             
+               
+           
+                    <div class="col-md-12 row_class">
+                        </div>
             </div>
         </div>
                                   

@@ -224,10 +224,10 @@ if ($templatedata['tempresult'] != 0) {
        <?php include_once'dash_menu.php'?>  
     </div>
     <div class="col-md-9" id="body-content">
-        <div class="row row-fluid">
+        <!-- <div class="row row-fluid">
                 <p class="spaceerror col-md-12 span12" style="color:red"> </p>
         </div> 
-        
+         -->
         <form id="docrevision" method="post" action="document_bouquet.php"> <!--document_bouquet_searchresult-->
         <input type="hidden" id="docform" name="docform" class="docform" value="1">
         <input type="hidden" id="docbunch" name ="docbunch" value="" class="docbunch">
@@ -235,22 +235,31 @@ if ($templatedata['tempresult'] != 0) {
           
         <input type="hidden" value="<?php echo $temparr?>" class="templatenamearr">
        <div class="row">
-       <div class=" well div-padding-top col-md-12">
-           <div class="row">
-               <div class="col-md-12 form_title "><h2  class="hr-margin text-muted"><b>Search Document</b></h2></div>
+        <!-- <div class="search_doc div-padding-top col-md-12"> -->
+            <div class="search_doc col-md-12">
+             <div class="row">
+               <div class="col-md-12 form_title "><h2  class="hr-margin text-muted upload_doc_cls"><b>Search Document</b></h2></div>
            </div>
+        </div>
+       <div class=" well div-padding-top col-md-12">
+           <!-- <div class="row">
+               <div class="col-md-12 form_title "><h2  class="hr-margin text-muted upload_doc_cls"><b>Search Document</b></h2></div>
+           </div> -->
            <div class="row">
                <div class="col-md-2"><label>File Name</label></div>
                <div class="col-md-5">
                    <div class="input-group">
-                       <input type="text" class="form-control" id="search_string">
+                       <input type="text" class="form-control" id="search_string" style="border:1px solid #c5e86c !important;">
                        <span class="input-group-btn">
-                       <button class="btn btn-default smartsearch" type="button" onclick="var tenantid = '<?php echo $tenantid; ?>'; var departid ='<?php echo $departmentid; ?>';display_search_result(tenantid,departid);">Search</button>
+                       <!-- <button class="btn btn-default smartsearch save_btn_bg" type="button" onclick="var tenantid = '<?php echo $tenantid; ?>'; var departid ='<?php echo $departmentid; ?>';display_search_result(tenantid,departid);">Search</button> -->
+                         <button class="btn btn-default smartsearch save_btn_bg_cancel" type="button" onclick="var tenantid = '<?php echo $tenantid; ?>'; var departid ='<?php echo $departmentid; ?>';display_search_result(tenantid,departid);">Search</button>
+
                        </span>
                    </div>
                </div>
                <div class="col-md-2">
-                   <select name="rd_databasetype" id="datatypes_select" style="height:27px;">
+                   <select name="rd_databasetype" id="datatypes_select" style="height:27px;border:1px solid #c5e86c !important;color: #666666;
+    background: #a6d661;">
                        <option value="live_data"> Live Data</option>
                        <option value="archived_data"> Archived Data</option>
                    </select>    
@@ -493,8 +502,11 @@ if ($templatedata['tempresult'] != 0) {
                     <div class="col-md-12" id="search_result_container"></div>
                 </div>
                 <div class="row" >
-                    <input type="button" class="btn btn-success" value="Add To Bouquet" onclick="redirecttobouquetPage();">
-                    <input type="button" class="btn btn-success" value="Add To Archive" onclick="">
+                    <!-- <input type="button" class="btn btn-success save_btn_bg" value="Add To Bouquet" onclick="redirecttobouquetPage();">
+                    <input type="button" class="btn btn-success save_btn_bg" value="Add To Archive" onclick=""> -->
+                    <input type="button" class="save_btn_bg_cancel" value="Add To Bouquet" onclick="redirecttobouquetPage();">
+                    <input type="button" class="save_btn_bg_cancel" value="Add To Archive" onclick="">
+
                 </div>
       </div>
 

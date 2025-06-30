@@ -40,11 +40,11 @@
         <link media="screen" rel="stylesheet" href="css/jquery-ui.custom.css" type="text/css">
         <link type="text/css" href="css/uploader.css" rel="stylesheet" />
         <style>
-            .row
+            /* .row
             {
                 margin-left:  0 !important;
                 margin-right: 0 !important;
-            }
+            } */
             .demo-box {
                     text-align: left;
                     margin: 2em auto;

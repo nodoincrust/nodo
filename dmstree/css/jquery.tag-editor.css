@@ -17,13 +17,21 @@
 
 /* tag style */
 .tag-editor .tag-editor-tag {
-    padding-left: 5px; color: #46799b; background: #e0eaf1; white-space: nowrap; overflow: hidden; cursor: pointer;
+    padding-left: 5px;
+     /* color: #46799b;
+      background: #e0eaf1; */
+       background: #a6d661;
+        color: #fff;
+      white-space: nowrap; overflow: hidden; cursor: pointer;
     border-radius: 2px 0 0 2px; -moz-border-radius: 2px 0 0 2px; -webkit-border-radius: 2px 0 0 2px;
 }
 
 /* delete icon */
 .tag-editor .tag-editor-delete {
-    background: #e0eaf1; cursor: pointer; padding-right: 5px;
+    /* background: #e0eaf1; */
+        background: #a6d661;
+        color: #fff;
+     cursor: pointer; padding-right: 5px;
     border-radius: 0 2px 2px 0; -moz-border-radius: 0 2px 2px 0; -webkit-border-radius: 0 2px 2px 0;
 }
 .tag-editor .tag-editor-delete i {

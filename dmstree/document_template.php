@@ -90,8 +90,10 @@ $activepackspace = (float)$activepackspace;
             border: 1px solid rgb(231, 231, 231);
         }
         .row {
-            margin-left: 0 !important;
-        }
+            /* margin-left: 0 !important; */
+                margin-left: -15px !important;
+                /* padding: 9px; */
+        }       
         .droppedField {
             margin: 0 0 15px;
         }
@@ -216,27 +218,34 @@ $activepackspace = (float)$activepackspace;
 
   <body>
   <?php include_once 'header.php'; ?> 
-  <div class="row row-margin">
+  <div class="row row-margin bottom_cls" style="padding:9px;
+" >
         <div class="col-md-3 div-padding-menu">
         <!--------- dash board side menu------------------------------------------------>
         <?php include_once'dash_menu.php'?>  
         </div>
         <div class="col-md-9 div-padding-top div-padding-menu">
+             <div class="checkout_doc div-padding-top">
+              <div class="row">
+                        <div class="col-md-12 col-sm-12 form_title "><h2 class="text-muted hr-margin upload_doc_cls"><b>Create Custom Template</b></h2></div>
+                    </div>
+                    </div>
 	<!----------end menu----------------->
 	<!-- Main Container Start here -->
-	<div class="content">
-            <div class="row row-fluid">
+	<div class="content content_cls">
+            <!-- <div class="row row-fluid">
                 <p class="spaceerror col-md-12 span12" style="color:red"> </p>
-            </div> 
+            </div>  -->
             <div class="row row-fluid ">
 								
-		<div class="col-md-3 span3 div-padding-menu" style=""><!-- div declare all drag and drop component -->
+		<div class="col-md-3 span3 div-padding-menu"><!-- div declare all drag and drop component -->
 		<h4>Drag and Drop Component</h4>
 		<hr/>
 						
 		<!-- label start here-->
                     <div class='selectorField draggableField'>
-                    <div class="labelbox well well-mini"><b></b> Label</div>
+                    <!-- <div class="labelbox well well-mini"><b></b> Label</div> -->
+                     <div class="labelbox create_custom_template"><b></b> Label</div>
                     <div class='modele'>
 			<div class="col-md-12 span12"><label class="control-label forms_lbl ctrl-label">Label:</label></div>
 			<input type="hidden" value="" class="label_font"/>
@@ -248,7 +257,8 @@ $activepackspace = (float)$activepackspace;
 							  
 		<!-- multilinelabel start here-->
                     <div class='selectorField draggableField'>
-                    <div class="multilinelabel well well-mini"><b></b>Multi-line Label</div>
+                    <!-- <div class="multilinelabel well well-mini"><b></b>Multi-line Label</div> -->
+                     <div class="multilinelabel create_custom_template"><b></b>Multi-line Label</div>
                     <div class='modele'>
 			<label class="col-md-12 span12 control-label forms_lbl ctrl-multilabel" style="width:100%">Multi-line Label:</label>
 			<input type="hidden" value="" class="label_font"/>
@@ -260,7 +270,8 @@ $activepackspace = (float)$activepackspace;
 									
 		<!-- textbox start here -->
                     <div class='selectorField draggableField'>
-                    <div class="textbox well well-mini"><b></b> Textbox</div>
+                    <!-- <div class="textbox well well-mini create_custom_template"><b></b> Textbox</div> -->
+                     <div class="textbox  create_custom_template"><b></b> Textbox</div>
                     <div class='modele'>
 			<div class="col-md-3 span3"> 
                             <div class="row row-fluid"><label class="control-label label_req">Textbox</label><label class="label_req requiredcls">*</label></div>
@@ -279,7 +290,8 @@ $activepackspace = (float)$activepackspace;
 									
 		<!-- textarea start here -->
                     <div class='selectorField draggableField'>
-                    <div class="displaytext well well-mini"><b></b> Textarea</div>
+                    <!-- <div class="displaytext well well-mini create_custom_template"><b></b> Textarea</div> -->
+                     <div class="displaytext create_custom_template"><b></b> Textarea</div>
                     <div class='modele'>
 			<div class="col-md-3 span3">
                             <label class="control-label label_req">Textarea</label><label class="label_req requiredcls">*</label>
@@ -299,7 +311,8 @@ $activepackspace = (float)$activepackspace;
 
 		<!-- combobox start here Drop-down list-->
                     <div class='selectorField draggableField'>
-                    <div class="combobox well well-mini"><b></b> Custom Combobox </div>
+                    <!-- <div class="combobox well well-mini create_custom_template"><b></b> Custom Combobox </div> -->
+                     <div class="combobox create_custom_template"><b></b> Custom Combobox </div>
                     <div class='modele'>
 			<div class="col-md-3 span3">
                             <div class="row"><label class="control-label label_req">Custom Combobox</label><label class="label_req requiredcls">*</label></div>
@@ -319,7 +332,8 @@ $activepackspace = (float)$activepackspace;
 									
 		<!-- radiogroup start here -->
                     <div class='selectorField draggableField'>
-                    <div class="radiogroup well well-mini"><b></b> Radio buttons</div>
+                    <!-- <div class="radiogroup well well-mini create_custom_template"><b></b> Radio buttons</div> -->
+                     <div class="radiogroup create_custom_template"><b></b> Radio buttons</div>
                     <div class='modele'>
 			<div class="col-md-3 span3">
                             <div class="row"><label class="label_req control-label" style="vertical-align:top">Radio buttons</label><label class="label_req requiredcls">*</label></div>
@@ -338,7 +352,8 @@ $activepackspace = (float)$activepackspace;
 
 		<!-- checkboxgroup start here -->
                     <div class='selectorField draggableField'>
-                    <div class="checkboxgroup well well-mini"><b></b> Multiple Checkbox</div>
+                    <!-- <div class="checkboxgroup well well-mini create_custom_template"><b></b> Multiple Checkbox</div> -->
+                     <div class="checkboxgroup create_custom_template"><b></b> Multiple Checkbox</div>
                     <div class='modele'>
 			<div class="col-md-3 span3">
                             <div class="row"><label class="label_req control-label" style="vertical-align:top">Multiple Checkbox</label><label class="label_req requiredcls">*</label></div>
@@ -357,7 +372,8 @@ $activepackspace = (float)$activepackspace;
 
 		<!-- selectmultiple start here Selection multiple -->
                     <div class='selectorField draggableField'>
-                    <div class="selectmultiple well well-mini"><b></b> Custom Listbox</div>
+                    <!-- <div class="selectmultiple well well-mini create_custom_template"><b></b> Custom Listbox</div> -->
+                     <div class="selectmultiple create_custom_template"><b></b> Custom Listbox</div>
                     <div class='modele'>
 			<div class="col-md-3 span3">
                             <div class="row"><label class="label_req control-label" style="vertical-align:top">Custom Listbox</label><label class="label_req requiredcls">*</label></div>
@@ -377,7 +393,8 @@ $activepackspace = (float)$activepackspace;
 
 		<!-- imagebox start here -->
                     <div class="selectorField draggableField">
-                    <div class="imagebox well well-mini"><b></b>Image</div>
+                    <!-- <div class="imagebox well well-mini create_custom_template"><b></b>Image</div> -->
+                     <div class="imagebox create_custom_template"><b></b>Image</div>
                     <div class="modele">
 			<div class="col-md12 span12"><img src="#" alt="Upload Image" class="fimage ctrl-image" id="blah"/></div>
 			<input type="hidden" value="" class="image_path">
@@ -387,7 +404,8 @@ $activepackspace = (float)$activepackspace;
 								
 		<!-- Date start here -->
                     <div class='selectorField draggableField'>
-                    <div class="displaydate well well-mini"><b></b> Date</div>
+                    <!-- <div class="displaydate well well-mini create_custom_template"><b></b> Date</div> -->
+                    <div class="displaydate  create_custom_template"><b></b> Date</div>
                     <div class='modele'>
 			<div class="col-md-3 span3">
                             <label class="control-label">Date</label><label class="label_req requiredcls">*</label>
@@ -402,7 +420,8 @@ $activepackspace = (float)$activepackspace;
 
 		<!-- table start here -->
                     <div class='selectorField draggableField'>
-                    <div class="tablebox well well-mini"><b></b>Table</div>
+                    <!-- <div class="tablebox well well-mini create_custom_template"><b></b>Table</div> -->
+                     <div class="tablebox create_custom_template"><b></b>Table</div>
                     <div class="modele">
 			<div class="col-md-12 span12">
                             <label class="row row-fluid col-md-12 span12 control-label tbl_label" >Table:</label>
@@ -427,7 +446,8 @@ $activepackspace = (float)$activepackspace;
 		<b>Standered Listbox and Combobox</b><br />
 		<!-- stdcombobox start here -->
                     <div class='selectorField draggableField'>
-                    <div class="stdcombobox well well-mini"><b></b> Std. Combobox</div>
+                    <!-- <div class="stdcombobox well well-mini create_custom_template"><b></b> Std. Combobox</div> -->
+                     <div class="stdcombobox create_custom_template"><b></b> Std. Combobox</div>
                     <div class='modele'>
 			<div class="col-md-3 span3">
                             <div class="row"><label class="control-label label_req"> Std. Combobox</label><label class="label_req requiredcls">*</label></div>
@@ -443,7 +463,8 @@ $activepackspace = (float)$activepackspace;
                 
                 <!-- stdlistbox start here -->
                     <div class='selectorField draggableField'>
-                    <div class="stdlistbox well well-mini"><b></b> Std. Listbox</div>
+                    <!-- <div class="stdlistbox well well-mini create_custom_template"><b></b> Std. Listbox</div> -->
+                     <div class="stdlistbox create_custom_template"><b></b> Std. Listbox</div>
                     <div class='modele'>
 			<div class="col-md-3 span3">
                             <div class="row"><label class="label_req control-label" style="vertical-align:top">Std. Listbox</label><label class="label_req requiredcls">*</label></div>
@@ -478,7 +499,7 @@ $activepackspace = (float)$activepackspace;
                             <img src="" alt="logo-image" class="logo_image" id="logo_image" width="100%" heigth="100%" />
 			</div>
 			<div class="col-md-10 span10" onclick="open_title_popup()">
-                            <input type="text" class="input-large col-md-12 span12" placeholder="Type form title here"  value="" id="form-title" />
+                            <input type="text" class="input-large col-md-12 span12 border_class" placeholder="Type form title here"  value="" id="form-title" />
                             <input type="hidden" value="" class="titlelabel_font"/>
                             <input type="hidden" value="" class="titlelabel_size">
 			</div>
@@ -489,21 +510,21 @@ $activepackspace = (float)$activepackspace;
                     </div>
                     <div class="row row-fluid" id="selected-content">
                     <div class="row row-fluid">
-                        <div class="col-md-6 span6 well droppedFields "></div>
-			<div class="col-md-6 span6 well droppedFields "></div>
+                        <div class="col-md-6 span6 well droppedFields border_class"></div>
+			<div class="col-md-6 span6 well droppedFields border_class"></div>
                     </div>
                     <!-- Action bar - Suited for buttons on form -->
                     <div class="row row-fluid">
-			<div class="col-md-12 span12 well action-bar droppedFields " style="min-height:80px;"></div>
+			<div class="col-md-12 span12 well action-bar droppedFields border_class" style="min-height:80px;"></div>
                     </div>
                     </div>
 							
                 </div>
 						
 		<div class="row row-fluid">	
-                    <div class="col-md-12 span12" style="margin-top:10px;">
-                    <input type="button" class="btn btn-primary" value="Save Form" onclick="preview();"/>
-                    <input type="button" class="btn btn-primary" value="Add table" onclick="$('#dialog-form-nombre-colonne').modal('show'); $('#dialog-form-nombre-colonne').css('z-index', '1500');"/>
+                    <div class="col-md-12 span12 " style="margin-top:10px;">
+                    <input type="button" class="btn_class" value="Save Form" onclick="preview();"/>
+                    <input type="button" class="btn_class" value="Add table" onclick="$('#dialog-form-nombre-colonne').modal('show'); $('#dialog-form-nombre-colonne').css('z-index', '1500');"/>
                     </div>
 		</div>  
                 </div><!--form container close here -->
