@@ -182,7 +182,7 @@
 										</div>
 									</div>
 									<div class="col-md-3 col-sm-3">
-										<img src="img/<?php echo $key['NoticeImage'];?>" id="notice_image1" class="img-responsive" style="height:130px;width:100%;"/>
+										<img src="DMSTree_clients/<?php echo $tenantname.'_'.$tenantid; ?>/Images/<?php echo $key['NoticeImage'];?>" id="notice_image1" class="img-responsive" style="height:130px;width:100%;"/>
 									</div>
 								</div>
 							</div>

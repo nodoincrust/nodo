@@ -34,7 +34,7 @@
 		<div class="header_nav">  
 			<div class="container header-container ">
 				<div class="row">
-					<div class="col-md-4"><img src="img/LOGO-2.PNG" alt="Logo_image" id="dms_logo" width="280" height="75"></div>
+					<div class="col-md-4"><img src="img/LOGO-2.jpg" alt="Logo_image" id="dms_logo" width="280" height="75"></div>
 				</div>
 			</div> 
 		</div> 
@@ -233,7 +233,7 @@
 					</div>
 					<div class="row control-label">
 					<div class="col-md-12 ">
-						<input type="button" class="btn btn-success ctrl-btn  btn-space" name="btnsubmit"  value="Submit" onclick="valdationForm(); javascript:Recaptcha.reload()" > 
+						<input type="button" class="btn btn-success ctrl-btn  btn-space" name="btnsubmit"  value="Submit" onclick="valdationForm()" > 
 						<input type="reset" class="btn btn-primary btn-space" value="Reset" onclick="reset_registrationform()">
 						<input type="button" class="btn ctrl-btn btn-space " value="Cancel">
 					</div>

@@ -902,12 +902,9 @@
                        </div> 
                         <div class="form-group row">
                             <div class="col-md-12 col-sm-12">
-                                <!-- <input type="button" class="btn btn-success ctrl-btn btn-space save_btn_bg" value="Save" onclick="validate_uploaddocument(this);">
-                                <input type="reset" class="btn btn-primary btn-space save_btn_bg" value="Reset" onclick="reset_upload();">
-                                <input type="button" class="btn ctrl-btn btn-space save_btn_bg_cancel" value="Cancel" onclick="canel_operation();"> -->
-                                <input type="button" class="save_btn_bg_cancel" value="Save" onclick="validate_uploaddocument(this);">
-                                <input type="reset" class="save_btn_bg_cancel" value="Reset" onclick="reset_upload();">
-                                <input type="button" class="save_btn_bg_cancel" value="Cancel" onclick="canel_operation();">
+                                <input type="button" class="btn btn-success ctrl-btn btn-space" value="Save" onclick="validate_uploaddocument(this);">
+                                <input type="reset" class="btn btn-primary btn-space" value="Reset" onclick="reset_upload();">
+                                <input type="button" class="btn ctrl-btn btn-space " value="Cancel" onclick="canel_operation();">
 
                             </div>
                         </div>

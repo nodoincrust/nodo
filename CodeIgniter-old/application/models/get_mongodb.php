@@ -1,4 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+// session_start();
+//   $this->load->library('session');
 class Get_mongodb extends CI_Model {
 
 	public $name;
@@ -13,6 +15,7 @@ class Get_mongodb extends CI_Model {
  
         function loginProcess($loginUsername,$loginPassword,$collection = 'UserData')
         {
+            
             $username = strip_tags(trim($loginUsername));
             $password = strip_tags(trim($loginPassword));
             
@@ -22,6 +25,9 @@ class Get_mongodb extends CI_Model {
                 $loginresult       = $loginquery->result_array();
                 $loginresult_row   = $loginquery->num_rows();
                 /*return json_encode($userdataResponse);*/
+                $this->session->set_userdata('loginresult', $loginresult); 
+                // $this->session->userdata('loginresult');
+                
                 if($loginresult_row > 0)
                     return $loginresult;
                 else 
@@ -54,10 +60,15 @@ class Get_mongodb extends CI_Model {
         function getActivePackageSize($tenantid, $collection = 'TenantInfo')
         {
                 $tenantid       = (int)$tenantid;
+                // var_dump($tenantid);
                 $wherecond      = array("_id" => $tenantid,"PackageInfo.DurationOrSize" => 'Size');//, "PackageInfo.IsActivePackage" => true);
                 $selectcond     = array("PackageInfo.PackageSizeInGB");
+                // var_dump($selectcond);
                 $packagequery   = $this->cimongo->select($selectcond)->where($wherecond)->get($collection);
+                // var_dump($packagequery);
+                // die();
                 $packagequeryresult = $packagequery->result_array();
+                $test = 0;
                 foreach ($packagequeryresult as $packagevalue) {
                     if(array_key_exists('PackageInfo',$packagevalue))
                     {
@@ -932,555 +943,33 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
             //$selectfield = array("_id","DocumentName","TemplateId","DocumentInfo.RevisionNo","DocumentInfo.UploadDate","DocumentInfo.TagList","DocumentInfo.FileName");
             //new MongoRegex("/$commentword/i")
             $subwherecondarr = array(
-                                         array("TenantId" => $tenantid)
+                                         array("TenantId" => (int)$tenantid)
                                     );
+            // Add DepartmentId to the query if provided
+            if($departmentid != '' && $departmentid !== null) {
+                $subwherecondarr[] = array("DepartmentId" => (int)$departmentid);
+            }
+            // Remove testing/debug code
             if($searchstr != '')
             {
                 $searstrarr = array('$or' => array(
-                                                        array("DocumentName" => new MongoRegex("/$searchstr/i")),
-                                                        array("DocumentInfo.FileName" => new MongoRegex("/$searchstr/i")),
-                                                        array("DocumentInfo.TagList" => new MongoRegex("/$searchstr/i"))
-                                                   )
-                                    );
+                    array("DocumentName" => array('$regex' => $searchstr, '$options' => 'i')),
+                    array("DocumentInfo.FileName" => array('$regex' => $searchstr, '$options' => 'i')),
+                    array("DocumentInfo.TagList" => array('$regex' => $searchstr, '$options' => 'i'))
+                ));
                 $subwherecondarr[] = $searstrarr;
             }
-             if($dateoption != '' && $filtermongoDate1 != '')
-                {
-                    switch ($dateoption)
-                    {
-                        case "on_date"      :   $ondate_cond = array("DocumentInfo.UploadDate" => array('$gte' => $filtermongoDate1, '$lte' =>$filtermongoDate2) );   
-                                                $subwherecondarr[] = $ondate_cond;
-                                                break;
-                        case "before_date"  :   $beforedate_cond = array("DocumentInfo.UploadDate" =>  array('$lt' => $filtermongoDate1)); 
-                                                $subwherecondarr[] = $beforedate_cond;
-                                                break;
-                        case "after_date"   :   $afterdate_cond = array("DocumentInfo.UploadDate" =>  array('$gt' => $filtermongoDate1));
-                                                $subwherecondarr[] = $afterdate_cond;
-                                                break; 
-                        case "between_date" :   if($filtermongoDate2 != '')
-                                                {
-                                                $between_date_cond = array("DocumentInfo.UploadDate" =>  array('$gte' => $filtermongoDate1, '$lte' =>$filtermongoDate2));
-                                                $subwherecondarr[] = $between_date_cond;
-                                                }
-                                                break;
-                       case "in_week"      :    if($filtermongoDate2 != '')
-                                                {
-                                                $inweek_cond = array("DocumentInfo.UploadDate" =>  array('$gte' => $filtermongoDate2, '$lte' =>$filtermongoDate1));
-                                                $subwherecondarr[] = $inweek_cond;
-                                                }
-                                                break;
-                      case "in_month"      :    if($filtermongoDate2 != '')
-                                                {
-                                                $inmonth_cond = array("DocumentInfo.UploadDate" =>  array('$gte' => $filtermongoDate2, '$lte' =>$filtermongoDate1));
-                                                $subwherecondarr[] = $inmonth_cond;
-                                                }
-                                                break;                      
-                    }
-                }
-                if($findinfilter != null) 
-                {
-                    $allarr = array();
-                    $tagarr    = array();
-                    $commentarr = array();
-                    $bouquetsubarray = array();
-                    $templatearr     = array();
-                    $templatedataarr = array();
-                    $tempdataarr     =  array();
-                    foreach ($findinfilter as $findinfilterindex) {
-                        if($findinfilterindex['Name'] == 'all')
-                        {
-                            /*$allarr['$or'] = array(
-                                                            array("DocumentInfo.TagList" => array('$in' =>  array($searchstr))), 
-                                                            array("DocumentInfo.FileName" =>$searchstr)
-                                                            //array("DocumentInfo.Comments" => $searchstr)
-                                                   );*/
-                        }
-                        if($findinfilterindex['Name'] == 'comments')
-                        {
-                            $commentword = $findinfilterindex['Value'];
-                            $commentarr['DocumentInfo.Comments.CommentText'] = array('$regex' => new MongoRegex("/$commentword/i"));
-                        }    
-                        if($findinfilterindex['Name'] == 'tags')
-                        {
-                            $tagarrlist = $findinfilterindex['Value'];
-                            $tagarr["DocumentInfo.TagList"] =  array('$in' => $tagarrlist);
-                        }
-                        
-                        
-                        if($findinfilterindex['Name'] == 'file_name')
-                        {
-                            $bouquetresultdoc = array();
-                            $bouquetnmarr = $findinfilterindex['Value'];
-                            $bouquetselect = array("DocumentsInBouquet");
-                            foreach ($bouquetnmarr as $bouquetnmvalue) {
-                               if($departmentid != '')
-                               {
-                                   $bouquetwhere  = array("BouquetName" =>$bouquetnmvalue, "TenantId" => $tenantid,"DepartmentId" => $departmentid); 
-                               }
-                               else 
-                               {
-                                   $bouquetwhere  = array("BouquetName" =>$bouquetnmvalue, "TenantId" => $tenantid); 
-                               }
-                               $bouquetdocquery = $this->cimongo->select($bouquetselect)->where($bouquetwhere)->get('BouquetData'); 
-                               $bouquetdocresult =  $bouquetdocquery->result_array();
-                               foreach ($bouquetdocresult as $bouquetqueryvalue) {
-                                   if(array_key_exists("DocumentsInBouquet",$bouquetqueryvalue))
-                                   {
-                                       foreach ($bouquetqueryvalue['DocumentsInBouquet'] as $dockey) {
-                                           $bouquetarrindex = array('$and' => array(
-                                                                                    array("_id" => new MongoID($dockey['DocumentId'])),
-                                                                                    array("DocumentInfo.RevisionNo" => $dockey['RevisionNo'])
-                                                                                    ));
-                                           $bouquetresultdoc[] = $bouquetarrindex;
-                                       }
-                                   }
-                                   
-                               }
-                               //$finalbouquetorarr = array('$or' =>  $bouquetresultdoc);
-                            }
-                            $bouquetsubarray = array('$or' => $bouquetresultdoc);
-                            //$filenmarr["DocumentInfo.FileName"] = $fileexe;
-                        }
-                        
-                        if($findinfilterindex['Name'] == 'template_data')
-                        {
-                            $templatedataarr[] = array("TemplateId" => new MongoID($templateid));
-                        }
-                        if($findinfilterindex['Name'] == 'TextBoxName')
-                        {
-                            $tempdataarr['TextboxNamearr'] = $findinfilterindex['Value'];
-                        }
-                        if($findinfilterindex['Name'] == 'TextBoxValue')
-                        {
-                            $tempdataarr['TextBoxValuearr'] = $findinfilterindex['Value'];
-                        }
-                        if($findinfilterindex['Name'] == 'DateName')
-                        {
-                            $tempdataarr['DateNamearr'] = $findinfilterindex['Value'];
-                        }
-                        if($findinfilterindex['Name'] == 'DateValue')
-                        {
-                            $tempdataarr['DateValuearr'] = $findinfilterindex['Value'];
-                        }
-                        if($findinfilterindex['Name'] == 'TextAreaName')
-                        {
-                            $tempdataarr['TextAreaNamearr'] = $findinfilterindex['Value'];
-                        }
-                        if($findinfilterindex['Name'] == 'TextAreaValue')
-                        {
-                            $tempdataarr['TextAreaValuearr'] = $findinfilterindex['Value'];
-                        }
-                        if($findinfilterindex['Name'] == 'CustomListName')
-                        {
-                            $tempdataarr['CustomListNamearr'] = $findinfilterindex['Value'];
-                        }
-                        if($findinfilterindex['Name'] == 'CustomListValue')
-                        {
-                            $tempdataarr['CustomListValuearr'] = $findinfilterindex['Value'];
-                        }
-                        if($findinfilterindex['Name'] == 'RadioButtonName')
-                        {
-                            $tempdataarr['RadioButtonNamearr'] = $findinfilterindex['Value'];
-                        }
-                        if($findinfilterindex['Name'] == 'RadioButtonValue')
-                        {
-                            $tempdataarr['RadioButtonValuearr'] = $findinfilterindex['Value'];
-                        }
-                        if($findinfilterindex['Name'] == 'MultipleCheckBoxName')
-                        {
-                            $tempdataarr['MultipleCheckBoxNamearr'] = $findinfilterindex['Value'];
-                        }
-                        if($findinfilterindex['Name'] == 'MultipleCheckBoxValue')
-                        {
-                            $tempdataarr['MultipleCheckBoxValuearr'] = $findinfilterindex['Value'];
-                        }
-                        if($findinfilterindex['Name'] == 'TableidName')
-                        {
-                            $tempdataarr['Tableidarr'] = $findinfilterindex['Value'];
-                        }
-                        if($findinfilterindex['Name'] == 'TableValue')
-                        {
-                            $tempdataarr['TableValuearr'] = $findinfilterindex['Value'];
-                        }
-                    } 
-                    
-                    if($tempdataarr != null)
-                    {
-                        //$controlarr = array();
-                        if( array_key_exists('TextboxNamearr' ,$tempdataarr) && array_key_exists('TextBoxValuearr' ,$tempdataarr) && $tempdataarr['TextboxNamearr'] != null && $tempdataarr['TextBoxValuearr'] != null)
-                        {
-                            for ($txtindex = 0, $txtvalindex = 0; $txtindex < count($tempdataarr['TextboxNamearr']),$txtvalindex < count($tempdataarr['TextBoxValuearr']); $txtindex++,$txtvalindex++)
-                            {
-                                $textboxval = $tempdataarr['TextBoxValuearr'][$txtvalindex];
-                                $templatedataarr[] = array( '$and' => array( 
-                                                                    array("DocumentInfo.TextBox.Name" => $tempdataarr['TextboxNamearr'][$txtindex]),
-                                                                    array("DocumentInfo.TextBox.Value" => array('$regex' => new MongoRegex("/$textboxval/i")))
-                                                                 )
-                                                );
-                            }       
-                        }
-                        if(array_key_exists('DateNamearr' ,$tempdataarr) && array_key_exists('DateValuearr' ,$tempdataarr) && $tempdataarr['DateNamearr'] != null && $tempdataarr['DateValuearr'] != null)
-                        {
-                            for ($dateindex = 0, $datevalindex = 0; $dateindex < count($tempdataarr['DateNamearr']),$datevalindex < count($tempdataarr['DateValuearr']); $dateindex++,$datevalindex++)
-                            {
-                                $isodateval = new MongoDate(strtotime($tempdataarr['DateValuearr'][$datevalindex]));
-                                $templatedataarr[] = array( '$and' => array( 
-                                                                    array("DocumentInfo.Date.Name" => $tempdataarr['DateNamearr'][$dateindex]),
-                                                                    array("DocumentInfo.Date.Value" => $isodateval)
-                                                                 )
-                                                );
-                            }       
-                        }
-                        if(array_key_exists('TextAreaNamearr' ,$tempdataarr) && array_key_exists('TextAreaValuearr' ,$tempdataarr) && $tempdataarr['TextAreaNamearr'] != null && $tempdataarr['TextAreaValuearr'] != null)
-                        {
-                            for ($tareaindex = 0, $tareavalindex = 0; $tareaindex < count($tempdataarr['TextAreaNamearr']),$tareavalindex < count($tempdataarr['TextAreaValuearr']); $tareaindex++,$tareavalindex++)
-                            {
-                                $teaxtareaval = ($tempdataarr['TextAreaValuearr'][$tareavalindex]);
-                                $templatedataarr[] = array( '$and' => array( 
-                                                                    array("DocumentInfo.TextArea.Name" => $tempdataarr['TextAreaNamearr'][$tareaindex]),
-                                                                    array("DocumentInfo.TextArea.Value" => array('$regex' => new MongoRegex("/$teaxtareaval/i")))
-                                                                 )
-                                                );
-                            }       
-                        }
-                        if(array_key_exists('CustomListNamearr' ,$tempdataarr) && array_key_exists('CustomListValuearr' ,$tempdataarr) && $tempdataarr['CustomListNamearr'] != null && $tempdataarr['CustomListValuearr'] != null)
-                        {
-                            for ($cuslistindex = 0, $cuslistvalindex = 0; $cuslistindex < count($tempdataarr['CustomListNamearr']),$cuslistvalindex < count($tempdataarr['CustomListValuearr']); $cuslistindex++,$cuslistvalindex++)
-                            {
-                                $custlistval = ($tempdataarr['CustomListValuearr'][$cuslistvalindex]);
-                                $templatedataarr[] = array( '$and' => array( 
-                                                                    array("DocumentInfo.CustomList.Name" => $tempdataarr['CustomListNamearr'][$cuslistindex]),
-                                                                    array("DocumentInfo.CustomList.SelectedValue" => $custlistval)
-                                                                 )
-                                                );
-                            }       
-                        }
-                        if(array_key_exists('RadioButtonNamearr' ,$tempdataarr) && array_key_exists('RadioButtonValuearr' ,$tempdataarr) && $tempdataarr['RadioButtonNamearr'] != null && $tempdataarr['RadioButtonValuearr'] != null)
-                        {
-                            for ($radioindex = 0, $radiovalindex = 0; $radioindex < count($tempdataarr['RadioButtonNamearr']),$radiovalindex < count($tempdataarr['RadioButtonValuearr']); $radioindex++,$radiovalindex++)
-                            {
-                                $radioval = ($tempdataarr['RadioButtonValuearr'][$radiovalindex]);
-                                $templatedataarr[] = array( '$and' => array( 
-                                                                    array("DocumentInfo.RadioButton.Name" => $tempdataarr['RadioButtonNamearr'][$radioindex]),
-                                                                    array("DocumentInfo.RadioButton.SelectedOption" => $radioval)
-                                                                 )
-                                                );
-                            }       
-                        }
-                        if(array_key_exists('MultipleCheckBoxNamearr' ,$tempdataarr) && array_key_exists('MultipleCheckBoxValuearr' ,$tempdataarr) && $tempdataarr['MultipleCheckBoxNamearr'] != null && $tempdataarr['MultipleCheckBoxValuearr'] != null)
-                        {
-                            for ($checkboxindex = 0, $checkboxvalindex = 0; $checkboxindex < count($tempdataarr['MultipleCheckBoxNamearr']),$checkboxvalindex < count($tempdataarr['MultipleCheckBoxValuearr']); $checkboxindex++,$checkboxvalindex++)
-                            {
-                                $checkboxval = ($tempdataarr['MultipleCheckBoxValuearr'][$checkboxvalindex]);
-                                $templatedataarr[] = array( '$and' => array( 
-                                                                    array("DocumentInfo.MultipleCheckBox.Name" => $tempdataarr['MultipleCheckBoxNamearr'][$checkboxindex]),
-                                                                    array("DocumentInfo.MultipleCheckBox.SelectedOption" => $checkboxval)
-                                                                 )
-                                                );
-                            }       
-                        }
-                        if(array_key_exists('TableValuearr' ,$tempdataarr) && $tempdataarr['TableValuearr'] != null)
-                        {
-                            for ($tablevalindex = 0; $tablevalindex < count($tempdataarr['TableValuearr']); $tablevalindex++)
-                            {
-                                $tableval = explode("||",($tempdataarr['TableValuearr'][$tablevalindex]));
-                                $tablerow = $tableval[0];
-                                $tablecolumn = $tableval[1];
-                                $tdvalue    = $tableval[2];
-                                $tblid = $tableval[3];
-                                $templatedataarr[] = array( '$and' => array( 
-                                                                            array("DocumentInfo.Table.TableId" => $tblid),
-                                                                            array("DocumentInfo.Table.Values.Row" => $tablerow),
-                                                                            array("DocumentInfo.Table.Values.Column" => $tablecolumn),
-                                                                            array("DocumentInfo.Table.Values.Value" => $tdvalue)
-                                                                 )
-                                                );
-                            }       
-                        }
-                       
-                    }
-                        if($templatedataarr != null)
-                        {
-                            $templatearr = array('$and' => $templatedataarr); 
-                        }
-                        $filter1 = array();
-                        $findinfilterandorarr = ''; // array();
-                        if($allarr != null && $commentarr == null && $tagarr == null &&  $bouquetsubarray == null && $templatearr == null){ $findinfilterandorarr = $allarr;}
-                        if($commentarr != null && $tagarr == null &&  $bouquetsubarray == null && $templatearr == null){$findinfilterandorarr = $commentarr;}
-                        if($commentarr == null && $tagarr != null &&  $bouquetsubarray == null && $templatearr == null){$findinfilterandorarr = $tagarr;}
-                        if($commentarr == null && $tagarr == null &&  $bouquetsubarray != null && $templatearr == null){$findinfilterandorarr = $bouquetsubarray;}
-                        if($commentarr == null && $tagarr == null &&  $bouquetsubarray == null && $templatearr != null){$findinfilterandorarr = $templatearr;}
-                        if($commentarr != null && $tagarr != null && $bouquetsubarray == null && $templatearr == null)
-                            {
-                                    $cond = $andorarr[0];
-                                    if($cond == 'and')
-                                    {
-                                        $filter1['$and'] = array($commentarr,$tagarr);
-                                    }
-                                    if($cond == 'or')
-                                    {
-                                        $filter1['$or'] = array($commentarr,$tagarr);
-                                    }
-                                $findinfilterandorarr = $filter1;   
-                            }
-                        if($commentarr != null && $tagarr == null && $bouquetsubarray != null && $templatearr == null)
-                            {
-                                    $cond = $andorarr[1];
-                                    if($cond == 'and')
-                                    {
-                                        $filter1['$and'] = array($commentarr,$bouquetsubarray);
-                                    }
-                                    if($cond == 'or')
-                                    {
-                                        $filter1['$or'] = array($commentarr,$bouquetsubarray);
-                                    }
-                                $findinfilterandorarr = $filter1;     
-                            }
-                        if($commentarr != null && $tagarr == null && $bouquetsubarray == null && $templatearr != null)
-                            {
-                                    $cond = $andorarr[2];
-                                    if($cond == 'and')
-                                    {
-                                        $filter1['$and'] = array($commentarr,$templatearr);
-                                    }
-                                    if($cond == 'or')
-                                    {
-                                        $filter1['$or'] = array($commentarr,$templatearr);
-                                    }
-                                $findinfilterandorarr = $filter1;     
-                            }
-                        if($commentarr != null && $tagarr != null && $bouquetsubarray != null && $templatearr == null)
-                            {
-                                    $cond  = $andorarr[0];
-                                    $cond1 = $andorarr[1];
-                                    if($cond == 'and' && $cond1 == 'and')
-                                    {
-                                        $filter1['$and'] = array($commentarr,$tagarr,$bouquetsubarray);
-                                    }
-                                    if($cond == 'or' && $cond1 == 'or')
-                                    {
-                                        $filter1['$or'] = array($commentarr,$tagarr,$bouquetsubarray);
-                                    }
-                                    if($cond == 'or' && $cond1 == 'and')
-                                    {
-                                        $filter1['$or'] = array($commentarr, array('$and' => array($tagarr,$bouquetsubarray)));
-                                    }
-                                    if($cond == 'and' && $cond1 == 'or')
-                                    {
-                                        $filter1['$or'] = array($bouquetsubarray, array('$and' => array($commentarr,$tagarr)));
-                                    }
-                                $findinfilterandorarr = $filter1;     
-                                    
-                            }  
-                            if($commentarr != null && $tagarr != null && $bouquetsubarray == null && $templatearr != null)
-                            {
-                                    $cond  = $andorarr[0];
-                                    $cond1 = $andorarr[2];
-                                    if($cond == 'and' && $cond1 == 'and')
-                                    {
-                                        $filter1['$and'] = array($commentarr,$tagarr,$templatearr);
-                                    }
-                                    if($cond == 'or' && $cond1 == 'or')
-                                    {
-                                        $filter1 ['$or'] = array($commentarr,$tagarr,$templatearr);
-                                    }
-                                    if($cond == 'or' && $cond1 == 'and')
-                                    {
-                                        $filter1['$or'] = array($commentarr, array('$and' => array($tagarr,$templatearr)));
-                                    }
-                                    if($cond == 'and' && $cond1 == 'or')
-                                    {
-                                        $filter1['$or'] = array($templatearr, array('$and' => array($commentarr,$tagarr)));
-                                    }
-                                 $findinfilterandorarr = $filter1;    
-                            }
-                            if($commentarr == null && $tagarr != null && $bouquetsubarray != null && $templatearr == null)
-                            {
-                                    $cond = $andorarr[1];
-                                    if($cond == 'and')
-                                    {
-                                        $filter1['$and'] = array($tagarr,$bouquetsubarray);
-                                    }
-                                    if($cond == 'or')
-                                    {
-                                        $filter1['$or'] = array($tagarr,$bouquetsubarray);
-                                    }
-                                $findinfilterandorarr = $filter1;     
-                            }
-                            if($commentarr == null && $tagarr != null && $bouquetsubarray == null && $templatearr != null)
-                            {
-                                    $cond = $andorarr[2];
-                                    if($cond == 'and')
-                                    {
-                                        $filter1['$and'] = array($tagarr,$templatearr);
-                                    }
-                                    if($cond == 'or')
-                                    {
-                                        $filter1['$or'] = array($tagarr,$templatearr);
-                                    }
-                               $findinfilterandorarr[] = $filter1;      
-                            }
-                            if($commentarr == null && $tagarr != null && $bouquetsubarray != null && $templatearr != null)
-                            {
-                                    $cond  = $andorarr[1];
-                                    $cond1 = $andorarr[2];
-                                    if($cond == 'and' && $cond1 == 'and')
-                                    {
-                                        $filter1['$and'] = array($tagarr,$bouquetsubarray,$templatearr);
-                                    }
-                                    if($cond == 'or' && $cond1 == 'or')
-                                    {
-                                        $filter1['$or'] = array($tagarr,$bouquetsubarray,$templatearr);
-                                    }
-                                    if($cond == 'or' && $cond1 == 'and')
-                                    {
-                                        $filter1['$or'] = array($tagarr, array('$and' => array($bouquetsubarray,$templatearr)));
-                                    }
-                                    if($cond == 'and' && $cond1 == 'or')
-                                    {
-                                        $filter1['$or'] = array($templatearr, array('$and' => array($tagarr,$bouquetsubarray)));
-                                    }
-                                $findinfilterandorarr[] = $filter1;     
-                            }
-                            if($commentarr == null && $tagarr == null && $bouquetsubarray != null && $templatearr != null)
-                            {
-                                    $cond = $andorarr[2];
-                                    if($cond == 'and')
-                                    {
-                                        $filter1['$and'] = array($bouquetsubarray,$templatearr);
-                                    }
-                                    if($cond == 'or')
-                                    {
-                                        $filter1['$or'] = array($bouquetsubarray,$templatearr);
-                                    }
-                                 $findinfilterandorarr[] = $filter1;    
-                            }
-                            if($findinfilterandorarr != null)
-                            {
-                                $subwherecondarr[] = $findinfilterandorarr;
-                            }
-                        /*if($tagarr != null) {  $subwherecondarr[] =  $tagarr ; }
-                        if($bouquetsubarray != null) { $subwherecondarr[] =  $bouquetsubarray ; }  */  
-                } 
-                if($filetypefilter != null)
-                {
-                    $filefiltercond = array();
-                    foreach ($filetypefilter as $filefitervalue) {
-                        $filefiltercond[] = array("DocumentInfo.FileName" =>  array('$regex' => $filefitervalue));
-                    }
-                    $fileextcond = array('$or' => $filefiltercond);
-                    $subwherecondarr[] = $fileextcond;
-                }    
-                
-                
-//            if($departmentid != '')
-//            {
-//                $departmnetidarr   = array("DepartmentId" => $departmentid);        
-//                $subwherecondarr[] = $departmnetidarr;       
-//                  
-//                $whercond = array('$and' => $subwherecondarr);
-//                if($documentlimit == 'all_revision')
-//                {
-//                    $searchdocquery = $this->cimongo->select($selectfield)->where($whercond)->get($collection);
-//                }
-//                if($documentlimit == 'latest_revision')
-//                {
-//                    $searchdocquery = $this->cimongo->select($selectfield)->where($whercond)->order_by(array('DocumentInfo.UploadDate' => 'DESC'))->limit(1)->get($collection);
-//                }
-//                $searchresult = $searchdocquery->result_array();
-//                $searchrows = $searchdocquery->num_rows();
-//                if($searchrows > 0)
-//                    return $searchresult;
-//                else 
-//                    return 0;
-//                //return $whercond;
-//            }
-//            else 
-//            {
-//                $whercond = array('$and' => $subwherecondarr);
-//                if($documentlimit == 'all_revision')
-//                {
-//                    $searchdocquery = $this->cimongo->select($selectfield)->where($whercond)->get($collection);
-//                }
-//                else
-//                {
-//                    $searchdocquery = $this->cimongo->select($selectfield)->where($whercond)->order_by(array('DocumentInfo.UploadDate' => 'DESC'))->limit(1)->get($collection);
-//                }
-//                $searchresult = $searchdocquery->result_array();
-//                $searchrows = $searchdocquery->num_rows();
-//                if($searchrows > 0)
-//                    return $searchresult;
-//                else 
-//                    return 0; 
-//            }
-                //$subwherecondarr[]=  array('DocumentInfo.IsArchived'=>false);
+            $whercond = array('$and' => $subwherecondarr);
+            if (count($subwherecondarr) > 1) {
                 $whercond = array('$and' => $subwherecondarr);
-              
-              if($documentlimit == 'all_revision')
-                {
-                    $pipeline = array(
-                        array(
-                            '$project' =>array  (
-                                                    "_id" => 1,"DocumentName" => 1,"TenantId" =>1,"LatestRevision" => 1,"TemplateId" => 1,
-                                                    "DocumentInfo.RevisionNo" => 1,"DocumentInfo.TagList" => 1,"DocumentInfo.UploadDate" => 1,
-                                                    "DocumentInfo.FileName" => 1,"DocumentInfo.CurrentStatus" => 1,
-                                                    "DocumentInfo.Comments" => 1, "AuditData.DateModified" =>1,"DocumentInfo.IsLatestRevision" =>1
-                                                )
-                        ),
-                        array(
-                            '$unwind' => '$DocumentInfo',
-                        ),
-                       
-                        array(
-                            '$match' => $whercond
-                        ),
-                        array(
-                            '$sort' => array(
-                                                    'DocumentInfo.UploadDate' => -1,
-                                                    'DocumentInfo.RevisionNo' => -1,
-                                                    'DocumentInfo.Comments.CommentDate' => -1
-                                            )
-                        )
-//                        array(
-//                            '$limit' => 
-//                        )
-                    );
-                }
-                else
-                {
-                    $pipeline = array(
-                        array(
-                            '$project' =>array  (
-                                                    "_id" => 1,"DocumentName" => 1,"TenantId" =>1,"LatestRevision" => 1,"TemplateId" => 1,
-                                                    "DocumentInfo.RevisionNo" => 1,"DocumentInfo.TagList" => 1,"DocumentInfo.UploadDate" => 1,
-                                                    "DocumentInfo.FileName" => 1,"DocumentInfo.CurrentStatus" => 1,
-                                                    "DocumentInfo.Comments" => 1, "AuditData.DateModified" =>1,"DocumentInfo.IsLatestRevision" =>1
-                                                )
-                        ),
-                        array(
-                            '$unwind' => '$DocumentInfo',
-                        ),
-                       
-                        array(
-                            '$match' => $whercond
-                        ),
-                        array(
-                            '$sort' => array(
-                                                    'DocumentInfo.UploadDate' => -1,
-                                                    'DocumentInfo.RevisionNo' => -1,
-                                                    'DocumentInfo.Comments.CommentDate' => -1
-                                            )
-                        ),
-                        array(
-                            '$limit' => 1
-                        )
-                    );
-                }
-              
-            $cursor = $this->cimongo->aggregate($collection,$pipeline);
-            return $cursor['result'];
-                //return $whercond;
-                
+            } else {
+                $whercond = $subwherecondarr[0];
+            }
+            // Log the generated query as JSON
+            error_log('SEARCH QUERY JSON: ' . json_encode($whercond));
+            // Use direct find query instead of aggregation
+            $find_result = $this->cimongo->where($whercond)->get($collection)->result_array();
+            return $find_result;
         }
         
  /*---------------------------------------------------------- Bouquet Screen ------------------------------------------------------------------------*/
@@ -2523,9 +2012,19 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
                             '$limit' => 5
                         )
                     );
-            $cursor = $this->cimongo->aggregate($collection,$pipeline);
-            return $cursor;
-            
+                    // $cursor = $this->cimongo->aggregate($collection,$pipeline);
+                    // return $cursor;
+                    
+            $result = $this->cimongo->aggregate($collection,$pipeline);
+            // Handle the cursor result
+            if (isset($result['result']) && is_array($result['result'])) {
+                return array('result' => $result['result']);
+            }
+            // For newer MongoDB versions that return a cursor
+            if (isset($result['cursor']) && isset($result['cursor']['firstBatch'])) {
+                return array('result' => $result['cursor']['firstBatch']);
+            }
+            return array('result' => array());
         }
         
         
@@ -2554,8 +2053,7 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
                         array(
                             '$sort' => array(
                                                     'DocumentInfo.UploadDate' => -1,
-                                                    'DocumentInfo.RevisionNo' => -1,
-                                                    'DocumentInfo.Comments.CommentDate' => -1
+                                                    'DocumentInfo.RevisionNo' => -1
                                             )
                         ),
                       array(
@@ -2566,13 +2064,37 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
                         )
                     );
             $cursor = $this->cimongo->aggregate($collection,$pipeline);
-            return $cursor;
+            if (isset($cursor['result'])) {
+                return $cursor['result'];
+            } else {
+                return array();
+            }
             
 //            $cursor = $this->cimongo->aggregate($collection,$pipeline);
 //            return $cursor;
         }
         
-        
-        
+        // Update DepartmentId in UserData
+        function updateUserDepartmentId($userid, $newDepartmentId, $collection = 'UserData') {
+            $criteria = array('_id' => new MongoID($userid));
+            $update = array('DepartmentId' => $newDepartmentId);
+            return $this->cimongo->set($update)->where($criteria)->update($collection);
+        }
+
+        // Update DepartmentId in DocumentMetaData for all documents of this user/tenant
+        function updateDocumentDepartmentId($tenantid, $userid, $newDepartmentId, $collection = 'DocumentMetaData') {
+            $criteria = array('TenantId' => $tenantid, 'DocumentInfo.UserId' => new MongoID($userid));
+            $update = array('DepartmentId' => $newDepartmentId);
+            return $this->cimongo->set($update)->where($criteria)->update($collection, array('multiple' => TRUE));
+        }
+
+        // Atomically increment DepartmentId in UserData
+        function incrementUserDepartmentId($userid, $collection = 'UserData') {
+            $criteria = array('_id' => new MongoID($userid));
+            $update = array('$inc' => array('DepartmentId' => 1));
+            // Use the native MongoDB driver for atomic increment
+            return $this->db->selectCollection($collection)->update($criteria, $update, array('w' => 1));
+        }
+
 }
 ?>

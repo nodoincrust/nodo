@@ -6,7 +6,9 @@
 	$ci->load->model('get_mongodb');
 	$g1 = new Get_mongodb();
 	date_default_timezone_set('Asia/Calcutta');
-	$result = $g1->get_mongodb-> getPackages();
+	// $result = $g1->get_mongodb-> getPackages();
+    $result = $ci->get_mongodb->getPackages();
+
 ?>
 <html>
     <head>
@@ -33,8 +35,8 @@
         <div class ="row">
             <div class=" col-md-6 col-sm-6">
                 <?php 
-                    foreach ($result as $key)
-                    {
+                   if (is_array($result)) {
+                    foreach ($result as $key) {
                         if($key['PackageType'] === 'Individual' && $key['DurationOrSize'] === 'Duration')
                         {
                 ?>
@@ -91,12 +93,13 @@
                  <?php
                         }
                     }
+                }
                 ?>
             </div>
             <div class ="col-md-6 col-sm-6">  
                 <?php 
-                    foreach ($result as $key)
-                    {
+                    if (is_array($result)) {
+                        foreach ($result as $key) {
                         if($key['PackageType'] == 'Individual' && $key['DurationOrSize'] == 'Size')
                         {
                     ?>
@@ -153,6 +156,7 @@
                 <?php
                         }
                     }
+                }
                     ?>
             </div>
        </div>
@@ -163,8 +167,8 @@
         <div class ="row">
             <div class=" col-md-6 col-sm-6">
                  <?php 
-                    foreach ($result as $key)
-                    {
+                   if (is_array($result)) {
+                    foreach ($result as $key) {
                         if($key['PackageType'] === 'Corporate' && $key['DurationOrSize'] === 'Duration')
                         {
                     ?>
@@ -221,12 +225,13 @@
                  <?php
                         }
                     }
+                }
                  ?>
             </div>
             <div class ="col-md-6 col-sm-6">  
                  <?php 
-                    foreach ($result as $key)
-                    {
+                    if (is_array($result)) {
+                        foreach ($result as $key) {
                         if($key['PackageType'] == 'Corporate' && $key['DurationOrSize'] == 'Size')
                         {
                     ?>
@@ -283,6 +288,7 @@
                  <?php
                         }
                     }
+                }
                  ?>
             </div>
        </div>

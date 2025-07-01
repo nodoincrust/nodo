@@ -142,8 +142,8 @@ if(is_array($filterdata) && isset($filterdata['result']) && $filterdata['result'
                         }
                         $dochtml .= '<div class="well div-padding-top">';
                         $dochtml .= '<div class="row">';
-                        $dochtml .= '<div class="col-md-2 ">';
-                        $dochtml .= '<div class="div-padding fileextension"><img src="img/file_icons/'.$filetype.'.png" style=" height: 60px; width: 80px; border: 1px #e5e5e5;">';
+                        $dochtml .= '<div class="col-md-2">';
+                        $dochtml .= '<div class="div-padding fileextension"><img src="img/file_icons/'.$filetype.'.png" style=" height: 60px; width: 80px;object-fit:contain; border: 1px #e5e5e5;">';
                         $dochtml .= '</div></div>';
                         $dochtml .= '<div class="col-md-8">';
                              if($documentName != ''){ $dochtml.= '<p class="documentname">Document Name:<a onclick=\'dynamicURL("'.$documentName.'","'.$revisionNo.'","'.$htmltemplate.'","'.$documentid.'")\'>'.$documentName.'</a><span class="docid" style="display:none">'.$documentid.'</span></p>'; }

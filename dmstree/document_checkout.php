@@ -320,8 +320,7 @@
                                 <div class="row">
                                     <div class="div-margin" id="<?php echo $key['_id'].'-'.$doc['RevisionNo'];?>">
                                         <div class="col-md-2 ">
-                                           <!-- <div class="fileextension"> <img src="img/file_icons/<?php echo $filetype; ?>.png" class="img-responsive" style=" height: 100px; width: 120px; border: 1px #e5e5e5;"></div> -->
-                                          <div class="fileextension"> <img src="img/Text Document (2).png" alt=""></div>
+                                           <div class="fileextension"> <img src="img/file_icons/<?php echo $filetype; ?>.png" class="img-responsive" style=" height: 100px; width: 120px;object-fit:contain; border: 1px #e5e5e5;"></div>
                                         </div>
                                         <div class="col-md-8">
                                             <?php

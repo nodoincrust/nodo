@@ -7,6 +7,7 @@
 					$g1 = new Get_mongodb();
 	if(isset($_POST['package_type']))
 	{
+		// var_dump($_POST['package_type']);
 		$packname = array();
 		$packis   = array();
 		$packageType = strip_tags(trim($_POST['package_type']));
@@ -122,12 +123,13 @@
                                                                                                                                 'SecurityQuestion'=>$sec_question,
                                                                                                                                 'SecurityQuestionAnswer'=>$sec_answer
                                                                                                                                 ),
-						'Contact'=>$admin_contact_code.$admin_contact,'AuditData'=>array(
+						'Contact'=>$admin_contact_code.$admin_contact,
+						'AuditData'=>array(
                                                                                                                     'DateAdded'=>$currDate,
                                                                                                                     'AddedBy'=>$admin_name
 						));
 			$result=$g1->get_mongodb->setUserInfo($doc);
-			echo $result;
+			//echo $result;
 			
 		}
 		if($type=='Individual')
@@ -139,7 +141,8 @@
                                                                                                                                     'SecurityQuestion'=>$sec_question,
                                                                                                                                     'SecurityQuestionAnswer'=>$sec_answer
                                                                                                                                     ),
-						'Contact'=>$admin_contact_code.$admin_contact,'AuditData'=>array(
+						'Contact'=>$admin_contact_code.$admin_contact,
+						'AuditData'=>array(
                                                                                                                     'DateAdded'=>$currDate,
                                                                                                                     'AddedBy'=>$admin_name
 						));
@@ -151,7 +154,8 @@
                                                                                                                                 'SecurityQuestion'=>$sec_question,
                                                                                                                                 'SecurityQuestionAnswer'=>$sec_answer
                                                                                                                                 ),
-						'Contact'=>$user_contact_code.$user_contact,'AuditData'=>array(
+						'Contact'=>$user_contact_code.$user_contact,
+						'AuditData'=>array(
                                                                                                                 'DateAdded'=>$currDate,
                                                                                                                 'AddedBy'=>$admin_name
 						));

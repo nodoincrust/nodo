@@ -642,10 +642,10 @@ $activepackspace = (float)$activepackspace;
                     if( $userrole == 'Admin' ){
                     if(array_key_exists('TemplateId',$dockey)){
                        $doctemplate  = $dockey['TemplateId'];
-                       $templatename['tempresult'] = $g1->get_mongodb->templatenameData($tenantid,$userdepartid,$doctemplate); 
-                       if($templatename['tempresult'] != 0)
+                       $templatename_result = $g1->get_mongodb->templatenameData($tenantid,$userdepartid,$doctemplate); 
+                       if($templatename_result != 0)
                        {
-                           foreach ($templatename['tempresult'] as $tempkey) {
+                           foreach ($templatename_result as $tempkey) {
                                 if(array_key_exists('HtmlFileName',$tempkey))
                                 {
                                         $htmltemplate = $tempkey['HtmlFileName'];
@@ -709,7 +709,7 @@ $activepackspace = (float)$activepackspace;
                         echo '<div class="well div-padding-top">';
                         echo '<div class="row">';
                         echo '<div class="col-md-2">';
-                        echo '<div class="div-padding fileextension"><img src="img/Text Document (2).png" alt="">';
+                        echo '<div class="div-padding fileextension"><img src="img/file_icons/'.$filetype.'.png" style=" height: 60px; width: 80px;object-fit:contain; border: 1px #e5e5e5;">';
                         echo '</div></div>';
                         echo '<div class="col-md-8 document_fields">';
                         if($documentName != ''){ echo '<p class="documentname">Document Name:<a onclick=\'dynamicURL("'.$documentName.'","'.$revisionNo.'","'.$htmltemplate.'","'.$documentid.'")\'>'.$documentName.'</a><span class="docid" style="display:none">'.$documentid.'</span></p>'; }
@@ -853,10 +853,10 @@ $activepackspace = (float)$activepackspace;
               else if($isprivate == '' ){
                     if(array_key_exists('TemplateId',$dockey)){
                        $doctemplate  = $dockey['TemplateId'];
-                       $templatename['tempresult'] = $g1->get_mongodb->templatenameData($tenantid,$userdepartid,$doctemplate); 
-                       if($templatename['tempresult'] != 0)
+                       $templatename_result = $g1->get_mongodb->templatenameData($tenantid,$userdepartid,$doctemplate); 
+                       if($templatename_result != 0)
                        {
-                           foreach ($templatename['tempresult'] as $tempkey) {
+                           foreach ($templatename_result as $tempkey) {
                                 if(array_key_exists('HtmlFileName',$tempkey))
                                 {
                                         $htmltemplate = $tempkey['HtmlFileName'];
@@ -920,7 +920,7 @@ $activepackspace = (float)$activepackspace;
                         echo '<div class="well div-padding-top">';
                         echo '<div class="row">';
                         echo '<div class="col-md-2">';
-                        echo '<div class="div-padding fileextension"><img src="img/Pdf Document.png" alt="" >';
+                        echo '<div class="div-padding fileextension"><img src="img/file_icons/'.$filetype.'.png" style=" height: 60px; width: 80px;object-fit:contain; border: 1px #e5e5e5;">';
                         echo '</div></div>';
                         echo '<div class="col-md-8">';
                         if($documentName != ''){ echo '<p class="documentname">Document Name:<a onclick=\'dynamicURL("'.$documentName.'","'.$revisionNo.'","'.$htmltemplate.'","'.$documentid.'")\'>'.$documentName.'</a><span class="docid" style="display:none">'.$documentid.'</span></p>'; }

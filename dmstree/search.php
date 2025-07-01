@@ -502,11 +502,8 @@ if ($templatedata['tempresult'] != 0) {
                     <div class="col-md-12" id="search_result_container"></div>
                 </div>
                 <div class="row" >
-                    <!-- <input type="button" class="btn btn-success save_btn_bg" value="Add To Bouquet" onclick="redirecttobouquetPage();">
-                    <input type="button" class="btn btn-success save_btn_bg" value="Add To Archive" onclick=""> -->
-                    <input type="button" class="save_btn_bg_cancel" value="Add To Bouquet" onclick="redirecttobouquetPage();">
-                    <input type="button" class="save_btn_bg_cancel" value="Add To Archive" onclick="">
-
+                    <input type="button" class="btn btn-success" value="Add To Bouquet" onclick="redirecttobouquetPage();">
+                    <input type="button" class="btn btn-success" value="Add To Archive" onclick="addSelectedToArchive();">
                 </div>
       </div>
 
@@ -518,3 +515,52 @@ if ($templatedata['tempresult'] != 0) {
         
     </body>
 </html>
+<script type="text/javascript">
+function addSelectedToArchive() {
+    // Collect all checked documents in the search results
+    var selectedDocs = [];
+    $('#search_result_container input[type="checkbox"]:checked').each(function() {
+        var docRow = $(this).closest('.well');
+        var docid = docRow.find('.documentname span').text();
+        var docrev = docRow.find('.documentrev span').text();
+        var docname = docRow.find('.documentname a').text();
+        if(docid && docrev) {
+            selectedDocs.push({docid: docid, docrev: docrev, docname: docname});
+        }
+    });
+    if(selectedDocs.length === 0) {
+        alert('Please select at least one document to archive.');
+        return;
+    }
+    var q = confirm('Do you want to add the selected document(s) to Archive?');
+    if(!q) return;
+    var archivedCount = 0;
+    selectedDocs.forEach(function(doc) {
+        $.ajax({
+            type: "POST",
+            data: {
+                docid: doc.docid,
+                docrev: doc.docrev,
+                type: 'setArchrive'
+            },
+            url: "document_checkout_process.php",
+            success: function(response) {
+                archivedCount++;
+                // Optionally, handle response or errors here
+                if(archivedCount === selectedDocs.length) {
+                    // All done, update UI or reload
+                    var actiontext = doc.docrev+" Revision of "+doc.docname+" Document is Archived";
+                    $.ajax({
+                        type: "POST",
+                        data: { actiontext: actiontext },
+                        url: "track_history.php",
+                        complete: function() {
+                            window.location.reload(true);
+                        }
+                    });
+                }
+            }
+        });
+    });
+}
+</script>
