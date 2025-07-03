@@ -96,6 +96,15 @@
                 {
                     margin-left: -20px !important;
                 }
+                 .add_btn{
+                display:flex;
+                gap:8px;
+                justify-content:end;
+                
+            }
+            .well_cls{
+                padding:30px
+            }
         </style>
         <script>
             window.onload = function(){
@@ -151,7 +160,7 @@
 						 <div class="col-md-12 col-sm-12 form_title" ><h2 class="text-muted upload_doc_cls"><b>Upload Template</b></h2></div>
 					</div>
                 </div>
-				<div class="well div-padding-top">
+				<div class="well div-padding-top well_cls">
 					<!-- <div class="row">
 						 <div class="col-md-12 col-sm-12 form_title" ><h2 class="text-muted upload_doc_cls"><b>Upload Template</b></h2></div>
 					</div> -->
@@ -235,7 +244,7 @@
 							</div>
 							<!---------end--------------->
 							<div class="form-group row">
-								<div class="col-md-12 col-sm-12">
+								<div class="col-md-12 col-sm-12 add_btn">
 									<!-- <input type = "button" class="btn btn-success ctrl-btn save_btn_bg" id="uplaod_document" onclick="validate_uploaddocument(this)" value ="Save" />
 									<input type="reset" class="btn btn-primary save_btn_bg" value="Reset" onclick="reset_upload();">
 									<input type="button" class="btn ctrl-btn save_btn_bg_cancel" value="Cancel" onclick="reload_page();"> -->

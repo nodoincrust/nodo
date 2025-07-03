@@ -354,7 +354,7 @@
                                    commentdata += '</div></div> ' ;        
  
                                 }
-                                commentsanchour = '<a onclick="viewmorecomments(this);">View More Comments('+ commentsLen+')</a>'
+                                commentsanchour = '<a style="color:#c5e86c" onclick="viewmorecomments(this);">View More Comments('+ commentsLen+')</a>'
                                 $('#comments').append(commentsanchour)
                                 $('.comment_text').append(commentdata);
                             }
@@ -625,7 +625,7 @@
 
                 <div class="well div-padding-top">
                     <div class="row">
-                        <div class="col-md-12 col-sm-12 form_title"><h3 class="text-muted"><b>View Document</b></h3></div>
+                        <div class="col-md-12 col-sm-12 form_title"><h3 class="text-muted upload_doc_cls"><b>View Document</b></h3></div>
                     </div>
                     <div class="div-padding">
                         <form id="viewDocumentForm" name="viewDocumentForm" method="post" class="form-horizontal  form-action" action="upload.php">
@@ -650,7 +650,8 @@
                                     </select>    
                                 </div>
                                 <div class="col-md-2 col-sm-2" >
-                                    <input type="button" id="btn_tag" class="btn ctrl-btn" value="Save Tags" onclick="add_tags_view(this)"/>
+                                    <!-- <input type="button" id="btn_tag" class="btn ctrl-btn save_btn_bg_cancel" value="Save Tags" onclick="add_tags_view(this)"/> -->
+                                     <input type="button" id="btn_tag" class="save_btn_bg_cancel" value="Save Tags" onclick="add_tags_view(this)"/>
                                 </div>
                                 <div class="col-md-2 checkin">
                                     <span>Status:</span><span class="doc_status"></span>
@@ -670,8 +671,8 @@
                                     <label class="col-md-2 col-sm-2 control-label mar-left " ><strong>Expiry Date</strong></label>
                                     <div class='col-md-6 col-sm-6' id='date9'>
                                         <div class='input-group date' id='datetimepicker' data-date-format="DD/MM/YYYY">
-                                            <input type='text' class="form-control doc_expirydate date1" name="date" readonly/>
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                                            <input type='text' class="form-control doc_expirydate date1" style="border: 1px solid #c5e86c;" name="date" readonly/>
+                                            <span class="input-group-addon" style="background:#a6d661"><span class="glyphicon glyphicon-time"></span></span>
                                         </div>
                                     </div>
                                 </div>
@@ -705,10 +706,11 @@
                                 <div class="form-group row">
                                     <div class="col-md-8 col-md-offset-2 add-comment">
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control txt_comment2" id="txt_comment2" placeholder="Comment" value="" name=""/>
+                                            <input type="text" class="form-control txt_comment2" id="txt_comment2" placeholder="Comment" value="" name="" style="border: 1px solid #c5e86c;"/>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="button" id="btn_comment" class="btn ctrl-btn btn_comment" value="Comment"/>
+                                            <!-- <input type="button" id="btn_comment" class="btn ctrl-btn btn_comment" value="Comment"/> -->
+                                             <input type="button" id="btn_comment" class="save_btn_bg_cancel" value="Comment"/>
                                         </div>
                                     </div>    
                                 </div>
@@ -719,11 +721,16 @@
                             </div>    
                             <div class="form-group row">
                                 <div class="col-md-12 col-sm-12">
-                                    <input type="button" class="btn ctrl-btn btn-space " value="Cancel" onclick="reload_page();"/>
-                                    <input type="button" class="btn btn-danger btn-space btnstatus" id="status" value="" onclick="makerevision();"/>
-                                    <input type="button" class="btn btn-info" value="Timeline" id="time_line" onclick="viewtimeline();"/>
-                                    <input type="button" class="btn btn-info btnstatus" value="Add to Bouquet" id="" onclick="showDialog(this);"/>
-                                    <input type="button" class="btn btn-info btnstatus" value="Add to Archive" id="" onclick="addToArchive(this)"/>
+                                    <!-- <input type="button" class="btn ctrl-btn btn-space " value="Cancel" onclick="reload_page();"/> -->
+                                     <input type="button" class="save_btn_bg_cancel" value="Cancel" onclick="reload_page();"/>
+                                    <!-- <input type="button" class="btn btn-danger btn-space btnstatus" id="status" value="" onclick="makerevision();"/> -->
+                                     <input type="button" class="save_btn_bg_cancel" id="status" value="" onclick="makerevision();"/>
+                                    <!-- <input type="button" class="btn btn-info" value="Timeline" id="time_line" onclick="viewtimeline();"/> -->
+                                    <input type="button" class="save_btn_bg_cancel" value="Timeline" id="time_line" onclick="viewtimeline();"/>
+                                    <!-- <input type="button" class="btn btn-info btnstatus" value="Add to Bouquet" id="" onclick="showDialog(this);"/>
+                                    <input type="button" class="btn btn-info btnstatus" value="Add to Archive" id="" onclick="addToArchive(this)"/> -->
+                                    <input type="button" class="save_btn_bg_cancel" value="Add to Bouquet" id="" onclick="showDialog(this);"/>
+                                    <input type="button" class="save_btn_bg_cancel" value="Add to Archive" id="" onclick="addToArchive(this)"/>
                                 </div>
                             </div>
                         </form>

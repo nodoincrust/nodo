@@ -239,6 +239,18 @@ if(isset($_POST['docform']))
                 window.location.reload();
             }
         </script>
+        <style>
+             .add_btn{
+                display:flex;
+                gap:8px;
+                justify-content:end;
+                margin-top: 20px;
+                
+            }
+            .well_cls{
+                padding:24px
+            }
+            </style>
     </head>
     <body >
 
@@ -261,7 +273,8 @@ if(isset($_POST['docform']))
 		<div class="col-md-12 col-sm-12 form_title"><h3 class="hr-margin text-muted upload_doc_cls"><b>Create Document Bouquet</b></h3></div>
             </div>
         </div>
-            <div class="well div-padding-top div-padding-well"> 
+            <!-- <div class="well div-padding-top div-padding-well">  -->
+                  <div class="well div-padding-well well_cls"> 
             <!-- <div class="row">
 		<div class="col-md-12 col-sm-12 form_title"><h3 class="hr-margin text-muted upload_doc_cls"><b>Create Document Bouquet</b></h3></div>
             </div> -->
@@ -287,6 +300,14 @@ if(isset($_POST['docform']))
                     <label class="col-md-3">Bouquet Description</label>
                     <textarea style="border:1px solid #c5e86c !important;" class="col-md-8 bouquet_desp"rows="3" cols="50" placeholder="Master Document Description" value=""><?php if(isset($bouquet_desc)) echo $bouquet_desc;?></textarea>
                     </div>
+                    <div class="row">
+            <div class="col-md-12 col-sm-12 add_btn">
+			<!-- <input type="button" value="Save" class="btn btn-success save_btn_bg" onclick="save_bouquet();"/>
+			<input type="button" value="Cancel" class="btn ctrl-btn save_btn_bg_cancel" onclick="clear_page();"/> -->
+            <input type="button" value="Save" class="save_btn_bg_cancel" onclick="save_bouquet();"/>
+			<input type="button" value="Cancel" class="save_btn_bg_cancel" onclick="clear_page();"/>
+            </div>
+            </div>  
 		</div>
             </div>
             </div>
@@ -365,14 +386,14 @@ if(isset($_POST['docform']))
                 
             }
             ?>
-            <div class="row">
-            <div class="col-md-12 col-sm-12">
+            <!-- <div class="row">
+            <div class="col-md-12 col-sm-12 add_btn"> -->
 			<!-- <input type="button" value="Save" class="btn btn-success save_btn_bg" onclick="save_bouquet();"/>
 			<input type="button" value="Cancel" class="btn ctrl-btn save_btn_bg_cancel" onclick="clear_page();"/> -->
-            <input type="button" value="Save" class="save_btn_bg_cancel" onclick="save_bouquet();"/>
+            <!-- <input type="button" value="Save" class="save_btn_bg_cancel" onclick="save_bouquet();"/>
 			<input type="button" value="Cancel" class="save_btn_bg_cancel" onclick="clear_page();"/>
             </div>
-            </div>    
+            </div>     -->
 			
            </div> 
         </div>

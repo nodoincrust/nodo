@@ -94,6 +94,10 @@ $activepackspace = (float)$activepackspace;
                 margin-left: -15px !important;
                 /* padding: 9px; */
         }       
+        .row_content{
+            margin-left:15px !important;
+            padding:9px;
+                }     
         .droppedField {
             margin: 0 0 15px;
         }
@@ -185,6 +189,23 @@ $activepackspace = (float)$activepackspace;
         {
             width: 100% !important;
         }
+        .add_btn{
+                display:flex;
+                gap:8px;
+                justify-content:end;
+                
+            }
+            .save_btn_form{
+                    width: 100px;
+                 border-radius: 4px;
+                   padding: 2px;
+            }
+            .content_cls
+ {
+    background: #fff !important;
+    /* padding-left: 19px !important; */
+    padding: 40px !important;
+}
     </style>
     <script>
         window.onload = function(){
@@ -503,28 +524,31 @@ $activepackspace = (float)$activepackspace;
                             <input type="hidden" value="" class="titlelabel_font"/>
                             <input type="hidden" value="" class="titlelabel_size">
 			</div>
+            <div class="col-md-10 span10">
+             <textarea class="input-large col-md-12 span12" style="width:100%" placeholder="Type form description here" name="form_description" id="form-description"></textarea>
+            </div>
                     </div>
                     <!-- Form title description -->
-                    <div class="row row-fluid" id="form-description_div">
+                    <!-- <div class="row row-fluid" id="form-description_div">
                         <textarea class="input-large col-md-12 span12" style="width:100%" placeholder="Type form description here" name="form_description" id="form-description"></textarea>
-                    </div>
-                    <div class="row row-fluid" id="selected-content">
+                    </div> -->
+                    <div class="row row-fluid row_content" id="selected-content">
                     <div class="row row-fluid">
-                        <div class="col-md-6 span6 well droppedFields border_class"></div>
-			<div class="col-md-6 span6 well droppedFields border_class"></div>
+                        <div class="col-md-6 span6 well droppedFields" style="background-color: #edf1f2;border: 1px solid #dcdcdc;"></div>
+			<div class="col-md-6 span6 well droppedFields" style="background-color: #edf1f2;border: 1px solid #dcdcdc;"></div>
                     </div>
                     <!-- Action bar - Suited for buttons on form -->
                     <div class="row row-fluid">
-			<div class="col-md-12 span12 well action-bar droppedFields border_class" style="min-height:80px;"></div>
+			<div class="col-md-12 span12 well action-bar droppedFields border_class" style="min-height:80px;background-color: #edf1f2;border: 1px solid #dcdcdc;"></div>
                     </div>
                     </div>
 							
                 </div>
 						
 		<div class="row row-fluid">	
-                    <div class="col-md-12 span12 " style="margin-top:10px;">
-                    <input type="button" class="btn_class" value="Save Form" onclick="preview();"/>
-                    <input type="button" class="btn_class" value="Add table" onclick="$('#dialog-form-nombre-colonne').modal('show'); $('#dialog-form-nombre-colonne').css('z-index', '1500');"/>
+                    <div class="col-md-12 span12  add_btn" style="margin-top:10px;">
+                    <input type="button" class="btn_class save_btn_form" value="Save Form" onclick="preview();"/>
+                    <input type="button" class="btn_class save_btn_form" value="Add table" onclick="$('#dialog-form-nombre-colonne').modal('show'); $('#dialog-form-nombre-colonne').css('z-index', '1500');"/>
                     </div>
 		</div>  
                 </div><!--form container close here -->
@@ -569,9 +593,12 @@ $activepackspace = (float)$activepackspace;
             </form>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" data-dismiss="modal" onclick='save_customize_changes();apply_font(); create_table();set_imageSize();'>Save Changes</button>
+            <!-- <button class="btn btn-primary" data-dismiss="modal" onclick='save_customize_changes();apply_font(); create_table();set_imageSize();'>Save Changes</button>
             <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-            <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" onclick='delete_ctrl()'>Delete</button>
+            <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" onclick='delete_ctrl()'>Delete</button> -->
+             <button class="save_btn_bg_cancel" data-dismiss="modal" onclick='save_customize_changes();apply_font(); create_table();set_imageSize();'>Save Changes</button>
+            <button class="save_btn_bg_cancel" data-dismiss="modal" aria-hidden="true">Cancel</button>
+            <button class="save_btn_bg_cancel" data-dismiss="modal" aria-hidden="true" onclick='delete_ctrl()'>Delete</button>
         </div>
         </script>
         <!-- common modal close here -->
@@ -787,8 +814,10 @@ $activepackspace = (float)$activepackspace;
             </form>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" onclick="save_titlechanges();">Save Changes</button>
-            <button class="btn" onclick="cancel_formtitle()">Cancel</button>
+            <!-- <button class="btn btn-primary" onclick="save_titlechanges();">Save Changes</button>
+            <button class="btn" onclick="cancel_formtitle()">Cancel</button> -->
+             <button class="save_btn_bg_cancel" onclick="save_titlechanges();">Save Changes</button>
+            <button class="save_btn_bg_cancel" onclick="cancel_formtitle()">Cancel</button>
         </div>
         </div>
     
