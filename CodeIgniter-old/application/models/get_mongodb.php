@@ -216,6 +216,11 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
         
         function saveDocumentMetada($tenantid,$departmenid,$filearray,$documentinfoarr,$tempid,$type,$revision,$documentid,$templatename,$currDate,$usermailid,$isPrivate)
         {
+            // Prevent saving template-only entries in DocumentMetaData
+            if((empty($filearray) || $filearray == null) && $type == 'new' && !empty($templatename)) {
+                // This is a template save, do not insert into DocumentMetaData
+                return 'skip_template_entry';
+            }
             if($filearray != null)
             {
             for ($fileindex = 0; $fileindex < count($filearray); $fileindex++) {
@@ -255,7 +260,46 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
                     $revision = 0;
                     $auditdataarr = array("DateAdded" =>$currDate, "AddedBy" =>$usermailid,"DateModified" =>$currDate,"ModifiedBy" =>$usermailid,"DeleteFlag" => false);
                     $orgDocName = str_replace(" ","_",$docname[0]);
-					$documentinfoarr['FileName'] = $orgDocName."_".$revision.".".$docname[1];
+                    $documentinfoarr['FileName'] = $orgDocName."_".$revision.".".$docname[1];
+
+                    // --- Store file as base64 in 'documents' collection and get FileId ---
+                    $filePath = isset($documentinfoarr['FileLocation']) ? $documentinfoarr['FileLocation'] : null;
+                    // Ensure FileLocation includes the filename
+                    if ($filePath && isset($documentinfoarr['FileName'])) {
+                        $filename = $documentinfoarr['FileName'];
+                        // If FileLocation does not already end with the filename, append it
+                        if (substr($filePath, -strlen($filename)) !== $filename) {
+                            $filePath = rtrim($filePath, '/\\') . '/' . $filename;
+                            $documentinfoarr['FileLocation'] = $filePath;
+                        }
+                    }
+                    $fileId = null;
+                    if ($filePath && file_exists($filePath)) {
+                        $fileData = file_get_contents($filePath);
+                        $base64   = base64_encode($fileData);
+                        $fileDoc = array(
+                            'tenant_id' => $tenantid,
+                            'tenant_name' => $documentname,
+                            'user_department_id' => $departmenid,
+                            'file_name' => $documentinfoarr['FileName'],
+                            'original_name' => $docext,
+                            'mime_type' => isset($documentinfoarr['FileType']) ? $documentinfoarr['FileType'] : '',
+                            'size' => isset($documentinfoarr['FileSize']) ? $documentinfoarr['FileSize'] : '',
+                            'revision' => $revision,
+                            'upload_time' => $currDate,
+                            'file_data' => $base64
+                        );
+                        $this->cimongo->insert('documents', $fileDoc);
+                        $fileId = $fileDoc['_id'];
+                        $downloadUrl = 'http://localhost/dmstree/download.php?id=' . (string)$fileId;
+                        $documentinfoarr['FileId'] = $fileId;
+                        $documentinfoarr['DownloadUrl'] = $downloadUrl;
+                        error_log('File saved to documents collection: ' . (string)$fileId . ' from path: ' . $filePath);
+                    } else {
+                        error_log('File not found at expected location: ' . $filePath);
+                    }
+                    // --- End block ---
+
                     $documentdata['DocumentInfo'] = array($documentinfoarr);
                     $documentdata['AuditData'] = $auditdataarr;
                     $documentquery = $this->cimongo->insert('DocumentMetaData',$documentdata);

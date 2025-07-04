@@ -736,3 +736,35 @@ width: 100%;
 .hide_div{
     display: none;
 }
+
+.li_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0px;
+}
+
+.li_div li {
+    list-style: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.li_div li img {
+    margin: 0 0 6px 0; 
+    max-width: 32px; 
+    height: auto;
+}
+
+.li_div li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}

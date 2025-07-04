@@ -289,6 +289,10 @@ if($docexpirydate != '')               {
             
             
              //print_r($_SESSION['documentimageurl']);
+            // Ensure filearray is null if empty
+            if (empty($filearray)) {
+                $filearray = null;
+            }
             $documentmetadata['docresult'] = $g1->get_mongodb->saveDocumentMetada($tenantid,$departmenid,$filearray,$documentinfoarr,$tempid,$type,$revision,$documentid,$templatename,$currDate,$usermailid,$isPrivate);
             echo $documentmetadata['docresult'];
             //print_r($documentmetadata['docresult']);
