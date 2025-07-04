@@ -218,7 +218,8 @@ body
     }
     .content_cls{
             background: #fff !important;
-    padding-left: 19px !important;
+    /* padding-left: 19px !important; */
+    padding: 40px !important;
     }
     .draggableField
     {

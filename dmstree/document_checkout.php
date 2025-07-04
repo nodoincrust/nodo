@@ -213,7 +213,8 @@
                 height: 25px !important;
             }
             #chosenForm .chosen-choices {
-                border: 1px solid #ccc;
+                /* border: 1px solid #ccc; */
+                border: 1px solid #a6d661;
                 border-radius: 4px;
                 min-height: 34px;
                 padding: 6px 12px;
@@ -227,12 +228,16 @@
                 width: 100%;
                 height: 10% !important;
                 overflow: auto;
+                border: 1px solid #a6d661;
             }
             .chosen-container{
                 width:100% !important;
             }
             .img_icon{
                 filter: brightness(0) invert(1);
+            }
+            .border_class{
+                border:1px solid #a6d661;
             }
         </style>    
         <script src="facebox-master/src/facebox.js" type="text/javascript"></script>
@@ -320,7 +325,8 @@
                                 <div class="row">
                                     <div class="div-margin" id="<?php echo $key['_id'].'-'.$doc['RevisionNo'];?>">
                                         <div class="col-md-2 ">
-                                           <div class="fileextension"> <img src="img/file_icons/<?php echo $filetype; ?>.png" class="img-responsive" style=" height: 100px; width: 120px;object-fit:contain; border: 1px #e5e5e5;"></div>
+                                           <!-- <div class="fileextension"> <img src="img/file_icons/<?php echo $filetype; ?>.png" class="img-responsive" style=" height: 100px; width: 120px;object-fit:contain; border: 1px #e5e5e5;"></div> -->
+                                            <div class="fileextension"> <img src="img/Text Document (2).png"></div>
                                         </div>
                                         <div class="col-md-8">
                                             <?php
@@ -381,10 +387,11 @@
                                                 </div>
                                                 <div class="form-group row add-comment">
                                                     <div class="col-md-7 ">
-                                                        <input type="text" class="form-control txt_comment1" id="txt_comment1" placeholder="Comment" name="" autofocus/>
+                                                        <input type="text" class="form-control txt_comment1 border_class" id="txt_comment1" placeholder="Comment" name="" autofocus/>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input type="button" id="btn_comment" class="btn ctrl-btn btn_comment" value="Comment">
+                                                        <!-- <input type="button" id="btn_comment" class="btn ctrl-btn btn_comment" value="Comment"> -->
+                                                         <input type="button" id="btn_comment" class="save_btn_bg_cancel" value="Comment">
                                                     </div>
                                                 </div>
                                             </div>
@@ -428,7 +435,8 @@
                                                             </select>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <input type="button" id="btn_tag btn_tags" class="btn ctrl-btn btn_tags" value="Save Tags" onclick="add_tags(this)">
+                                                            <!-- <input type="button" id="btn_tag btn_tags" class="btn ctrl-btn btn_tags" value="Save Tags" onclick="add_tags(this)"> -->
+                                                             <input type="button" id="btn_tag btn_tags" class="save_btn_bg_cancel" value="Save Tags" onclick="add_tags(this)">
                                                         </div>
                                                     </div>
                                                 </div>

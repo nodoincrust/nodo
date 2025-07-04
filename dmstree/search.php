@@ -111,6 +111,12 @@ if ($templatedata['tempresult'] != 0) {
                display: block !important;
                float: left !important;
             }
+            .add_btn{
+                display:flex;
+                gap:8px;
+                justify-content:end;
+                
+            }
         </style>
         <script>
             window.onload = function(){
@@ -492,7 +498,12 @@ if ($templatedata['tempresult'] != 0) {
                         
                    
 	</div>
-              
+             <div class="row add_btn" > 
+                     <!-- <input type="button" class="btn btn-success" value="Add To Bouquet" onclick="redirecttobouquetPage();">
+                    <input type="button" class="btn btn-success" value="Add To Archive" onclick="addSelectedToArchive();">  -->
+                     <input type="button" class="save_btn_bg_cancel" value="Add To Bouquet" onclick="redirecttobouquetPage();">
+                    <input type="button" class="save_btn_bg_cancel" value="Add To Archive" onclick="addSelectedToArchive();">
+                </div> 
        </div>
       </div>
                   
@@ -501,10 +512,12 @@ if ($templatedata['tempresult'] != 0) {
                 <div class="row" >
                     <div class="col-md-12" id="search_result_container"></div>
                 </div>
-                <div class="row" >
-                    <input type="button" class="btn btn-success" value="Add To Bouquet" onclick="redirecttobouquetPage();">
+                <!-- <div class="row add_btn" >
+                     <input type="button" class="btn btn-success" value="Add To Bouquet" onclick="redirecttobouquetPage();">
                     <input type="button" class="btn btn-success" value="Add To Archive" onclick="addSelectedToArchive();">
-                </div>
+                <input type="button" class="save_btn_bg_cancel" value="Add To Bouquet" onclick="redirecttobouquetPage();">
+                    <input type="button" class="save_btn_bg_cancel" value="Add To Archive" onclick="addSelectedToArchive();">
+                </div> -->
       </div>
 
          <!--------- dash board footer------------------------------------------------>

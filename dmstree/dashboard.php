@@ -709,7 +709,7 @@ $activepackspace = (float)$activepackspace;
                         echo '<div class="well div-padding-top">';
                         echo '<div class="row">';
                         echo '<div class="col-md-2">';
-                        echo '<div class="div-padding fileextension"><img src="img/file_icons/'.$filetype.'.png" style=" height: 60px; width: 80px;object-fit:contain; border: 1px #e5e5e5;">';
+                        echo '<div class="div-padding fileextension"><img src="img/Text Document (2).png">';
                         echo '</div></div>';
                         echo '<div class="col-md-8 document_fields">';
                         if($documentName != ''){ echo '<p class="documentname">Document Name:<a onclick=\'dynamicURL("'.$documentName.'","'.$revisionNo.'","'.$htmltemplate.'","'.$documentid.'")\'>'.$documentName.'</a><span class="docid" style="display:none">'.$documentid.'</span></p>'; }
@@ -726,11 +726,11 @@ $activepackspace = (float)$activepackspace;
                               <p><button type="button" class="revsiontags comments_tags" onclick="makefocusTag(this);" value="Tags"><img src="img/Tags.png" alt="" class="img_icon"> Tags</button></p>';
                         if($currstatus == 'CheckedIn')
                         {
-                        echo '<p><button type="button" class="revsionstatus" onclick="redirecttoupload(this)" value="'.$currstatus.'"><img src="img/Checkout.png" alt="" class="img_icon">Check Out</button></p>';
+                        echo '<p><button type="button" class="revsionstatus comments_tags" onclick="redirecttoupload(this)" value="'.$currstatus.'"><img src="img/Checkout.png" alt="" class="img_icon">Check Out</button></p>';
                         echo '<input type="hidden" class="doccumentid" value="'.$dockey['_id'].'-'.$revisionNo.'-'.$isprivate.'">';
                         
-                        echo '<p><button type="button" class="add_to_bouquet" value="Add to Bouquet" onclick="showDialog(this)"><img src="img/Add to Bouquet.png" alt="" class="img_icon"> Add to Bouquet</button></p>
-                              <p><button type="button" class="add_to_archive" value="Add to Archive" onclick="addToArchive(this);"><img src="img/Move to Archive.png" alt="" class="img_icon"> Add to Archive</button></p>';
+                        echo '<p><button type="button" class="add_to_bouquet comments_tags" value="Add to Bouquet" onclick="showDialog(this)" style="width:149px"><img src="img/Add to Bouquet.png" alt="" class="img_icon"> Add to Bouquet</button></p>
+                              <p><button type="button" class="add_to_archive comments_tags" value="Add to Archive" onclick="addToArchive(this);" style="width:149px"><img src="img/Move to Archive.png" alt="" class="img_icon"> Add to Archive</button></p>';
                         }
                         else
                         {

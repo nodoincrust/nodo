@@ -221,7 +221,7 @@
 ">Data Configuration</b></h3></div> -->
                 <!-- </div> -->
         <!-- </div> -->
-                <fieldset>
+                <fieldset style="padding:24px">
                     <div class="row form-group">
                         <label for="sel_std_list" class="col-md-3 control-label text-muted">Manage STD List</label>  
                         <!--<div class="col-md-4 col-sm-4">
@@ -438,7 +438,7 @@
 							
 
 							
-                    <fieldset class="fieldset-none">	
+                    <fieldset class="fieldset-none" style="padding:24px">	
                         <div class="row form-group">
                             <label for="sel_tags" class="col-md-3 control-label text-muted">Manage Tags</label>  
                         </div>
@@ -489,7 +489,7 @@
                     </fieldset>
                     
                     
-         <fieldset class="fieldset-none">	
+         <fieldset class="fieldset-none" style="padding:24px">	
             <div class="row form-group">
             <label for="sel_photo_gallary" class="col-md-3 control-label text-muted">Manage Photo Gallary</label>  
             </div>

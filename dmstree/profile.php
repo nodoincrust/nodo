@@ -108,6 +108,12 @@
 .navbar-nav li a.inactive {
     background: #F8FF8A; /* Inactive button background */
 }
+ .add_btn{
+                display:flex;
+                gap:8px;
+                justify-content:end;
+                
+            }
 		</style>
     </head>
     <body >
@@ -199,7 +205,7 @@
 									<input type="text" class="form-control" id="txt_profile_country" placeholder="Country" name="country" value = "<?php echo $tenantInfo[0]['AddressInfo']['Country'] ?>" readonly />
 								</div>
 							</div>
-							<div class="form-group row space">
+							<div class="form-group row space add_btn">
 								<!-- <input type="button"  class="btn-hide btn btn-success ctrl-btn btn-space" value="Save" onclick="save_changes();"/>
                                  <input type="reset"  class="btn-hide btn ctrl-btn btn-space" value="Reset" onclick="cancel_changes();"/> -->
 								 <input type="button"  class="save_btn_bg_cancel" value="Save" onclick="save_changes();"/>
@@ -231,9 +237,11 @@
 									<input type="password" class="form-control" id="txt_profile_new_confirm_password" placeholder=" Confirm Password" name="confirmPassword">
 								</div>
 							</div>
-							<div class="form-group row space well-padding">
-								 <input type="button" class="btn btn-success ctrl-btn btn-space" value="Save" onclick="saveChangesPassword('password');"/>
-								 <input type="reset" class="btn btn-primary btn-space" value="Reset" onclick="reset_profile_password();"/>
+							<div class="form-group row space well-padding add_btn">
+								 <!-- <input type="button" class="btn btn-success ctrl-btn btn-space" value="Save" onclick="saveChangesPassword('password');"/>
+								 <input type="reset" class="btn btn-primary btn-space" value="Reset" onclick="reset_profile_password();"/> -->
+								 <input type="button" class="save_btn_bg_cancel" value="Save" onclick="saveChangesPassword('password');"/>
+								 <input type="reset" class="save_btn_bg_cancel" value="Reset" onclick="reset_profile_password();"/>
 							</div>
 						</form>
 					</div>
