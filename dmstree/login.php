@@ -15,130 +15,203 @@
 
         
     </head>
-    <style>
-   /* .login_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 0;
+   <style>
+
+  .login_container {
+    /* width: 1440px; */
+    width: 100%;
+    /* background: #E9F4F0; */
+    display: flex;
+    justify-content: center;
+     align-items: center;
+       background-image: url('img/Main Frame.svg'); /* Replace with your image path */
+  background-size: cover;       /* Ensures the image covers the entire container */
+  background-position: center;  /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+     
 }
 
-.login_div {
-  width: 100%;
-  max-width: 400px;
-  background-color: #fff;
-  padding: 24px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.login_div{
+        width: 400px;
+    min-height: 400px;
+     transform: rotate(0deg);
+    opacity: 1;
+    border-radius: 12px;
+    border: 1px solid #E0E0E0;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 8px 0px #00422F0D;
+    padding: 24px;
+    display: flex
+;
+    gap: 16px;
+}
+.form-width{   
+   display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    gap: 24px;}
+
+
+.div-padding{
+  padding:0;
+}
+
+
+.login_form{width: 100%;
+    height: 100%;}
+
+
+.login_form_cls{
+    background-color: #fff !important;
+}
+
+.form-signin {
+    padding: 19px 29px 29px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+
+
+.dms_logo {
+    display: flex
+;
+    justify-content: center;
+}
+
+
+.login_title {
+    display: flex
+;
+    flex-direction: row;
+    gap: 10px;
+    padding: 0;
+    justify-content: center;
+}
+
+
+
+.login_title h2 {
+    font-weight: 600;
+    font-size: 22px;
+    color: #2E2E2E;
+    line-height: 32px;
+    letter-spacing: -0.25%;
+}
+
+
+
+
+
+/* .form-container {
+    width: 352px;
+    height: 246px;
+    gap: 24px;
 } */
 
 
-input[type="checkbox"] {
-margin-bottom:8px;
-}
-.dms_logo img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto 16px;
+
+form-inner {
+    /* height: 172px; */
+    /* display: block; */
+    gap: 12px;
 }
 
-.login_title h2 {
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  margin-bottom: 24px;
-  color: #333;
-      margin-top: 1px;
-}
-
-.form-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.form-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
 
 .form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-      margin-top: -21px;
-}
-
-.form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+    margin-bottom: 16px;
 }
 
 .form-label {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  color: #424242;
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #424242;
+    margin-bottom: 8px;
 }
 
-.f_input {
+
+.form-input {
   width: 345px;
- height: 40px !important;
-  border: 1px solid #ccc;
+  height: 40px;
   border-radius: 8px;
   padding: 8px 12px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
-.form-footer {
   display: flex;
   align-items: center;
+  gap: 4px;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 2px 0px #1018280D;
+border: 1px solid #E0E0E0;
+background: #FAFAFA;
+}
+.form-input:focus{
+  outline:0;
+}
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  width: 345px;
+  height: 24px;
   margin-top: 8px;
-  font-size: 14px;
-      gap: 111px;
 }
 
 .remember-me {
   display: flex;
   align-items: center;
-  gap: 6px;
-  color:black;
+  gap: 4px;
+  font-size: 14px;
+  color: #424242;
+  font-weight: 500;
 }
 
 
+input[type="checkbox"] {
+    accent-color: #00684A;
+      width: 15px;
+  height: 15px;
+  margin:0;
+}
 .forgot-password {
   color: #00684A;
+  font-size: 14px;
   text-decoration: none;
+   font-family: 'Inter', sans-serif;
+font-weight: 500;
+font-style: normal; /* "Medium" is not valid for font-style */
+font-size: 14px;
+line-height: 20px;
+letter-spacing: 0.002em; /* 0.2% converted to em */
+text-align: right;
 }
 
-.forgot-password:hover {
-  text-decoration: underline;
-}
-
-.submit-button {
+.login-button {
   width: 345px;
   height: 40px;
-  background-color: #00684A;
-  color: #fff;
-  border: none;
   border-radius: 8px;
-  font-weight: 600;
+  padding: 12px;
+  background: #00684A;
+  color: #fff;
+  border: 2px solid rgba(16, 24, 40, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
 }
 
-.submit-button:hover {
-  background-color: #00503a;
-}
-
-
-    </style>
+   </style>
     <body>
         <!-- logo of company-->
         <!-- <div class="header_nav">  
@@ -148,21 +221,20 @@ margin-bottom:8px;
                 </div>
             </div> 
         </div> -->
-<div class="login_container">
-    <div class="login_div">
-        <div class="container container-narrow div-padding">
-            <div class="row form-width">
-                
-              
-                        <form id="loginForm" class="form-signin login_form_cls" method="post" action="my_script.php"><!--Databasefiles/controller_process.php-->
-                            <div class="dms_logo">
+
+<!-- </div> -->
+ <div class="login_container">
+
+   <div class="login_div">
+    <!-- <div class="row form-width"> -->
+        <!-- <form id="loginForm" class="form-signin login_form_cls log_form"  method="post" action="my_script.php"> -->
+          <form id="loginForm" method="post" action="my_script.php">
+           <div class="dms_logo">
                                 <img src="img/dms_Logo(2).svg" alt="">
                             </div>
-                            <!-- <h2 class="form-signin-heading text-muted">Please sign in</h2> -->
                              <div class="login_title">
                                 <h2>Login to DMS Tree</h2>
-                             </div>
-                             <!-- <h2 class="form-login-heading text-muted">Login to DMS Tree</h2> -->
+                                  <!-- <h2 class="form-login-heading text-muted">Login to DMS Tree</h2> -->
                                 <!-- <div class="form-group row ">
                                     <label for="txt_user_name" class="col-md-3 control-label">User Name</label>
                                         <div class="col-md-7">
@@ -187,67 +259,63 @@ margin-bottom:8px;
                                             <a href="#"> Forgotten Your Password?</a>
                                         </div>
                             </div> -->
-                     <div class="form-container">
-            <div class="form-wrapper">
-              <div class="form-group">
-                
-                <div class="form-field">
-                  <label for="txt_user_name" class="form-label">Email</label>
-                  <input
-                    
-                    class="form-control f_input"
-                    id="txt_user_name"
-                    name="username"
-                    placeholder="Enter your Email"
-                    
-                    value="" autocomplete="off"
-                  />
-                </div>
+                             </div>
+                              <div class="form-container">
+                    <div class="form-inner">
+                      <!-- Email Section -->
+                      <div class="form-group">
+                        <label for="txt_user_name" class="form-label">Email</label>
+                        <input
+                          
+                          class="form-input"
+                          id="txt_user_name"
+                          name="username"
+                          placeholder="Enter your Email"
+                          autocomplete="off"
+                        />
+                      </div>
 
-                <div class="form-field">
-                  <label for="txt_user_name_" class="form-label">Password</label>
-                  <input
-                    type="password"
-                    class="form-control f_input"
-                    id="txt_user_name_"
-                    name="password"
-                    placeholder="Enter your Password"
-                    
-                    value="" autocomplete="off"
-                  />
-
-                  <div class="form-footer">
-                    <div class="remember-me">
-                      <input type="checkbox" id="remember-me" value="remember-me" />
-                      <label for="remember-me" style="font-weight: 500;color: #424242;
-                     ">Remember me</label>
+                      <!-- Password Section -->
+                      <div class="form-group">
+                        <label for="txt_user_name_" class="form-label">Password</label>
+                        <input
+                          type="password"
+                          class="form-input"
+                          id="txt_user_name_"
+                          name="password"
+                          placeholder="Enter your Password"
+                          autocomplete="off"
+                        />
+                        
+                      </div>
+                          <div class="form-options">
+                          <label class="remember-me">
+                            <input type="checkbox" class="checkbox" /> Remember me
+                          </label>
+                          <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                      <!-- Login Button -->
+                       <div class="form-options">
+                      <button
+                        class="login-button"
+                        type="submit"
+                        name="loginbtn"
+                        value="login"
+                      >
+                        Login
+                      </button>
+                      </div>
                     </div>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
                   </div>
-                </div>
 
-                <button type="submit" name="loginbtn" class="submit-button" value="login">Login</button>
-              </div>
-            </div>
-          </div>
-                            <!-- <div class="btn-align">
-                                 <div class="row control-label  ">
-                                     <button class="btn btn-primary btn-space" type="submit" name="loginbtn" value="login">Sign in</button>
-                                     <input type="reset" class="btn ctrl-btn" role="button" value="Reset" onclick="reset_loginform()">
-                                 </div>
-                            </div> -->
-                            
-                                
-                        </form>
+        <script type="text/javascript" src="js/dmstree_js/sign_validation.js"></script>
+        <script type="text/javascript" src="js/dmstree_js/formvalidation.js"></script>
+  </form>
 
-                </div>
+                <!-- </div> -->
             </div>
         </div>
 </div>
-</div>
-        <script type="text/javascript" src="js/dmstree_js/sign_validation.js"></script>
-        <script type="text/javascript" src="js/dmstree_js/formvalidation.js"></script>
-
 
     </body>
 </html>
