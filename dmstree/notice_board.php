@@ -119,7 +119,7 @@
                             <p class="spaceerror col-md-12" style="color:red"> </p>
             </div>    
 				<div class="div-padding-top">
-					<button class="btn" data-toggle="modal" data-target="#myModal" style="background-color: #e6e6e6;"> Create Notice</button>
+					<button class="btn btn-success" data-toggle="modal" data-target="#myModal" style="background-color: #e6e6e6;">Create Notice</button>
 				</div>			
 				<div class="div-padding-top">
 					<div class="problem">

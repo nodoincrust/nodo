@@ -651,7 +651,7 @@
                                 </div>
                                 <div class="col-md-2 col-sm-2" >
                                     <!-- <input type="button" id="btn_tag" class="btn ctrl-btn save_btn_bg_cancel" value="Save Tags" onclick="add_tags_view(this)"/> -->
-                                     <input type="button" id="btn_tag" class="save_btn_bg_cancel" value="Save Tags" onclick="add_tags_view(this)"/>
+                                     <input type="button" id="btn_tag" class="save_btn_bg_cancel btn-success" value="Save Tags" onclick="add_tags_view(this)"/>
                                 </div>
                                 <div class="col-md-2 checkin">
                                     <span>Status:</span><span class="doc_status"></span>
@@ -710,7 +710,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <!-- <input type="button" id="btn_comment" class="btn ctrl-btn btn_comment" value="Comment"/> -->
-                                             <input type="button" id="btn_comment" class="save_btn_bg_cancel" value="Comment"/>
+                                             <input type="button" id="btn_comment" class="save_btn_bg_cancel btn-success" value="Comment"/>
                                         </div>
                                     </div>    
                                 </div>
@@ -722,15 +722,15 @@
                             <div class="form-group row">
                                 <div class="col-md-12 col-sm-12">
                                     <!-- <input type="button" class="btn ctrl-btn btn-space " value="Cancel" onclick="reload_page();"/> -->
-                                     <input type="button" class="save_btn_bg_cancel" value="Cancel" onclick="reload_page();"/>
+                                     <input type="button" class="save_btn_bg_cancel btn-success" value="Cancel" onclick="reload_page();"/>
                                     <!-- <input type="button" class="btn btn-danger btn-space btnstatus" id="status" value="" onclick="makerevision();"/> -->
-                                     <input type="button" class="save_btn_bg_cancel" id="status" value="" onclick="makerevision();"/>
+                                     <input type="button" class="save_btn_bg_cancel btn-success" id="status" value="" onclick="makerevision();"/>
                                     <!-- <input type="button" class="btn btn-info" value="Timeline" id="time_line" onclick="viewtimeline();"/> -->
-                                    <input type="button" class="save_btn_bg_cancel" value="Timeline" id="time_line" onclick="viewtimeline();"/>
+                                    <input type="button" class="save_btn_bg_cancel btn-success" value="Timeline" id="time_line" onclick="viewtimeline();"/>
                                     <!-- <input type="button" class="btn btn-info btnstatus" value="Add to Bouquet" id="" onclick="showDialog(this);"/>
                                     <input type="button" class="btn btn-info btnstatus" value="Add to Archive" id="" onclick="addToArchive(this)"/> -->
-                                    <input type="button" class="save_btn_bg_cancel" value="Add to Bouquet" id="" onclick="showDialog(this);"/>
-                                    <input type="button" class="save_btn_bg_cancel" value="Add to Archive" id="" onclick="addToArchive(this)"/>
+                                    <input type="button" class="save_btn_bg_cancel btn-success" value="Add to Bouquet" id="" onclick="showDialog(this);"/>
+                                    <input type="button" class="save_btn_bg_cancel btn-success" value="Add to Archive" id="" onclick="addToArchive(this)"/>
                                 </div>
                             </div>
                         </form>

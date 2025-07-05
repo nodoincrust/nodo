@@ -199,6 +199,8 @@ $activepackspace = (float)$activepackspace;
                     width: 100px;
                  border-radius: 4px;
                    padding: 2px;
+                       padding: 6px 12px;
+                border-radius: 4px;
             }
             .content_cls
  {
@@ -547,8 +549,8 @@ $activepackspace = (float)$activepackspace;
 						
 		<div class="row row-fluid">	
                     <div class="col-md-12 span12  add_btn" style="margin-top:10px;">
-                    <input type="button" class="btn_class save_btn_form" value="Save Form" onclick="preview();"/>
-                    <input type="button" class="btn_class save_btn_form" value="Add table" onclick="$('#dialog-form-nombre-colonne').modal('show'); $('#dialog-form-nombre-colonne').css('z-index', '1500');"/>
+                    <input type="button" class="btn_class save_btn_form btn-success" value="Save Form" onclick="preview();"/>
+                    <input type="button" class="btn_class save_btn_form btn-success" value="Add table" onclick="$('#dialog-form-nombre-colonne').modal('show'); $('#dialog-form-nombre-colonne').css('z-index', '1500');"/>
                     </div>
 		</div>  
                 </div><!--form container close here -->
@@ -816,8 +818,8 @@ $activepackspace = (float)$activepackspace;
         <div class="modal-footer">
             <!-- <button class="btn btn-primary" onclick="save_titlechanges();">Save Changes</button>
             <button class="btn" onclick="cancel_formtitle()">Cancel</button> -->
-             <button class="save_btn_bg_cancel" onclick="save_titlechanges();">Save Changes</button>
-            <button class="save_btn_bg_cancel" onclick="cancel_formtitle()">Cancel</button>
+             <button class="save_btn_bg_cancel btn-success" onclick="save_titlechanges();">Save Changes</button>
+            <button class="save_btn_bg_cancel btn-secondary" style="color: black;" onclick="cancel_formtitle()">Cancel</button>
         </div>
         </div>
     

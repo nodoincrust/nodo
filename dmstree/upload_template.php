@@ -248,9 +248,9 @@
 									<!-- <input type = "button" class="btn btn-success ctrl-btn save_btn_bg" id="uplaod_document" onclick="validate_uploaddocument(this)" value ="Save" />
 									<input type="reset" class="btn btn-primary save_btn_bg" value="Reset" onclick="reset_upload();">
 									<input type="button" class="btn ctrl-btn save_btn_bg_cancel" value="Cancel" onclick="reload_page();"> -->
-                                    			<input type = "button" class="save_btn_bg_cancel" id="uplaod_document" onclick="validate_uploaddocument(this)" value ="Save" />
-									<input type="reset" class="save_btn_bg_cancel" value="Reset" onclick="reset_upload();">
-									<input type="button" class="save_btn_bg_cancel" value="Cancel" onclick="reload_page();">
+                                    			<input type = "button" class="save_btn_bg_cancel btn-success" id="uplaod_document" onclick="validate_uploaddocument(this)" value ="Save" />
+									<input type="reset" class="save_btn_bg_cancel btn-primary" value="Reset" onclick="reset_upload();">
+									<input type="button" class="save_btn_bg_cancel" value="Cancel" onclick="reload_page();"style="color: black;">
 								</div>
 							</div>
 							<input type="hidden" name="tenantname" class="tenantname" value="<?php echo $tenantname;?>">

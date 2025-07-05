@@ -391,7 +391,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <!-- <input type="button" id="btn_comment" class="btn ctrl-btn btn_comment" value="Comment"> -->
-                                                         <input type="button" id="btn_comment" class="save_btn_bg_cancel" value="Comment">
+                                                         <input type="button" id="btn_comment" class="save_btn_bg_cancel btn-success" value="Comment">
                                                     </div>
                                                 </div>
                                             </div>
@@ -436,7 +436,7 @@
                                                         </div>
                                                         <div class="col-md-2">
                                                             <!-- <input type="button" id="btn_tag btn_tags" class="btn ctrl-btn btn_tags" value="Save Tags" onclick="add_tags(this)"> -->
-                                                             <input type="button" id="btn_tag btn_tags" class="save_btn_bg_cancel" value="Save Tags" onclick="add_tags(this)">
+                                                             <input type="button" id="btn_tag btn_tags" class="save_btn_bg_cancel btn-success" value="Save Tags" onclick="add_tags(this)">
                                                         </div>
                                                     </div>
                                                 </div>

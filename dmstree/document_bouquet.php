@@ -291,7 +291,7 @@ if(isset($_POST['docform']))
 			</div>
 			<div class="col-md-2 col-sm-2">
                             <!-- <input type="button" class="btn ctrl-btn save_btn_bg" value ="Add Document" onclick="redirect_tosearchPage();" /> -->
-                             <input type="button" class="save_btn_bg_cancel" value ="Add Document" onclick="redirect_tosearchPage();" />
+                             <input type="button" class="save_btn_bg_cancel btn-success" value ="Add Document" onclick="redirect_tosearchPage();" />
 			</div>
                     </div>
                     <div class="form-group row add-comment"></div>
@@ -304,8 +304,8 @@ if(isset($_POST['docform']))
             <div class="col-md-12 col-sm-12 add_btn">
 			<!-- <input type="button" value="Save" class="btn btn-success save_btn_bg" onclick="save_bouquet();"/>
 			<input type="button" value="Cancel" class="btn ctrl-btn save_btn_bg_cancel" onclick="clear_page();"/> -->
-            <input type="button" value="Save" class="save_btn_bg_cancel" onclick="save_bouquet();"/>
-			<input type="button" value="Cancel" class="save_btn_bg_cancel" onclick="clear_page();"/>
+            <input type="button" value="Save" class="save_btn_bg_cancel btn-success" onclick="save_bouquet();"/>
+			<input type="button" value="Cancel" class="save_btn_bg_cancel btn-primary" onclick="clear_page();"/>
             </div>
             </div>  
 		</div>

@@ -116,7 +116,7 @@ letter-spacing: -0.25%;
   background: #a6d661;;
 }
 .save_btn_bg_cancel{
-     background: #a6d661;;
+     /* background: #a6d661; */
      color: #fff;
      border: 1px solid #a6d661;
      padding: 6px 12px;

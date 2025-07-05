@@ -136,8 +136,8 @@
 					<div class="row">
 						<div class="col-md-12 prof_form_title"><h3 class="text-muted upload_doc_cls">Profile</h3>
 					<ul class="nav navbar-nav navbar-right">
-									<li><a id="profileBtn" class="prof_cls active"onclick="show('profile');">Profile</a></li>
-									<li><a  id="passwordBtn" class="pass_cls inactive" onclick="show('password');">Password</a></li>
+									<li><a id="profileBtn" class="prof_cls active"onclick="show('profile');" style="color: black;">Profile</a></li>
+									<li><a  id="passwordBtn" class="pass_cls inactive" onclick="show('password');" style="color: black;">Password</a></li>
 								</ul>
 							</div>
 					</div>
@@ -208,10 +208,10 @@
 							<div class="form-group row space add_btn">
 								<!-- <input type="button"  class="btn-hide btn btn-success ctrl-btn btn-space" value="Save" onclick="save_changes();"/>
                                  <input type="reset"  class="btn-hide btn ctrl-btn btn-space" value="Reset" onclick="cancel_changes();"/> -->
-								 <input type="button"  class="save_btn_bg_cancel" value="Save" onclick="save_changes();"/>
-                                 <input type="reset"  class="save_btn_bg_cancel" value="Reset" onclick="cancel_changes();"/>
+								 <input type="button"  class="save_btn_bg_cancel btn-success" value="Save" onclick="save_changes();"/>
+                                 <input type="reset"  class="save_btn_bg_cancel btn-primary" value="Reset" onclick="cancel_changes();"/>
 								<!-- <input type="button" class="btn ctrl-btn btn-space" value="Edit"  onclick="edit_form();"/> -->
-								 <input type="button" class="save_btn_bg_cancel" value="Edit"  onclick="edit_form();"/>
+								 <input type="button" class="save_btn_bg_cancel" value="Edit" style="color: black;" onclick="edit_form();"/>
 							</div>	
 						</form>
 					</div>

@@ -242,7 +242,7 @@
                         </div>-->
                     </div>
                     <!-- Button trigger modal -->
-                    <button class="save_btn_bg_cancel" id ="btn_std_add" data-toggle="modal" data-target="#add_std_list"> Add</button>
+                    <button class="save_btn_bg_cancel btn-success" id ="btn_std_add" data-toggle="modal" data-target="#add_std_list"> Add</button>
                 <!-- Modal -->
                 <div class="modal fade" id="add_std_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -315,7 +315,7 @@
                     </div>
                 </div>
 								
-                <button class="save_btn_bg_cancel" id="btn_std_update" data-toggle="modal" data-target="#update_std_list">Update</button>
+                <button class="save_btn_bg_cancel btn-primary" id="btn_std_update" data-toggle="modal" data-target="#update_std_list">Update</button>
                 <!-- Modal -->
                 <div class="modal fade" id="update_std_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -397,7 +397,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="save_btn_bg_cancel" id="btn_std_delete" data-toggle="modal" data-target="#delete_std_list">Delete</button>
+                <button class="save_btn_bg_cancel btn-danger" id="btn_std_delete" data-toggle="modal" data-target="#delete_std_list">Delete</button>
                 <!-- Modal -->
                     <div class="modal fade" id="delete_std_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -495,7 +495,7 @@
             </div>
             <div class="row"> 
                 <!-- <button class="btn btn-info" id ="btn_add" style="margin-left:2%" onclick="show_photogalleryfor();">Add Photo</button> -->
-                 <button class="save_btn_bg_cancel" id ="btn_add" style="margin-left:2%" onclick="show_photogalleryfor();">Add Photo</button>
+                 <button class="save_btn_bg_cancel btn-success" id ="btn_add" style="margin-left:2%" onclick="show_photogalleryfor();">Add Photo</button>
             </div>
             <div class=" row manage_photo_gallery" style="padding:2%">
                 <div class ="col-md-12">

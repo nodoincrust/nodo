@@ -808,7 +808,7 @@ $activepackspace = (float)$activepackspace;
                                 <input type="text" class="form-control txt_comment1 document_commentbox document_border"  id="txt_comment1" placeholder="Comment" name="" autofocus/>
                                 </div>
                                 <div class="col-md-2">
-                                <input type="button" id="btn_comment" class="save_btn_bg_cancel" value="Comment" onclick="add_comment(this)">
+                                <input type="button" id="btn_comment" class="save_btn_bg_cancel btn-success" value="Comment" onclick="add_comment(this)">
                                 </div>
                              </div> ';
                        echo   '</div>
@@ -841,7 +841,7 @@ $activepackspace = (float)$activepackspace;
                        echo   ' </select>
                                 </div>
                                 <div class="col-md-2">
-                                <input type="button" id="btn_tag" class="save_btn_bg_cancel" value="Save Tags" onclick="add_tags(this)">
+                                <input type="button" id="btn_tag" class="save_btn_bg_cancel btn-success" value="Save Tags" onclick="add_tags(this)">
                                 </div>';
                        echo    '</div>
                                 </div>

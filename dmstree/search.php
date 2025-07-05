@@ -501,8 +501,8 @@ if ($templatedata['tempresult'] != 0) {
              <div class="row add_btn" > 
                      <!-- <input type="button" class="btn btn-success" value="Add To Bouquet" onclick="redirecttobouquetPage();">
                     <input type="button" class="btn btn-success" value="Add To Archive" onclick="addSelectedToArchive();">  -->
-                     <input type="button" class="save_btn_bg_cancel" value="Add To Bouquet" onclick="redirecttobouquetPage();">
-                    <input type="button" class="save_btn_bg_cancel" value="Add To Archive" onclick="addSelectedToArchive();">
+                     <input type="button" class="save_btn_bg_cancel btn-success" value="Add To Bouquet" onclick="redirecttobouquetPage();">
+                    <input type="button" class="save_btn_bg_cancel btn-success" value="Add To Archive" onclick="addSelectedToArchive();">
                 </div> 
        </div>
       </div>
