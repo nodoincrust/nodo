@@ -540,7 +540,7 @@ $activepackspace = (float)$activepackspace;
             .chosen-container .chosen-choices
             {
                 width: 100%;
-                height: 10% !important;
+                /* height: 10% !important; */
                 overflow: auto;
             }
             .btn_tags{
@@ -555,6 +555,12 @@ $activepackspace = (float)$activepackspace;
             .img_icon{
                 filter: brightness(0) invert(1);
             }
+            .chosen-container-multi{
+                width: 100% !important;
+            }
+            /* .chosen-choices{
+                width: 278px !important;
+            } */
         </style>    
     </head>
     <body>
