@@ -1,321 +1,503 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Login Page</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="discription" content="">
-        <meta name="author" content="">
-        
-        <link rel="stylesheet" href="dist/css/bootstrap.css"/>
-        <link rel="stylesheet" href="css/stylesheet.css"/>
-        <link rel="stylesheet" href="bootstrapvalidator-0.5.0/dist/css/bootstrapValidator.css"/>
-        <script type="text/javascript" src="bootstrapvalidator-0.5.0/vendor/jquery/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="bootstrapvalidator-0.5.0/dist/js/bootstrapValidator.js"></script>
+<!DOCTYPE html>
+<html lang="en">
 
-        
-    </head>
-   <style>
+<head>
+  <meta charset="utf-8">
+  <title>Nodo AI - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nodo AI Login Page">
+  <meta name="author" content="">
+  <style>
+    @font-face {
+      font-family: 'Space Grotesk';
+      src: url('fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+      font-weight: 400 700;
+      font-style: normal;
+    }
 
-  .login_container {
-    /* width: 1440px; */
-    width: 100%;
-    /* background: #E9F4F0; */
-    display: flex;
-    justify-content: center;
-     align-items: center;
-       background-image: url('img/Main Frame.svg'); /* Replace with your image path */
-  background-size: cover;       /* Ensures the image covers the entire container */
-  background-position: center;  /* Centers the image */
-  background-repeat: no-repeat; /* Prevents tiling */
-     
-}
+    .main-title,
+    .welcome-heading {
+      font-family: 'Space Grotesk', Arial, sans-serif !important;
+    }
 
-.login_div{
-        width: 400px;
-    min-height: 400px;
-     transform: rotate(0deg);
-    opacity: 1;
-    border-radius: 12px;
-    border: 1px solid #E0E0E0;
-    background: #FFFFFF;
-    box-shadow: 0px 0px 8px 0px #00422F0D;
-    padding: 24px;
-    display: flex
-;
-    gap: 16px;
-}
-.form-width{   
-   display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
-    gap: 24px;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8f9fa;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      /* overflow: hidden; */
+    }
 
-.div-padding{
-  padding:0;
-}
+    .header {
+      background: #FFDA79;
+      padding: 10px 17px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 18px;
+      color: #1B5563;
+    }
 
-.login_form{width: 100%;
-    height: 100%;}
+    .logo-icon {
+      width: 24px;
+      height: 24px;
+      background: #1B5563;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+    }
 
+    .main-container {
+      flex: 1;
+      display: flex;
+      min-height: calc(100vh - 64px);
+      /* overflow: hidden; */
+    }
 
-.login_form_cls{
-    background-color: #fff !important;
-}
+    .left-section {
+      flex: 1;
+      /* background: rgba(255, 218, 121, 0.3); */
+      background: linear-gradient(to bottom right, #FCF5E5, #FFFDE6);
+      padding: 25px 60px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
 
-.form-signin {
-    padding: 19px 29px 29px;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-    background-color: #f5f5f5;
-    border-radius: 20px;
-}
+    .content-wrapper {
+      max-width: 550px;
+      text-align: start;
+    }
 
+    .main-title {
+      font-size: 32px;
+      font-weight: 700;
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      color: #1B5563;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
 
-.dms_logo {
-    display: flex
-;
-    justify-content: center;
-}
+    .subtitle {
+      font-size: 16px;
+      color: #6c757d;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      font-family: 'Inter', Arial, sans-serif;
+    }
 
+    /* .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    } */
 
-.login_title {
-    display: flex
-;
-    flex-direction: row;
-    gap: 10px;
-    padding: 0;
-    justify-content: center;
-}
+    /* .feature-card {
+      background-color: #FFEAAD;
+      border-radius: 16px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    } */
 
+    /* .feature-card:hover {
+      transform: translateY(-4px);
+    } */
 
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
 
-.login_title h2 {
-    font-weight: 600;
-    font-size: 22px;
-    color: #2E2E2E;
-    line-height: 32px;
-    letter-spacing: -0.25%;
-}
+    .folder-icon {
+      background: #ffd43b;
+      color: #b8860b;
+    }
 
+    .cloud-icon {
+      background: #87ceeb;
+      color: #4682b4;
+    }
 
+    .chip-icon {
+      background: #ffb347;
+      color: #d2691e;
+    }
 
+    .shield-icon {
+      background: #98fb98;
+      color: #228b22;
+    }
 
+    .right-section {
+      width: 575px;
+      background: white;
+      padding: 60px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-/* .form-container {
-    width: 352px;
-    height: 246px;
-    gap: 24px;
-} */
+    .login-form {
+      width: 100%;
+      max-width: 450px;
+    }
 
+    .login-title {
+      margin-bottom: 20px;
+    }
 
+    .login-title h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1B5563;
+      margin-bottom: 8px;
+    }
 
-form-inner {
-    /* height: 172px; */
-    /* display: block; */
-    gap: 12px;
-}
+    .welcome-subtitle {
+      font-size: 16px;
+      color: #6c757d;
+      font-weight: 400;
+      font-family: 'Inter', Arial, sans-serif;
+    }
 
+    .form-group {
+      margin-bottom: 20px;
+    }
 
-.form-group {
-    margin-bottom: 16px;
-}
+    .form-label {
+      display: block;
+      font-weight: 500;
+      font-size: 14px;
+      color: #374151;
+      margin-bottom: 8px;
+    }
 
-.form-label {
-    display: block;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    color: #424242;
-    margin-bottom: 8px;
-}
+    .input-wrapper {
+      position: relative;
+    }
 
+    .form-input {
+      width: 100%;
+      padding: 12px 16px 12px 44px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: #f9fafb;
+      font-size: 14px;
+      color: #374151;
+      transition: all 0.2s ease;
+    }
 
-.form-input {
-  width: 345px;
-  height: 40px;
-  border-radius: 8px;
-  padding: 8px 12px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  box-sizing: border-box;
-  box-shadow: 0px 1px 2px 0px #1018280D;
-border: 1px solid #E0E0E0;
-background: #FAFAFA;
-}
-.form-input:focus{
-  outline:0;
-}
-.form-options {
-  display: flex;
-  justify-content: space-between;
-  width: 345px;
-  height: 24px;
-  margin-top: 8px;
-}
+    .form-input:focus {
+      outline: none;
+      border-color: #1B5563;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(27, 85, 99, 0.1);
+    }
 
-.remember-me {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  color: #424242;
-  font-weight: 500;
-}
+    .input-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: #9ca3af;
+      pointer-events: none;
+    }
 
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
 
-input[type="checkbox"] {
-    accent-color: #00684A;
-      width: 15px;
-  height: 15px;
-  margin:0;
-}
-.forgot-password {
-  color: #00684A;
-  font-size: 14px;
-  text-decoration: none;
-   font-family: 'Inter', sans-serif;
-font-weight: 500;
-font-style: normal; /* "Medium" is not valid for font-style */
-font-size: 14px;
-line-height: 20px;
-letter-spacing: 0.002em; /* 0.2% converted to em */
-text-align: right;
-}
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #374151;
+      cursor: pointer;
+    }
 
-.login-button {
-  width: 345px;
-  height: 40px;
-  border-radius: 8px;
-  padding: 12px;
-  background: #00684A;
-  color: #fff;
-  border: 2px solid rgba(16, 24, 40, 0.05);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-}
+    .remember-me input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #1B5563;
+    }
 
-   </style>
-    <body>
-        <!-- logo of company-->
-        <!-- <div class="header_nav">  
-            <div class="container header-container ">
-                <div class="row">
-                       <div class="col-md-4"><img src="img/LOGO-2.jpg" alt="Logo_image" id="dms_logo" width="280" height="75"></div>
-                </div>
-            </div> 
-        </div> -->
+    .forgot-password {
+      color: #1B5563;
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-<!-- </div> -->
- <div class="login_container">
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
 
-   <div class="login_div">
-    <!-- <div class="row form-width"> -->
-        <!-- <form id="loginForm" class="form-signin login_form_cls log_form"  method="post" action="my_script.php"> -->
-          <form id="loginForm" method="post" action="my_script.php">
-           <div class="dms_logo">
-                                <img src="img/dms_Logo(2).svg" alt="">
-                            </div>
-                             <div class="login_title">
-                                <h2>Login to DMS Tree</h2>
-                                  <!-- <h2 class="form-login-heading text-muted">Login to DMS Tree</h2> -->
-                                <!-- <div class="form-group row ">
-                                    <label for="txt_user_name" class="col-md-3 control-label">User Name</label>
-                                        <div class="col-md-7">
-                                            <input type="text" class="form-control" id="txt_user_name" placeholder="User Name" name="username" value="" autocomplete="off">
-                                        </div>
-                                </div>   
-                                <div class="form-group row ">
-                                    <label for="txt_user_name" class="col-md-3 control-label">Password</label>
-                                        <div class="col-md-7">
-                                            <input type="password" class="form-control" id="txt_user_name_" placeholder="Password" name="password" value="" autocomplete="off">
-                                        </div>
-                                </div> 
-                                <div class="form-group row">
-                                    <div class="col-md-4">
-                                    <label class="checkbox">
-                                        <input type="checkbox" value="remember-me"> Remember me
-                                    </label>
-                                    </div>
-                                </div>
-                            <div class="form-group row ">
-                                        <div class="col-md-6">
-                                            <a href="#"> Forgotten Your Password?</a>
-                                        </div>
-                            </div> -->
-                             </div>
-                              <div class="form-container">
-                    <div class="form-inner">
-                      <!-- Email Section -->
-                      <div class="form-group">
-                        <label for="txt_user_name" class="form-label">Email</label>
-                        <input
-                          
-                          class="form-input"
-                          id="txt_user_name"
-                          name="username"
-                          placeholder="Enter your Email"
-                          autocomplete="off"
-                        />
-                      </div>
+    .login-button {
+      width: 100%;
+      padding: 12px;
+      background: #1B5563;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      margin-bottom: 24px;
+    }
 
-                      <!-- Password Section -->
-                      <div class="form-group">
-                        <label for="txt_user_name_" class="form-label">Password</label>
-                        <input
-                          type="password"
-                          class="form-input"
-                          id="txt_user_name_"
-                          name="password"
-                          placeholder="Enter your Password"
-                          autocomplete="off"
-                        />
-                        
-                      </div>
-                          <div class="form-options">
-                          <label class="remember-me">
-                            <input type="checkbox" class="checkbox" /> Remember me
-                          </label>
-                          <a href="#" class="forgot-password">Forgot Password?</a>
-                        </div>
-                      <!-- Login Button -->
-                       <div class="form-options">
-                      <button
-                        class="login-button"
-                        type="submit"
-                        name="loginbtn"
-                        value="login"
-                      >
-                        Login
-                      </button>
-                      </div>
-                    </div>
-                  </div>
+    .login-button:hover {
+      background: #164449;
+    }
 
-        <script type="text/javascript" src="js/dmstree_js/sign_validation.js"></script>
-        <script type="text/javascript" src="js/dmstree_js/formvalidation.js"></script>
-  </form>
+    .login-button:active {
+      transform: translateY(1px);
+    }
 
-                <!-- </div> -->
-            </div>
+    .signup-link {
+      text-align: center;
+      font-size: 14px;
+      color: #6c757d;
+    }
+
+    .signup-link a {
+      color: #1B5563;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #6c757d;
+      cursor: pointer;
+      font-size: 12px;
+      padding: 4px;
+    }
+
+    .password-toggle:hover {
+      color: #1B5563;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .left-section {
+        padding: 40px 20px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .right-section {
+        width: 100%;
+        padding: 40px 20px;
+         justify-content: center;
+        align-items: center;
+      }
+
+      /* .features-grid {
+        grid-template-columns: 1fr;
+      } */
+    }
+
+    /* Laptops - 1025px to 1280px */
+    @media (min-width: 1025px) and (max-width: 1280px) {
+      .header {
+        padding: 10px 57px;
+      }
+      
+    }
+
+    /* Desktops (HD+) - 1281px and above */
+    @media (min-width: 1281px) {
+      .header {
+        padding: 10px 57px;
+      }
+
+      .left-section {
+        height: fit-content;
+      }
+
+      .right-section {
+        height: fit-content;
+      } 
+    }
+    
+
+    /* .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 20px;
+      background-color: #FFF0CA;
+      light background
+      border-radius: 20px;
+    } */
+
+    /* .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(255, 180, 50, 0.3);
+    } */
+
+    .feature-icon {
+      font-size: 48px;
+      color: #ffb700;
+      filter: drop-shadow(0 2px 4px rgba(255, 200, 0, 0.4));
+    }
+
+    @font-face {
+      font-family: 'Inter';
+      src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo">
+      <img src="img/Logo.svg" alt="DMS Logo">
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="left-section">
+      <div class="content-wrapper">
+        <h1 class="main-title">Intelligent Document Management, Powered by AI</h1>
+        <p class="subtitle">Nodo AI helps you store, organize, edit and summarize your business documents - all in one secure platform.</p>
+
+        <div class="features-grid">
+          <img src="img/Features.svg" alt="Features" style="width:100%;height:auto;display:block;" />
         </div>
-</div>
+      </div>
+    </div>
 
-    </body>
+    <div class="right-section">
+      <form id="loginForm" class="login-form" method="post" action="my_script.php">
+        <div class="login-title">
+          <h2 class="welcome-heading">Welcome Back!</h2>
+          <p class="welcome-subtitle">Login to continue to your workspace</p>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <div class="input-wrapper">
+            <img src="img/sms.svg" alt="Email Icon" class="input-icon">
+            <input
+              type="email"
+              class="form-input"
+              id="email"
+              name="username"
+              placeholder="Enter your Email"
+              required
+              autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-wrapper">
+            <img src="img/lock.svg" alt="Password Icon" class="input-icon">
+            <input
+              type="password"
+              class="form-input"
+              id="password"
+              name="password"
+              placeholder="Enter your Password"
+              required
+              autocomplete="current-password" />
+            <button type="button" class="password-toggle" onclick="togglePassword()">Show</button>
+          </div>
+        </div>
+
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" name="remember" />
+            <span>Remember me</span>
+          </label>
+          <a href="#" class="forgot-password">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="login-button" name="loginbtn" value="login">
+          Login
+        </button>
+
+        <p class="signup-link">
+          New to Nodo.ai? <a href="#">Sign up</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const toggleBtn = document.querySelector('.password-toggle');
+
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleBtn.textContent = 'Hide';
+      } else {
+        passwordInput.type = 'password';
+        toggleBtn.textContent = 'Show';
+      }
+    }
+
+    // Form validation
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      if (!email || !password) {
+        e.preventDefault();
+        alert('Please fill in all fields');
+      }
+    });
+  </script>
+</body>
+
 </html>
