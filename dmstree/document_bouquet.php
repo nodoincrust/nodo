@@ -305,7 +305,7 @@ if(isset($_POST['docform']))
 			<!-- <input type="button" value="Save" class="btn btn-success save_btn_bg" onclick="save_bouquet();"/>
 			<input type="button" value="Cancel" class="btn ctrl-btn save_btn_bg_cancel" onclick="clear_page();"/> -->
             <input type="button" value="Save" class="save_btn_bg_cancel btn-success" onclick="save_bouquet();"/>
-			<input type="button" value="Cancel" class="save_btn_bg_cancel btn-primary" onclick="clear_page();"/>
+			<input type="button" value="Cancel" class="save_btn_bg_cancel" onclick="clear_page();"/>
             </div>
             </div>  
 		</div>

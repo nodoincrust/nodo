@@ -117,7 +117,7 @@ letter-spacing: -0.25%;
 }
 .save_btn_bg_cancel{
      /* background: #a6d661; */
-     color: #fff;
+     /* color: #fff; */
      border: 1px solid #a6d661;
      padding: 6px 12px;
     border-radius: 4px;
@@ -179,7 +179,7 @@ letter-spacing: -0.25%;
     padding-left: 0px !important
 }
 .btn:hover{
-    background-color: #e6e6e6;
+    /* background-color: #e6e6e6; */
 }
 .container p{
     text-align: center;

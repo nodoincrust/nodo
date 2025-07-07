@@ -41,13 +41,14 @@ $g1 = new Get_mongodb();
                         {
                            $userdepartmentid = $userkey['DepartmentId']; 
                         }
-                        $currentDepartmentId = ($userdepartmentid !== '') ? (int)$userdepartmentid : 0;
-                        $newDepartmentId = $currentDepartmentId + 1;
-                        // Update UserData
-                        $g1->get_mongodb->updateUserDepartmentId($userid, $newDepartmentId);
-                        // Update DocumentMetaData for this user/tenant
-                        $g1->get_mongodb->updateDocumentDepartmentId($tenantId, $userid, $newDepartmentId);
-                        $userdepartmentid = $newDepartmentId;
+                        // DepartmentId should remain constant - removed auto-increment logic
+                        // $currentDepartmentId = ($userdepartmentid !== '') ? (int)$userdepartmentid : 0;
+                        // $newDepartmentId = $currentDepartmentId + 1;
+                        // // Update UserData
+                        // $g1->get_mongodb->updateUserDepartmentId($userid, $newDepartmentId);
+                        // // Update DocumentMetaData for this user/tenant
+                        // $g1->get_mongodb->updateDocumentDepartmentId($tenantId, $userid, $newDepartmentId);
+                        // $userdepartmentid = $newDepartmentId;
                         //$loginUsername = $userkey['Name'];
                         $collectionUsername = $userkey['LoginInfo']['EmailId'];
                         $collectionPassword = $userkey['LoginInfo']['Password'];
