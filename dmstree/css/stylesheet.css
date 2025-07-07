@@ -217,10 +217,10 @@ letter-spacing: -0.25%;
  
 
 }
-.login_div{
+/* .login_div{
 position: absolute;
 top: 98px;
-}
+} */
 .div-padding{
     padding:5px;
 }
@@ -673,14 +673,25 @@ width: 100%;
         margin-right: -27px;
 }
 .navbar_ul li .list_of_nav2 {
-    color: #ffffff;
+    /* color: #ffffff;
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    gap: 9px !important;
 }
 
 
@@ -706,7 +717,8 @@ width: 100%;
 
 /* Optional: Make img white and add spacing */
 .navbar_ul li img {
-    margin-top: 17px;
+    /* margin-top: 17px; */
+        margin-top: 0px;
     margin-right: 8px;
     vertical-align: middle;
     filter: brightness(0) invert(1); /* makes PNGs look white */
