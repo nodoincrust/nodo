@@ -340,7 +340,7 @@ top: 98px;
 }
 
 .div-padding-left {
-    padding-left: 0px !important;
+    padding-left: 0px;
 }
 
 .navbar {
@@ -369,6 +369,7 @@ top: 98px;
 
 .div-padding-top {
     margin-top: 15px;
+    margin-left: 15px;
 }
 
 .div-width {
@@ -702,7 +703,7 @@ iframe {
     /* text-align: center !important; */
     /* background-color: #009347; */
     color: white;
-    padding: 0px 11px;
+    /* padding: 0px 11px; */
 }
 
 .list1 img {
