@@ -31,10 +31,11 @@ if(isset($_SESSION['usertenant']))
     <div class="header-container ">
         <div class="row row-margin row_class_img">
                     <!------ Company logo --------------------------------->
-            <div class="col-md-3 logo_cls">
-                <div class="logo_container">
-                <img src="img/LOGO-2.jpg" alt="Logo_image" id="dms_logo" width="210" height="75">
-                </div>
+            <!-- <div class="col-md-3 logo_cls"> -->
+                <div class="col-md-3">
+                <!-- <div class="logo_container"> -->
+                <!-- <img src="img/LOGO-2.jpg" alt="Logo_image" id="dms_logo" width="210" height="75"> -->
+                <!-- </div> -->
             </div>
             <div class="col-md-9 txt-padding ">
                 <div class="row pull-right">
