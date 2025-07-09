@@ -91,7 +91,7 @@
     margin-top: -8px; */
         /* height: 873px; */
         height: 575px;
-        width: 257px;
+        width: 250px;
         display: flex;
         flex-direction: column;
         background: #ffffff;

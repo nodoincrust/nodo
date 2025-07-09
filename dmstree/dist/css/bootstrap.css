@@ -4607,7 +4607,7 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
 }
 
 .logo_cls {
-  background: #32465a;
+  /* background: #32465a; */
   padding-top: 15px;
   width: 245px !important;
 

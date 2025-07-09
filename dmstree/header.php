@@ -31,7 +31,7 @@ if(isset($_SESSION['usertenant']))
     <div class="header-container ">
         <div class="row row-margin row_class_img">
                     <!------ Company logo --------------------------------->
-            <div class="col-md-3 logo_cls" style="background-color: #32465a;">
+            <div class="col-md-3 logo_cls">
                 
             </div>
             <div class="col-md-9 txt-padding ">
