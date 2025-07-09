@@ -31,19 +31,17 @@ if(isset($_SESSION['usertenant']))
     <div class="header-container ">
         <div class="row row-margin row_class_img">
                     <!------ Company logo --------------------------------->
-            <div class="col-md-3 logo_cls">
-                <div class="logo_container">
-                <img src="img/LOGO-2.jpg" alt="Logo_image" id="dms_logo" width="210" height="75">
-                </div>
+            <div class="col-md-3 logo_cls" style="background-color: #32465a;">
+                
             </div>
             <div class="col-md-9 txt-padding ">
-                <div class="row pull-right">
+                <!-- <div class="row pull-right">
                     <div class="col-md-12 ">
                           <h4><?php if($user != ''){ echo $user;} else {echo "Default User";}?></h4>
-<!--                        <h4>   Welcome Administrator</h4>-->
+
                                         
                     </div>
-                 </div>
+                 </div> -->
                  <div class="row row_class">
                      <nav class="navbar">
                                     <div class="navbar-header">
@@ -65,41 +63,41 @@ if(isset($_SESSION['usertenant']))
         <div class="li_div">
             <li class="list1 <?= ($current_page == 'dashboard.php') ? 'active-nav' : '' ?>">
                 <a href="dashboard.php" class="list_of_nav2">
-                    <img src="img/Dashboard.png" alt="">
+                    <img src="img/Dashboard.svg" alt="">
                     <span>Dashboard</span>
                 </a>
             </li>
             <li class="list2 <?= ($current_page == 'upload.php') ? 'active-nav' : '' ?>">
                 <a href="upload.php" class="list_of_nav2">
-                    <img src="img/Upload Document.png" alt="">
+                    <img src="img/Upload Document.svg" alt="">
                     <span>Upload Document</span>
                 </a>
             </li>
             <li class="list3 <?= ($current_page == 'upload_template.php') ? 'active-nav' : '' ?>">
                 <a href="upload_template.php" class="list_of_nav2">
-                    <img src="img/Upload Template.png" alt="">
+                    <img src="img/Upload Template.svg" alt="">
                     <span>Upload Template</span>
                 </a>
             </li>
             <li class="list4 <?= ($current_page == 'search.php') ? 'active-nav' : '' ?>">
                 <a href="search.php" class="list_of_nav2">
-                    <img src="img/Search.png" alt="">
+                    <img src="img/Search.svg" alt="">
                     <span>SMART Search</span>
                 </a>
             </li>
             <li class="list5 <?= ($current_page == 'document_bouquet.php') ? 'active-nav' : '' ?>">
                 <a href="document_bouquet.php" onclick="clear_session_var();" class="list_of_nav2">
-                    <img src="img/bouquet.png" alt="">
+                    <img src="img/folder-open-02.svg" alt="">
                     <span>Create Bouquet</span>
                 </a>
             </li>
             <li class="list6 <?= ($current_page == 'document_checkout.php') ? 'active-nav' : '' ?>">
                 <a href="document_checkout.php" class="list_of_nav2">
-                    <img src="img/Checkout Document.png" alt="">
+                    <img src="img/Checkout Document.svg" alt="">
                     <span>Document Checkout</span>
                 </a>
             </li>
-            <li class="list7 <?= ($current_page == 'profile.php') ? 'active-nav' : '' ?>">
+            <!-- <li class="list7 <?= ($current_page == 'profile.php') ? 'active-nav' : '' ?>">
                 <a href="profile.php" class="list_of_nav2">
                     <img src="img/Edit Profile.png" alt="">
                     <span>Edit Profile</span>
@@ -110,7 +108,7 @@ if(isset($_SESSION['usertenant']))
                     <img src="img/logout.png" alt="">
                     <span>Logout</span>
                 </a>
-            </li>
+            </li> -->
         </div>
         <?php
         } else if ($tenantid == -999) {

@@ -2,6 +2,9 @@
 <div class="div-padding-right div-padding">
     <div class="row row_col_class">
         <div class="col-md-3">
+            <div class="logo_container">
+                <img src="img/LOGO-2.jpg" alt="Logo_image" id="dms_logo" width="210" height="75">
+            </div>
             <div class="metro" style="border: none;">
                 <!--------  Useage meter  ------------->
             <div id="g1"></div>
