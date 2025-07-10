@@ -76,9 +76,11 @@ $activepackspace = (float)$activepackspace;
     <script src="bootstrap-dialog/js/bootstrap-dialog.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         window.onload = function() {
-            value = <?php echo $filesize ?>;
-            max = <?php echo $activepackspace * 1000 ?>;
-            showmeter(value, max);
+            if (document.getElementById('g1')) {
+                value = <?php echo $filesize ?>;
+                max = <?php echo $activepackspace * 1000 ?>;
+                showmeter(value, max);
+            }
         };
         $(function() {
             $('.chosen-select').chosen();
@@ -766,6 +768,8 @@ $activepackspace = (float)$activepackspace;
             <?php include_once 'dash_menu.php' ?>
         </div>
         <div class="col-md-9 div-padding-left" id="body-content">
+            <!-- Usage Meter Gauge -->
+            <!-- <div id="g1" style="width: 100%; height: 220px; margin-bottom: 20px;"></div> -->
             <!--This page as to be create dynamically.......-->
             <div class="row">
                 <p class="spaceerror col-md-12" style="color:red"> </p>
@@ -973,6 +977,7 @@ $activepackspace = (float)$activepackspace;
                             echo   '</div>';
                             echo   '<div class="col-md-2">';
                             echo   '<input type="button" id="btn_tag" class="btn ctrl-btn" value="Save Tags" onclick="add_tags(this)" />';
+                            echo   '</div>';
                             echo   '</div>';
                             echo   '</div>';
                             echo   '</div>';

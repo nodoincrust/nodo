@@ -521,7 +521,7 @@
     <div class="profile-container">
         <div class="profile-logo">
             <img src="img/user-profile-square.svg" alt="">
-            <span>ranjit</span>
+            <span><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'User'; ?></span>
         </div>
     </div>
 

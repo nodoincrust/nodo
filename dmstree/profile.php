@@ -64,7 +64,9 @@
              window.onload = function(){
                 value = <?php echo $filesize ?>;
                 max = <?php echo $activepackspace*1000 ?>;
-                showmeter(value,max);
+                if (document.getElementById('g1')) {
+                    showmeter(value,max);
+                }
             };
             $(document).ready(function(){
             var directoryspace = <?php echo $tenantspace?>;
