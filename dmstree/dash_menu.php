@@ -130,6 +130,10 @@
         color: #1B5563;
         display: flex;
     }
+.left-container.collapsed .logo_img img{
+    /* margin-left: -198px; */
+    margin-right:407px;
+}
 
     .logo_img .nodo_ai {
         width: 80.63px;
@@ -447,7 +451,9 @@
 
     /* Hide the toggle button if needed */
     .left-container.collapsed .close-layout-img {
-        margin-left: auto;
+        /* margin-left: auto; */
+        /* margin-left: -44px !important; */
+        margin-left:-215px;
     }
 </style>
 <!-- <div class="div-padding-right div-padding">
@@ -457,23 +463,24 @@
 <!-- <div class="header-container"> -->
 
 <div class="left-container" id="sidebar">
-    <!-- <div id="g1"></div> -->
+
 
     <!-- template  -->
     <div class="logo-container" id="toggleSidebar">
         <div class="logo_img">
-            <img src="img/Group 1.svg" alt="Logo Icon" />
+            <img src="img/Group 1.svg" alt="Logo Icon" onclick="toggleSidebar()" style="cursor:pointer" />
             <img src="img/Nodo AI.svg" class="nodo_ai" alt="Nodo AI" />
         </div>
-        <button onclick="toggleSidebar()" style="border:none;background:none;">
-            <img src="img/layout-left.svg" class="close-layout-img" alt="Collapse" />
-        </button>
+
+        <!-- <button > -->
+            <img src="img/layout-left.svg" class="close-layout-img" alt="Collapse" onclick="toggleSidebar()" style="border:none;background:none;cursor:pointer" />
+        <!-- </button> -->
 
     </div>
 
     <div class="template-container">
         <div class="template_logo">
-            <img src="img/file-05.svg" alt="Template Icon" />
+            <img src="img/file-05.svg" alt="Template Icon"  onclick="toggleSidebar()" style="cursor:pointer"/>
             <span>Templates</span>
         </div>
         <ul class="template-menu">
@@ -495,7 +502,7 @@
     <!-- master-mangment -->
     <div class="master-container">
         <div class="master-management">
-            <img src="img/Globe.svg" alt="Template Icon" />
+            <img src="img/Globe.svg" alt="Template Icon" onclick="toggleSidebar()" style="cursor:pointer" />
             <span>Master Management</span>
         </div>
         <ul class="template-menu">
@@ -527,15 +534,15 @@
 
     <div class="logout-container">
         <div class="logout-logo">
-            <img src="img/logout-02.svg" alt="">
-            <a href="logout.php"> <span>Log Out</span></a>
+            <img src="img/logout-02.svg" alt="" onclick="toggleSidebar()" style="cursor:pointer">
+            <a href="logout.php" ><span>Log Out</span></a>
 
         </div>
     </div>
 
 </div>
 
-
+   <!-- <div id="g1"></div> -->
 <!-- 
 </div> -->
 
@@ -550,6 +557,8 @@
         const sidebar = document.getElementById('sidebar');
         sidebar.classList.toggle('collapsed');
     }
+   
+
 </script>
 
 <!-- <script>
