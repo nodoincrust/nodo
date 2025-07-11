@@ -266,8 +266,8 @@ fieldset {
 }
 
 .more-comment {
-    font-size: 12px;
-    border-top: 1px solid #B8BFBC;
+    font-size: 14px;
+    /* border-top: 1px solid #B8BFBC; */
 }
 
 .login_container {

@@ -363,6 +363,9 @@ $activepackspace = (float)$activepackspace;
             padding: 5px 1px 5px 1px;
             font-family: 'Inter', Arial, sans-serif;
         }
+        /* #bouquetForm , .bouquet-add-doc{
+            border-top: 1px solid #B8BFBC;
+        } */
     </style>
 </head>
 
