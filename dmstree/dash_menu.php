@@ -90,7 +90,7 @@
     background: #ffffff;
     margin-top: -8px; */
         /* height: 873px; */
-        height: 575px;
+        height: 585px;
         width: 250px;
         display: flex;
         flex-direction: column;
@@ -102,7 +102,7 @@
     }
 
     .logo-container {
-        width: 248px;
+        width: 230px;
         height: 30px;
         display: flex;
         justify-content: space-between;
@@ -125,6 +125,7 @@
     .logo_img img {
         width: 24.99px;
         height: 25.1px;
+        margin-left: 5px;
         transform: rotate(0deg);
         opacity: 1;
         color: #1B5563;
@@ -340,7 +341,7 @@
         width: 204px;
         height: 24px;
         font-family: 'Inter', sans-serif;
-        font-weight: 400;
+        font-weight: 600;
         font-style: normal;
         font-size: 14px;
         color: #84909A;
@@ -400,7 +401,7 @@
     /* for colapus functioanlity on toggle  */
     /* COLLAPSED SIDEBAR STYLE */
     .left-container.collapsed {
-        width: 80px;
+        width: 95px;
         transition: width 0.3s ease;
     }
 

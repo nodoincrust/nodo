@@ -493,6 +493,11 @@ $activepackspace = (float)$activepackspace;
             font-style: normal;
         }
 
+
+        body {
+            overflow-x: hidden;
+        }
+
         .docsubsec_title {
             text-decoration: none;
         }
@@ -541,8 +546,9 @@ $activepackspace = (float)$activepackspace;
 
         #btn_tag {
             background-color: #1B5563;
+            color: #ffffff;
             border: 1px solid #DDE2E4 !important;
-            font-family:'Inter', Arial, sans-serif;"
+            font-family: 'Inter', Arial, sans-serif;
             /* margin-top: 7px !important; */
         }
 
@@ -744,27 +750,9 @@ $activepackspace = (float)$activepackspace;
 </head>
 
 <body>
-
-    <script>
-        function makefocusComment(currdoc) {
-            $('.hide_div').hide();
-            var card = $(currdoc).closest('.dmstree-card');
-            card.find('.hide_div').show();
-            card.find('.document_commentbox').focus();
-        }
-
-        function makefocusTag(currtagobj) {
-            $('.hide_div').hide();
-            var card = $(currtagobj).closest('.dmstree-card');
-            card.find('.hide_div').show();
-            card.find('.chosen-select').focus();
-        }
-    </script>
-    <!----------- Header page--------------------------------------------->
     <?php include_once 'header.php'; ?>
     <div class="row row-margin">
         <div class="col-md-3">
-            <!--------- dash board side menu------------------------------------------------>
             <?php include_once 'dash_menu.php' ?>
         </div>
         <div class="col-md-9 div-padding-left" id="body-content">
@@ -926,40 +914,31 @@ $activepackspace = (float)$activepackspace;
                                 echo '<button class="btn btn-archive add_to_archive comments_tags" type="button" onclick="addToArchive(this);" value="Add to Archive"><img src="img/Icon (4).svg" alt="Move to Archive" style="width:16px; height:16px; margin-right:6px;"></i> Move to Archive</button>';
                             }
                             echo '</div>';
-                            echo '</div>';
-
-                            // Comments section
-                            $commentcount = 0;
-                            $commentdate = '';
-                            $totalcomments = 0;
-                            $totaltagcount = 0;
-                            $taglist = '';
-                            $documenttag = array();
-                            if (array_key_exists('TagList', $dockey['DocumentInfo'])) {
-                                $taglist = $dockey['DocumentInfo']['TagList'];
-                                foreach ($taglist as $value) {
-                                    $totaltagcount++;
-                                }
-                            }
                             echo '<div class="hide_div" style="display:none;">';
-                            echo '<div class="row comment div-margin">';
-                            echo '<div class="col-md-6">';
-                            echo '<div class="row-fluid"><a class="docsubsec_title" onclick="viewmorecomments(this);">View More Comments(' . $totalcomments . ')</a></div>';
-                            echo '<div class="morecomments row col-md-12" style ="max-height:230px; overflow-y :auto;"></div>';
-                            echo '<div class="form-group row-fluid add-comment">';
-                            echo '<div class="col-md-9 ">';
-                            echo '<input type="text" class="form-control txt_comment1 document_commentbox document_border"  id="txt_comment1" placeholder="Comment" name="" autofocus/>';
-                            echo '</div>';
-                            echo '<div class="col-md-2">';
-                            echo '<input type="button" id="btn_comment" class="btn ctrl-btn btn_comment" value="Comment" onclick="add_comment(this)" />';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '<div class="col-md-6">';
-                            echo '<div class="row-fluid"><a class="docsubsec_title">View More Tags(' . $totaltagcount . ') </a></div>';
-                            echo '<div class="row-fluid" style="padding:5px 0px;border-top: 1px solid #B8BFBC;">';
-                            echo '<div class="tag_selectbox col-md-9">';
-                            echo '<select name="colors" class="form-control chosen-select" multiple data-placeholder="select tags">';
+                            echo '  <div class="row comment div-margin">';
+                            echo '    <div class="col-md-6">';
+                            echo '      <div class="div-padding" id="add-comment1">';
+                            echo '        <a onclick="viewmorecomments(this);">View More Comments(' . $totalcomments . ')</a>';
+                            echo '      </div>';
+                            echo '      <div class="morecomments row col-md-12" style="max-height:230px; overflow-y:auto;">';
+                            echo '      </div>';
+                            echo '      <div class="form-group row add-comment">';
+                            echo '        <div class="col-md-7">';
+                            echo '          <input type="text" class="form-control txt_comment1 border_class document_commentbox" id="txt_comment1" placeholder="Comment" name="" autofocus/>';
+                            echo '        </div>';
+                            echo '        <div class="col-md-2">';
+                            echo '          <input type="button" id="btn_comment" class="save_btn_bg_cancel btn-success" value="Comment" onclick="add_comment(this)">';
+                            echo '        </div>';
+                            echo '      </div>';
+                            echo '    </div>';
+                            echo '    <div class="col-md-6">';
+                            echo '      <div class="row col-md-12">';
+                            echo '        <div class="div-padding" id="add-tag1">';
+                            echo '          <a>View More Tags(' . $totaltagcount . ')</a>';
+                            echo '        </div>';
+                            echo '        <div class="row" style="padding:15px 5px;">';
+                            echo '          <div class="col-md-10" id="tag_diaplay" style="max-width:900px; margin:auto">';
+                            echo '            <select name="colors" class="form-control chosen-select tag_selection" multiple data-placeholder="select tags">';
                             foreach ($companytags as $comptagvalue) {
                                 $flagtag = 0;
                                 foreach ($documenttag as $doctagvalue) {
@@ -973,16 +952,17 @@ $activepackspace = (float)$activepackspace;
                                     echo '<option value="' . $comptagvalue . '">' . $comptagvalue . '</option>';
                                 }
                             }
-                            echo   '</select>';
-                            echo   '</div>';
-                            echo   '<div class="col-md-2">';
-                            echo   '<input type="button" id="btn_tag" class="btn ctrl-btn" value="Save Tags" onclick="add_tags(this)" />';
-                            echo   '</div>';
-                            echo   '</div>';
-                            echo   '</div>';
-                            echo   '</div>';
-                            echo   '</div>';
-                            echo   '</div>';
+                            echo '            </select>';
+                            echo '          </div>';
+                            echo '          <div class="col-md-2">';
+                            echo '            <input type="button" id="btn_tag btn_tags" class="save_btn_bg_cancel btn-success" value="Save Tags" onclick="add_tags(this)">';
+                            echo '          </div>';
+                            echo '        </div>';
+                            echo '      </div>';
+                            echo '    </div>';
+                            echo '  </div>';
+                            echo '</div>';
+                            echo '</div>';
                         }
                     }
                 }
@@ -990,10 +970,7 @@ $activepackspace = (float)$activepackspace;
                 ?>
             </div>
         </div>
-
     </div>
-
-    <!--------- dash board footer------------------------------------------------>
     <?php include_once 'footer.php' ?>
     <!--<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>-->
     <script src="jqueryui/ui/minified/jquery-ui.min.js"></script>
