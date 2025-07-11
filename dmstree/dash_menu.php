@@ -90,7 +90,7 @@
     background: #ffffff;
     margin-top: -8px; */
         /* height: 873px; */
-        height: 585px;
+        height: 100%;
         width: 250px;
         display: flex;
         flex-direction: column;
@@ -290,6 +290,7 @@
         /* position: absolute; */
         top: 1.96px;
         left: 1.96px;
+        transform: rotate(0deg);
         opacity: 1;
         border-width: 1.5px;
         border-style: solid;

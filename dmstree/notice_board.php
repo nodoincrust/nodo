@@ -201,16 +201,295 @@ $result = $g1->get_mongodb->getNoticeInfo($userId);
 		font-family: 'Space Grotesk', Arial, sans-serif;
 		color: #1B5563 !important;
 	}
-	#myModalLabel{
+
+	/* Modern Modal Styles */
+	.modal-dialog {
+		max-width: 500px;
+		margin: 30px auto;
+	}
+
+	.modal-content {
+		border-radius: 12px;
+		border: none;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+	}
+
+	.modal-header {
+		border-bottom: 1px solid #e9ecef;
+		padding: 20px 24px 16px;
+		background: #fff;
+		border-radius: 12px 12px 0 0;
+	}
+
+	.modal-title {
 		font-size: 22px;
 		font-weight: 700;
 		font-family: 'Space Grotesk', Arial, sans-serif;
 		color: #1B5563;
+		margin: 0;
+	}
+
+	.modal-body {
+		padding: 24px;
+		background: #fff;
+	}
+
+	.form-group {
+		margin-bottom: 20px;
+	}
+
+	.form-group label {
+		font-weight: 500;
+		color: #374151;
+		margin-bottom: 8px;
+		display: block;
+	}
+
+	.form-control {
+		border: 1px solid #d1d5db;
+		border-radius: 8px;
+		padding: 12px 14px;
+		font-size: 14px;
+		transition: all 0.2s ease;
+		background: #fff;
+		width: 100%;
+	}
+
+	.form-control:focus {
+		border-color: #1B5563;
+		box-shadow: 0 0 0 3px rgba(27, 85, 99, 0.1);
+		outline: none;
+	}
+
+	.form-control::placeholder {
+		color: #9ca3af;
+	}
+
+	textarea.form-control {
+		resize: vertical;
+		min-height: 80px;
+	}
+
+	/* Date picker styling */
+	.input-group {
+		position: relative;
+		display: flex;
+		width: 100%;
+	}
+
+	.input-group .form-control {
+		border-radius: 8px 0 0 8px;
+		flex: 1;
+	}
+
+	.input-group-addon {
+		background: #f8f9fa;
+		border: 1px solid #d1d5db;
+		border-left: none;
+		border-radius: 0 8px 8px 0;
+		/* padding: 12px 14px; */
+		color: #6b7280;
+		display: flex;
+		align-items: center;
+	}
+
+	/* File upload area */
+	.file-upload-area {
+		border: 2px dashed #d1d5db;
+		border-radius: 8px;
+		padding: 40px 20px;
+		text-align: center;
+		background: #fafafa;
+		transition: all 0.2s ease;
+		cursor: pointer;
+		position: relative;
+	}
+
+	.file-upload-area:hover {
+		border-color: #1B5563;
+		background: #f8faff;
+	}
+
+	.file-upload-area.dragover {
+		border-color: #1B5563;
+		background: #f0f7ff;
+	}
+
+	.upload-icon {
+		font-size: 24px;
+		color: #6b7280;
+		margin-bottom: 12px;
+	}
+
+	.upload-text {
+		color: #374151;
+		font-weight: 500;
+		margin-bottom: 4px;
+	}
+
+	.upload-subtext {
+		color: #9ca3af;
+		font-size: 12px;
+		margin-bottom: 16px;
+	}
+
+	.browse-btn {
+		background: #fff;
+		border: 1px solid #d1d5db;
+		border-radius: 6px;
+		padding: 8px 16px;
+		font-size: 14px;
+		color: #374151;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.browse-btn:hover {
+		background: #f9fafb;
+		border-color: #9ca3af;
+	}
+
+	.file-input {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		cursor: pointer;
+	}
+
+	/* Image preview */
+	.image-preview {
+		margin-top: 16px;
+	}
+
+	.image-preview img {
+		max-width: 100%;
+		height: 120px;
+		object-fit: cover;
+		border-radius: 8px;
+		border: 1px solid #e5e7eb;
+	}
+
+	.preview-placeholder {
+		width: 100%;
+		height: 120px;
+		background: #fef3cd;
+		border-radius: 8px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid #fbbf24;
+	}
+
+	.preview-icon {
+		font-size: 40px;
+		color: #f59e0b;
+	}
+
+	/* Modal footer */
+	.modal-footer {
+		border-top: 1px solid #e9ecef;
+		padding: 16px 24px;
+		background: #fff;
+		border-radius: 0 0 12px 12px;
+		text-align: right;
+	}
+
+	.btn {
+		border-radius: 8px;
+		padding: 10px 20px;
+		font-weight: 500;
+		font-size: 14px;
+		transition: all 0.2s ease;
+		border: none;
+		cursor: pointer;
+	}
+
+	.btn-primary {
+		background: #1B5563;
+		color: white;
+	}
+
+	.btn-primary:hover {
+		background: #164047;
+	}
+
+	.btn-default {
+		background: #fff;
+		color: #6b7280;
+		border: 1px solid #d1d5db;
+		margin-right: 12px;
+	}
+
+	.btn-default:hover {
+		background: #f9fafb;
+		border-color: #9ca3af;
+	}
+
+	.close {
+		position: absolute;
+		top: 16px;
+		right: 20px;
+		font-size: 24px;
+		font-weight: 300;
+		color: #9ca3af;
+		opacity: 1;
+		border: none;
+		background: none;
+		cursor: pointer;
+		padding: 4px;
+	}
+
+	.close:hover {
+		color: #6b7280;
+	}
+
+	/* Bootstrap 3 overrides for the modal */
+	.modal-dialog .row {
+		margin: 0;
+	}
+
+	.modal-dialog .col-md-3,
+	.modal-dialog .col-md-6 {
+		padding: 0;
+	}
+
+	.modal-dialog .form-group.row {
+		margin-bottom: 20px;
+	}
+
+	.modal-dialog .space {
+		margin-bottom: 20px;
+	}
+
+	/* Responsive */
+	@media (max-width: 768px) {
+		.modal-dialog {
+			margin: 20px;
+			max-width: none;
+		}
+
+		.modal-body {
+			padding: 20px;
+		}
+
+		.file-upload-area {
+			padding: 30px 15px;
+		}
+	}
+
+	.modal-body {
+		max-height: 60vh;
+		/* 60% of viewport height */
+		overflow-y: auto;
+		padding-right: 15px;
+		/* to avoid content hiding under scrollbar */
 	}
 </style>
 
 <body>
-
 
 	<!----------- Header page--------------------------------------------->
 	<?php include_once 'header.php'; ?>
@@ -303,79 +582,148 @@ $result = $g1->get_mongodb->getNoticeInfo($userId);
 					} ?>
 				</div>
 			</div>
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+			<!-- Modern Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">&times;</span>
+								<span class="sr-only">Close</span>
+							</button>
 							<h4 class="modal-title" id="myModalLabel">Create Notice</h4>
 						</div>
 						<div class="modal-body">
 							<form name="form_notice" id="form_notice" method="post" action="" enctype="multipart/form-data">
-								<div class="form-group row space">
-									<label for="sel_problem_category" class="col-md-3 control-label" id="txt_problem_category">Notice Category</label>
-									<div class="col-md-6">
-										<input list="notice_category" name="notice_category" id="list" class="form-control">
-										<datalist id="notice_category">
-											<!--<option value="select" id="select_std_list">Select </option>-->
-											<option value="Creating Template" id="select_std_list1">Creating Template</option>
-											<option value="Add Tags" id="select_std_list2">Adding Tags</option>
-											<option value="Uploading Document" id="select_std_list3">Uploading Document </option>
-											<option value="Profile Update" id="select_std_list4">Profile Update</option>
-										</datalist>
+								<div class="form-group">
+									<label for="notice_category_input">Notice Category</label>
+									<input list="notice_category" name="notice_category" id="notice_category_input" class="form-control" placeholder="Type or Select Notice Category">
+									<datalist id="notice_category">
+										<option value="Creating Template">Creating Template</option>
+										<option value="Add Tags">Adding Tags</option>
+										<option value="Uploading Document">Uploading Document</option>
+										<option value="Profile Update">Profile Update</option>
+									</datalist>
+								</div>
+
+								<div class="form-group">
+									<label for="txt_notice_title">Notice Title</label>
+									<input type="text" class="form-control" id="txt_notice_title" placeholder="Enter Notice Title" name="notice_title">
+								</div>
+
+								<div class="form-group">
+									<label for="txt_notice_description">Notice Description</label>
+									<textarea class="form-control" id="txt_notice_description" rows="3" placeholder="Enter Notice Description" name="notice_description"></textarea>
+								</div>
+
+								<div class="form-group">
+									<label for="expiry_date">Notice Valid Till</label>
+									<div class='input-group date' id='datetimepicker' data-date-format="DD/MM/YYYY">
+										<input type='text' class="form-control date1" id="expiry_date" name="date" value="" readonly placeholder="Enter Notice Title" />
+										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-time"></span>
+										</span>
 									</div>
 								</div>
-								<div class="form-group row space">
-									<label for="txt_notice_title" class="col-md-3 control-label" id="">Notice Title</label>
-									<div class="col-md-6">
-										<input type="text" class="form-control" id="txt_notice_title" placeholder="Notice Title" name="notice_title">
+
+								<div class="form-group">
+									<div class="file-upload-area" id="fileUploadArea">
+										<div class="upload-icon"><img src="img/Upload Icon.svg" alt=""></div>
+										<div class="upload-text">Drag and Drop your Image here</div>
+										<div class="upload-subtext">Only .png, .jpg, .jpeg</div>
+										<button type="button" class="browse-btn" onclick="document.getElementById('txt_notice_image').click()">Browse Files</button>
+										<input type="file" id="txt_notice_image" name="notice_img" class="file-input" accept=".png,.jpg,.jpeg" />
 									</div>
 								</div>
-								<div class="form-group row space">
-									<label for="txt_notice_description" class="col-md-3 control-label" id="">Notice Description</label>
-									<div class="col-md-6">
-										<textarea class="form-control" id="txt_notice_description" rows="3" placeholder="Notice Description" name="notice_description"></textarea>
-									</div>
-								</div>
-								<div class="form-group row space">
-									<label for="txt_notice_expiry_date" class="col-md-3 control-label" id="">Notice Valid Till</label>
-									<div class="col-md-6">
-										<div class='input-group date' id='datetimepicker' data-date-format="DD/MM/YYYY">
-											<input type='text' class="form-control date1" id="expiry_date" name="date" value="" readonly />
-											<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
-											</span>
-										</div>
-									</div>
-								</div>
-								<div class="form-group row space">
-									<label for="txt_notice_image" class="col-md-3 control-label" id="">Image</label>
-									<div class="col-md-6">
-										<input type="file" id="txt_notice_image" name="notice_img" />
-									</div>
-								</div>
-								<div class="form-group row space">
-									<div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
-										<img src="" id="notice_image" class="img-responsive" style="height:90px;width:100%;" />
+
+								<div class="form-group">
+									<label>Image Preview</label>
+									<div class="image-preview">
+										<!-- <div class="preview-placeholder" id="imagePlaceholder">
+											<div class="preview-icon">🔒</div>
+										</div> -->
+										<img src="" id="notice_image" class="img-responsive" style="display: none;" />
 									</div>
 								</div>
 							</form>
 						</div>
 
-						<div class="modal-footer control-label form-model-padding">
-							<button class="btn btn-primary btn-space" type="button" id="sub" onclick="saveNotice();">Send & Save</button>
-							<button type="reset" class="btn btn-default" data-dismiss="modal" onclick="clearForm();">Close </button>
+						<div class="modal-footer">
+							<button class="btn btn-primary" type="button" id="sub" onclick="saveNotice();">Save</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal" onclick="clearForm();">Cancel</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	<!--------- dash board footer------------------------------------------------>
 	<?php include_once 'footer.php' ?>
 	<!--<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>-->
 	<script src="js/dmstree_js/readmore.js"></script>
 	<script src="jqueryui/ui/minified/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/dmstree_js/notice_board_page.js"></script>
+
+	<script>
+		// Modern file upload functionality
+		$(document).ready(function() {
+			const fileUploadArea = document.getElementById('fileUploadArea');
+			const fileInput = document.getElementById('txt_notice_image');
+			const imagePreview = document.getElementById('notice_image');
+			const imagePlaceholder = document.getElementById('imagePlaceholder');
+
+			// Drag and drop functionality
+			fileUploadArea.addEventListener('dragover', function(e) {
+				e.preventDefault();
+				fileUploadArea.classList.add('dragover');
+			});
+
+			fileUploadArea.addEventListener('dragleave', function() {
+				fileUploadArea.classList.remove('dragover');
+			});
+
+			fileUploadArea.addEventListener('drop', function(e) {
+				e.preventDefault();
+				fileUploadArea.classList.remove('dragover');
+				const files = e.dataTransfer.files;
+				if (files.length > 0) {
+					handleFileSelect(files[0]);
+				}
+			});
+
+			// File input change
+			fileInput.addEventListener('change', function(e) {
+				if (e.target.files.length > 0) {
+					handleFileSelect(e.target.files[0]);
+				}
+			});
+
+			// Handle file selection
+			function handleFileSelect(file) {
+				if (file && file.type.startsWith('image/')) {
+					const reader = new FileReader();
+					reader.onload = function(e) {
+						imagePreview.src = e.target.result;
+						imagePreview.style.display = 'block';
+						imagePlaceholder.style.display = 'none';
+					};
+					reader.readAsDataURL(file);
+				}
+			}
+
+			// Clear form function enhancement
+			window.clearForm = function() {
+				document.getElementById('form_notice').reset();
+				imagePreview.style.display = 'none';
+				if (imagePlaceholder) {
+					imagePlaceholder.style.display = 'flex';
+				}
+				imagePreview.src = '';
+			};
+		});
+	</script>
 
 </body>
 
