@@ -217,6 +217,13 @@ $('#registrationForm').bootstrapValidator({
                 }
             }
         },
+        'optionsRadios': {
+            validators: {
+                notEmpty: {
+                    message: 'Please select a package type (Individual or Corporate)'
+                }
+            }
+        },
         address1: {
             validators: {
                 notEmpty: {

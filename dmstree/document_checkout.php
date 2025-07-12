@@ -440,7 +440,7 @@ foreach ($taglist[0]['TagList'] as $key) {
 
             width: 100%;
 
-            height: 10% !important;
+            /* height: 10% !important; */
 
             overflow: auto;
 
@@ -497,6 +497,7 @@ foreach ($taglist[0]['TagList'] as $key) {
             background: #FFFFFF;
             color: #333;
             cursor: pointer;
+            border: 1px solid #ccc;
             font-family: 'Inter', Arial, sans-serif;
         }
 
@@ -510,8 +511,10 @@ foreach ($taglist[0]['TagList'] as $key) {
             gap: 6px;
             color: #333;
             cursor: pointer;
+            border: 1px solid #ccc;
             font-family: 'Inter', Arial, sans-serif;
         }
+
         .comments_tags3 {
 
             border-radius: 6px;
@@ -521,10 +524,12 @@ foreach ($taglist[0]['TagList'] as $key) {
             align-items: center;
             gap: 6px;
             color: #333;
+            border: 1px solid #ccc;
             cursor: pointer;
             font-family: 'Inter', Arial, sans-serif;
         }
-        .img_icon{
+
+        .img_icon {
             height: 16px;
             width: 16px;
         }

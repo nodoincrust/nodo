@@ -176,7 +176,8 @@
 		$setTenantHistory =  $g1->get_mongodb->setTenantHistory($id);
 		$setPhotoGallary =  $g1->get_mongodb->setPhotoGallery($id,$currDate,$admin_email);
                 $setTag = $g1->get_mongodb->setTagList($id,$currDate,$admin_email);
-                 echo 'You have Signup Successfully.';
+                 header('Location: http://localhost/dmstree/dmstree/login.php');
+                 exit;
 	}
        
  ?>

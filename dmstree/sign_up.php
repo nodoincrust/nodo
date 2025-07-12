@@ -56,14 +56,20 @@ $g1 = new Get_mongodb();
 
 	.text-muted {
 		font-size: 26px;
+		/* margin-left: 15px; */
 		font-weight: 700;
 		columns: #1B5563;
+	}
+
+	.section-heading1 {
+		margin-left: 15px;
 	}
 
 	.signup-subtitle {
 		font-size: 20px;
 		color: #6c757d;
 		margin-bottom: 20px;
+		margin-right: 25px;
 		line-height: 1.5;
 		font-family: 'Inter', Arial, sans-serif;
 	}
@@ -108,6 +114,33 @@ $g1 = new Get_mongodb();
 		background-color: #1B5563;
 		color: #fff;
 	}
+
+	.package-size,
+	.package-duration,
+	.user-label {
+		white-space: nowrap;
+		color: #1B5563 !important;
+	}
+
+	.signin-link {
+		display: flex;
+		justify-content: center;
+		margin-top: 30px;
+	}
+
+	.view-package2 {
+		color: #1B5563;
+	}
+
+	.section-heading {
+		display: flex;
+		justify-content: start;
+	}
+
+	/* Add background color to all form controls */
+	.form-control {
+		background-color: #FAFAFA !important;
+	}
 </style>
 
 <body>
@@ -133,7 +166,7 @@ $g1 = new Get_mongodb();
 				<!-- Step 1: Package Selection -->
 				<div class="form-step" id="step1">
 					<div class="col-md-12 form_title ">
-						<h2 class="text-muted"><b>Create Your Nodo AI Account</b></h2>
+						<h2 class="text-muted section-heading1"><b>Create Your Nodo AI Account</b></h2>
 						<p class="signup-subtitle">Organize, edit, and search files - all in one secure platform.</p>
 					</div>
 					<div class="row gap">
@@ -160,7 +193,7 @@ $g1 = new Get_mongodb();
 					<div class="row form-group">
 						<div class="col-md-6">
 							<div class="row">
-								<label for="" class="col-md-6 col-sm-6 control-label">Package in Size</label>
+								<label for="" class="col-md-6 col-sm-6 control-label package-size">Package in Size</label>
 								<div class="col-md-6 col-sm-6">
 									<select size="2" name="listbox_size[]" class="form-control select_size" multiple>
 									</select>
@@ -169,7 +202,7 @@ $g1 = new Get_mongodb();
 						</div>
 						<div class="col-md-6">
 							<div class="row">
-								<label for="" class="col-md-6 col-sm-6 control-label div-padding-menu">Package in Duration</label>
+								<label for="" class="col-md-6 col-sm-6 control-label div-padding-menu package-duration">Package in Duration</label>
 								<div class="col-md-6 col-sm-6">
 									<select size="1" name="listbox_month[]" class="form-control select_month" multiple>
 									</select>
@@ -179,7 +212,7 @@ $g1 = new Get_mongodb();
 					</div>
 					<div class="signup-btns">
 						<div class="form-group view-package">
-							<label><a href="package_info.php" rel="facebox">View all Package Details</a></label>
+							<label><a href="package_info.php" rel="facebox" class="view-package2">View all Package Details</a></label>
 						</div>
 						<div class="view-package-next">
 							<button type="button" class="btn next-btn" onclick="nextStep(2)">
@@ -189,14 +222,14 @@ $g1 = new Get_mongodb();
 						</div>
 					</div>
 					<p class="signin-link">
-						Alreday a user? <a href="#" style="text-decoration: underline;">Login</a>
+						Alreday a user? <a href="http://localhost/dmstree/dmstree/login.php" style="text-decoration: underline;color: #1B5563">Login</a>
 					</p>
 				</div>
 
 				<!-- Step 2: Company/Admin/User Details -->
 				<div class="form-step" id="step2" style="display:none;">
-					<div class="col-md-12 form_title ">
-						<h2 class="text-muted"><b>Enter Details</b></h2>
+					<div class="form_title ">
+						<h2 class="text-muted section-heading"><b>Enter Details</b></h2>
 					</div>
 					<div class="form-group">
 						<label for="txt_company_name">Name of the Company</label>
@@ -223,26 +256,28 @@ $g1 = new Get_mongodb();
 						<label for="txt_admin_mail">Email Address of the Admin</label>
 						<input type="text" class="form-control" id="txt_admin_mail" placeholder="Enter Admin Email Address" name="adminemail">
 					</div>
-					<div class="form-group">
-						<label for="txt_user_name">Name of the User</label>
-						<input type="text" class="form-control" id="txt_user_name" placeholder="Enter User Name" name="individualname">
-					</div>
-					<div class="form-group">
-						<label for="txt_user_contact">Contact Number of the User</label>
-						<div style="display: flex; gap: 8px;">
-							<select class="form-control" name="usercontactcode" style="max-width: 90px;">
-								<option value="+91">+91</option>
-								<option value="+92">+92</option>
-								<option value="+93">+93</option>
-								<option value="+94">+94</option>
-								<option value="+95">+95</option>
-							</select>
-							<input type="text" class="form-control" id="txt_user_contact" placeholder="Enter User Phone Number" name="usercontact">
+					<div class="individual-fields">
+						<div class="form-group">
+							<label for="txt_user_name" class="user-label">Name of the User</label>
+							<input type="text" class="form-control" id="txt_user_name" placeholder="Enter User Name" name="individualname">
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="txt_user_mail">Email Address of the User</label>
-						<input type="text" class="form-control" id="txt_user_mail" placeholder="Enter User Email Address" name="useremail">
+						<div class="form-group">
+							<label for="txt_user_contact">Contact Number of the User</label>
+							<div style="display: flex; gap: 8px;">
+								<select class="form-control" name="usercontactcode" style="max-width: 90px;">
+									<option value="+91">+91</option>
+									<option value="+92">+92</option>
+									<option value="+93">+93</option>
+									<option value="+94">+94</option>
+									<option value="+95">+95</option>
+								</select>
+								<input type="text" class="form-control" id="txt_user_contact" placeholder="Enter User Phone Number" name="usercontact">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="txt_user_mail">Email Address of the User</label>
+							<input type="text" class="form-control" id="txt_user_mail" placeholder="Enter User Email Address" name="useremail">
+						</div>
 					</div>
 					<div class="signup-btns">
 						<button type="button" class="btn btn-secondary" onclick="nextStep(1)"><img src="img/arrow-left.svg" alt="Next" style="height: 20px;width:20px; margin-right: 8px;">Back </button>
@@ -252,8 +287,8 @@ $g1 = new Get_mongodb();
 
 				<!-- Step 3: Address/Security Details -->
 				<div class="form-step" id="step3" style="display:none;">
-					<div class="col-md-12 form_title ">
-						<h2 class="text-muted"><b>Enter Address Details</b></h2>
+					<div class="form_title">
+						<h2 class="text-muted section-heading"><b>Enter Address Details</b></h2>
 					</div>
 					<div class="form-group">
 						<label for="txt_add1">Address1</label>
@@ -263,21 +298,25 @@ $g1 = new Get_mongodb();
 						<label for="txt_add2">Address2</label>
 						<textarea name="address2" id="txt_add2" class="form-control" rows="3" placeholder="Address2"></textarea>
 					</div>
-					<div class="form-group">
-						<label for="txt_city">City</label>
-						<input type="text" class="form-control" id="txt_city" placeholder="City" name="city">
+					<div class="country-state">
+						<div class="col-md-6 form-group">
+							<label for="txt_country">Country</label>
+							<input type="text" class="form-control" id="txt_country" placeholder="Country" name="country">
+						</div>
+						<div class="col-md-6 form-group">
+							<label for="txt_state">State</label>
+							<input type="text" class="form-control" id="txt_state" placeholder="State" name="state">
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="txt_pincode">Pincode</label>
-						<input type="text" class="form-control" id="txt_pincode" placeholder="Pincode" name="pincode">
-					</div>
-					<div class="form-group">
-						<label for="txt_state">State</label>
-						<input type="text" class="form-control" id="txt_state" placeholder="State" name="state">
-					</div>
-					<div class="form-group">
-						<label for="txt_country">Country</label>
-						<input type="text" class="form-control" id="txt_country" placeholder="Country" name="country">
+					<div class="city-pincode">
+						<div class="col-md-6 form-group">
+							<label for="txt_city">City</label>
+							<input type="text" class="form-control" id="txt_city" placeholder="City" name="city">
+						</div>
+						<div class="col-md-6 form-group">
+							<label for="txt_pincode">Pincode</label>
+							<input type="text" class="form-control" id="txt_pincode" placeholder="Pincode" name="pincode">
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="txt_security_question">Security Question</label>
@@ -287,14 +326,14 @@ $g1 = new Get_mongodb();
 						<label for="txt_security_answer">Security Answer</label>
 						<input type="text" class="form-control add-more" id="txt_security_answer" placeholder="Security Answer" name="security_answer">
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="txt_recharge_date">Date of Recharge</label>
 						<input type="text" class="form-control" id="txt_recharge_date" placeholder="Date of Recharge" value="" name="" disabled>
 					</div>
 					<div class="form-group">
 						<label for="txt_total_amount">Total amount to be paid</label>
 						<input type="text" class="form-control add-more" id="txt_total_amount" placeholder="Total Amount to be Paid" name="" disabled>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<?php
 						require_once('recaptcha-php/recaptchalib.php');
@@ -317,13 +356,62 @@ $g1 = new Get_mongodb();
 	<script type="text/javascript" src="js/dmstree_js/sign_validation.js"></script>
 	<script type="text/javascript" src="js/dmstree_js/formvalidation.js"></script>
 	<script>
-		function nextStep(step) {
-			document.querySelectorAll('.form-step').forEach(function(div) {
-				div.style.display = 'none';
-			});
-			document.getElementById('step' + step).style.display = 'block';
-		}
-	</script>
+$(document).ready(function() {
+    // On next button click
+    $('.next-btn').on('click', function(e) {
+        var step = $(this).closest('.form-step').attr('id');
+        var validator = $('#registrationForm').data('bootstrapValidator');
+        var fieldsToValidate = [];
+
+        if (step === 'step1') {
+            fieldsToValidate = ['optionsRadios', 'listbox_size[]', 'listbox_month[]'];
+        } else if (step === 'step2') {
+            fieldsToValidate = [
+                'companyname', 'adminname', 'admincontact', 'adminemail',
+                'individualname', 'usercontact', 'useremail'
+            ];
+        }
+
+        // Validate only the fields in this step
+        var isValid = true;
+        fieldsToValidate.forEach(function(field) {
+            validator.validateField(field);
+            if (!validator.isValidField(field)) {
+                isValid = false;
+            }
+        });
+
+        if (isValid) {
+            // Go to next step
+            var nextStepNum = parseInt(step.replace('step', '')) + 1;
+            $('.form-step').hide();
+            $('#step' + nextStepNum).show();
+        }
+        // else: errors will show inline, do not proceed
+    });
+
+    // On back button click
+    $('.btn-secondary').on('click', function() {
+        var step = $(this).closest('.form-step').attr('id');
+        var prevStepNum = parseInt(step.replace('step', '')) - 1;
+        $('.form-step').hide();
+        $('#step' + prevStepNum).show();
+    });
+
+    function toggleFields() {
+        var selected = $('input[name="optionsRadios"]:checked').val();
+        if (selected === 'Corporate') {
+            $('.individual-fields').hide();
+        } else {
+            $('.individual-fields').show();
+        }
+    }
+    toggleFields();
+    $('input[name="optionsRadios"]').on('change', function() {
+        toggleFields();
+    });
+});
+</script>
 </body>
 
 </html>

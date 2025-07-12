@@ -295,12 +295,12 @@
 
     .signup-link a {
       color: #1B5563;
-      text-decoration: none;
+      /* text-decoration: none; */
       font-weight: 600;
     }
 
     .signup-link a:hover {
-      text-decoration: underline;
+      /* text-decoration: underline; */
     }
 
     .password-toggle {
@@ -394,6 +394,20 @@
       font-weight: 100 900;
       font-style: normal;
     }
+
+    /* Validation error styles for login page */
+    .has-error .form-label,
+    .has-error .form-input,
+    .has-error .form-control {
+      color: #d9534f !important;
+      border-color: #d9534f !important;
+    }
+    .help-block {
+      color: #d9534f !important;
+      font-size: 13px;
+      margin-top: 4px;
+      margin-bottom: 0;
+    }
   </style>
 </head>
 
@@ -433,7 +447,6 @@
               id="email"
               name="username"
               placeholder="Enter your Email"
-              required
               autocomplete="email" />
           </div>
         </div>
@@ -448,7 +461,6 @@
               id="password"
               name="password"
               placeholder="Enter your Password"
-              required
               autocomplete="current-password" />
             <button type="button" class="password-toggle" onclick="togglePassword()">Show</button>
           </div>
@@ -467,11 +479,43 @@
         </button>
 
         <p class="signup-link">
-          New to Nodo.ai? <a href="#">Sign up</a>
+          New to Nodo.ai? <a href="http://localhost/dmstree/dmstree/sign_up.php">Sign up</a>
         </p>
       </form>
     </div>
   </div>
+
+  <!-- jQuery (must be loaded before BootstrapValidator) -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- BootstrapValidator CSS and JS -->
+  <link rel="stylesheet" href="bootstrapvalidator-0.5.0/dist/css/bootstrapValidator.css" />
+  <script type="text/javascript" src="bootstrapvalidator-0.5.0/dist/js/bootstrapValidator.js"></script>
+
+  <script>
+  $(document).ready(function() {
+    $('#loginForm').bootstrapValidator({
+      fields: {
+        username: {
+          validators: {
+            notEmpty: {
+              message: 'The email is required and can\'t be empty'
+            },
+            emailAddress: {
+              message: 'The input is not a valid email address'
+            }
+          }
+        },
+        password: {
+          validators: {
+            notEmpty: {
+              message: 'The password is required and can\'t be empty'
+            }
+          }
+        }
+      }
+    });
+  });
+  </script>
 
   <script>
     function togglePassword() {
@@ -488,15 +532,14 @@
     }
 
     // Form validation
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      if (!email || !password) {
-        e.preventDefault();
-        alert('Please fill in all fields');
-      }
-    });
+    // document.getElementById('loginForm').addEventListener('submit', function(e) {
+    //   const email = document.getElementById('email').value;
+    //   const password = document.getElementById('password').value;
+    //   if (!email || !password) {
+    //     e.preventDefault();
+    //     alert('Please fill in all fields');
+    //   }
+    // });
   </script>
 </body>
 

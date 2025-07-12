@@ -262,6 +262,8 @@ $activepackspace = (float)$activepackspace;
             width: 80%;
             height: 40px;
             background-color: #F6F8F9;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
         .bouquet-add-doc {
@@ -363,6 +365,7 @@ $activepackspace = (float)$activepackspace;
             padding: 5px 1px 5px 1px;
             font-family: 'Inter', Arial, sans-serif;
         }
+
         /* #bouquetForm , .bouquet-add-doc{
             border-top: 1px solid #B8BFBC;
         } */
@@ -400,6 +403,7 @@ $activepackspace = (float)$activepackspace;
                 <div class="row">
                     <div class=" form_title">
                         <h3 class="hr-margin text-muted upload_doc_cls"><b>Create Document Bouquet</b></h3>
+                        <hr>
                     </div>
                     <div class="">
                         <form name="bouquetnameForm" id="bouquetnameForm" method="post" action="search.php">
@@ -424,6 +428,7 @@ $activepackspace = (float)$activepackspace;
                         </div>
                         <div class="bouquet-add-doc">
                             <label class="bouquets-list">Documents In This Bouquet</label>
+                            <hr>
                             <input type="button" class="save_btn_bg_cancel bouquet-addDoc" value="Add Document" onclick="redirect_tosearchPage();" />
                         </div>
 
