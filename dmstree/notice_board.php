@@ -122,6 +122,7 @@ $result = $g1->get_mongodb->getNoticeInfo($userId);
 		background-color: #1B5563;
 		color: #fff;
 		font-weight: 600;
+		border: 1px solid #ccc;
 	}
 
 	.notice-head {
@@ -658,7 +659,7 @@ $result = $g1->get_mongodb->getNoticeInfo($userId);
 			</div>
 		</div>
 	</div>
-	
+
 	<!--------- dash board footer------------------------------------------------>
 	<?php include_once 'footer.php' ?>
 	<!--<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>-->

@@ -3492,7 +3492,7 @@ select[multiple].input-lg {
 
 @media (min-width: 768px) {
   .form-horizontal .control-label {
-    padding-top: 7px;
+    /* padding-top: 7px; */
     margin-bottom: 0;
     text-align: right;
   }
@@ -4346,6 +4346,7 @@ tbody.collapse.in {
   float: left;
   width: 100%;
   margin-bottom: 0;
+  height: 30px;
 }
 
 .input-group-lg>.form-control,

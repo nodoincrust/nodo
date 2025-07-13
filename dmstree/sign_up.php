@@ -63,6 +63,8 @@ $g1 = new Get_mongodb();
 
 	.section-heading1 {
 		margin-left: 15px;
+		display: flex;
+		justify-content: center;
 	}
 
 	.signup-subtitle {
@@ -77,6 +79,7 @@ $g1 = new Get_mongodb();
 	.package-title {
 		margin-left: 15px;
 		font-size: 18px;
+		font-weight: 700;
 		color: #1B5563;
 		font-family: 'Space Grotesk', Arial, sans-serif;
 	}
@@ -222,7 +225,7 @@ $g1 = new Get_mongodb();
 						</div>
 					</div>
 					<p class="signin-link">
-						Alreday a user? <a href="http://localhost/dmstree/dmstree/login.php" style="text-decoration: underline;color: #1B5563">Login</a>
+						Alreday a user? <a href="http://localhost/dmstree/dmstree/login.php" style="text-decoration: underline;color: #1B5563;font-weight: 600;">Login</a>
 					</p>
 				</div>
 
@@ -230,6 +233,8 @@ $g1 = new Get_mongodb();
 				<div class="form-step" id="step2" style="display:none;">
 					<div class="form_title ">
 						<h2 class="text-muted section-heading"><b>Enter Details</b></h2>
+						<!-- <hr style="border: 1px solid #ccc; margin: 20px 0;"> -->
+						<hr>
 					</div>
 					<div class="form-group">
 						<label for="txt_company_name">Name of the Company</label>
@@ -289,6 +294,7 @@ $g1 = new Get_mongodb();
 				<div class="form-step" id="step3" style="display:none;">
 					<div class="form_title">
 						<h2 class="text-muted section-heading"><b>Enter Address Details</b></h2>
+						<hr>
 					</div>
 					<div class="form-group">
 						<label for="txt_add1">Address1</label>
@@ -356,62 +362,62 @@ $g1 = new Get_mongodb();
 	<script type="text/javascript" src="js/dmstree_js/sign_validation.js"></script>
 	<script type="text/javascript" src="js/dmstree_js/formvalidation.js"></script>
 	<script>
-$(document).ready(function() {
-    // On next button click
-    $('.next-btn').on('click', function(e) {
-        var step = $(this).closest('.form-step').attr('id');
-        var validator = $('#registrationForm').data('bootstrapValidator');
-        var fieldsToValidate = [];
+		$(document).ready(function() {
+			// On next button click
+			$('.next-btn').on('click', function(e) {
+				var step = $(this).closest('.form-step').attr('id');
+				var validator = $('#registrationForm').data('bootstrapValidator');
+				var fieldsToValidate = [];
 
-        if (step === 'step1') {
-            fieldsToValidate = ['optionsRadios', 'listbox_size[]', 'listbox_month[]'];
-        } else if (step === 'step2') {
-            fieldsToValidate = [
-                'companyname', 'adminname', 'admincontact', 'adminemail',
-                'individualname', 'usercontact', 'useremail'
-            ];
-        }
+				if (step === 'step1') {
+					fieldsToValidate = ['optionsRadios', 'listbox_size[]', 'listbox_month[]'];
+				} else if (step === 'step2') {
+					fieldsToValidate = [
+						'companyname', 'adminname', 'admincontact', 'adminemail',
+						'individualname', 'usercontact', 'useremail'
+					];
+				}
 
-        // Validate only the fields in this step
-        var isValid = true;
-        fieldsToValidate.forEach(function(field) {
-            validator.validateField(field);
-            if (!validator.isValidField(field)) {
-                isValid = false;
-            }
-        });
+				// Validate only the fields in this step
+				var isValid = true;
+				fieldsToValidate.forEach(function(field) {
+					validator.validateField(field);
+					if (!validator.isValidField(field)) {
+						isValid = false;
+					}
+				});
 
-        if (isValid) {
-            // Go to next step
-            var nextStepNum = parseInt(step.replace('step', '')) + 1;
-            $('.form-step').hide();
-            $('#step' + nextStepNum).show();
-        }
-        // else: errors will show inline, do not proceed
-    });
+				if (isValid) {
+					// Go to next step
+					var nextStepNum = parseInt(step.replace('step', '')) + 1;
+					$('.form-step').hide();
+					$('#step' + nextStepNum).show();
+				}
+				// else: errors will show inline, do not proceed
+			});
 
-    // On back button click
-    $('.btn-secondary').on('click', function() {
-        var step = $(this).closest('.form-step').attr('id');
-        var prevStepNum = parseInt(step.replace('step', '')) - 1;
-        $('.form-step').hide();
-        $('#step' + prevStepNum).show();
-    });
+			// On back button click
+			$('.btn-secondary').on('click', function() {
+				var step = $(this).closest('.form-step').attr('id');
+				var prevStepNum = parseInt(step.replace('step', '')) - 1;
+				$('.form-step').hide();
+				$('#step' + prevStepNum).show();
+			});
 
-    function toggleFields() {
-        var selected = $('input[name="optionsRadios"]:checked').val();
-        if (selected === 'Corporate') {
-            $('.individual-fields').hide();
-        } else {
-            $('.individual-fields').show();
-        }
-    }
-    toggleFields();
-    $('input[name="optionsRadios"]').on('change', function() {
-        toggleFields();
-    });
-});
-</script>
+			function toggleFields() {
+				var selected = $('input[name="optionsRadios"]:checked').val();
+				if (selected === 'Corporate') {
+					$('.individual-fields').hide();
+				} else {
+					$('.individual-fields').show();
+				}
+			}
+			toggleFields();
+			$('input[name="optionsRadios"]').on('change', function() {
+				toggleFields();
+			});
+		});
+	</script>
 </body>
 
 </html>

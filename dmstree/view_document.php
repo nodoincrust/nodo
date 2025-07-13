@@ -591,7 +591,7 @@ if ($usertagdata != 0) {
 <body>
 
     <div class="row row-margin">
-        <div class="col-md-12 col-sm-12 div-padding-left" id="body-content">
+        <div class="col-md-12 col-sm-12" id="body-content">
             <!--------- dash board body------------------------------------------------>
 
             <div class="well div-padding-top">
@@ -679,7 +679,7 @@ if ($usertagdata != 0) {
                             <div class="form-group row">
                                 <div class="col-md-8 col-md-offset-2 add-comment">
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control txt_comment2" id="txt_comment2" placeholder="Comment" value="" name="" style="border: 1px solid #DDE2E4" />
+                                        <input type="text" class="form-control txt_comment2" id="txt_comment2" placeholder="Comment" value="" name="" style="border: 1px solid #DDE2E4;height: 35px" />
                                     </div>
                                     <div class="col-md-2">
                                         <input type="button" id="btn_comment" class="save_btn_bg_cancel" style="background-color: #1B5563;color: white;border:1px solid #DDE2E4;font-family:'Inter', Arial, sans-serif;" value="Comment" />
