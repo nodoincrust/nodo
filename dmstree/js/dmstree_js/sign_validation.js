@@ -17,7 +17,7 @@ $('#registrationForm').bootstrapValidator({
             message: 'The username is not valid',
             validators: {
                 notEmpty: {
-                    message: 'The username is required and can\'t be empty'
+                    message: 'The username is required'
                 },
                 stringLength: {
                     min: 6,
@@ -34,7 +34,7 @@ $('#registrationForm').bootstrapValidator({
             message: 'The company name is not valid',
             validators: {
                 notEmpty: {
-                    message: 'The campany name is required and can\'t be empty'
+                    message: 'The company name is required'
                 },
                 stringLength: {
                     min: 6,
@@ -48,7 +48,7 @@ $('#registrationForm').bootstrapValidator({
             message: 'The admin name is not valid',
             validators: {
                 notEmpty: {
-                    message: 'The admin name is required and can\'t be empty'
+                    message: 'The admin name is required'
                 },
                 stringLength: {
                     min: 5,
@@ -65,7 +65,7 @@ $('#registrationForm').bootstrapValidator({
             message: 'The user name is not valid',
             validators: {
                 notEmpty: {
-                    message: 'The user name is required and can\'t be empty'
+                    message: 'The user name is required'
                 },
                 stringLength: {
                     min: 6,
@@ -82,7 +82,7 @@ $('#registrationForm').bootstrapValidator({
             message: 'The contact number is not valid',
             validators: {
                 notEmpty: {
-                    message: 'The contact number is required and can\'t be empty'
+                    message: 'The contact number is required'
                 },
                 stringLength: {
                     min: 10,
@@ -99,7 +99,7 @@ $('#registrationForm').bootstrapValidator({
             message: 'The admin contact number is not valid',
             validators: {
                 notEmpty: {
-                    message: 'The admin contact number is required and can\'t be empty'
+                    message: 'The admin contact number is required'
                 },
                 stringLength: {
                     min: 10,
@@ -116,7 +116,7 @@ $('#registrationForm').bootstrapValidator({
             message: 'The user contact number is not valid',
             validators: {
                 notEmpty: {
-                    message: 'The user contact number is required and can\'t be empty'
+                    message: 'The user contact number is required'
                 },
                 stringLength: {
                     min: 10,
@@ -132,7 +132,7 @@ $('#registrationForm').bootstrapValidator({
         adminemail: {
             validators: {
                 notEmpty: {
-                    message: 'The admin email address is required and can\'t be empty'
+                    message: 'The admin email address is required'
                 },
 
                 emailAddress: {
@@ -143,7 +143,7 @@ $('#registrationForm').bootstrapValidator({
         useremail: {
             validators: {
                 notEmpty: {
-                    message: 'The user email address is required and can\'t be empty'
+                    message: 'The user email address is required'
                 },
                 emailAddress: {
                     message: 'The input is not a valid email address'
@@ -153,7 +153,7 @@ $('#registrationForm').bootstrapValidator({
         password: {
             validators: {
                 notEmpty: {
-                    message: 'The password is required and can\'t be empty'
+                    message: 'The password is required'
                 },
                 identical: {
                     field: 'confirmPassword',
@@ -164,7 +164,7 @@ $('#registrationForm').bootstrapValidator({
         confirmPassword: {
             validators: {
                 notEmpty: {
-                    message: 'The confirm password is required and can\'t be empty'
+                    message: 'The confirm password is required'
                 },
                 identical: {
                     field: 'password',
@@ -242,7 +242,7 @@ $('#registrationForm').bootstrapValidator({
 
             validators: {
                 notEmpty: {
-                    message: 'The city is required and can\'t be empty'
+                    message: 'The city is required'
                 },
                 regexp: {
                     regexp: /^[a-zA-Z\ ]+$/,
@@ -253,7 +253,7 @@ $('#registrationForm').bootstrapValidator({
         state: {
             validators: {
                 notEmpty: {
-                    message: 'The state is required and can\'t be empty'
+                    message: 'The state is required'
                 },
                 regexp: {
                     regexp: /^[a-zA-Z\ ]+$/,
@@ -264,7 +264,7 @@ $('#registrationForm').bootstrapValidator({
         country: {
             validators: {
                 notEmpty: {
-                    message: 'The country is required and can\'t be empty'
+                    message: 'The country is required'
                 },
                 regexp: {
                     regexp: /^[a-zA-Z\ ]+$/,
@@ -275,7 +275,7 @@ $('#registrationForm').bootstrapValidator({
         recaptcha_response_field: {
             validators: {
                 notEmpty: {
-                    message: 'The captcha is required and can\'t be empty'
+                    message: 'The captcha is required'
                 }
             }
 
@@ -283,7 +283,7 @@ $('#registrationForm').bootstrapValidator({
         pincode: {
             validators: {
                 notEmpty: {
-                    message: 'The pincode is required and can\'t be empty'
+                    message: 'The pincode is required'
                 },
                 stringLength: {
                     min: 6,

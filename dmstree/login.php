@@ -498,7 +498,7 @@
         username: {
           validators: {
             notEmpty: {
-              message: 'The email is required and can\'t be empty'
+              message: 'The email is required'
             },
             emailAddress: {
               message: 'The input is not a valid email address'
@@ -508,7 +508,7 @@
         password: {
           validators: {
             notEmpty: {
-              message: 'The password is required and can\'t be empty'
+              message: 'The password is required'
             }
           }
         }

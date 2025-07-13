@@ -225,7 +225,7 @@ $g1 = new Get_mongodb();
 						</div>
 					</div>
 					<p class="signin-link">
-						Alreday a user? <a href="http://localhost/dmstree/dmstree/login.php" style="text-decoration: underline;color: #1B5563;font-weight: 600;">Login</a>
+						Alreday a user? <a href="http://localhost/dmstree/dmstree/login.php" style="text-decoration: underline;color: #1B5563;font-weight: 600;margin-left: 5px;">Login</a>
 					</p>
 				</div>
 
