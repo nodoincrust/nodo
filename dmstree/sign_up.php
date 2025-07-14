@@ -64,7 +64,7 @@ $g1 = new Get_mongodb();
 	.section-heading1 {
 		margin-left: 15px;
 		display: flex;
-		justify-content: center;
+		/* justify-content: center; */
 	}
 
 	.signup-subtitle {

@@ -746,6 +746,18 @@ $activepackspace = (float)$activepackspace;
         .modern-btn:hover {
             background: #e0e0e0;
         }
+        .footer-fixed {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            /* z-index: 999; */
+            /* background: #fff; */
+            /* box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
+        }
+        #body-content {
+            padding-bottom: 60px; 
+        }
     </style>
 </head>
 

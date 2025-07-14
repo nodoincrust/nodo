@@ -237,7 +237,8 @@ $activepackspace = (float)$activepackspace;
             display: flex;
             gap: 8px;
             justify-content: end;
-            margin-top: 10px;
+            margin-top: 12px;
+            margin-left: 15px;
 
         }
 
@@ -364,6 +365,10 @@ $activepackspace = (float)$activepackspace;
             border-radius: 6px;
             padding: 5px 1px 5px 1px;
             font-family: 'Inter', Arial, sans-serif;
+        }
+
+        body {
+            overflow: hidden;
         }
 
         /* #bouquetForm , .bouquet-add-doc{

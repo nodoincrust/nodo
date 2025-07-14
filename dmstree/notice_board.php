@@ -116,6 +116,7 @@ $result = $g1->get_mongodb->getNoticeInfo($userId);
 
 	body {
 		font-family: 'Inter', Arial, sans-serif;
+		overflow: hidden;
 	}
 
 	.create-notice-btn {

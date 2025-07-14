@@ -533,6 +533,21 @@ foreach ($taglist[0]['TagList'] as $key) {
             height: 16px;
             width: 16px;
         }
+        body {
+            overflow: hidden;
+        }
+        .footer-fixed {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            /* z-index: 999;
+            background: #fff;
+            box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
+        }
+        #body-content {
+            padding-bottom: 60px; 
+        }
     </style>
 
     <script src="facebox-master/src/facebox.js" type="text/javascript"></script>

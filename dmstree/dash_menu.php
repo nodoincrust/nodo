@@ -91,23 +91,23 @@
     margin-top: -8px; */
         /* height: 873px; */
         height: 100%;
-        width: 250px;
+        /* width: 250px; */
         display: flex;
         flex-direction: column;
         background: #ffffff;
         /* margin-top: -18px; */
         position: relative;
-        bottom: 61px;
+        bottom: 71px;
         margin-left: -13px;
     }
 
     .logo-container {
-        width: 230px;
+        /* width: 230px; */
         height: 30px;
         display: flex;
         justify-content: space-between;
         flex-direction: row;
-        margin-top: 24px;
+        margin-top: 38px;
         margin-left: 5px;
     }
 
@@ -475,7 +475,7 @@
         </div>
 
         <!-- <button > -->
-            <img src="img/layout-left.svg" class="close-layout-img" alt="Collapse" onclick="toggleSidebar()" style="border:none;background:none;cursor:pointer" />
+            <img src="img/layout-left.svg" class="close-layout-img" alt="Collapse" onclick="toggleSidebar()" style="border:none;background:none;cursor:pointer;margin-right: 10px;" />
         <!-- </button> -->
 
     </div>
