@@ -371,6 +371,16 @@ $activepackspace = (float)$activepackspace;
             overflow: hidden;
         }
 
+        .footer-fixed {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            /* z-index: 999; */
+            background: #fff;
+            /* box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
+        }
+
         /* #bouquetForm , .bouquet-add-doc{
             border-top: 1px solid #B8BFBC;
         } */
@@ -383,12 +393,12 @@ $activepackspace = (float)$activepackspace;
     <?php include_once 'header.php'; ?>
 
     <div class="row row-margin">
-        <div class="col-md-3 col-sm-3">
+        <div class="col-md-3 col-sm-3" style="background-color: #FFFFFF;">
             <!--------- dash board side menu------------------------------------------------>
             <?php include_once 'dash_menu.php' ?>
         </div>
 
-        <div class="col-md-9 col-sm-9 main-bouquet">
+        <div class="col-md-9 col-sm-9 main-bouquet div-padding-left">
             <!-- <div class="col-md-9 col-sm-9 div-padding-left"> -->
             <!-- <div class="row">
                 <p class="spaceerror col-md-12" style="color:red"> </p>
@@ -540,7 +550,7 @@ $activepackspace = (float)$activepackspace;
         </div>
     </div>
     <!--------- dash board footer------------------------------------------------>
-    <?php include_once 'footer.php' ?>
+    <div class="footer-fixed"><?php include_once 'footer.php' ?></div>
     <script src="jqueryui/ui/minified/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/dmstree_js/document_bouquet_page.js"></script>
 </body>

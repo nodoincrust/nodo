@@ -489,6 +489,20 @@ $result = $g1->get_mongodb->getNoticeInfo($userId);
 		padding-right: 15px;
 		/* to avoid content hiding under scrollbar */
 	}
+
+	#body-content3 {
+		padding-bottom: 85px;
+	}
+
+	.footer-fixed {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		/* z-index: 999; */
+		background: #fff;
+		/* box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
+	}
 </style>
 
 <body>
@@ -497,11 +511,12 @@ $result = $g1->get_mongodb->getNoticeInfo($userId);
 	<?php include_once 'header.php'; ?>
 
 	<div class="row row-margin">
-		<div class="col-md-3 col-sm-3 div-padding-top">
+		<div class="col-md-3 col-sm-3" style="background-color: #FFFFFF;">
 			<!--------- dash board side menu------------------------------------------------>
 			<?php include_once 'dash_menu.php' ?>
 		</div>
-		<div class="col-md-9 col-sm-9 div-padding-left" id="">
+		<!-- <div class="col-md-9 col-sm-9" id=""> -->
+		<div class="col-md-9 div-padding-left" id="body-content3">
 			<div class="row">
 				<p class="spaceerror col-md-12" style="color:red"> </p>
 			</div>
@@ -659,10 +674,12 @@ $result = $g1->get_mongodb->getNoticeInfo($userId);
 				</div>
 			</div>
 		</div>
+
+
 	</div>
+	<div class="footer-fixed"><?php include_once 'footer.php' ?></div>
 
 	<!--------- dash board footer------------------------------------------------>
-	<?php include_once 'footer.php' ?>
 	<!--<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>-->
 	<script src="js/dmstree_js/readmore.js"></script>
 	<script src="jqueryui/ui/minified/jquery-ui.min.js"></script>

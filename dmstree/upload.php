@@ -623,12 +623,12 @@
         <?php include_once 'header.php'; ?> 
         <div class="row row-margin">
         <!-- <div class="col-md-3 col-sm-3 div-padding-top" id="body1"> -->
-            <div class="col-md-3 col-sm-3" id="body1">
+            <div class="col-md-3 col-sm-3" id="body1" style="background-color: #FFFFFF;">
                 <?php include_once'dash_menu.php'?>  
         </div>
-        <div class="col-md-9 col-sm-9 div-padding-left" id="body-content">
+        <div class="col-md-9 col-sm-9" id="body-content">
             <!-- <div class="row">
-                <p class="spaceerror col-md-12" style="color:red"> </p>
+                <p class="spaceerror col-md-12 " style="color:red"> </p>
             </div>  -->
             <div class="upload_temp div-padding-top" >
                  <div class="row">

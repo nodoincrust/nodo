@@ -533,20 +533,27 @@ foreach ($taglist[0]['TagList'] as $key) {
             height: 16px;
             width: 16px;
         }
+
         body {
             overflow: hidden;
         }
+
+        #body-content1 {
+            padding-bottom: 85px;
+        }
+
         .footer-fixed {
             position: fixed;
             left: 0;
             bottom: 0;
             width: 100%;
-            /* z-index: 999;
+            /* z-index: 999; */
             background: #fff;
-            box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
+            /* box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
         }
-        #body-content {
-            padding-bottom: 60px; 
+
+        .save-tag-doccheckout {
+            background-color: #1B5563;
         }
     </style>
 
@@ -562,7 +569,7 @@ foreach ($taglist[0]['TagList'] as $key) {
 
     <div class="row row-margin">
 
-        <div class="col-md-3 col-sm-3" id="body1">
+        <div class="col-md-3 col-sm-3" style="background-color: #FFFFFF;" id="body1">
 
             <!-- <div class="col-md-3 col-sm-3 div-padding-top" id="body1"> -->
 
@@ -570,7 +577,7 @@ foreach ($taglist[0]['TagList'] as $key) {
 
         </div>
 
-        <div class="col-md-9 col-sm-9 div-padding-left" id="body-content">
+        <div class="col-md-9 col-sm-9 div-padding-left" id="body-content1">
 
             <!-- <div class="row">
 
@@ -858,7 +865,7 @@ foreach ($taglist[0]['TagList'] as $key) {
 
                                                     <!-- <input type="button" id="btn_comment" class="btn ctrl-btn btn_comment" value="Comment"> -->
 
-                                                    <input type="button" id="btn_comment" class="save_btn_bg_cancel btn-success" value="Comment">
+                                                    <input type="button" id="btn_comment" class="save_btn_bg_cancel" value="Comment">
 
                                                 </div>
 
@@ -937,7 +944,7 @@ foreach ($taglist[0]['TagList'] as $key) {
 
                                                         <!-- <input type="button" id="btn_tag btn_tags" class="btn ctrl-btn btn_tags" value="Save Tags" onclick="add_tags(this)"> -->
 
-                                                        <input type="button" id="btn_tag btn_tags" class="save_btn_bg_cancel btn-success" value="Save Tags" onclick="add_tags(this)">
+                                                        <input type="button" id="btn_tag btn_tags" class="save_btn_bg_cancel save-tag-doccheckout" value="Save Tags" onclick="add_tags(this)">
 
                                                     </div>
 
@@ -977,8 +984,7 @@ foreach ($taglist[0]['TagList'] as $key) {
 
     <!--------- dash board footer------------------------------------------------>
 
-    <?php include_once 'footer.php' ?>
-
+    <div class="footer-fixed"><?php include_once 'footer.php' ?></div>
     <script type="text/javascript" src="js/dmstree_js/document_checkout_page.js"></script>
 
 

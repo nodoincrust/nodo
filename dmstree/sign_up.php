@@ -55,7 +55,7 @@ $g1 = new Get_mongodb();
 	}
 
 	.text-muted {
-		font-size: 26px;
+		font-size: 32px;
 		/* margin-left: 15px; */
 		font-weight: 700;
 		columns: #1B5563;
@@ -144,6 +144,431 @@ $g1 = new Get_mongodb();
 	.form-control {
 		background-color: #FAFAFA !important;
 	}
+
+	@font-face {
+		font-family: 'Space Grotesk';
+		src: url('fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+		font-weight: 400 700;
+		font-style: normal;
+	}
+
+	.main-title,
+	.welcome-heading {
+		font-family: 'Space Grotesk', Arial, sans-serif !important;
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		background: #f8f9fa;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
+
+	.header {
+		background: #FFDA79;
+		padding: 10px 55px;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.logo {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-weight: 600;
+		font-size: 18px;
+		color: #1B5563;
+	}
+
+	.logo-icon {
+		width: 24px;
+		height: 24px;
+		background: #1B5563;
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		font-weight: bold;
+		font-size: 12px;
+	}
+
+	.main-container {
+		flex: 1;
+		display: flex;
+		min-height: calc(100vh - 64px);
+		/* overflow: hidden; */
+	}
+
+	.left-section {
+		/* height: 100vh; */
+		flex: 1;
+		/* background: rgba(255, 218, 121, 0.3); */
+		background: linear-gradient(to bottom right, #FCF5E5, #FFFDE6);
+		padding: 0px 55px;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+	}
+
+	.content-wrapper {
+		max-width: 550px;
+		text-align: start;
+	}
+
+	.main-title {
+		font-size: 32px;
+		font-weight: 700;
+		font-family: 'Space Grotesk', Arial, sans-serif;
+		color: #1B5563;
+		line-height: 1.2;
+		margin-bottom: 16px;
+	}
+
+	.subtitle {
+		font-size: 16px;
+		color: #6c757d;
+		margin-bottom: 20px;
+		line-height: 1.5;
+		font-family: 'Inter', Arial, sans-serif;
+	}
+
+	/* .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    } */
+
+	/* .feature-card {
+      background-color: #FFEAAD;
+      border-radius: 16px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    } */
+
+	/* .feature-card:hover {
+      transform: translateY(-4px);
+    } */
+
+	.feature-icon {
+		width: 48px;
+		height: 48px;
+		border-radius: 8px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 24px;
+	}
+
+	.folder-icon {
+		background: #ffd43b;
+		color: #b8860b;
+	}
+
+	.cloud-icon {
+		background: #87ceeb;
+		color: #4682b4;
+	}
+
+	.chip-icon {
+		background: #ffb347;
+		color: #d2691e;
+	}
+
+	.shield-icon {
+		background: #98fb98;
+		color: #228b22;
+	}
+
+	.right-section {
+		/* height: 100vh; */
+		overflow-y: scroll;
+		/* width: 575px; */
+		background: white;
+		/* padding: 60px 60px; */
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+	}
+
+	.login-form {
+		width: 100%;
+		max-width: 450px;
+	}
+
+	.login-title {
+		margin-bottom: 20px;
+	}
+
+	.login-title h2 {
+		font-size: 32px;
+		font-weight: 700;
+		color: #1B5563;
+		margin-bottom: 8px;
+	}
+
+	.welcome-subtitle {
+		font-size: 16px;
+		color: #6c757d;
+		font-weight: 400;
+		font-family: 'Inter', Arial, sans-serif;
+	}
+
+	.form-group {
+		margin-bottom: 20px;
+	}
+
+	.form-label {
+		display: block;
+		font-weight: 500;
+		font-size: 14px;
+		color: #374151;
+		margin-bottom: 8px;
+	}
+
+	.input-wrapper {
+		position: relative;
+	}
+
+	.form-input {
+		width: 100%;
+		padding: 12px 16px 12px 44px;
+		border: 1px solid #d1d5db;
+		border-radius: 8px;
+		background: #f9fafb;
+		font-size: 14px;
+		color: #374151;
+		transition: all 0.2s ease;
+	}
+
+	.form-input:focus {
+		outline: none;
+		border-color: #1B5563;
+		background: white;
+		box-shadow: 0 0 0 3px rgba(27, 85, 99, 0.1);
+	}
+
+	.input-icon {
+		position: absolute;
+		left: 14px;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 16px;
+		height: 16px;
+		color: #9ca3af;
+		pointer-events: none;
+	}
+
+	.form-options {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 24px;
+	}
+
+	.remember-me {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 14px;
+		color: #374151;
+		cursor: pointer;
+	}
+
+	.remember-me input[type="checkbox"] {
+		width: 16px;
+		height: 16px;
+		accent-color: #1B5563;
+	}
+
+	.forgot-password {
+		color: #1B5563;
+		font-size: 14px;
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	.forgot-password:hover {
+		text-decoration: underline;
+	}
+
+	.login-button {
+		width: 100%;
+		padding: 12px;
+		background: #1B5563;
+		color: white;
+		border: none;
+		border-radius: 8px;
+		font-size: 16px;
+		font-weight: 600;
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+		margin-bottom: 24px;
+	}
+
+	.login-button:hover {
+		background: #164449;
+	}
+
+	.login-button:active {
+		transform: translateY(1px);
+	}
+
+	.signup-link {
+		text-align: center;
+		font-size: 14px;
+		color: #6c757d;
+	}
+
+	.signup-link a {
+		color: #1B5563;
+		/* text-decoration: none; */
+		font-weight: 600;
+	}
+
+	.signup-link a:hover {
+		/* text-decoration: underline; */
+	}
+
+	.password-toggle {
+		position: absolute;
+		right: 12px;
+		top: 50%;
+		transform: translateY(-50%);
+		background: none;
+		border: none;
+		color: #6c757d;
+		cursor: pointer;
+		font-size: 12px;
+		padding: 4px;
+	}
+
+	.password-toggle:hover {
+		color: #1B5563;
+	}
+
+	..container-narrow {
+			{
+			width: 500px !important;
+		}
+
+		@media (max-width: 968px) {
+			.main-container {
+				flex-direction: column;
+			}
+
+			.left-section {
+				padding: 30px 20px;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.right-section {
+				width: 100%;
+				padding: 40px 20px;
+				justify-content: center;
+				align-items: center;
+			}
+
+			/* .features-grid {
+        grid-template-columns: 1fr;
+      } */
+		}
+
+		/* Laptops - 1025px to 1280px */
+		@media (min-width: 1025px) and (max-width: 1280px) {
+			.header {
+				padding: 10px 57px;
+			}
+
+		}
+
+		/* Desktops (HD+) - 1281px and above */
+		@media (min-width: 1281px) {
+			.header {
+				padding: 10px 57px;
+			}
+
+			.left-section {
+				height: fit-content;
+			}
+
+			.right-section {
+				height: fit-content;
+			}
+		}
+
+
+		/* .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 20px;
+      background-color: #FFF0CA;
+      light background
+      border-radius: 20px;
+    } */
+
+		/* .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(255, 180, 50, 0.3);
+    } */
+
+		.feature-icon {
+			font-size: 48px;
+			color: #ffb700;
+			filter: drop-shadow(0 2px 4px rgba(255, 200, 0, 0.4));
+		}
+
+		@font-face {
+			font-family: 'Inter';
+			src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+			font-weight: 100 900;
+			font-style: normal;
+		}
+
+		/* Validation error styles for login page */
+		.has-error .form-label,
+		.has-error .form-input,
+		.has-error .form-control {
+			color: #d9534f !important;
+			border-color: #d9534f !important;
+		}
+
+		.help-block {
+			color: #d9534f !important;
+			font-size: 13px;
+			margin-top: 4px;
+			margin-bottom: 0;
+		}
+
+		.div-padding-top {
+			padding-top: 0px;
+			/* margin-top: 160px; */
+		}
+
+		/* #step2 {
+			margin-top: 200px;
+			margin-bottom: 20px;
+		}
+
+		#step3 {
+			margin-top: 200px;
+			margin-bottom: 20px;
+		} */
 </style>
 
 <body>
@@ -158,181 +583,200 @@ $g1 = new Get_mongodb();
 	</div> -->
 
 	<!--Registration Page -->
-	<div class="container form_container well container-narrow div-padding-top">
-		<!-- Form start-->
-		<div class="row">
-			<!--                                <form id="formDemo" method="post" class="form-horizontal col-md-12 form-action" action="sign_up_process.php">
+	<div class="header">
+		<div class="logo">
+			<img src="img/Logo.svg" alt="DMS Logo">
+		</div>
+	</div>
+	<div class="main-container">
+		<div class="main-container">
+			<div class="left-section">
+				<div class="content-wrapper">
+					<h1 class="main-title">Intelligent Document Management, Powered by AI</h1>
+					<p class="subtitle">Nodo AI helps you store, organize, edit and summarize your business documents - all in one secure platform.</p>
+
+					<div class="features-grid">
+						<img src="img/Features.svg" alt="Features" style="width:100%;height:auto;display:block;" />
+					</div>
+				</div>
+			</div>
+
+			<div class="right-section">
+				<div class="container container-narrow div-padding-top">
+					<!-- Form start-->
+					<div class="row">
+						<!--                                <form id="formDemo" method="post" class="form-horizontal col-md-12 form-action" action="sign_up_process.php">
                                   <input type="text" class="form-control" id="txtname" placeholder="Name" name="name">  
                                   <input type="button" class="form-control" id="btnsubmit" name="btnsubmit" value="submit" onclick="sumitForm();">
                                 </form>-->
-			<form id="registrationForm" method="post" class="form-horizontal col-md-12 form-action" action="sign_up_process.php">
-				<!-- Step 1: Package Selection -->
-				<div class="form-step" id="step1">
-					<div class="col-md-12 form_title ">
-						<h2 class="text-muted section-heading1"><b>Create Your Nodo AI Account</b></h2>
-						<p class="signup-subtitle">Organize, edit, and search files - all in one secure platform.</p>
-					</div>
-					<div class="row gap">
-						<div class="select-package-type">
-							<h4 class="package-title">Select Package</h4>
-							<div class="col-md-6 form-group">
-								<div class="radio">
-									<label>
-										<input type="radio" name="optionsRadios" id="rd_individual" value="Individual">
-										Individual
-									</label>
+						<form id="registrationForm" method="post" class="form-horizontal col-md-12 form-action" action="sign_up_process.php">
+							<!-- Step 1: Package Selection -->
+							<div class="form-step" id="step1">
+								<div class="col-md-12 form_title ">
+									<h2 class="text-muted section-heading1"><b>Create Your Nodo AI Account</b></h2>
+									<p class="signup-subtitle">Organize, edit, and search files - all in one secure platform.</p>
 								</div>
-							</div>
-							<div class="col-md-6 form-group">
-								<div class="radio">
-									<label>
-										<input type="radio" name="optionsRadios" id="rd_corporate" value="Corporate">
-										Corporate
-									</label>
+								<div class="row gap">
+									<div class="select-package-type">
+										<h4 class="package-title">Select Package</h4>
+										<div class="col-md-6 form-group">
+											<div class="radio">
+												<label>
+													<input type="radio" name="optionsRadios" id="rd_individual" value="Individual">
+													Individual
+												</label>
+											</div>
+										</div>
+										<div class="col-md-6 form-group">
+											<div class="radio">
+												<label>
+													<input type="radio" name="optionsRadios" id="rd_corporate" value="Corporate">
+													Corporate
+												</label>
+											</div>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row form-group">
-						<div class="col-md-6">
-							<div class="row">
-								<label for="" class="col-md-6 col-sm-6 control-label package-size">Package in Size</label>
-								<div class="col-md-6 col-sm-6">
-									<select size="2" name="listbox_size[]" class="form-control select_size" multiple>
-									</select>
+								<div class="row form-group">
+									<div class="col-md-6">
+										<div class="row">
+											<label for="" class="col-md-6 col-sm-6 control-label package-size">Package in Size</label>
+											<div class="col-md-6 col-sm-6">
+												<select size="2" name="listbox_size[]" class="form-control select_size" multiple>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="row">
+											<label for="" class="col-md-6 col-sm-6 control-label div-padding-menu package-duration">Package in Duration</label>
+											<div class="col-md-6 col-sm-6">
+												<select size="1" name="listbox_month[]" class="form-control select_month" multiple>
+												</select>
+											</div>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="row">
-								<label for="" class="col-md-6 col-sm-6 control-label div-padding-menu package-duration">Package in Duration</label>
-								<div class="col-md-6 col-sm-6">
-									<select size="1" name="listbox_month[]" class="form-control select_month" multiple>
-									</select>
+								<div class="signup-btns">
+									<div class="form-group view-package">
+										<label><a href="package_info.php" rel="facebox" class="view-package2">View all Package Details</a></label>
+									</div>
+									<div class="view-package-next">
+										<button type="button" class="btn next-btn" onclick="nextStep(2)">
+											Next
+											<img src="img/arrow-right.svg" alt="Next" style="height: 20px;width:20px; margin-left: 8px;">
+										</button>
+									</div>
 								</div>
+								<p class="signin-link">
+									Alreday a user? <a href="http://localhost/dmstree/dmstree/login.php" style="text-decoration: underline;color: #1B5563;font-weight: 600;margin-left: 5px;">Login</a>
+								</p>
 							</div>
-						</div>
-					</div>
-					<div class="signup-btns">
-						<div class="form-group view-package">
-							<label><a href="package_info.php" rel="facebox" class="view-package2">View all Package Details</a></label>
-						</div>
-						<div class="view-package-next">
-							<button type="button" class="btn next-btn" onclick="nextStep(2)">
-								Next
-								<img src="img/arrow-right.svg" alt="Next" style="height: 20px;width:20px; margin-left: 8px;">
-							</button>
-						</div>
-					</div>
-					<p class="signin-link">
-						Alreday a user? <a href="http://localhost/dmstree/dmstree/login.php" style="text-decoration: underline;color: #1B5563;font-weight: 600;margin-left: 5px;">Login</a>
-					</p>
-				</div>
 
-				<!-- Step 2: Company/Admin/User Details -->
-				<div class="form-step" id="step2" style="display:none;">
-					<div class="form_title ">
-						<h2 class="text-muted section-heading"><b>Enter Details</b></h2>
-						<!-- <hr style="border: 1px solid #ccc; margin: 20px 0;"> -->
-						<hr>
-					</div>
-					<div class="form-group">
-						<label for="txt_company_name">Name of the Company</label>
-						<input type="text" class="form-control" id="txt_company_name" placeholder="Enter your Company Name" name="companyname">
-					</div>
-					<div class="form-group">
-						<label for="txt_admin_name">Name of the Admin</label>
-						<input type="text" class="form-control" id="txt_admin_name" placeholder="Enter Admin Name" name="adminname">
-					</div>
-					<div class="form-group">
-						<label for="txt_admin_contact">Contact Number of Admin</label>
-						<div style="display: flex; gap: 8px;">
-							<select class="form-control" name="admincontactcode" style="max-width: 90px;">
-								<option value="+91">+91</option>
-								<option value="+92">+92</option>
-								<option value="+93">+93</option>
-								<option value="+94">+94</option>
-								<option value="+95">+95</option>
-							</select>
-							<input type="text" class="form-control" id="txt_admin_contact" placeholder="Enter Admin Phone Number" name="admincontact">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="txt_admin_mail">Email Address of the Admin</label>
-						<input type="text" class="form-control" id="txt_admin_mail" placeholder="Enter Admin Email Address" name="adminemail">
-					</div>
-					<div class="individual-fields">
-						<div class="form-group">
-							<label for="txt_user_name" class="user-label">Name of the User</label>
-							<input type="text" class="form-control" id="txt_user_name" placeholder="Enter User Name" name="individualname">
-						</div>
-						<div class="form-group">
-							<label for="txt_user_contact">Contact Number of the User</label>
-							<div style="display: flex; gap: 8px;">
-								<select class="form-control" name="usercontactcode" style="max-width: 90px;">
-									<option value="+91">+91</option>
-									<option value="+92">+92</option>
-									<option value="+93">+93</option>
-									<option value="+94">+94</option>
-									<option value="+95">+95</option>
-								</select>
-								<input type="text" class="form-control" id="txt_user_contact" placeholder="Enter User Phone Number" name="usercontact">
+							<!-- Step 2: Company/Admin/User Details -->
+							<div class="form-step" id="step2" style="display:none;margin-top: 200px;margin-bottom: 20px;">
+								<div class="form_title ">
+									<h2 class="text-muted section-heading"><b>Enter Details</b></h2>
+									<!-- <hr style="border: 1px solid #ccc; margin: 20px 0;"> -->
+									<hr>
+								</div>
+								<div class="form-group">
+									<label for="txt_company_name">Name of the Company</label>
+									<input type="text" class="form-control" id="txt_company_name" placeholder="Enter your Company Name" name="companyname">
+								</div>
+								<div class="form-group">
+									<label for="txt_admin_name">Name of the Admin</label>
+									<input type="text" class="form-control" id="txt_admin_name" placeholder="Enter Admin Name" name="adminname">
+								</div>
+								<div class="form-group">
+									<label for="txt_admin_contact">Contact Number of Admin</label>
+									<div style="display: flex; gap: 8px;">
+										<select class="form-control" name="admincontactcode" style="max-width: 90px;">
+											<option value="+91">+91</option>
+											<option value="+92">+92</option>
+											<option value="+93">+93</option>
+											<option value="+94">+94</option>
+											<option value="+95">+95</option>
+										</select>
+										<input type="text" class="form-control" id="txt_admin_contact" placeholder="Enter Admin Phone Number" name="admincontact">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="txt_admin_mail">Email Address of the Admin</label>
+									<input type="text" class="form-control" id="txt_admin_mail" placeholder="Enter Admin Email Address" name="adminemail">
+								</div>
+								<div class="individual-fields">
+									<div class="form-group">
+										<label for="txt_user_name" class="user-label">Name of the User</label>
+										<input type="text" class="form-control" id="txt_user_name" placeholder="Enter User Name" name="individualname">
+									</div>
+									<div class="form-group">
+										<label for="txt_user_contact">Contact Number of the User</label>
+										<div style="display: flex; gap: 8px;">
+											<select class="form-control" name="usercontactcode" style="max-width: 90px;">
+												<option value="+91">+91</option>
+												<option value="+92">+92</option>
+												<option value="+93">+93</option>
+												<option value="+94">+94</option>
+												<option value="+95">+95</option>
+											</select>
+											<input type="text" class="form-control" id="txt_user_contact" placeholder="Enter User Phone Number" name="usercontact">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="txt_user_mail">Email Address of the User</label>
+										<input type="text" class="form-control" id="txt_user_mail" placeholder="Enter User Email Address" name="useremail">
+									</div>
+								</div>
+								<div class="signup-btns">
+									<button type="button" class="btn btn-secondary" onclick="nextStep(1)"><img src="img/arrow-left.svg" alt="Next" style="height: 20px;width:20px; margin-right: 8px;">Back </button>
+									<button type="button" class="btn next-btn" onclick="nextStep(3)">Next <img src="img/arrow-right.svg" alt="Next" style="height: 20px;width:20px; margin-left: 8px;"></button>
+								</div>
 							</div>
-						</div>
-						<div class="form-group">
-							<label for="txt_user_mail">Email Address of the User</label>
-							<input type="text" class="form-control" id="txt_user_mail" placeholder="Enter User Email Address" name="useremail">
-						</div>
-					</div>
-					<div class="signup-btns">
-						<button type="button" class="btn btn-secondary" onclick="nextStep(1)"><img src="img/arrow-left.svg" alt="Next" style="height: 20px;width:20px; margin-right: 8px;">Back </button>
-						<button type="button" class="btn next-btn" onclick="nextStep(3)">Next <img src="img/arrow-right.svg" alt="Next" style="height: 20px;width:20px; margin-left: 8px;"></button>
-					</div>
-				</div>
 
-				<!-- Step 3: Address/Security Details -->
-				<div class="form-step" id="step3" style="display:none;">
-					<div class="form_title">
-						<h2 class="text-muted section-heading"><b>Enter Address Details</b></h2>
-						<hr>
-					</div>
-					<div class="form-group">
-						<label for="txt_add1">Address1</label>
-						<textarea name="address1" id="txt_add1" class="form-control" rows="3" placeholder="Address1"></textarea>
-					</div>
-					<div class="form-group">
-						<label for="txt_add2">Address2</label>
-						<textarea name="address2" id="txt_add2" class="form-control" rows="3" placeholder="Address2"></textarea>
-					</div>
-					<div class="country-state">
-						<div class="col-md-6 form-group">
-							<label for="txt_country">Country</label>
-							<input type="text" class="form-control" id="txt_country" placeholder="Country" name="country">
-						</div>
-						<div class="col-md-6 form-group">
-							<label for="txt_state">State</label>
-							<input type="text" class="form-control" id="txt_state" placeholder="State" name="state">
-						</div>
-					</div>
-					<div class="city-pincode">
-						<div class="col-md-6 form-group">
-							<label for="txt_city">City</label>
-							<input type="text" class="form-control" id="txt_city" placeholder="City" name="city">
-						</div>
-						<div class="col-md-6 form-group">
-							<label for="txt_pincode">Pincode</label>
-							<input type="text" class="form-control" id="txt_pincode" placeholder="Pincode" name="pincode">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="txt_security_question">Security Question</label>
-						<input type="text" class="form-control add-more" id="txt_security_question" placeholder="Security Question" name="security_question">
-					</div>
-					<div class="form-group">
-						<label for="txt_security_answer">Security Answer</label>
-						<input type="text" class="form-control add-more" id="txt_security_answer" placeholder="Security Answer" name="security_answer">
-					</div>
-					<!-- <div class="form-group">
+							<!-- Step 3: Address/Security Details -->
+							<div class="form-step" id="step3" style="display:none;margin-top: 200px;margin-bottom: 20px;">
+								<div class="form_title">
+									<h2 class="text-muted section-heading"><b>Enter Address Details</b></h2>
+									<hr>
+								</div>
+								<div class="form-group">
+									<label for="txt_add1">Address1</label>
+									<textarea name="address1" id="txt_add1" class="form-control" rows="3" placeholder="Address1"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="txt_add2">Address2</label>
+									<textarea name="address2" id="txt_add2" class="form-control" rows="3" placeholder="Address2"></textarea>
+								</div>
+								<div class="country-state">
+									<div class="col-md-6 form-group">
+										<label for="txt_country">Country</label>
+										<input type="text" class="form-control" id="txt_country" placeholder="Country" name="country">
+									</div>
+									<div class="col-md-6 form-group">
+										<label for="txt_state">State</label>
+										<input type="text" class="form-control" id="txt_state" placeholder="State" name="state">
+									</div>
+								</div>
+								<div class="city-pincode">
+									<div class="col-md-6 form-group">
+										<label for="txt_city">City</label>
+										<input type="text" class="form-control" id="txt_city" placeholder="City" name="city">
+									</div>
+									<div class="col-md-6 form-group">
+										<label for="txt_pincode">Pincode</label>
+										<input type="text" class="form-control" id="txt_pincode" placeholder="Pincode" name="pincode">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="txt_security_question">Security Question</label>
+									<input type="text" class="form-control add-more" id="txt_security_question" placeholder="Security Question" name="security_question">
+								</div>
+								<div class="form-group">
+									<label for="txt_security_answer">Security Answer</label>
+									<input type="text" class="form-control add-more" id="txt_security_answer" placeholder="Security Answer" name="security_answer">
+								</div>
+								<!-- <div class="form-group">
 						<label for="txt_recharge_date">Date of Recharge</label>
 						<input type="text" class="form-control" id="txt_recharge_date" placeholder="Date of Recharge" value="" name="" disabled>
 					</div>
@@ -340,22 +784,25 @@ $g1 = new Get_mongodb();
 						<label for="txt_total_amount">Total amount to be paid</label>
 						<input type="text" class="form-control add-more" id="txt_total_amount" placeholder="Total Amount to be Paid" name="" disabled>
 					</div> -->
-					<div class="form-group">
-						<?php
-						require_once('recaptcha-php/recaptchalib.php');
-						$publickey = "6LfQePcSAAAAAL2qmeWyCJzYwbOKPeWIXzK1F8iz"; //  got this from the signup page for dmstree domain
-						//$publickey = "6LdmDPgSAAAAAHSetV7qYiSj-SXYt5C8h88_ELhB"; //  got this from the signup page for incrustsoftware domain
-						echo recaptcha_get_html($publickey);
-						?>
-					</div>
-					<div class="signup-btns">
-						<button type="button" class="btn btn-secondary" onclick="nextStep(2)"><img src="img/arrow-left.svg" alt="Next" style="height: 20px;width:20px; margin-right: 8px;">Back </button>
-						<input type="submit" class="btn btn-success ctrl-btn btn-space signup-btn" name="btnsubmit" value="Sign up">
-						<!-- <input type="reset" class="btn btn-primary btn-space" value="Reset" onclick="reset_registrationform()"> -->
-						<!-- <input type="button" class="btn ctrl-btn btn-space " value="Cancel"> -->
+								<div class="form-group">
+									<?php
+									require_once('recaptcha-php/recaptchalib.php');
+									$publickey = "6LfQePcSAAAAAL2qmeWyCJzYwbOKPeWIXzK1F8iz"; //  got this from the signup page for dmstree domain
+									//$publickey = "6LdmDPgSAAAAAHSetV7qYiSj-SXYt5C8h88_ELhB"; //  got this from the signup page for incrustsoftware domain
+									echo recaptcha_get_html($publickey);
+									?>
+								</div>
+								<div class="signup-btns">
+									<button type="button" class="btn btn-secondary" onclick="nextStep(2)"><img src="img/arrow-left.svg" alt="Next" style="height: 20px;width:20px; margin-right: 8px;">Back </button>
+									<input type="submit" class="btn btn-success ctrl-btn btn-space signup-btn" name="btnsubmit" value="Sign up">
+									<!-- <input type="reset" class="btn btn-primary btn-space" value="Reset" onclick="reset_registrationform()"> -->
+									<!-- <input type="button" class="btn ctrl-btn btn-space " value="Cancel"> -->
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 	<br><br>

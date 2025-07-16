@@ -108,6 +108,10 @@ if ($usertagdata != 0) {
             padding-left: 0 !important;
             padding-right: 0 !important;
         }
+        .savetags{
+            background-color: #1B5563;
+            color: #fff;
+        }
     </style>
     <script>
         var str = '';
@@ -591,7 +595,7 @@ if ($usertagdata != 0) {
 <body>
 
     <div class="row row-margin">
-        <div class="col-md-12 col-sm-12" id="body-content">
+        <div class="col-md-12 col-sm-12" id="">
             <!--------- dash board body------------------------------------------------>
 
             <div class="well div-padding-top">
@@ -627,7 +631,7 @@ if ($usertagdata != 0) {
                                 </select>
                             </div>
                             <div class="col-md-2 col-sm-2">
-                                <input type="button" id="btn_tag" class="save_btn_bg_cancel btn-success" value="Save Tags" onclick="add_tags_view(this)" />
+                                <input type="button" id="btn_tag" class="save_btn_bg_cancel savetags" value="Save Tags" onclick="add_tags_view(this)" />
                             </div>
                         </div>
 

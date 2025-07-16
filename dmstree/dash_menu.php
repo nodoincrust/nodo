@@ -353,7 +353,7 @@
         height: 32px;
         /* position: absolute; */
         /* top: 817px; */
-        margin-top: 4px;
+        margin: 4px;
         margin-left: 16px;
         transform: rotate(0deg);
         opacity: 1;

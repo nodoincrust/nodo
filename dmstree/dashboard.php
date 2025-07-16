@@ -752,11 +752,11 @@ $activepackspace = (float)$activepackspace;
             bottom: 0;
             width: 100%;
             /* z-index: 999; */
-            /* background: #fff; */
+            background: #fff;
             /* box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
         }
         #body-content {
-            padding-bottom: 60px; 
+            padding-bottom: 75px; 
         }
     </style>
 </head>
@@ -764,7 +764,7 @@ $activepackspace = (float)$activepackspace;
 <body>
     <?php include_once 'header.php'; ?>
     <div class="row row-margin">
-        <div class="col-md-3">
+        <div class="col-md-3" style="background-color: #FFFFFF;">
             <?php include_once 'dash_menu.php' ?>
         </div>
         <div class="col-md-9 div-padding-left" id="body-content">
@@ -981,9 +981,11 @@ $activepackspace = (float)$activepackspace;
 
                     ?>
                 </div>
+               
             </div>
-            <?php include_once 'footer.php' ?>
-        </div>
+            
+        </div> 
+        <div class="footer-fixed"><?php include_once 'footer.php'?></div>
         
         <!--<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>-->
         <script src="jqueryui/ui/minified/jquery-ui.min.js"></script>
