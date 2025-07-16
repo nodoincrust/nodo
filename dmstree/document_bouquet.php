@@ -243,7 +243,8 @@ $activepackspace = (float)$activepackspace;
         }
 
         .well_cls {
-            padding: 24px;
+            /* padding: 24px; */
+            padding: 24px 20px 10px 24px;
             margin-top: 15px;
             width: 70%;
         }
@@ -381,6 +382,11 @@ $activepackspace = (float)$activepackspace;
             /* box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
         }
 
+        .bouquet_document_container {
+            max-height: calc(100vh - 460px);
+            overflow-y: auto;
+        }
+
         /* #bouquetForm , .bouquet-add-doc{
             border-top: 1px solid #B8BFBC;
         } */
@@ -398,7 +404,7 @@ $activepackspace = (float)$activepackspace;
             <?php include_once 'dash_menu.php' ?>
         </div>
 
-        <div class="col-md-9 col-sm-9 main-bouquet div-padding-left">
+        <div class="col-md-9 col-sm-9 main-bouquet">
             <!-- <div class="col-md-9 col-sm-9 div-padding-left"> -->
             <!-- <div class="row">
                 <p class="spaceerror col-md-12" style="color:red"> </p>
@@ -425,14 +431,14 @@ $activepackspace = (float)$activepackspace;
                             <input type="hidden" id="bouquetname" name="bouquetname" value="" style="border:1px solid #c5e86c !important;">
                         </form>
                         <form name="bouquetForm" id="bouquetForm" action="" method="post">
-                            <div class="form-group row add-comment">
+                            <div class="row add-comment">
                                 <label for="txt_bouquet_name" class="control-label">Bouquet Name</label>
                                 <div class="input-wrapper">
                                     <img src="img/folder-open.svg" alt="Bouquet Icon" class="input-icon">
                                     <input type="text" class="form-control txt_comment1" id="txt_bouquet_name" placeholder="Enter Bouquet Name" name="" value="<?php if (isset($bouquet_docname)) echo $bouquet_docname; ?>">
                                 </div>
                             </div>
-                            <div class="form-group row add-comment"></div>
+                            <div class="row add-comment"></div>
                         </form>
                         <div class="row">
                             <label class="bouquet-desc">Bouquet Description</label>

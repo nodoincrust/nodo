@@ -62,22 +62,23 @@ $g1 = new Get_mongodb();
 	}
 
 	.section-heading1 {
-		margin-left: 15px;
+		margin-left: -15px;
 		display: flex;
 		/* justify-content: center; */
 	}
 
 	.signup-subtitle {
-		font-size: 20px;
+		font-size: 22px;
 		color: #6c757d;
-		margin-bottom: 20px;
-		margin-right: 25px;
+		margin-bottom: 10px;
+		/* margin-right: 55px; */
+		margin-left: -45px;
 		line-height: 1.5;
 		font-family: 'Inter', Arial, sans-serif;
 	}
 
 	.package-title {
-		margin-left: 15px;
+		/* margin-left: 15px; */
 		font-size: 18px;
 		font-weight: 700;
 		color: #1B5563;
@@ -98,24 +99,32 @@ $g1 = new Get_mongodb();
 		/* background-color: #1B5563; */
 	}
 
-	.next-btn {
+	.next-btn1 {
 		background-color: #1B5563;
 		color: #fff;
 	}
 
+	.next-btn2 {
+		background-color: #1B5563;
+		color: #fff;
+		margin-right: -15px;
+	}
+
+
 	.form-group {
-		margin-bottom: 18px;
+		/* margin-bottom: 18px; */
 	}
 
 	.form-group label {
 		font-weight: 500;
-		margin-bottom: 6px;
+		/* margin-bottom: 6px; */
 		display: block;
 	}
 
 	.signup-btn {
 		background-color: #1B5563;
 		color: #fff;
+		margin-right: -15px;
 	}
 
 	.package-size,
@@ -128,7 +137,7 @@ $g1 = new Get_mongodb();
 	.signin-link {
 		display: flex;
 		justify-content: center;
-		margin-top: 30px;
+		/* margin-top: 30px; */
 	}
 
 	.view-package2 {
@@ -142,7 +151,7 @@ $g1 = new Get_mongodb();
 
 	/* Add background color to all form controls */
 	.form-control {
-		background-color: #FAFAFA !important;
+		/* background-color: #E0E0E0; */
 	}
 
 	@font-face {
@@ -214,7 +223,7 @@ $g1 = new Get_mongodb();
 		flex: 1;
 		/* background: rgba(255, 218, 121, 0.3); */
 		background: linear-gradient(to bottom right, #FCF5E5, #FFFDE6);
-		padding: 0px 55px;
+		padding: 5px 55px;
 		display: flex;
 		flex-direction: column;
 		position: relative;
@@ -328,7 +337,7 @@ $g1 = new Get_mongodb();
 	}
 
 	.form-group {
-		margin-bottom: 20px;
+		/* margin-bottom: 20px; */
 	}
 
 	.form-label {
@@ -373,8 +382,8 @@ $g1 = new Get_mongodb();
 	}
 
 	.form-options {
-		display: flex;
-		justify-content: space-between;
+		/* display: flex;
+		justify-content: space-between; */
 		align-items: center;
 		margin-bottom: 24px;
 	}
@@ -460,59 +469,58 @@ $g1 = new Get_mongodb();
 		color: #1B5563;
 	}
 
-	..container-narrow {
-			{
-			width: 500px !important;
+	.container-narrow {
+		/* margin-top: 150px; */
+	}
+
+	@media (max-width: 968px) {
+		.main-container {
+			flex-direction: column;
 		}
 
-		@media (max-width: 968px) {
-			.main-container {
-				flex-direction: column;
-			}
-
-			.left-section {
-				padding: 30px 20px;
-				justify-content: center;
-				align-items: center;
-			}
-
-			.right-section {
-				width: 100%;
-				padding: 40px 20px;
-				justify-content: center;
-				align-items: center;
-			}
-
-			/* .features-grid {
-        grid-template-columns: 1fr;
-      } */
+		.left-section {
+			padding: 30px 20px;
+			justify-content: center;
+			align-items: center;
 		}
 
-		/* Laptops - 1025px to 1280px */
-		@media (min-width: 1025px) and (max-width: 1280px) {
-			.header {
-				padding: 10px 57px;
-			}
-
+		.right-section {
+			width: 100%;
+			padding: 40px 20px;
+			justify-content: center;
+			align-items: center;
 		}
-
-		/* Desktops (HD+) - 1281px and above */
-		@media (min-width: 1281px) {
-			.header {
-				padding: 10px 57px;
-			}
-
-			.left-section {
-				height: fit-content;
-			}
-
-			.right-section {
-				height: fit-content;
-			}
-		}
-
 
 		/* .features-grid {
+        grid-template-columns: 1fr;
+      } */
+	}
+
+	/* Laptops - 1025px to 1280px */
+	@media (min-width: 1025px) and (max-width: 1280px) {
+		.header {
+			padding: 10px 57px;
+		}
+
+	}
+
+	/* Desktops (HD+) - 1281px and above */
+	@media (min-width: 1281px) {
+		.header {
+			padding: 10px 57px;
+		}
+
+		.left-section {
+			height: fit-content;
+		}
+
+		.right-section {
+			height: fit-content;
+		}
+	}
+
+
+	/* .features-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
@@ -522,45 +530,72 @@ $g1 = new Get_mongodb();
       border-radius: 20px;
     } */
 
-		/* .feature-card:hover {
+	/* .feature-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 25px rgba(255, 180, 50, 0.3);
     } */
 
-		.feature-icon {
-			font-size: 48px;
-			color: #ffb700;
-			filter: drop-shadow(0 2px 4px rgba(255, 200, 0, 0.4));
-		}
+	.feature-icon {
+		font-size: 48px;
+		color: #ffb700;
+		filter: drop-shadow(0 2px 4px rgba(255, 200, 0, 0.4));
+	}
 
-		@font-face {
-			font-family: 'Inter';
-			src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
-			font-weight: 100 900;
-			font-style: normal;
-		}
+	@font-face {
+		font-family: 'Inter';
+		src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+		font-weight: 100 900;
+		font-style: normal;
+	}
 
-		/* Validation error styles for login page */
-		.has-error .form-label,
-		.has-error .form-input,
-		.has-error .form-control {
-			color: #d9534f !important;
-			border-color: #d9534f !important;
-		}
+	/* Validation error styles for login page */
+	.has-error .form-label,
+	.has-error .form-input,
+	.has-error .form-control {
+		color: #d9534f !important;
+		border-color: #d9534f !important;
+	}
 
-		.help-block {
-			color: #d9534f !important;
-			font-size: 13px;
-			margin-top: 4px;
-			margin-bottom: 0;
-		}
+	.help-block {
+		color: #d9534f !important;
+		font-size: 13px;
+		margin-top: 4px;
+		margin-bottom: 0;
+	}
 
-		.div-padding-top {
-			padding-top: 0px;
-			/* margin-top: 160px; */
-		}
+	.div-padding-top {
+		padding-top: 0px;
+		margin-top: 150px;
+	}
 
-		/* #step2 {
+	.signup-nxt {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	#step1 {
+		margin-top: 80px;
+	}
+
+	.packgsize {
+		margin-left: -30px;
+	}
+
+	.packgdur {
+		margin-left: 45px;
+	}
+
+	.signup-country,
+	.signup-city {
+		margin-left: -30px;
+	}
+
+	.signup-state,
+	.signup-pincode {
+		margin-left: 45px;
+	}
+
+	/* #step2 {
 			margin-top: 200px;
 			margin-bottom: 20px;
 		}
@@ -602,7 +637,7 @@ $g1 = new Get_mongodb();
 			</div>
 
 			<div class="right-section">
-				<div class="container container-narrow div-padding-top">
+				<div class="container container-narrow">
 					<!-- Form start-->
 					<div class="row">
 						<!--                                <form id="formDemo" method="post" class="form-horizontal col-md-12 form-action" action="sign_up_process.php">
@@ -616,55 +651,48 @@ $g1 = new Get_mongodb();
 									<h2 class="text-muted section-heading1"><b>Create Your Nodo AI Account</b></h2>
 									<p class="signup-subtitle">Organize, edit, and search files - all in one secure platform.</p>
 								</div>
-								<div class="row gap">
-									<div class="select-package-type">
-										<h4 class="package-title">Select Package</h4>
-										<div class="col-md-6 form-group">
-											<div class="radio">
-												<label>
-													<input type="radio" name="optionsRadios" id="rd_individual" value="Individual">
-													Individual
-												</label>
-											</div>
+								<div class="form-group">
+									<label class="package-title">Select a Package</label>
+									<div class="package-type-toggle" style="display: flex; gap: 16px;">
+										<label class="package-type-card" id="card_individual" style="flex:1; display:flex; align-items:center; padding:12px 18px; border-radius:8px; border:1px solid #d1d5db; background:#FAFAFA; cursor:pointer; font-weight:500; gap:10px;">
+											<input type="radio" name="optionsRadios" id="rd_individual" value="Individual" style="margin-right:10px;"> Individual
+										</label>
+										<label class="package-type-card" id="card_corporate" style="flex:1; display:flex; align-items:center; padding:12px 18px; border-radius:8px; border:1px solid #d1d5db; background:#FAFAFA; cursor:pointer; font-weight:500; gap:10px;">
+											<input type="radio" name="optionsRadios" id="rd_corporate" value="Corporate" style="margin-right:10px;"> Corporate
+										</label>
+									</div>
+								</div>
+								<div class="container" style="width: 100%;">
+									<div class="row" style="display: flex;">
+										<div class="col-md-6 form-group packgsize">
+											<label for="" class="package-size">Package Size</label>
+											<select name="listbox_size[]" class="form-control select_size" style="background:#FAFAFA;border-radius: 8px;width: 270px;" required>
+												<option value="" disabled selected>-Select Package Size-</option>
+											</select>
 										</div>
-										<div class="col-md-6 form-group">
-											<div class="radio">
-												<label>
-													<input type="radio" name="optionsRadios" id="rd_corporate" value="Corporate">
-													Corporate
-												</label>
-											</div>
+										<div class="col-md-6 form-group packgdur">
+											<label for="" class="package-duration">Package Duration</label>
+											<select name="listbox_month[]" class="form-control select_month" style="background:#FAFAFA;border-radius: 8px;width: 270px;" required>
+												<option value="" disabled selected>-Select Package Duration-</option>
+											</select>
 										</div>
 									</div>
 								</div>
-								<div class="row form-group">
-									<div class="col-md-6">
-										<div class="row">
-											<label for="" class="col-md-6 col-sm-6 control-label package-size">Package in Size</label>
-											<div class="col-md-6 col-sm-6">
-												<select size="2" name="listbox_size[]" class="form-control select_size" multiple>
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="row">
-											<label for="" class="col-md-6 col-sm-6 control-label div-padding-menu package-duration">Package in Duration</label>
-											<div class="col-md-6 col-sm-6">
-												<select size="1" name="listbox_month[]" class="form-control select_month" multiple>
-												</select>
-											</div>
-										</div>
-									</div>
+								<div class="form-group">
+									<label for="recharge_date">Recharge Date</label>
+									<input type="text" class="form-control" id="recharge_date" name="recharge_date" placeholder="" disabled>
 								</div>
-								<div class="signup-btns">
-									<div class="form-group view-package">
-										<label><a href="package_info.php" rel="facebox" class="view-package2">View all Package Details</a></label>
+								<div class="form-group">
+									<label for="total_amount">Total Amount to be Paid</label>
+									<input type="text" class="form-control" id="total_amount" name="total_amount" placeholder="" disabled>
+								</div>
+								<div class="signup-nxt">
+									<div class="form-group" style="margin-bottom: 10px;">
+										<a href="package_info.php" rel="facebox" class="view-package2">View all package details</a>
 									</div>
-									<div class="view-package-next">
-										<button type="button" class="btn next-btn" onclick="nextStep(2)">
-											Next
-											<img src="img/arrow-right.svg" alt="Next" style="height: 20px;width:20px; margin-left: 8px;">
+									<div class="form-group">
+										<button type="button" class="btn next-btn1" style="min-width:120px; border-radius:8px; font-weight:600; font-size:16px; display:flex; align-items:center; justify-content:center; gap:8px;" onclick="nextStep(2)">
+											Next <img src="img/arrow-right.svg" alt="Next" style="height: 20px;width:20px; margin-left: 8px;">
 										</button>
 									</div>
 								</div>
@@ -730,7 +758,7 @@ $g1 = new Get_mongodb();
 								</div>
 								<div class="signup-btns">
 									<button type="button" class="btn btn-secondary" onclick="nextStep(1)"><img src="img/arrow-left.svg" alt="Next" style="height: 20px;width:20px; margin-right: 8px;">Back </button>
-									<button type="button" class="btn next-btn" onclick="nextStep(3)">Next <img src="img/arrow-right.svg" alt="Next" style="height: 20px;width:20px; margin-left: 8px;"></button>
+									<button type="button" class="btn next-btn2" onclick="nextStep(3)">Next <img src="img/arrow-right.svg" alt="Next" style="height: 20px;width:20px; margin-left: 8px;"></button>
 								</div>
 							</div>
 
@@ -748,24 +776,28 @@ $g1 = new Get_mongodb();
 									<label for="txt_add2">Address2</label>
 									<textarea name="address2" id="txt_add2" class="form-control" rows="3" placeholder="Address2"></textarea>
 								</div>
-								<div class="country-state">
-									<div class="col-md-6 form-group">
-										<label for="txt_country">Country</label>
-										<input type="text" class="form-control" id="txt_country" placeholder="Country" name="country">
-									</div>
-									<div class="col-md-6 form-group">
-										<label for="txt_state">State</label>
-										<input type="text" class="form-control" id="txt_state" placeholder="State" name="state">
-									</div>
-								</div>
-								<div class="city-pincode">
-									<div class="col-md-6 form-group">
-										<label for="txt_city">City</label>
-										<input type="text" class="form-control" id="txt_city" placeholder="City" name="city">
-									</div>
-									<div class="col-md-6 form-group">
-										<label for="txt_pincode">Pincode</label>
-										<input type="text" class="form-control" id="txt_pincode" placeholder="Pincode" name="pincode">
+								<div class="container" style="width: 100%;">
+									<div class="row row-cols-2">
+										<div class="country-state">
+											<div class="col-md-6 form-group signup-country">
+												<label for="txt_country">Country</label>
+												<input type="text" class="form-control" id="txt_country" placeholder="Country" name="country" style="width: 270px;">
+											</div>
+											<div class="col-md-6 form-group signup-state">
+												<label for="txt_state">State</label>
+												<input type="text" class="form-control" id="txt_state" placeholder="State" name="state" style="width: 270px;">
+											</div>
+										</div>
+										<div class="city-pincode">
+											<div class="col-md-6 form-group signup-city">
+												<label for="txt_city">City</label>
+												<input type="text" class="form-control" id="txt_city" placeholder="City" name="city" style="width: 270px;">
+											</div>
+											<div class="col-md-6 form-group signup-pincode">
+												<label for="txt_pincode">Pincode</label>
+												<input type="text" class="form-control" id="txt_pincode" placeholder="Pincode" name="pincode" style="width: 270px;">
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="form-group">
@@ -794,7 +826,7 @@ $g1 = new Get_mongodb();
 								</div>
 								<div class="signup-btns">
 									<button type="button" class="btn btn-secondary" onclick="nextStep(2)"><img src="img/arrow-left.svg" alt="Next" style="height: 20px;width:20px; margin-right: 8px;">Back </button>
-									<input type="submit" class="btn btn-success ctrl-btn btn-space signup-btn" name="btnsubmit" value="Sign up">
+									<input type="submit" class="btn btn-success ctrl-btn signup-btn" name="btnsubmit" value="Sign up">
 									<!-- <input type="reset" class="btn btn-primary btn-space" value="Reset" onclick="reset_registrationform()"> -->
 									<!-- <input type="button" class="btn ctrl-btn btn-space " value="Cancel"> -->
 								</div>
@@ -811,7 +843,7 @@ $g1 = new Get_mongodb();
 	<script>
 		$(document).ready(function() {
 			// On next button click
-			$('.next-btn').on('click', function(e) {
+			$('.next-btn1, .next-btn2').on('click', function(e) {
 				var step = $(this).closest('.form-step').attr('id');
 				var validator = $('#registrationForm').data('bootstrapValidator');
 				var fieldsToValidate = [];
@@ -855,14 +887,54 @@ $g1 = new Get_mongodb();
 				var selected = $('input[name="optionsRadios"]:checked').val();
 				if (selected === 'Corporate') {
 					$('.individual-fields').hide();
+					$('#step2').css('margin-top', '0');
 				} else {
 					$('.individual-fields').show();
+					$('#step2').css('margin-top', '230px');
 				}
 			}
 			toggleFields();
 			$('input[name="optionsRadios"]').on('change', function() {
 				toggleFields();
 			});
+		});
+	</script>
+	<script>
+		// Highlight selected package card
+		$(document).ready(function() {
+			function updateCardSelection() {
+				if ($('#rd_individual').is(':checked')) {
+					$('#card_individual').css({
+						'border-color': '#1B5563',
+						'background': '#E6F2F5',
+						'font-weight': '700'
+					});
+					$('#card_corporate').css({
+						'border-color': '#d1d5db',
+						'background': '#FAFAFA',
+						'font-weight': '500'
+					});
+				} else if ($('#rd_corporate').is(':checked')) {
+					$('#card_corporate').css({
+						'border-color': '#1B5563',
+						'background': '#E6F2F5',
+						'font-weight': '700'
+					});
+					$('#card_individual').css({
+						'border-color': '#d1d5db',
+						'background': '#FAFAFA',
+						'font-weight': '500'
+					});
+				} else {
+					$('#card_individual, #card_corporate').css({
+						'border-color': '#d1d5db',
+						'background': '#FAFAFA',
+						'font-weight': '500'
+					});
+				}
+			}
+			$('input[name="optionsRadios"]').on('change', updateCardSelection);
+			updateCardSelection();
 		});
 	</script>
 </body>
