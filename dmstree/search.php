@@ -223,6 +223,10 @@ if ($templatedata['tempresult'] != 0) {
             /* height: 100vh; */
             overflow: hidden;
         }
+        #search_result_container{
+            max-height: calc(100vh - 330px);
+            overflow-y: auto;
+        }
     </style>
     <script>
         window.onload = function() {
