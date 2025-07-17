@@ -220,31 +220,29 @@ $('#chk_physical_loc').change(function(){
 });
 
 function display_template(optvalue)
- {
-//     $(".datepicker").datepicker({dateFormat: "yy-mm-dd"});
-     if(optvalue == '')
-     {
-         $("#template").html('');
-         $("#template").css("border","none");
-     }   
-     else
-     {
+{
+    if(optvalue == '')
+    {
+        $("#template").html('');
+        $("#template").removeClass('active');
+        $("#template").css("border","none");
+    }   
+    else
+    {
         var tenantname = $('.tenantname').val();
         var tenantid   = $('.tenantid').val();
         var filedata = optvalue.split('||');
         var filename = filedata[0];
         var tempid = filedata[1];
-        //var tempheader = filedata[2];
         var temppath = filedata[2];
         $('.templateid').val(tempid);
-        //$('.templatename').val(tempheader);
-        /*tenantname = tenantname.replace(" ","_");
-        var newpath ="http://localhost/dmstree/DMSTree_clients/"+tenantname+"_"+tenantid+"/Templates/"+filename;*/
         var newpath = temppath+'/'+filename;
         $("#template").css("border","1px solid gainsboro");
-        $("#template").load(newpath); 
-     }    
- }
+        $("#template").load(newpath, function() {
+            $("#template").addClass('active');
+        });
+    }    
+}
  
  function refresh_filediv(rdname)
  {
