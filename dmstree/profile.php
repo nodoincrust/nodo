@@ -468,7 +468,7 @@ $activepackspace = (float) $activepackspace;
 		}
 		body {
             /* height: 100vh; */
-            overflow-x: hidden;
+            overflow: hidden;
         }
 	</style>
 </head>
@@ -480,11 +480,13 @@ $activepackspace = (float) $activepackspace;
 	</div>
 	<!-- <div class="row row-margin"> -->
 	<!-- <div class="row row-margin  div-padding-top"> -->
-	<div class="col-md-3" style="background-color: #FFFFFF;">
+	<div class="col-md-3" style="background-color: #FFFFFF;height: 100vh;">
 		<!--------- dash board side menu------------------------------------------------>
 		<?php include_once 'dash_menu.php' ?>
 	</div>
-	<div class="main-container">
+	
+	<div class="main-container" style="max-height: calc(100vh - 115px);
+    overflow-y: auto;">
 		<div class="heading">
 			<h2>Profile</h2>
 			<!-- <div> -->

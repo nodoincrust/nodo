@@ -287,9 +287,20 @@ foreach ($usertagdata as $companytagkey) {
             /* height: 100vh; */
             overflow: hidden;
         }
-        .uploadDocBtnss{
+
+        .uploadDocBtnss {
             display: flex;
             justify-content: end;
+        }
+
+        /* Ensure datetimepicker calendar appears above other elements */
+        .bootstrap-datetimepicker-widget {
+            z-index: 1051 !important;
+        }
+
+        /* If using jQuery UI datepicker as well */
+        .ui-datepicker {
+            z-index: 1051 !important;
         }
     </style>
     <script>
@@ -661,253 +672,255 @@ foreach ($usertagdata as $companytagkey) {
             <!-- <div class="row">
                 <p class="spaceerror col-md-12 " style="color:red"> </p>
             </div>  -->
-            <div class="upload_temp div-padding-top">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 form_title ">
-                        <h2 class="text-muted upload_doc_cls"><b>Upload Document</b></h2>
+            <div class="test" style="width: 100%;">
+                <div class="upload_temp div-padding-top">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 form_title ">
+                            <h2 class="text-muted upload_doc_cls"><b>Upload Document</b></h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="well div-padding-top">
-                <!-- <div class="row">
+                <div class="well div-padding-top">
+                    <!-- <div class="row">
                      <div class="col-md-12 col-sm-12 form_title "><h2 class="text-muted upload_doc_cls"><b>Upload Document</b></h2></div>
                 </div> -->
 
-                <div class="div-padding">
-                    <?php if ($docName != '') {
-                        $orgfilename = str_replace(" ", "_", $docName);
-                        if ($docrevision != '') {
-                            $actualfile = $orgfilename . '_' . $docrevision . $fileext;
-                        } else {
-                            $actualfile = $orgfilename . $fileext;
-                        }
-                        //echo $actualfilehref="download.php?filenm=<?php echo $actualfile; &revision=<?php echo $docrevision;";
-                    ?>
-                        <div class="form-group row">
-                            <label class="col-md-12">File Name : <b><a href="download.php?filenm=<?php if ($docName != '') {
-                                                                                                        echo $actualfile;
-                                                                                                    } ?>"><?php echo $docName; ?></a></b></label>
-                        </div>
-                    <?php } ?>
-                    <form id="uploadDocumentForm" name="uploadDocumentForm" method="post" class="form-horizontal  form-action" action="uploaddocument.php" enctype="multipart/form-data">
-                        <?php if ($docName == '') { ?>
+                    <div class="div-padding">
+                        <?php if ($docName != '') {
+                            $orgfilename = str_replace(" ", "_", $docName);
+                            if ($docrevision != '') {
+                                $actualfile = $orgfilename . '_' . $docrevision . $fileext;
+                            } else {
+                                $actualfile = $orgfilename . $fileext;
+                            }
+                            //echo $actualfilehref="download.php?filenm=<?php echo $actualfile; &revision=<?php echo $docrevision;";
+                        ?>
                             <div class="form-group row">
-                                <div class="col-md-3">
-                                    <div class="radio">
+                                <label class="col-md-12">File Name : <b><a href="download.php?filenm=<?php if ($docName != '') {
+                                                                                                            echo $actualfile;
+                                                                                                        } ?>"><?php echo $docName; ?></a></b></label>
+                            </div>
+                        <?php } ?>
+                        <form id="uploadDocumentForm" name="uploadDocumentForm" method="post" class="form-horizontal  form-action" action="uploaddocument.php" enctype="multipart/form-data">
+                            <?php if ($docName == '') { ?>
+                                <div class="form-group row">
+                                    <div class="col-md-3">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" class="fileradio" name="optionsRadiosPackage" id="rd_single_upload" value="single_upload" onchange="refresh_filediv('Single')" checked style="margin-left: -20px !important;">
+                                                Single Upload
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" class="fileradio" name="optionsRadiosPackage" id="rd_multiple_upload" value="mulitiple_upload" onchange="refresh_filediv('Multiple')" style="margin-left: -20px !important;">
+                                                Multiple Upload
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            <?php } ?>
+                            <?php if ($userrole == 'Admin') { ?>
+                                <div class="form-group row" id="single_add">
+                                    <label class="col-md-3" for="txt_tag">Browse Files</label>
+                                    <div class="input-group col-md-9 col-md" id="browse_file_group">
+                                        <div class="row" id="file_record1">
+                                            <span class="col-md-10"><input type="file" name="sfile1" id="doc_file1" class="form-control upload_control " /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="radio row mark_checkbox">
                                         <label>
-                                            <input type="radio" class="fileradio" name="optionsRadiosPackage" id="rd_single_upload" value="single_upload" onchange="refresh_filediv('Single')" checked style="margin-left: -20px !important;">
-                                            Single Upload
+                                            <input for="text" class="control-label" type="checkbox" name="" id="makeprivate" value="" onchange="">
+                                            Mark As Private
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" class="fileradio" name="optionsRadiosPackage" id="rd_multiple_upload" value="mulitiple_upload" onchange="refresh_filediv('Multiple')" style="margin-left: -20px !important;">
-                                            Multiple Upload
-                                        </label>
-                                    </div>
-                                </div>
-
                             </div>
-                        <?php } ?>
-                        <?php if ($userrole == 'Admin') { ?>
-                            <div class="form-group row" id="single_add">
-                                <label class="col-md-3" for="txt_tag">Browse Files</label>
-                                <div class="input-group col-md-9 col-md" id="browse_file_group">
-                                    <div class="row" id="file_record1">
-                                        <span class="col-md-10"><input type="file" name="sfile1" id="doc_file1" class="form-control upload_control " /></span>
-                                    </div>
+                            <div class="form-group row" id="mulitiple_add" style="display:none">
+                                <div class=" col-md-9 col-md-offset-3">
+                                    <span><img src="img/add-icon.png" alt="add-icon" onclick="add_browse_control()" class="add_browse_btn"></span><input type="button" onclick="add_browse_control()" value="    Add Document">
+
                                 </div>
                             </div>
-                        <?php } ?>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="radio row mark_checkbox">
-                                    <label>
-                                        <input for="text" class="control-label" type="checkbox" name="" id="makeprivate" value="" onchange="">
-                                        Mark As Private
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row" id="mulitiple_add" style="display:none">
-                            <div class=" col-md-9 col-md-offset-3">
-                                <span><img src="img/add-icon.png" alt="add-icon" onclick="add_browse_control()" class="add_browse_btn"></span><input type="button" onclick="add_browse_control()" value="    Add Document">
 
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="count" value="2" id="hin" />
-                        <div class="control-group form-group row" id="tag1">
-                            <label class="col-md-3 control-label" for="txt_tag">Tags</label><!--control-label-->
-                            <div class="col-md-6"> <!--controls-->
-                                <select name="colors" class="form-control chosen-select document_tags" multiple data-placeholder="select tags">
-                                    <?php
-                                    foreach ($usertagdata as $companytagkey) {
-                                        if (array_key_exists('DepartmentId', $companytagkey)) {
-                                            if ($companytagkey['DepartmentId'] == $userdepartid) {
+                            <input type="hidden" name="count" value="2" id="hin" />
+                            <div class="control-group form-group row" id="tag1">
+                                <label class="col-md-3 control-label" for="txt_tag">Tags</label><!--control-label-->
+                                <div class="col-md-6"> <!--controls-->
+                                    <select name="colors" class="form-control chosen-select document_tags" multiple data-placeholder="select tags">
+                                        <?php
+                                        foreach ($usertagdata as $companytagkey) {
+                                            if (array_key_exists('DepartmentId', $companytagkey)) {
+                                                if ($companytagkey['DepartmentId'] == $userdepartid) {
+                                                    if (array_key_exists('TagList', $companytagkey)) {
+                                                        foreach ($companytagkey['TagList'] as $cmptagval) {
+                                                            echo '<option value="' . $cmptagval['Tag'] . '" >' . $cmptagval['Tag'] . '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            } else {
                                                 if (array_key_exists('TagList', $companytagkey)) {
                                                     foreach ($companytagkey['TagList'] as $cmptagval) {
                                                         echo '<option value="' . $cmptagval['Tag'] . '" >' . $cmptagval['Tag'] . '</option>';
                                                     }
                                                 }
                                             }
-                                        } else {
-                                            if (array_key_exists('TagList', $companytagkey)) {
-                                                foreach ($companytagkey['TagList'] as $cmptagval) {
-                                                    echo '<option value="' . $cmptagval['Tag'] . '" >' . $cmptagval['Tag'] . '</option>';
-                                                }
-                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row space">
+                                <label for="txt_template" class="col-md-3 col-sm-3 control-label">Template</label>
+                                <div class="col-md-6 col-sm-6">
+                                    <?php
+                                    $templatedata['tempresult'] = $g1->get_mongodb->getTemplateslist($tenantid, $userdepartid);
+                                    echo '<select name="templatelistbox" class="form-control select_template" style="background:#FAFAFA;border-radius: 8px;width: 315px;" required onchange="display_template(this.value)">';
+                                    echo '<option value="" disabled selected>-Select Template-</option>';
+                                    if ($templatedata['tempresult'] != '0') {
+                                        foreach ($templatedata['tempresult'] as $tempName) {
+                                            $templateid = $tempName['_id'];
+                                            $tempPath = $tempName['HtmlFileLocation'];
+                                            $filename = $tempName['HtmlFileName'];
+                                            echo '<option value="' . $filename . '||' . $templateid . '||' . $tempPath . '">' . $tempName['TemplateHeader'] . '</option>';
                                         }
                                     }
+                                    echo '</select>';
                                     ?>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row space">
-                            <label for="txt_template" class="col-md-3 col-sm-3 control-label">Template</label>
-                            <div class="col-md-6 col-sm-6">
-                                <?php
-                                $templatedata['tempresult'] = $g1->get_mongodb->getTemplateslist($tenantid, $userdepartid);
-                                echo '<select name="templatelistbox" class="form-control select_template" style="background:#FAFAFA;border-radius: 8px;width: 315px;" required onchange="display_template(this.value)">';
-                                echo '<option value="" disabled selected>-Select Template-</option>';
-                                if ($templatedata['tempresult'] != '0') {
-                                    foreach ($templatedata['tempresult'] as $tempName) {
-                                        $templateid = $tempName['_id'];
-                                        $tempPath = $tempName['HtmlFileLocation'];
-                                        $filename = $tempName['HtmlFileName'];
-                                        echo '<option value="' . $filename . '||' . $templateid . '||' . $tempPath . '">' . $tempName['TemplateHeader'] . '</option>';
-                                    }
-                                }
-                                echo '</select>';
-                                ?>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-12 col-sm-12">
-                                <div id="template" class="template-wrapper"></div>
-                            </div>
-                            <input type="hidden" name="templateid" class="templateid" value="">
-                            <input type="hidden" name="documentname" id="documentname" class="documentname" value="<?php echo $docName; ?>">
-                            <input type="hidden" name="documentid" id="documentid" class="documentid" value="<?php if ($docid != '') {
-                                                                                                                    echo $docid;
-                                                                                                                } ?>">
-                        </div>
-
-
-                        <div class="row">
-                            <div class="">
-                                <label class="col-md-3 col-sm-3 control-label mar-left ">
-                                    Expiry Date
-                                </label>
-
-                                <div class='col-md-6 col-sm-6' id='date9'>
-                                    <div class='input-group date' id='datetimepicker' data-date-format="DD/MM/YYYY">
-                                        <input type='text' class="form-control date1 docexpirydate" name="date" readonly />
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
-                                        </span>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="radio row">
-                                    <label>
-                                        <input type="checkbox" name="optionsRadios" class="control-label" id="chk_physical_loc" value="physical_loc">
-                                        Physical Location
+                            <div class="form-group row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div id="template" class="template-wrapper"></div>
+                                </div>
+                                <input type="hidden" name="templateid" class="templateid" value="">
+                                <input type="hidden" name="documentname" id="documentname" class="documentname" value="<?php echo $docName; ?>">
+                                <input type="hidden" name="documentid" id="documentid" class="documentid" value="<?php if ($docid != '') {
+                                                                                                                        echo $docid;
+                                                                                                                    } ?>">
+                            </div>
+
+
+                            <div class="row">
+                                <div class="">
+                                    <label class="col-md-3 col-sm-3 control-label mar-left ">
+                                        Expiry Date
                                     </label>
-                                </div>
-                                <div class="col-md-12 col-sm-12" id="div_pic">
-                                    <div class="row div-border">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-6 col-md-offset-2 col-sm-offset-2">
-                                                    <?php
-                                                    $photo = $g1->get_mongodb->getPhotoList($tenantid);
-                                                    ?>
-                                                    <select class="form-control selectpicker" id="gallary" onchange="phototaging();" style="border:1px solid #c5e86c !important">
-                                                        <option value=""></option>
-                                                        <?php
-                                                        if ($photo != 0) {
-                                                            foreach ($photo[0]['Photo'] as $key) {
-                                                                if (!$key['AuditData']['DeleteFlag']) {
-                                                                    $data1 = "";
-                                                                    if (array_key_exists('ImageTags', $key)) {
-                                                                        $taglist = $key['ImageTags'];
-                                                                        $tagid = 1;
-                                                                        $tagcount = 0;
-                                                                        foreach ($taglist as $tagvalue) {
-                                                                            if ($tagvalue['AuditData']['DeleteFlag'] == false) {
-                                                                                $tagstyle = explode(',', $tagvalue['TagPosition']);
-                                                                                $widthpos = explode("px", $tagstyle[0]);
-                                                                                $heightpos = explode("px", $tagstyle[1]);
-                                                                                $toppos = explode("px", $tagstyle[2]);
-                                                                                $leftpos = explode("px", $tagstyle[3]);
-                                                                                if ($tagcount == 0) {
-                                                                                    $data1 .= "{'id':" . $tagid . ", 'label':'" . $tagvalue['TagName'] . "', 'width':" . $widthpos[0] . ", 'height':" . $heightpos[0] . ", 'top':" . $toppos[0] . ", 'left':" . $leftpos[0] . "}";
-                                                                                } else {
-                                                                                    $data1 .= "||{'id':" . $tagid . ", 'label':'" . $tagvalue['TagName'] . "', 'width':" . $widthpos[0] . ", 'height':" . $heightpos[0] . ", 'top':" . $toppos[0] . ", 'left':" . $leftpos[0] . "}";
-                                                                                }
-                                                                                $tagid++;
-                                                                                $tagcount++;
-                                                                            }
-                                                                        }
-                                                                    }
-                                                        ?>
-                                                                    <option value="<?php echo $key['FileLocation'] . '::' . $data1; ?>"><?php echo $key['FileName']; ?></option>
-                                                        <?php
-                                                                }
-                                                            }
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <?php if ($docrevision != '') { ?>
-                                                <div class="row">
-                                                    <div class="col-md-10 col-md-offset-2" id="locationcontainer" style="margin-top: 10px">
-                                                        <img class=" physicallocationimg" src="" width="400px" height="400px" onclick="display_imagetagging(this);">
-                                                        <input type="hidden" class="revimgtags" value="">
-                                                        <input type="hidden" class="revwithoutsess" value="">
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-10 col-md-offset-2" style="margin-top: 7px">
-                                                        <div class="row">
-                                                            <label class="col-md-2">Image Tags</label>
-                                                            <div class="col-md-10 locationtags"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            <?php } ?>
+
+                                    <div class='col-md-6 col-sm-6' id='date9'>
+                                        <div class='input-group date' id='datetimepicker' data-date-format="DD/MM/YYYY">
+                                            <input type='text' class="form-control date1 docexpirydate" name="date" readonly />
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 uploadDocBtnss">
-                            <input type="button" class="btn btn-success ctrl-btn btn-space uploadsave" value="Save" onclick="validate_uploaddocument(this);">
-                            <input type="reset" class="btn btn-space" value="Reset" onclick="reset_upload();">
-                            <input type="button" class="btn ctrl-btn btn-space " value="Cancel" onclick="canel_operation();">
 
+                            <div class="form-group row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="radio row">
+                                        <label>
+                                            <input type="checkbox" name="optionsRadios" class="control-label" id="chk_physical_loc" value="physical_loc">
+                                            Physical Location
+                                        </label>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12" id="div_pic">
+                                        <div class="row div-border">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6 col-md-offset-2 col-sm-offset-2">
+                                                        <?php
+                                                        $photo = $g1->get_mongodb->getPhotoList($tenantid);
+                                                        ?>
+                                                        <select class="form-control selectpicker" id="gallary" onchange="phototaging();" style="border:1px solid #c5e86c !important">
+                                                            <option value=""></option>
+                                                            <?php
+                                                            if ($photo != 0) {
+                                                                foreach ($photo[0]['Photo'] as $key) {
+                                                                    if (!$key['AuditData']['DeleteFlag']) {
+                                                                        $data1 = "";
+                                                                        if (array_key_exists('ImageTags', $key)) {
+                                                                            $taglist = $key['ImageTags'];
+                                                                            $tagid = 1;
+                                                                            $tagcount = 0;
+                                                                            foreach ($taglist as $tagvalue) {
+                                                                                if ($tagvalue['AuditData']['DeleteFlag'] == false) {
+                                                                                    $tagstyle = explode(',', $tagvalue['TagPosition']);
+                                                                                    $widthpos = explode("px", $tagstyle[0]);
+                                                                                    $heightpos = explode("px", $tagstyle[1]);
+                                                                                    $toppos = explode("px", $tagstyle[2]);
+                                                                                    $leftpos = explode("px", $tagstyle[3]);
+                                                                                    if ($tagcount == 0) {
+                                                                                        $data1 .= "{'id':" . $tagid . ", 'label':'" . $tagvalue['TagName'] . "', 'width':" . $widthpos[0] . ", 'height':" . $heightpos[0] . ", 'top':" . $toppos[0] . ", 'left':" . $leftpos[0] . "}";
+                                                                                    } else {
+                                                                                        $data1 .= "||{'id':" . $tagid . ", 'label':'" . $tagvalue['TagName'] . "', 'width':" . $widthpos[0] . ", 'height':" . $heightpos[0] . ", 'top':" . $toppos[0] . ", 'left':" . $leftpos[0] . "}";
+                                                                                    }
+                                                                                    $tagid++;
+                                                                                    $tagcount++;
+                                                                                }
+                                                                            }
+                                                                        }
+                                                            ?>
+                                                                        <option value="<?php echo $key['FileLocation'] . '::' . $data1; ?>"><?php echo $key['FileName']; ?></option>
+                                                            <?php
+                                                                    }
+                                                                }
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <?php if ($docrevision != '') { ?>
+                                                    <div class="row">
+                                                        <div class="col-md-10 col-md-offset-2" id="locationcontainer" style="margin-top: 10px">
+                                                            <img class=" physicallocationimg" src="" width="400px" height="400px" onclick="display_imagetagging(this);">
+                                                            <input type="hidden" class="revimgtags" value="">
+                                                            <input type="hidden" class="revwithoutsess" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-10 col-md-offset-2" style="margin-top: 7px">
+                                                            <div class="row">
+                                                                <label class="col-md-2">Image Tags</label>
+                                                                <div class="col-md-10 locationtags"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 uploadDocBtnss">
+                                <input type="button" class="btn btn-success ctrl-btn btn-space uploadsave" value="Save" onclick="validate_uploaddocument(this);">
+                                <input type="reset" class="btn btn-space" value="Reset" onclick="reset_upload();">
+                                <input type="button" class="btn ctrl-btn btn-space " value="Cancel" onclick="canel_operation();">
+
+                            </div>
                         </div>
+                        <input type="hidden" name="tenantname" class="tenantname" value="<?php echo $tenantname; ?>">
+                        <input type="hidden" name="tenantid" class="tenantid" value="<?php echo $tenantid; ?>">
+                        <input type="hidden" name="departmentid" class="departmentid" value="<?php echo $userdepartid; ?>">
+                        <?php
+                        //$docrevisiondata = $g1->get_mongodb->documentrevisionData($tenantid,$userdepartid);
+                        ?>
+                        <input type="hidden" name="revision" class="revision" value="<?php echo $docrevision; ?>">
+                        <input type="hidden" name="userid" class="userid" vlue="<?php echo $userid; ?>">
+                        </form>
                     </div>
-                    <input type="hidden" name="tenantname" class="tenantname" value="<?php echo $tenantname; ?>">
-                    <input type="hidden" name="tenantid" class="tenantid" value="<?php echo $tenantid; ?>">
-                    <input type="hidden" name="departmentid" class="departmentid" value="<?php echo $userdepartid; ?>">
-                    <?php
-                    //$docrevisiondata = $g1->get_mongodb->documentrevisionData($tenantid,$userdepartid);
-                    ?>
-                    <input type="hidden" name="revision" class="revision" value="<?php echo $docrevision; ?>">
-                    <input type="hidden" name="userid" class="userid" vlue="<?php echo $userid; ?>">
-                    </form>
                 </div>
             </div>
         </div>

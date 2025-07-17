@@ -31,7 +31,9 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
 <head>
     <meta charset="utf-8">
     <title>Dash-Board</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -156,6 +158,11 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
         .document_tags{
             width: 315px !important;
         }
+        /* Ensure datepicker calendar appears above other elements */
+        .ui-datepicker {
+            z-index: 1051 !important;
+        }
+        
     </style>
     <script>
         window.onload = function() {
@@ -195,27 +202,18 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
     <?php include_once 'header.php'; ?>
     <div class="row row-margin">
         <div class="col-md-3 col-sm-3" style="background-color: #FFFFFF;" id="body1">
-            <!-- <div class="col-md-3 col-sm-3 div-padding-top" id="body1"> -->
-            <!--------- dash board side menu------------------------------------------------>
             <?php include_once 'dash_menu.php' ?>
         </div>
-        <div class="col-md-9 col-sm-9 div-padding-left" id="body-content">
-            <!--------- dash board body------------------------------------------------>
-            <!-- <div class="row">
-                        <p class="spaceerror col-md-12" style="color:red"> </p>
-                </div> -->
-            <!-- Move heading outside the .well -->
-            <div class="row" style="background: #fff; border: 1px solid #e5e5e5; border-radius: 6px; padding: 18px 20px 12px 20px; margin-bottom: 18px; box-shadow: 0 1px 3px #eee;margin-top: 20px;">
-                <div class="col-md-12 form_title ">
-                    <h2 class="text-muted" style="margin: 0;"><b>Upload Template</b></h2>
-                </div>
+        <div class="col-md-9 col-sm-9" style="height: 100vh;overflow-y: scroll;" id="body-content">
+            <div class="well div-padding-top" style="margin-bottom: 18px;width: 100%;">
+                <h2 class="text-muted upload_doc_cls" style="font-size: 2.2rem; font-weight: bold; margin: 0;">Upload Template</h2>
             </div>
             <div class="well div-padding-top">
-                <div class="div-padding uploadtempdata">
+                <div class="div-padding">
                     <form id='uploadtemplate' method="post" class="form-horizontal form-action" action="" enctype="multipart/form-data">
                         <input type="hidden" name="count" value="2" id="hin" />
                         <div class="form-group row" id="tag1">
-                            <label class="col-md-2 control-label" for="txt_tag">Tags</label>
+                            <label class="col-md-3 control-label" for="txt_tag">Tags</label>
                             <div class="col-md-6">
                                 <select name="colors" class="form-control chosen-select document_tags" multiple data-placeholder="select tags">
                                     <?php
@@ -253,11 +251,11 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
                             </div>
                         </div>
                         <div class="form-group row space">
-                            <label for="txt_template" class="col-md-2 control-label">Template</label>
+                            <label for="txt_template" class="col-md-3 control-label">Template</label>
                             <div class="col-md-6">
                                 <?php
                                 $templatedata['tempresult'] = $g1->get_mongodb->getTemplateslist($tenantId, $userdepartid);
-                                echo '<select name="templatelistbox" class="form-control select_template" style="background:#FAFAFA;border-radius: 8px;width: 315px;" required onchange="display_template(this.value)">';
+                                echo '<select id="select_template" name="templatelistbox" class="form-control select_template" style="background:#FAFAFA;border-radius: 8px;width: 315px;" required onchange="display_template(this.value)">';
                                 echo '<option value="" disabled selected>-Select Template-</option>';
                                 if ($templatedata['tempresult'] != '0') {
                                     foreach ($templatedata['tempresult'] as $tempName) {
@@ -272,15 +270,8 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-md-11" id="template">
+                            <div class="col-md-12" id="template">
                                 <!-- Template content will be loaded here -->
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12 uploadtemp">
-                                <button class="btn btn-success ctrl-btn btn-space" type="button" id="uplaod_document" onclick="validate_uploaddocument(this)"><i class="icon-ok-sign icon-white"></i> Save</button>
-                                <input type="reset" class="btn btn-space" value="Reset" onclick="reset_upload();">
-                                <input type="button" class="btn ctrl-btn btn-space" value="Cancel" onclick="reload_page();" style="color: black;">
                             </div>
                         </div>
                         <input type="hidden" name="tenantname" class="tenantname" value="<?php echo $tenantname; ?>">
@@ -290,6 +281,13 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
                         <input type="hidden" name="templateid" class="templateid" value="">
                         <input type="hidden" name="templatename" class="templatename" value="">
                     </form>
+                    <div class="row">
+                        <div class="col-md-12 uploadDocBtnss" style="margin-top: 16px;display: flex; justify-content: end;">
+                            <button class="btn btn-success ctrl-btn btn-space" type="button" id="uplaod_document" onclick="validate_uploaddocument(this)"><i class="icon-ok-sign icon-white"></i> Save</button>
+                            <input type="reset" class="btn btn-space" value="Reset" onclick="reset_upload();">
+                            <input type="button" class="btn ctrl-btn btn-space" value="Cancel" onclick="reload_page();" style="color: black;">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
