@@ -186,7 +186,7 @@ $photo = $g1->get_mongodb->getPhotoList($tenantId);
             background-color: #e0eaf1;
             border-width: 1px;
             border-style: solid;
-            border-color: #D2D2D2;
+            /* border-color: #D2D2D2; */
             /*#000;*/
             border-radius: 5px;
             -o-border-radius: 5px;
@@ -247,8 +247,110 @@ $photo = $g1->get_mongodb->getPhotoList($tenantId);
             background-color: #1B5563;
             color: #fff;
         }
-        body{
+
+        body {
             overflow: hidden;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 6px 15px;
+            /* border: 1px solid #ddd; */
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            /* border-color: #4CAF50; */
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+
+        select.form-control {
+            height: 45px;
+            background-color: #f8f9fa;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .AddStdlist {
+            display: flex;
+            justify-content: end;
+            margin-right: 100px;
+        }
+
+        .stdListDesc,
+        .stdListCode {
+            width: 80%;
+        }
+
+        .stdListName {
+            width: 82%;
+        }
+
+        .stdListSaveBtn,
+        .stdListAddBtn {
+            background-color: #1B5563;
+            color: #fff;
+        }
+
+        .DataListName,
+        .DataListDesCode {
+            margin-left: 20px;
+        }
+
+        .StdListHead {
+            font-size: 20px;
+            color: #1B5563;
+            font-family: 'Space Grotesk', Arial, sans-serif;
+            margin-left: 20px;
+        }
+
+        .control-label {
+            font-weight: 500;
+        }
+
+        .ConfigSaveChnge {
+            background-color: #1B5563;
+            color: #fff;
+        }
+
+        .modal-body {
+            max-height: 60vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 15px;
+        }
+
+        .AddorRemoveConfig {
+            display: flex;
+            justify-content: end;
+            gap: 5px;
+        }
+
+        .stdListAddBtn2 {
+            background-color: #1B5563;
+            color: #fff;
+        }
+
+        #add_photo_form {
+            margin-left: -15px;
+        }
+
+        #add_photo_gallary {
+            margin-left: -15px;
+        }
+
+        .dataconfigbtns {
+            margin-left: -15px;
+        }
+        .txt_gallery_photo{
+            height: 45px;
         }
     </style>
 </head>
@@ -302,71 +404,64 @@ $photo = $g1->get_mongodb->getPhotoList($tenantId);
                     <!-- Button trigger modal -->
                     <button class="save_btn_bg_cancel" id="btn_std_add" data-toggle="modal" data-target="#add_std_list"> Add</button>
                     <!-- Modal -->
-                    <div class="modal fade" id="add_std_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="add_std_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <form method="post" class="form-horizontal" name="add_std" id="add_std" action="">
-                                    <div class="modal-header">
+                                    <div class="modal-header StdListHead">
                                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Standard List</h4>
+                                        <h3 class="modal-title" id="myModalLabel">Standard List</h3>
                                     </div>
 
                                     <div class="modal-body">
                                         <div class="row form-group">
-                                            <div class="col-md-3">
+                                            <div class="col-md-6">
                                                 <div class="radio">
                                                     <label>
                                                         <input type="radio" name="optionsRadios" id="rd_list" value="List">
-                                                        <strong>Single-Select</strong>
+                                                        Single-Select
                                                     </label>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-6">
                                                 <div class="radio ">
                                                     <label>
                                                         <input type="radio" name="optionsRadios" id="rd_combo" value="Combo">
-                                                        <strong>Multi-Select</strong>
+                                                        Multi-Select
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row form-group">
-                                            <label for="txt_list_name_add" class="col-md-2  control-label">List Name</label>
-                                            <div class="col-md-5">
-                                                <input type="text" class="form-control" id="txt_list_name_add" placeholder="List Name" name="listname">
-                                            </div>
+
+                                        <div class="form-group DataListName">
+                                            <label for="txt_list_name_add" class="control-label">List Name</label>
+                                            <input type="text" class="form-control stdListName" id="txt_list_name_add" placeholder="Enter List Name" name="listname">
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col-md-10">
-                                                <div class="row">
-                                                    <div class="col-md-8 col-sm-8">
-                                                        <label for="txtarea_listoption" class="col-md-4  control-label div-padding-menu">List Description</label>
-                                                        <div class="col-md-8 right-padding">
-                                                            <input type="text" class="form-control" name="" id="list" value="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-sm-4 div-padding-menu">
-                                                        <label for="txtarea_listoption" class="col-md-3  control-label div-padding-menu">List Code</label>
-                                                        <div class="col-md-8 right-padding">
-                                                            <input type="text" class="form-control" name="" id="code" value="">
-                                                        </div>
-                                                    </div>
+                                        <div class="row form-group DataListDesCode">
+
+                                            <div class="two-column">
+                                                <div class="form-group">
+                                                    <label for="list" class="control-label">List Description</label>
+                                                    <input type="text" class="form-control stdListDesc" name="" id="list" placeholder="Enter List Description" value="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="code" class="control-label">List Code</label>
+                                                    <input type="text" class="form-control stdListCode" name="" id="code" placeholder="Enter List Code" value="">
                                                 </div>
                                             </div>
-                                            <div class="col-md-2 col-sm-2">
-                                                <input type="button" class="btn" value="Add" onclick="add_to_list();" />
+                                            <div class="AddStdlist">
+                                                <input type="button" class="btn stdListAddBtn" value="Add" onclick="add_to_list();" />
                                             </div>
                                         </div>
                                         <div class="row form-group" id="text_description">
                                             <div class="col-md-12">
-                                                <!--                                            <textarea id="txtarea_add_std" class="form-control" cols = "5" rows="4"></textarea>-->
                                                 <select id="list_std" class="form-control template col-md-4 col-sm-4" name="" size="3" readonly></select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal" onclick="refresh_std_list();">Close</button>
-                                        <button type="button" id="btn_std_add_model" class="btn btn-primary " onclick="save_std_list();">Save</button>
+                                        <button type="button" id="btn_std_add_model" class="btn stdListSaveBtn " onclick="save_std_list();">Save</button>
                                     </div>
                                 </form>
                             </div>
@@ -375,92 +470,72 @@ $photo = $g1->get_mongodb->getPhotoList($tenantId);
 
                     <button class="save_btn_bg_cancel" id="btn_std_update" data-toggle="modal" data-target="#update_std_list">Update</button>
                     <!-- Modal -->
-                    <div class="modal fade" id="update_std_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="update_std_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                <div class="modal-header StdListHead">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Standard List</h4>
+                                    <h3 class="modal-title" id="myModalLabel">Standard List</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="row form-group">
-                                        <label for="txt_list_name_update" class="col-md-3  control-label">List Name</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <select class="form-control template col-md-4 col-sm-4" id="sel_std_list_update" readonly>
-                                                <option value="select" id="select_std_list_update">Select STD List</option>
-                                                <?php
-                                                foreach ($result as $key) {
-                                                    if (!$key['AuditData']['DeleteFlag']) {
-                                                ?>
-                                                        <option value="<?php echo $key['ListName']; ?>" id="<?php echo $key['_id']; ?>"><?php echo $key['ListName']; ?></option>
-                                                <?php
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="txt_list_name_update" class="control-label">List Name</label>
+                                        <select class="form-control template" id="sel_std_list_update" readonly>
+                                            <option value="select" id="select_std_list_update">Select STD List</option>
+                                            <?php foreach ($result as $key) {
+                                                if (!$key['AuditData']['DeleteFlag']) { ?>
+                                                    <option value="<?php echo $key['ListName']; ?>" id="<?php echo $key['_id']; ?>"><?php echo $key['ListName']; ?></option>
+                                            <?php }
+                                            } ?>
+                                        </select>
                                     </div>
-                                    <div class="row form-group">
-                                        <label for="txt_edit_name" class="col-md-3  control-label">Edit List Name</label>
-                                        <div class="col-md-6 right-padding">
-                                            <input type="text" class="form-control" name="txt_edit_name" id="txt_edit_name" value="">
-                                        </div>
+
+                                    <div class="form-group">
+                                        <label for="txt_edit_name" class="control-label">Edit List Name</label>
+                                        <input type="text" class="form-control" name="txt_edit_name" id="txt_edit_name" value="">
                                     </div>
-                                    <div class="row form-group">
-                                        <label for="txt_list_name_update" class="col-md-3  control-label">List Description</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <select class="form-control template col-md-4 col-sm-4" id="sel_std_list_description_update" readonly>
-                                            </select>
-                                        </div>
+
+                                    <div class="form-group">
+                                        <label for="sel_std_list_description_update" class="control-label">List Description</label>
+                                        <select class="form-control template" id="sel_std_list_description_update" readonly></select>
                                     </div>
-                                    <div class="row form-group">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-7 col-sm-7">
-                                                    <label for="editlist" class="col-md-4  control-label">Edit Description</label>
-                                                    <div class="col-md-8 right-padding">
-                                                        <input type="text" class="form-control" name="editlist" id="editlist" value="">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-5 col-sm-5 div-padding-menu">
-                                                    <label for="editcode" class="col-md-3  control-label div-padding-menu">Edit Code</label>
-                                                    <div class="col-md-8 right-padding">
-                                                        <input type="text" class="form-control" name="editcode" id="editcode" value="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                    <div class="form-group">
+                                        <label for="editlist" class="control-label">Edit Description</label>
+                                        <input type="text" class="form-control" name="editlist" id="editlist" value="">
                                     </div>
-                                    <div class="row form-group">
-                                        <div class="col-md-2 col-sm-2">
-                                            <input type="button" class="btn" value="Add" onclick="add_option_std_list();" />
-                                        </div>
-                                        <div class="col-md-2 col-sm-2">
-                                            <input type="button" class="btn" value="Remove" onclick="remove_list_description();" />
-                                        </div>
+
+                                    <div class="form-group">
+                                        <label for="editcode" class="control-label">Edit Code</label>
+                                        <input type="text" class="form-control" name="editcode" id="editcode" value="">
                                     </div>
-                                    <div class="row form-group" id="text_description">
-                                        <div class="col-md-12">
-                                            <select id="list_std_update" class="form-control template col-md-4 col-sm-4" name="" size="3" readonly></select>
-                                            <!--                                        <textarea id="update_add_std" name="update_add_std" class="form-control" cols = "5" rows="4"></textarea>-->
-                                        </div>
+
+                                    <div class="form-group AddorRemoveConfig">
+                                        <input type="button" class="btn stdListAddBtn2" value="Add" onclick="add_option_std_list();" />
+                                        <input type="button" class="btn" value="Remove" onclick="remove_list_description();" />
                                     </div>
+
+                                    <!-- <div class="form-group" id="text_description">
+                                        <label for="list_std_update">Description List</label>
+                                        <select id="list_std_update" class="form-control template" size="3" readonly></select>
+                                    </div> -->
                                 </div>
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" id="btn_update" class="btn btn-primary" onclick="update_std();">Save changes</button>
+                                    <button type="button" id="btn_update" class="btn ConfigSaveChnge" onclick="update_std();">Save changes</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <button class="save_btn_bg_cancel" id="btn_std_delete" data-toggle="modal" data-target="#delete_std_list">Delete</button>
                     <!-- Modal -->
-                    <div class="modal fade" id="delete_std_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="delete_std_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                <div class="modal-header StdListHead">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Standard List</h4>
+                                    <h3 class="modal-title" id="myModalLabel">Standard List</h3>
                                 </div>
                                 <div class="modal-body">
                                     <div class="row form-group">
@@ -513,7 +588,7 @@ $photo = $g1->get_mongodb->getPhotoList($tenantId);
                         </div>
                     </div>
                     <!-- Modal -->
-                    <div class="modal fade" id="add_tag" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="add_tag" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -558,7 +633,7 @@ $photo = $g1->get_mongodb->getPhotoList($tenantId);
                                             <input type="file" class="form-control" id="txt_gallery_photo" name="galleryphoto">
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row dataconfigbtns">
                                         <button type="button" class="btn btn-default" style="margin-left:2%;" onclick="close_galleryform();">Close</button>
                                         <input type="button" class="btn" id="addPhoto" value="Save" onclick="" />
                                     </div>

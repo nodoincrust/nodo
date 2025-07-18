@@ -138,6 +138,7 @@ $result = $g1->get_mongodb->getNoticeInfo($userId);
 		margin-left: 5px;
 		display: flex;
 		align-items: center;
+		font-size: 15px;
 	}
 
 	.notice-date {
@@ -181,15 +182,15 @@ $result = $g1->get_mongodb->getNoticeInfo($userId);
 
 		padding: 4px 10px;
 
-		font-size: 0.95em;
+		font-size: 15px;
 
 		margin-right: 8px;
 
 		/* margin-bottom: 4px; */
 
-		background: #FFFCC2;
+		/* background: #FFFCC2; */
 
-		color: #835101;
+		color: black;
 
 		font-family: 'Inter', Arial, sans-serif;
 
