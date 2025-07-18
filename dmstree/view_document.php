@@ -108,9 +108,189 @@ if ($usertagdata != 0) {
             padding-left: 0 !important;
             padding-right: 0 !important;
         }
-        .savetags{
+
+        .savetags {
             background-color: #1B5563;
             color: #fff;
+        }
+
+        /* --- Layout Fixes --- */
+        .well.div-padding-top {
+            /* max-width: 750px; */
+            /* margin: 40px auto; */
+            box-shadow: 0 0 20px #ccc;
+            border-radius: 8px;
+            background: #fff;
+            /* padding: 30px 20px 20px 20px; */
+            overflow: auto;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .form-group.row,
+        .control-group.form-group.row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .form-control,
+        textarea.form-control {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="text"].form-control,
+        textarea.form-control {
+            min-width: 200px;
+            max-width: 100%;
+        }
+
+        .physicallocationimg {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px auto;
+            border: 1px solid #eee;
+            background: #fafafa;
+        }
+
+        .document_template {
+            padding: 15px 10px;
+            background: #fcfcfc;
+            border-radius: 6px;
+            min-height: 80px;
+        }
+
+        .view-document-btns {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .add-comment .form-control {
+            width: 100%;
+        }
+
+        .comment_text.row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .well.div-padding-top {
+                max-width: 98vw;
+                padding: 10px 2vw;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .well.div-padding-top {
+                max-width: 100vw;
+                padding: 5px 1vw;
+            }
+
+            .form-group .col-md-6,
+            .form-group .col-md-8,
+            .form-group .col-md-10,
+            .form-group .col-md-12 {
+                width: 100%;
+                float: none;
+                margin-bottom: 10px;
+            }
+
+            .view-document-btns {
+                text-align: center;
+            }
+        }
+
+        /* --- Check In/Out Button Styling --- */
+        #status.save_btn_bg_cancel {
+            /* background: linear-gradient(90deg, #1B5563 60%, #218c9e 100%);
+            color: #fff;
+            font-weight: 600; */
+            border: 1px solid #DDE2E4 ;
+            border-radius: 5px;
+            padding: 8px 22px 8px 40px;
+            position: relative;
+            transition: background 0.2s;
+            /* box-shadow: 0 2px 8px #e0e0e0; */
+        }
+
+        #status.save_btn_bg_cancel:before {
+            content: '';
+            display: inline-block;
+            background: url('img/Checkout.svg') no-repeat center center;
+            background-size: 18px 18px;
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #status.save_btn_bg_cancel[disabled],
+        #status.save_btn_bg_cancel:disabled {
+            background: #b0b0b0;
+            color: #fff;
+            cursor: not-allowed;
+        }
+
+        /* --- Document Template Field Alignment --- */
+        .document_template .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 10px;
+        }
+
+        .document_template .row>div {
+            flex: 1 1 0;
+            min-width: 180px;
+            max-width: 48%;
+            box-sizing: border-box;
+        }
+
+        .document_template textarea,
+        .document_template input[type='text'] {
+            width: 100%;
+            min-width: 120px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        /* --- Upload Image Area --- */
+        .document_template .upload-image-area {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+            margin-bottom: 10px;
+            max-width: 100%;
+            overflow: auto;
+        }
+
+        .document_template .upload-image-area img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 8px auto;
+        }
+
+        /* --- Note Section --- */
+        .document_template .note-section {
+            background: #fffbe6;
+            border: 1px solid #ffe58f;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin: 12px 0 10px 0;
+            font-size: 0.97em;
+            color: #856404;
+            width: 100%;
+            box-sizing: border-box;
+            display: block;
         }
     </style>
     <script>
@@ -595,7 +775,7 @@ if ($usertagdata != 0) {
 <body>
 
     <div class="row row-margin">
-        <div class="col-md-12 col-sm-12" id="">
+        <div class="col-md-12 col-sm-12 viewdocmodal" id="">
             <!--------- dash board body------------------------------------------------>
 
             <div class="well div-padding-top">
@@ -639,6 +819,23 @@ if ($usertagdata != 0) {
                             <div class="col-md-12 col-sm-12">
                                 <div class="row">
                                     <div class="document_template" style="border:1px solid gainsboro">
+                                        <div class="row">
+                                            <div>
+                                                <label>Textarea</label>
+                                                <textarea readonly>vdgdf</textarea>
+                                            </div>
+                                            <div>
+                                                <label>Date</label>
+                                                <input type="text" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="upload-image-area">
+                                            <img src="" alt="Upload Image" />
+                                            <button type="button" class="btn btn-default">Reset</button>
+                                        </div>
+                                        <div class="note-section">
+                                            <strong>Note:</strong> The fields with <span style="color:red">*</span> are required/mandatory fields.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
