@@ -241,7 +241,7 @@ $activepackspace = (float)$activepackspace;
         .content_cls {
             background: #fff !important;
             /* padding-left: 19px !important; */
-            padding: 40px !important;
+            padding: 30px !important;
         }
 
         @font-face {
@@ -304,6 +304,9 @@ $activepackspace = (float)$activepackspace;
             background: #1B5563;
             color: white;
         }
+        .Template-main-left{
+            background: #F4F4F4;
+        }
     </style>
     <script>
         window.onload = function() {
@@ -358,7 +361,7 @@ $activepackspace = (float)$activepackspace;
             </div>  -->
                 <div class="row row-fluid ">
 
-                    <div class="col-md-3 span3 div-padding-menu"><!-- div declare all drag and drop component -->
+                    <div class="col-md-3 span3 div-padding-menu Template-main-left"><!-- div declare all drag and drop component -->
                         <h4 style="font-family: 'Inter', Arial, sans-serif;">Drag and Drop Component</h4>
                         <hr />
 
@@ -616,12 +619,12 @@ $activepackspace = (float)$activepackspace;
                             <!-- first row with form logo and title 120px 75px-->
                             <div class="row row-fluid" id="form-title-div">
                                 <div class="col-md-10 span10" onclick="open_title_popup()">
-                                    <input type="text" class="input-large col-md-12 span12 border_class" placeholder="Type form title here" value="" id="form-title" />
+                                    <input type="text" class="input-large col-md-12 span12 border_class" style="margin-left:10px;" placeholder="Type form title here" value="" id="form-title" />
                                     <input type="hidden" value="" class="titlelabel_font" />
                                     <input type="hidden" value="" class="titlelabel_size">
                                 </div>
                                 <div class="col-md-10 span10 ">
-                                    <textarea class="input-large col-md-12 span12" style="width:100%;border: 1px solid #ccc !important;background-color: #FAFAFA !important;" placeholder="Type form description here" name="form_description" id="form-description"></textarea>
+                                    <textarea class="input-large col-md-12 span12" style="width:100%;border: 1px solid #ccc !important;background-color: #FAFAFA !important;margin-left: 10px;" placeholder="Type form description here" name="form_description" id="form-description"></textarea>
                                 </div>
                                 <div class="col-md-2 span2" onclick="open_logoimage_popup()">
                                     <img src="img/Document Icon Frame.svg" alt="logo-image" class="logo_image" id="logo_image" width="100%" heigth="100%" />

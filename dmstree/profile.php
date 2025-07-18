@@ -283,7 +283,7 @@ $activepackspace = (float) $activepackspace;
 			display: block;
 			margin-bottom: 4px;
 			font-weight: 500;
-			font-size: 13.33px;
+			font-size: 14px;
 			color: #111729;
 			font-style: normal;
 
