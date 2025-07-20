@@ -466,10 +466,11 @@ $activepackspace = (float) $activepackspace;
 			background: #fff;
 			/* box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
 		}
+
 		body {
-            /* height: 100vh; */
-            overflow: hidden;
-        }
+			/* height: 100vh; */
+			overflow: hidden;
+		}
 	</style>
 </head>
 
@@ -484,7 +485,7 @@ $activepackspace = (float) $activepackspace;
 		<!--------- dash board side menu------------------------------------------------>
 		<?php include_once 'dash_menu.php' ?>
 	</div>
-	
+
 	<div class="main-container" style="max-height: calc(100vh - 115px);
     overflow-y: auto;">
 		<div class="heading">
@@ -642,7 +643,7 @@ $activepackspace = (float) $activepackspace;
 	<!-- </div> -->
 	<!-- </div> -->
 	<!--------- dash board footer------------------------------------------------>
-	 <div class="footer-fixed"><?php include_once 'footer.php' ?></div>
+	<div class="footer-fixed"><?php include_once 'footer.php' ?></div>
 	<script type="text/javascript" src="js/dmstree_js/profile_page.js"></script>
 </body>
 

@@ -209,7 +209,7 @@ if ($usertagdata != 0) {
             /* background: linear-gradient(90deg, #1B5563 60%, #218c9e 100%);
             color: #fff;
             font-weight: 600; */
-            border: 1px solid #DDE2E4 ;
+            border: 1px solid #DDE2E4;
             border-radius: 5px;
             padding: 8px 22px 8px 40px;
             position: relative;
@@ -292,6 +292,7 @@ if ($usertagdata != 0) {
             box-sizing: border-box;
             display: block;
         }
+
     </style>
     <script>
         var str = '';

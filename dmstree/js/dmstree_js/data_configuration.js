@@ -164,24 +164,23 @@ var i = 0;
 var id;
 function add_to_list()
 {
-	str = "";
-        var list = $('#list').val();
-        var code = $('#code').val();
-        if(code !=''){
-            $('#text_description').css('display','block');
-            str ='<option value="'+list+'::'+code+'">'+list+'-'+code+'</option>';
-            $('#list_std').append(str);
-            $('#list').val('');
-            $('#code').val('');
-        }
-        else if(code == ''){
-            $('#text_description').css('display','block');
-            str ='<option value="'+list+'">'+list+'</option>';
-            $('#list_std').append(str);
-            $('#list').val('');
-            $('#code').val('');
-        }
-
+    str = "";
+    var list = $('#list').val();
+    var code = $('#code').val();
+    if(code !=''){
+        $('#text_description').css('display','block');
+        str ='<option value="'+list+'::'+code+'">'+list+'-'+code+'</option>';
+        $('#list_std').append(str);
+        $('#list').val('');
+        $('#code').val('');
+    }
+    else if(code == ''){
+        $('#text_description').css('display','block');
+        str ='<option value="'+list+'">'+list+'</option>';
+        $('#list_std').append(str);
+        $('#list').val('');
+        $('#code').val('');
+    }
 }
 $('#list_std').dblclick(function(){
     len = $('#list_std option').length;
@@ -395,46 +394,39 @@ var listarray = [];
 var counter = 0;
 function add_option_std_list()
 {
-	listname = $('#sel_std_list_update').val();
-	code = $('#editcode').val();
-	list = $('#editlist').val();
-	str = '';
-	if(listname != 'select')
-	{
-		
-		if(list != '')
-		{
-			if(code != '')
-			{
-                            $('#list_std_update').css('display','block');
-                            str ='<option value="'+list+'::'+code+'">'+list+'-'+code+'</option>';
-                            $('#list_std_update').append(str);
-//				str += list+'-'+code+'\n';
-//				codearray[counter] = code;
-//				listarray[counter] = list;
-			}
-			else 
-			{
-                            $('#list_std_update').css('display','block');
-                            str ='<option value="'+list+'">'+list+'</option>';
-                            $('#list_std_update').append(str);
-//				str += list+'\n';
-//				listarray[counter] = list;
-			}
-			counter++;
-//			$('#update_add_std').append(str);
-			code = $('#editcode').val("");
-			list = $('#editlist').val('');
-		}
-		else
-		{
-			alert('List Description is Required');
-		}
-	}
-	else
-	{
-		alert("Select List");
-	}
+    listname = $('#sel_std_list_update').val();
+    code = $('#editcode').val();
+    list = $('#editlist').val();
+    str = '';
+    if(listname != 'select')
+    {
+        if(list != '')
+        {
+            if(code != '')
+            {
+                $('#list_std_update').css('display','block');
+                str ='<option value="'+list+'::'+code+'">'+list+'-'+code+'</option>';
+                $('#list_std_update').append(str);
+            }
+            else 
+            {
+                $('#list_std_update').css('display','block');
+                str ='<option value="'+list+'">'+list+'</option>';
+                $('#list_std_update').append(str);
+            }
+            counter++;
+            code = $('#editcode').val("");
+            list = $('#editlist').val('');
+        }
+        else
+        {
+            alert('List Description is Required');
+        }
+    }
+    else
+    {
+        alert("Select List");
+    }
 }
 $('#list_std_update').dblclick(function(){
     len = $('#list_std_update option').length;

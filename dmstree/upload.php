@@ -302,6 +302,15 @@ foreach ($usertagdata as $companytagkey) {
         .ui-datepicker {
             z-index: 1051 !important;
         }
+
+        div.uploadDocView {
+            /* max-height: 80vh; */
+            /* overflow-y: auto; */
+            padding-bottom: 120px;
+        }
+        .form_title h2 {
+            font-size: 22px;
+        }
     </style>
     <script>
         window.onload = function() {
@@ -680,7 +689,7 @@ foreach ($usertagdata as $companytagkey) {
                         </div>
                     </div>
                 </div>
-                <div class="well div-padding-top">
+                <div class="well div-padding-top uploadDocView" style="background-color: #ffffff;">
                     <!-- <div class="row">
                      <div class="col-md-12 col-sm-12 form_title "><h2 class="text-muted upload_doc_cls"><b>Upload Document</b></h2></div>
                 </div> -->
@@ -725,7 +734,8 @@ foreach ($usertagdata as $companytagkey) {
                             <?php } ?>
                             <?php if ($userrole == 'Admin') { ?>
                                 <div class="form-group row" id="single_add">
-                                    <label class="col-md-3" for="txt_tag">Browse Files</label>
+                                    <div class="col-md-3"><label class="" for="txt_tag">Browse Files</label></div>
+                                    
                                     <div class="input-group col-md-9 col-md" id="browse_file_group">
                                         <div class="row" id="file_record1">
                                             <span class="col-md-10"><input type="file" name="sfile1" id="doc_file1" class="form-control upload_control " /></span>

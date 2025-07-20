@@ -100,8 +100,12 @@ $activepackspace = (float)$activepackspace;
 
         .row {
             /* margin-left: 0 !important; */
-            margin-left: -15px !important;
+            /* margin-left: -15px !important; */
             /* padding: 9px; */
+        }
+
+        div.logo-container {
+            margin-top: 30px;
         }
 
         .row_content {
@@ -265,9 +269,9 @@ $activepackspace = (float)$activepackspace;
 
         .footer-fixed {
             position: fixed;
-            left: 0;
+            right: 0;
             bottom: 0;
-            width: 100%;
+            width: 85%;
             /* z-index: 999; */
             background: #fff;
             /* box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
@@ -284,8 +288,7 @@ $activepackspace = (float)$activepackspace;
         }
 
         .Template-main {
-            max-height: calc(100vh - 160px);
-            overflow-y: auto;
+            padding-bottom: 110px !important;
         }
 
         .tempPopupHead {
@@ -304,7 +307,8 @@ $activepackspace = (float)$activepackspace;
             background: #1B5563;
             color: white;
         }
-        .Template-main-left{
+
+        .Template-main-left {
             background: #F4F4F4;
         }
     </style>
@@ -656,6 +660,8 @@ $activepackspace = (float)$activepackspace;
                     </div><!--form container close here -->
 
                 </div>
+                <div class="footer-fixed"><?php include_once 'footer.php' ?></div>
+
             </div><!-- main container close here -->
 
 
@@ -666,7 +672,6 @@ $activepackspace = (float)$activepackspace;
         </div>
     </div>
     <!----------end menu----------------->
-    <div class="footer-fixed"><?php include_once 'footer.php' ?></div>
     <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
     <script type="text/javascript" src="dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="jqueryui/ui/minified/jquery-ui.min.js"></script>

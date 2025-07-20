@@ -32,7 +32,7 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
     <meta charset="utf-8">
     <title>Dash-Board</title>
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <meta name="description" content="">
     <meta name="author" content="">
@@ -109,8 +109,8 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
         .well_cls {
             padding: 30px
         }
-        .well_cls
-        {
+
+        .well_cls {
             background-color: #fff;
         }
 
@@ -132,6 +132,7 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
             font-weight: 100 900;
             font-style: normal;
         }
+
         .footer-fixed {
             position: fixed;
             left: 0;
@@ -141,28 +142,44 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
             background: #fff;
             /* box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
         }
+
         body {
             /* height: 100vh; */
             overflow: hidden;
         }
-        .control-label{
+
+        .control-label {
             font-weight: 500;
         }
-        .uploadtemp{
+
+        .uploadtemp {
             display: flex;
             justify-content: end;
         }
-        .uploadtempdata{
+
+        .uploadtempdata {
             margin-top: 10px;
         }
-        .document_tags{
+
+        .document_tags {
             width: 315px !important;
         }
+
         /* Ensure datepicker calendar appears above other elements */
         .ui-datepicker {
             z-index: 1051 !important;
         }
-        
+
+        /* .div-padding-top {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-bottom: 40px;
+        } */
+        div.div-padding {
+            /* max-height: 80vh; */
+            /* overflow-y: auto; */
+            padding-bottom: 120px;
+        }
     </style>
     <script>
         window.onload = function() {
@@ -206,7 +223,7 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
         </div>
         <div class="col-md-9 col-sm-9" style="height: 100vh;overflow-y: scroll;" id="body-content">
             <div class="well div-padding-top" style="margin-bottom: 18px;width: 100%;">
-                <h2 class="text-muted upload_doc_cls" style="font-size: 2.2rem; font-weight: bold; margin: 0;">Upload Template</h2>
+                <h2 class="text-muted upload_doc_cls" style="font-size: 22px; font-weight: bold; margin: 0;">Upload Template</h2>
             </div>
             <div class="well div-padding-top">
                 <div class="div-padding">
