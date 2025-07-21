@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://13.234.7.43/CodeIgniter-old/index.php/';
+$config['base_url']	= 'http://localhost/CodeIgniter-old/index.php/';
 
 /*
 |--------------------------------------------------------------------------

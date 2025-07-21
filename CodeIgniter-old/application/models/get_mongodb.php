@@ -291,7 +291,7 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
                         );
                         $this->cimongo->insert('documents', $fileDoc);
                         $fileId = $fileDoc['_id'];
-                        $downloadUrl = 'http://13.234.7.43/dmstree/download.php?id=' . (string)$fileId;
+                        $downloadUrl = 'http://localhost/dmstree/download.php?id=' . (string)$fileId;
                         $documentinfoarr['FileId'] = $fileId;
                         $documentinfoarr['DownloadUrl'] = $downloadUrl;
                         error_log('File saved to documents collection: ' . (string)$fileId . ' from path: ' . $filePath);
