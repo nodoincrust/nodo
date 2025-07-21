@@ -291,7 +291,7 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
                         );
                         $this->cimongo->insert('documents', $fileDoc);
                         $fileId = $fileDoc['_id'];
-                        $downloadUrl = 'http://localhost/dmstree/download.php?id=' . (string)$fileId;
+                        $downloadUrl = 'http://13.234.7.43/dmstree/download.php?id=' . (string)$fileId;
                         $documentinfoarr['FileId'] = $fileId;
                         $documentinfoarr['DownloadUrl'] = $downloadUrl;
                         error_log('File saved to documents collection: ' . (string)$fileId . ' from path: ' . $filePath);
@@ -987,8 +987,8 @@ function saveTemplate($filename,$myFile,$file_desc,$usetenantid,$userdepartid,$c
             //$selectfield = array("_id","DocumentName","TemplateId","DocumentInfo.RevisionNo","DocumentInfo.UploadDate","DocumentInfo.TagList","DocumentInfo.FileName");
             //new MongoRegex("/$commentword/i")
             $subwherecondarr = array(
-                                         array("TenantId" => (int)$tenantid)
-                                    );
+                array("TenantId" => (int)$tenantid)
+            );
             // Add DepartmentId to the query if provided
             if($departmentid != '' && $departmentid !== null) {
                 $subwherecondarr[] = array("DepartmentId" => (int)$departmentid);
