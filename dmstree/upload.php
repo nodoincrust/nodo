@@ -306,7 +306,7 @@ foreach ($usertagdata as $companytagkey) {
         div.uploadDocView {
             /* max-height: 80vh; */
             /* overflow-y: auto; */
-            padding-bottom: 120px;
+            padding-bottom: 100px;
         }
         .form_title h2 {
             font-size: 22px;

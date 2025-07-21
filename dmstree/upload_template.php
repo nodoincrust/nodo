@@ -178,7 +178,7 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
         div.div-padding {
             /* max-height: 80vh; */
             /* overflow-y: auto; */
-            padding-bottom: 120px;
+            padding-bottom: 100px;
         }
     </style>
     <script>
@@ -223,7 +223,7 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
         </div>
         <div class="col-md-9 col-sm-9" style="height: 100vh;overflow-y: scroll;" id="body-content">
             <div class="well div-padding-top" style="margin-bottom: 18px;width: 100%;">
-                <h2 class="text-muted upload_doc_cls" style="font-size: 22px; font-weight: bold; margin: 0;">Upload Template</h2>
+                <h2 class="text-muted upload_doc_cls" style="font-size: 22px; font-weight: bold; margin: 0;font-family: 'Space Grotesk', Arial, sans-serif;">Upload Template</h2>
             </div>
             <div class="well div-padding-top">
                 <div class="div-padding">
