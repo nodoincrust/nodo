@@ -311,6 +311,9 @@ $activepackspace = (float)$activepackspace;
         .Template-main-left {
             background: #F4F4F4;
         }
+        div.left-container {
+            margin-left: -23px;
+        }
     </style>
     <script>
         window.onload = function() {
