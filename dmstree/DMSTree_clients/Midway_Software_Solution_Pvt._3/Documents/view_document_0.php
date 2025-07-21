@@ -228,7 +228,7 @@ if (isset($_POST['selected_doc'])) {
 
                 <div class="form-group row">
                     <div class="col-md-12 col-sm-12">
-                        <input type="button" class="btn ctrl-btn btn-success btn-space " value="Revise" data-toggle="modal" data-target="#myModal" onclick="">
+                        <input type="button" class="btn ctrl-btn btn-space " value="Revise" data-toggle="modal" data-target="#myModal" onclick="">
                         <!--<button class="btn btn-success ctrl-btn  btn-space" type=""><i class="icon-ok-sign icon-white "></i>Revise</button>-->
                         <!--<input type="reset" class="btn btn-primary btn-space" value="Reset" onclick="reset_upload();">-->
                         <input type="button" class="btn ctrl-btn btn-space " value="Cancel">
