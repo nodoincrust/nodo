@@ -1,0 +1,68 @@
+<html lang="en-US"><head><meta charset="UTF-8"><title>Template Form</title><link  rel="stylesheet" href="bootstrap/css/bootstrap.min.css" media="screen"><script type="text/javascript" src="js/dmstree_js/doc_temp_valid.js"></script><script>$( document ).ready(function(){ $(".datepicker").datepicker({dateFormat: "dd-mm-yy"}); $("#doc_template .droppedField").each(function(){ if(($(this).find(".table_div").length) != 0) { var btnstatus = $(this).find(".addstatus").val(); btnstatus = btnstatus.trim();if(btnstatus == "cols" && btnstatus != ""){ $(this).find(".tbl_btn").css("display","block"); } else{$(this).find(".tbl_btn").css("display","none");}} })});</script></head><body><style>
+undefined
+</style>
+<form name="doc_template" id="doc_template" class="doc_template" style="width:800px; margin:10px auto;"><legend><p class="  temp_title">Registration Form</p></legend>
+                    
+                    <!-- Action bar - Suited for buttons on form -->
+                    <div class="row row-fluid" style="z-index: 51;">
+			<div class="col-md-12 span12 action-bar droppedFields" style="min-height: 80px; z-index: 119;"><div class="droppedField row row-fluid" style="z-index: 49;" id="CTRL-DIV-1001">
+									<div class="col-md-3 span3" style="z-index: 92;"> 
+										<div class="row row-fluid" style="z-index: 45;"><label class="control-label label_req">Child Full Name</label><label class="label_req requiredcls" style="display: block;">*</label></div>
+									</div>
+									<div class="col-md-9 span9" style="z-index: 93;">
+										<input type="text" placeholder="Last    First   Middle" class="ctrl-textbox cntrol_comp required_field" minlength="" maxlength="" onkeyup="display_minmaxlen_err(this)" name="Child_Full Name"><span class="textbox_err_msg"></span>
+										<p class="required_msg"></p>
+										<p class="control_help"></p>
+										<input type="hidden" class="hiddenObligatoire" value="true">
+										<input type="hidden" class="min_length" value="">
+										<input type="hidden" class="max_length" value="">
+									</div>
+								</div><div class="droppedField row row-fluid" style="z-index: 43;" id="CTRL-DIV-1002">
+			<div class="col-md-3 span3" style="z-index: 109;">
+                            <label class="control-label">Child DOB</label><label class="label_req requiredcls">*</label>
+                        </div>
+			<div class="col-md-9 span9" style="z-index: 111;">
+                            <span class="ctrl-date"><input class="cntrol_comp datepicker" type="text" id="datectrl-1002" name="Child_DOB"></span>
+			</div>
+			<p class="required_msg"></p>
+                    </div><div class="droppedField row row-fluid" style="z-index: 39;" id="CTRL-DIV-1003">
+									<div class="col-md-3 span3" style="z-index: 98;">
+										<label class="control-label label_req">Child Home Address</label><label class="label_req requiredcls" style="display: block;">*</label>
+									</div>
+									<div class="col-md-9 span9" style="z-index: 99;">
+										<span class="ctrl-text">
+											<textarea class="cntrol_comp template_txtarea required_field" rows="4" minlength="" maxlength="" onkeyup="display_minmaxlen_err(this)" name="Child_Home Address"></textarea><span class="textbox_err_msg"></span>
+											<p class="required_msg"></p>
+											<input type="hidden" class="hiddenObligatoire" value="true">
+											<input type="hidden" class="min_length" value="">
+											<input type="hidden" class="max_length" value="">
+										</span>
+									</div>
+								</div><div class="droppedField row row-fluid" style="z-index: 38;" id="CTRL-DIV-1004">
+									<div class="col-md-3 span3" style="z-index: 91;"> 
+										<div class="row row-fluid" style="z-index: 34;"><label class="control-label label_req">Parent(s) Name</label><label class="label_req requiredcls" style="display: block;">*</label></div>
+									</div>
+									<div class="col-md-9 span9" style="z-index: 94;">
+										<input type="text" placeholder="write text here..." class="ctrl-textbox cntrol_comp required_field" minlength="" maxlength="" onkeyup="display_minmaxlen_err(this)" name="Parent(s)_Name"><span class="textbox_err_msg"></span>
+										<p class="required_msg"></p>
+										<p class="control_help"></p>
+										<input type="hidden" class="hiddenObligatoire" value="true">
+										<input type="hidden" class="min_length" value="">
+										<input type="hidden" class="max_length" value="">
+									</div>
+								</div><div class="droppedField row row-fluid" style="z-index: 31;" id="CTRL-DIV-1006">
+									<div class="col-md-3 span3" style="z-index: 90;"> 
+										<div class="row row-fluid" style="z-index: 33;"><label class="control-label label_req">Parent(s) Contact</label><label class="label_req requiredcls" style="display: block;">*</label></div>
+									</div>
+									<div class="col-md-9 span9" style="z-index: 95;">
+										<input type="text" placeholder="write text here..." class="ctrl-textbox cntrol_comp required_field" minlength="" maxlength="" onkeyup="display_minmaxlen_err(this)" name="Parent(s)_Contact"><span class="textbox_err_msg"></span>
+										<p class="required_msg"></p>
+										<p class="control_help"></p>
+										<input type="hidden" class="hiddenObligatoire" value="true">
+										<input type="hidden" class="min_length" value="">
+										<input type="hidden" class="max_length" value="">
+									</div>
+								</div></div>
+                    </div>
+                    <div class="row form_btn"><input type="button" class="btn" value="Reset" onclick="#"></div><div class="row bottom_note"><p><b>Note:</b></p><p>The fields with <span class="manditory_fields"> * </span>are required/manditory fields.</p></div>
+</form></body></html>

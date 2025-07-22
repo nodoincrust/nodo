@@ -1,0 +1,236 @@
+<html lang="en-US"><head><meta charset="UTF-8"><title>Template Form</title><link  rel="stylesheet" href="bootstrap/css/bootstrap.min.css" media="screen"><script type="text/javascript" src="js/dmstree_js/doc_temp_valid.js"></script><script>$( document ).ready(function(){ $(".datepicker").datepicker({dateFormat: "dd-mm-yy"}); $("#doc_template .droppedField").each(function(){ if(($(this).find(".table_div").length) != 0) { var btnstatus = $(this).find(".addstatus").val(); btnstatus = btnstatus.trim();if(btnstatus == "cols" && btnstatus != ""){ $(this).find(".tbl_btn").css("display","block"); } else{$(this).find(".tbl_btn").css("display","none");}} })});</script></head><body><style>
+
+        /* Styles that are also copied for Preview */
+        .control-label {
+            display: inline-block !important;
+            padding-top: 5px;
+            text-align: left;
+            vertical-align: baseline;
+            padding-right: 10px;
+        }
+        .droppedField {
+            padding-left:5px;
+        }
+        .droppedField > input,.checkboxgroup, .selectmultiple, .radiogroup { /*button, select, */ 
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .action-bar .droppedField {
+            float: left;
+            padding-left:5px;
+        }
+        .btn:hover {
+            color: #333;
+            text-decoration: none;
+            background-position: 0 -15px;
+        }
+        .framebox {
+            border: 1px solid rgb(231, 231, 231);
+        }
+        .row {
+            margin-left: 0 !important;
+        }
+        .droppedField {
+            margin: 0 0 15px;
+        }
+        .form_btn .btn {
+            float: right;
+            margin-right: 10px;
+        }
+        .boldfont {
+            font-weight: bold;
+        }
+        .italicfont {
+            font-weight: normal;
+            font-style: italic; 
+        }
+        .inline_radio {
+            display: inline-block !important;
+            margin-right: 3%;
+        }
+        .block_radio {
+            display: block !important;
+        }
+        .label_req {
+            float: left;
+        }
+        .textbox_err_msg {
+            color: red;
+            margin-left: 5px;
+        }
+        .requiredcls {
+            display: none;
+            float: left;
+            color: red;
+        }
+        .manditory_fields {
+            color: red;
+        }
+        .bottom_note {
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin-top: 10px;
+        }
+        .smalltitle {
+            font-size: 22px;
+        }
+        .midtitle  {
+            font-size: 24px;
+        }
+        .largetitle {
+            font-size: 26px;
+        }
+        .temp_title {
+            margin: 0 !important;
+            padding-top: 40px;
+        }
+        .form_table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            width: auto;
+            padding: 0 !important;
+        }
+        .tbl_td {
+            border:none !important;
+            box-shadow: none !important;
+            transition:0 !important;
+            margin-bottom: 0 !important;
+            padding:4px 6px;
+            height: 20px;
+            min-height: 20px !important;
+            width: 120px;
+        }
+        .table_div {
+            overflow-x: auto;
+            overflow-y: auto;
+        }
+        .tbl_btn {
+            display: none;
+            margin-top: 10px 
+        }
+        .required_msg {
+            color: red;
+        }
+        .template_txtarea {
+            width: 100% !important;
+        }
+        input[type="radio"],input[type="checkbox"] {
+            margin: 0px !important;
+        }
+    
+</style>
+<form name="doc_template" id="doc_template" class="doc_template" style="width:800px; margin:10px auto;"><legend><p class="  temp_title">Application Form For Employee</p></legend>
+                    
+                    <!-- Action bar - Suited for buttons on form -->
+                    <div class="row row-fluid" style="z-index: 91;">
+			<div class="col-md-12 span12 action-bar droppedFields" style="min-height: 80px; z-index: 158;"><div class="droppedField row row-fluid" style="z-index: 89;" id="CTRL-DIV-1005">
+			<div class="col-md-12 span12" style="z-index: 116;"><label class="control-label forms_lbl ctrl-label boldfont">Personal Information</label></div>
+			<input type="hidden" value="boldfont" class="label_font">
+			<input type="hidden" value="CTRL-DIV-1005" class="label_id">
+			<input type="hidden" value="" class="label_size">
+                    </div><div class="droppedField row row-fluid" style="z-index: 85;" id="CTRL-DIV-1001">
+			<div class="col-md-3 span3" style="z-index: 117;"> 
+                            <div class="row row-fluid" style="z-index: 83;"><label class="control-label label_req">Name</label><label class="label_req requiredcls" style="display: block;">*</label></div>
+                        </div>
+			<div class="col-md-9 span9" style="z-index: 123;">
+                            <input type="text" placeholder="Employee Name" class="ctrl-textbox cntrol_comp required_field" minlength="" maxlength="" onkeyup="display_minmaxlen_err(this)" name="Name"><span class="textbox_err_msg"></span>
+                            <p class="required_msg"></p>
+                            <p class="control_help"></p>
+                            <input type="hidden" class="hiddenObligatoire" value="true">
+                            <input type="hidden" class="min_length" value="">
+                            <input type="hidden" class="max_length" value="">
+			</div>
+                    </div><div class="droppedField row row-fluid" style="z-index: 79;" id="CTRL-DIV-1003">
+			<div class="col-md-3 span3" style="z-index: 129;">
+                            <label class="control-label label_req">Address</label><label class="label_req requiredcls" style="display: block;">*</label>
+                        </div>
+			<div class="col-md-9 span9" style="z-index: 132;">
+                            <span class="ctrl-text">
+                            <textarea class="cntrol_comp template_txtarea required_field" rows="4" minlength="" maxlength="" onkeyup="display_minmaxlen_err(this)" name="Address"></textarea><span class="textbox_err_msg"></span>
+                            <p class="required_msg"></p>
+                            <input type="hidden" class="hiddenObligatoire" value="true">
+                            <input type="hidden" class="min_length" value="">
+                            <input type="hidden" class="max_length" value="">
+                            </span>
+			</div>
+                    </div><div class="droppedField row row-fluid" style="z-index: 78;" id="CTRL-DIV-1004">
+			<div class="col-md-3 span3" style="z-index: 118;"> 
+                            <div class="row row-fluid" style="z-index: 77;"><label class="control-label label_req">Contact No.</label><label class="label_req requiredcls" style="display: block;">*</label></div>
+                        </div>
+			<div class="col-md-9 span9" style="z-index: 124;">
+                            <input type="text" placeholder="Mobile Number" class="ctrl-textbox cntrol_comp required_field" minlength="" maxlength="" onkeyup="display_minmaxlen_err(this)" name="Contact_No."><span class="textbox_err_msg"></span>
+                            <p class="required_msg"></p>
+                            <p class="control_help"></p>
+                            <input type="hidden" class="hiddenObligatoire" value="true">
+                            <input type="hidden" class="min_length" value="">
+                            <input type="hidden" class="max_length" value="">
+			</div>
+                    </div></div>
+                    </div>
+                    <div class="row row-fluid" style="z-index: 73;"><div class="span12 col-md-12 framebox droppedFields" style="z-index: 104;"><div class="droppedField row row-fluid" style="z-index: 72;" id="CTRL-DIV-1006">
+			<div class="col-md-12 span12" style="z-index: 114;"><label class="control-label forms_lbl ctrl-label boldfont smalllabel">How did you learn about our company</label></div>
+			<input type="hidden" value="boldfont" class="label_font">
+			<input type="hidden" value="CTRL-DIV-1006" class="label_id">
+			<input type="hidden" value="smalllabel" class="label_size">
+                    </div></div></div><div class="row row-fluid" style="z-index: 64;"><div class="span6 col-md-6 framebox droppedFields" style="z-index: 103;"><div class="droppedField row row-fluid" style="z-index: 62;" id="CTRL-DIV-1007">
+			<div class="col-md-3 span3" style="z-index: 122;"> 
+                            <div class="row row-fluid" style="z-index: 58;"><label class="control-label label_req">Position</label><label class="label_req requiredcls" style="display: block;">*</label></div>
+                        </div>
+			<div class="col-md-9 span9" style="z-index: 125;">
+                            <input type="text" placeholder="php, .net, java, ui " class="ctrl-textbox cntrol_comp required_field" minlength="" maxlength="" onkeyup="display_minmaxlen_err(this)" name="Position"><span class="textbox_err_msg"></span>
+                            <p class="required_msg"></p>
+                            <p class="control_help"></p>
+                            <input type="hidden" class="hiddenObligatoire" value="true">
+                            <input type="hidden" class="min_length" value="">
+                            <input type="hidden" class="max_length" value="">
+			</div>
+                    </div><div class="droppedField row row-fluid" style="z-index: 56;" id="CTRL-DIV-1009">
+			<div class="col-md-3 span3" style="z-index: 119;"> 
+                            <div class="row row-fluid" style="z-index: 52;"><label class="control-label label_req">Desired Pay Range</label><label class="label_req requiredcls" style="display: block;">*</label></div>
+                        </div>
+			<div class="col-md-9 span9" style="z-index: 126;">
+                            <input type="text" placeholder="By Hour or Salary" class="ctrl-textbox cntrol_comp required_field" minlength="" maxlength="" onkeyup="display_minmaxlen_err(this)" name="Desired_Pay Range"><span class="textbox_err_msg"></span>
+                            <p class="required_msg"></p>
+                            <p class="control_help"></p>
+                            <input type="hidden" class="hiddenObligatoire" value="true">
+                            <input type="hidden" class="min_length" value="">
+                            <input type="hidden" class="max_length" value="">
+			</div>
+                    </div></div><div class="span6 col-md-6 droppedFields" style="z-index: 102;"><div class="droppedField row row-fluid" style="z-index: 50;" id="CTRL-DIV-1008">
+			<div class="col-md-3 span3" style="z-index: 141;">
+                            <label class="control-label">Available Start Date</label><label class="label_req requiredcls">*</label>
+                        </div>
+			<div class="col-md-9 span9" style="z-index: 143;">
+                            <span class="ctrl-date"><input class="cntrol_comp datepicker" type="text" id="datectrl-1008" name="Available_Start Date"></span>
+			</div>
+			<p class="required_msg"></p>
+                    </div><div class="droppedField row row-fluid" style="z-index: 46;" id="CTRL-DIV-1011">
+			<div class="col-md-3 span3" style="z-index: 120;"> 
+                            <div class="row row-fluid" style="z-index: 44;"><label class="control-label label_req">Are You Current Employee</label><label class="label_req requiredcls">*</label></div>
+                        </div>
+			<div class="col-md-9 span9" style="z-index: 127;">
+                            <input type="text" placeholder="write text here..." class="ctrl-textbox cntrol_comp" minlength="" maxlength="" onkeyup="display_minmaxlen_err(this)" name="Are_You Current Employee"><span class="textbox_err_msg"></span>
+                            <p class="required_msg"></p>
+                            <p class="control_help"></p>
+                            <input type="hidden" class="hiddenObligatoire" value="false">
+                            <input type="hidden" class="min_length" value="">
+                            <input type="hidden" class="max_length" value="">
+			</div>
+                    </div></div></div><div class="row row-fluid" style="z-index: 40;"><div class="span12 col-md-12 droppedFields" style="z-index: 101;"><div class="droppedField row row-fluid" style="z-index: 76;" id="CTRL-DIV-1013">
+			<div class="col-md-12 span12" style="z-index: 144;">
+                            <label class="row row-fluid col-md-12 span12 control-label tbl_label">Qulification</label>
+                            <div class="row row-fluid col-md-12 span12 table_div" style="z-index: 147;">
+				<table class="ctrl-table form_table" id="tbl-CTRL-DIV-1013" border="1px solid #ccc"><tbody><tr id="record1"><th>High School</th><td><input type="text" class="tbl_td"></td><td><input type="text" class="tbl_td"></td><td><input type="text" class="tbl_td"></td></tr><tr id="record2"><th>College Or Univercity</th><td><input type="text" class="tbl_td"></td><td><input type="text" class="tbl_td"></td><td><input type="text" class="tbl_td"></td></tr><tr id="record3"><th>Specialised Training  </th><td><input type="text" class="tbl_td"></td><td><input type="text" class="tbl_td"></td><td><input type="text" class="tbl_td"></td></tr><tr id="record4"><th>Other Education </th><td><input type="text" class="tbl_td"></td><td><input type="text" class="tbl_td"></td><td><input type="text" class="tbl_td"></td></tr></tbody></table>  
+				<span><input type="hidden" class="table_rows" value="4"></span>
+                                <span><input type="hidden" class="table_cols" value="4"></span>
+                                <span><input type="hidden" class="tbl_rows" value="4"></span>
+				<span><input type="hidden" class="tbl_cols" value="4"></span>
+                                <span><input type="hidden" class="addstatus" value=""></span>
+                            </div>
+                            <div class="row row-fluid col-md-12 span12" style="z-index: 149;">
+				<input type="button" id="add_btn" class="btn tbl_btn" value="Add Row" onclick="add_rowToTable(this);">
+                            </div>
+			</div>
+                    </div></div></div><div class="row form_btn"><input type="reset" class="btn" value="Reset"></div><div class="row bottom_note"><p><b>Note:</b></p><p>The fields with <span class="manditory_fields"> * </span>are required/manditory fields.</p></div>
+</form></body></html>

@@ -1,0 +1,121 @@
+.control-label {
+        display: inline-block !important;
+        padding-top: 5px;
+        text-align: left;
+        vertical-align: baseline;
+        padding-right: 10px;
+}
+.droppedField {
+        padding-left:5px;
+}
+.droppedField > input,.checkboxgroup, .selectmultiple, .radiogroup { /*button, select, */ 
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+}
+.action-bar .droppedField {
+        float: left;
+        padding-left:5px;
+}
+.btn:hover {
+        color: #333;
+        text-decoration: none;
+        background-position: 0 -15px;
+}
+.framebox {
+        border: 1px solid rgb(231, 231, 231);
+}
+.row {
+        margin-left: 0 !important;
+}
+.droppedField {
+        margin: 0 0 15px;
+}
+.form_btn .btn {
+        float: right;
+        margin-right: 10px;
+}
+.boldfont {
+        font-weight: bold;
+}
+.italicfont {
+        font-weight: normal;
+        font-style: italic; 
+}
+.inline_radio {
+        display: inline-block !important;
+        margin-right: 3%;
+}
+.block_radio {
+        display: block !important;
+}
+.label_req {
+        float: left;
+}
+.textbox_err_msg {
+        color: red;
+        margin-left: 5px;
+}
+.requiredcls {
+        display: none;
+        float: left;
+        color: red;
+}
+.manditory_fields {
+        color: red;
+}
+.bottom_note {
+        border: 1px solid #ccc;
+        padding: 5px;
+        margin-top: 10px;
+}
+.smalltitle {
+        font-size: 22px;
+}
+.midtitle  {
+        font-size: 24px;
+}
+.largetitle {
+        font-size: 26px;
+}
+.temp_title {
+        margin: 0 !important;
+        padding-top: 40px;
+}
+.form_table {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+        width: auto;
+        padding: 0 !important;
+}
+.tbl_td {
+        border:none !important;
+        box-shadow: none !important;
+        transition:0 !important;
+        margin-bottom: 0 !important;
+        padding:4px 6px;
+        height: 20px;
+        min-height: 20px !important;
+        width: 120px;
+}
+.table_div {
+        overflow-x: auto;
+        overflow-y: auto;
+}
+.tbl_btn {
+        display: none;
+        margin-top: 10px 
+}
+.required_msg {
+        color: red;
+}
+.template_txtarea {
+        width: 100% !important;
+}
+input[type="radio"],input[type="checkbox"] {
+        margin: 0px !important;
+}
+.template_txtarea
+{
+        width: 100% !important;
+}

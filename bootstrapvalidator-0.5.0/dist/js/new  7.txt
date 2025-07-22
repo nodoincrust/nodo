@@ -1,0 +1,29 @@
+
+	
+    <!--<link href="dist/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
+	<link href="css/stylesheet.css" rel="stylesheet">
+	
+	 <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+
+    <!-- Include FontAwesome CSS if you want to use feedback icons provided by FontAwesome -->
+    <!--<link rel="stylesheet" href="bootstrapvalidator-0.5.0/vendor/font-awesome/css/font-awesome.min.css" />-->
+
+    <!-- BootstrapValidator CSS -->
+    <link rel="stylesheet" href="css/bootstrapValidator.min.css"/>
+
+
+	
+    <script type="text/javascript" src="js/tests/vendor/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/sign_up_validation.js"></script>
+
+  <!-- jQuery and Bootstrap JS -->
+    <!--<script type="text/javascript" src="bootstrapvalidator-0.5.0/vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrapvalidator-0.5.0/vendor/bootstrap/js/bootstrap.min.js"></script>-->
+
+    <!-- BootstrapValidator JS -->
+    
+
+	 

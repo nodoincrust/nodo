@@ -1,0 +1,15 @@
+<?php
+include 'PdfaidServices.php';
+ 
+$myDoc2Pdf = new Doc2PdfConverter();
+$myDoc2Pdf->apiKey = "your-api-key";
+$myDoc2Pdf->inputDocLocation = "compress.docx";
+//please make sure that the dir is writable chmod 777
+$myDoc2Pdf->outputPdfLocation = "UploadedPdf/doc2pdf.pdf";
+$myDoc2Pdf->pdfAuthor ="My php Author";
+$myDoc2Pdf->pdfTitle = "My php Title";
+$myDoc2Pdf->pdfSubject = "my php subject";
+$myDoc2Pdf->pdfKeywords ="my php keywords";
+//$result will be OK or APINOK or Error Message 
+$result = $myDoc2Pdf->Doc2PdfConvert();
+?>
