@@ -29,7 +29,7 @@ if(isset($_SESSION['tenantname']))
     $tenantname = $_SESSION['tenantname'];
     $tenantname = str_replace(" ","_",$tenantname);
 }
-require('../CodeIgniter-old/external.php');
+require('CodeIgniter-old/external.php');
 $ci =& get_instance();
 $ci->load->library("cimongo/cimongo");
 $ci->load->model('get_mongodb');

@@ -142,7 +142,7 @@ include 'session_config.php';
                         <div class="col-md-6"> <!--controls-->
                             <select name="colors" class="form-control chosen-select" multiple data-placeholder="select tags">
                             <?php
-                                require('../CodeIgniter-old/external.php');
+                                require('CodeIgniter-old/external.php');
                                 $ci = & get_instance();
                                 $ci->load->library("cimongo/cimongo");
                                 $ci->load->model('get_mongodb');

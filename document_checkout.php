@@ -8,7 +8,7 @@ include 'session_timeout.php';
 
 include 'session_config.php';
 
-require('../CodeIgniter-old/external.php');
+require('CodeIgniter-old/external.php');
 
 $ci = &get_instance();
 
@@ -554,6 +554,7 @@ foreach ($taglist[0]['TagList'] as $key) {
 
         .save-tag-doccheckout {
             background-color: #1B5563;
+            color: #fff;
         }
     </style>
 

@@ -1,5 +1,5 @@
 <?php
-require('../CodeIgniter-old/external.php');
+require('CodeIgniter-old/external.php');
 $ci = &get_instance();
 $ci->load->library("cimongo/cimongo");
 $ci->load->model('get_mongodb');
@@ -697,7 +697,7 @@ $g1 = new Get_mongodb();
 									</div>
 								</div>
 								<p class="signin-link">
-									Alreday a user? <a href="http://localhost/dmstree/dmstree/login.php" style="text-decoration: underline;color: #1B5563;font-weight: 600;margin-left: 5px;">Login</a>
+									Alreday a user? <a href="http://localhost/nodo/login.php" style="text-decoration: underline;color: #1B5563;font-weight: 600;margin-left: 5px;">Login</a>
 								</p>
 							</div>
 

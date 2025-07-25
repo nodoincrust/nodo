@@ -162,6 +162,8 @@ $activepackspace = (float)$activepackspace;
             $('.hide_div').hide();
             var card = $(currdoc).closest('.dmstree-card');
             card.find('.hide_div').show();
+            card.find('.comment-section').show();
+            card.find('.tag-section').hide();
             card.find('.document_commentbox').focus();
         }
 
@@ -169,6 +171,8 @@ $activepackspace = (float)$activepackspace;
             $('.hide_div').hide();
             var card = $(currtagobj).closest('.dmstree-card');
             card.find('.hide_div').show();
+            card.find('.tag-section').show();
+            card.find('.comment-section').hide();
             card.find('.chosen-select').focus();
         }
 
@@ -236,7 +240,20 @@ $activepackspace = (float)$activepackspace;
                 var documentname = $(addtagobj).parent().parent().parent().parent().parent().parent().find('.documentname a').text();
                 var documentrevision = $(addtagobj).parent().parent().parent().parent().parent().parent().find('.documentrev span').text();
                 var documentid = $(addtagobj).parent().parent().parent().parent().parent().parent().find('.documentname .docid').text();
+                var card = $(addtagobj).closest('.dmstree-card');
+                var moretags = card.find('.moretags');
+                var tagHtml = '';
+                // Show the newly added tags immediately for instant feedback
+                taglistarray.forEach(function(tag) {
+                    tagHtml += '<span class="badge badge-info" style="margin-right:5px;">' + tag + '</span>';
+                });
+                moretags.html(tagHtml);
+                // Update the count in the link
+                card.find('#add-tag1 a').text('View More Tags(' + taglistarray.length + ')');
+                // Optionally clear the select
+                card.find('.chosen-select').val('').trigger('chosen:updated');
 
+                // Continue with the backend save and update as before
                 $.ajax({
                     type: "POST",
                     data: {
@@ -248,18 +265,22 @@ $activepackspace = (float)$activepackspace;
                     },
                     url: "savedoc_tagscomment.php",
                     success: function(msg) {
-                        var actiontext = 'New tag is added in ' + documentrevision + ' revision of ' + documentname + ' document.';
-                        $.ajax({
-                            type: "POST",
-                            data: {
-                                actiontext: actiontext
-                            },
-                            url: "track_history.php",
-                            success: function(response) {
-                                window.location.reload(true);
+                        // msg is a JSON array of tags
+                        try {
+                            var tags = msg;
+                            if (typeof tags === 'string') tags = JSON.parse(tags);
+                            // If backend returns more tags, update the list
+                            if (Array.isArray(tags) && tags.length > taglistarray.length) {
+                                var tagHtmlBackend = '';
+                                tags.forEach(function(tag) {
+                                    tagHtmlBackend += '<span class="badge badge-info" style="margin-right:5px;">' + tag + '</span>';
+                                });
+                                moretags.html(tagHtmlBackend);
+                                card.find('#add-tag1 a').text('View More Tags(' + tags.length + ')');
                             }
-                        });
-                        //alert($(addtagobj).parent().html());
+                        } catch (e) {
+                            // fallback: do nothing, keep the instant feedback
+                        }
                     }
                 });
             }
@@ -282,29 +303,107 @@ $activepackspace = (float)$activepackspace;
             }
         }
 
+        // function showDialog(currobj) {
+        //     selectopt = '';
+        //     var card = $(currobj).closest('.dmstree-card');
+        //     var id = card.find('.doccumentid').val();
+        //     var documentname = card.find('.documentname a').text();
+        //     var revision = card.find('.documentrev span').text();
+        //     var docdate = card.find('.dmstree-badge-date span').text();
+        //     var filetype = '';
+        //     var filetypeElem = card.find('.filetype');
+        //     if (filetypeElem.length > 0) {
+        //         filetype = filetypeElem.val();
+        //     }
+        //     console.log('ID:', id);
+        //     console.log('Document Name:', documentname);
+        //     console.log('Revision:', revision);
+        //     console.log('Date:', docdate);
+        //     console.log('Filetype:', filetype);
+        //     var dialog = BootstrapDialog.show({
+        //         type: BootstrapDialog.TYPE_DEFAULT,
+        //         title: 'Add to Bouquet',
+        //         message: $('<div class="row form-group"><label for="sel_bouquet" class="col-md-3  control-label">Select Bouquet Name</label><div class="col-md-6 col-sm-6"><select class="form-control template col-md-4 col-sm-4" id="sel_bouquet"></select></div></div>'),
+        //         draggable: true,
+        //         buttons: [{
+        //                 label: 'Add to Bouquet',
+        //                 cssClass: 'btn-success',
+        //                 action: function(dialogRef) {
+        //                     selectopt = $('#sel_bouquet option:selected').text();
+        //                     if (selectopt != '') {
+        //                         var docInfo = documentname + '::' + revision + '::' + docdate + '::' + filetype + '::' + id;
+        //                         document.getElementById('docbunch').value = docInfo;
+        //                         document.getElementById('docform').value = "1";
+        //                         document.getElementById('docrevision').submit();
+        //                     } else {
+        //                         alert("Please Select Bouquet Name" + selectopt);
+        //                     }
+        //                 }
+        //             },
+        //             {
+        //                 label: 'Close',
+        //                 action: function(dialogRef) {
+        //                     dialogRef.close();
+        //                 }
+        //             }
+        //         ],
+        //         onshown: function(dialogRef) {
+        //             // Fetch bouquet list every time modal opens
+        //             $.ajax({
+        //                 type: "POST",
+        //                 data: { datatype: 'bouquet' },
+        //                 url: "savedoc_tagscomment.php",
+        //                 success: function(response) {
+        //                     $('#sel_bouquet').html(response);
+        //                 }
+        //             });
+        //         }
+        //     });
+        // }
         function showDialog(currobj) {
             selectopt = '';
-            BootstrapDialog.show({
+            var card = $(currobj).closest('.dmstree-card');
+            var id = card.find('.doccumentid').val();
+            var documentname = card.find('.documentname a').text();
+            var revision = card.find('.documentrev span').text();
+            var docdate = card.find('.dmstree-badge-date span').text();
+            var filetype = '';
+            var filetypeElem = card.find('.filetype');
+            if (filetypeElem.length > 0) {
+                filetype = filetypeElem.val();
+            }
+            console.log('ID:', id);
+            console.log('Document Name:', documentname);
+            console.log('Revision:', revision);
+            console.log('Date:', docdate);
+            console.log('Filetype:', filetype);
+            var dialog = BootstrapDialog.show({
                 type: BootstrapDialog.TYPE_DEFAULT,
                 title: 'Add to Bouquet',
                 message: $(
-                    '<div class="row form-group"><label for="sel_bouquet" class="col-md-3  control-label">Select Bouquet Name</label><div class="col-md-6 col-sm-6"><select class="form-control template col-md-4 col-sm-4" id="sel_bouquet" readonly> ' + str + '</select></div></div>'
+                    '<div class="row form-group">' +
+                    '<label for="sel_bouquet" class="col-md-3 control-label">Select Bouquet Name</label>' +
+                    '<div class="col-md-6 col-sm-6">' +
+                    '<select class="form-control template col-md-4 col-sm-4" id="sel_bouquet">' +
+                    '<option value="' + documentname + '">' + documentname + '</option>' +
+                    '</select>' +
+                    '</div>' +
+                    '</div>'
                 ),
                 draggable: true,
                 buttons: [{
                         label: 'Add to Bouquet',
-                        cssClass: 'btn-success',
+                        cssClass: 'btn-custom-add',
                         action: function(dialogRef) {
-                            id = $(currobj).parent().parent().find('.doccumentid').val();
-                            documentname = $(currobj).parent().parent().parent().find('.documentname a').text();
                             selectopt = $('#sel_bouquet option:selected').text();
-
                             if (selectopt != '') {
-                                savetobouquet(id, selectopt, documentname);
+                                var docInfo = documentname + '::' + revision + '::' + docdate + '::' + filetype + '::' + id;
+                                document.getElementById('docbunch').value = docInfo;
+                                document.getElementById('docform').value = "1";
+                                document.getElementById('docrevision').submit();
                             } else {
                                 alert("Please Select Bouquet Name" + selectopt);
                             }
-
                         }
                     },
                     {
@@ -476,6 +575,12 @@ $activepackspace = (float)$activepackspace;
                 });
 
             }
+        }
+
+        function viewmoretags(currobj) {
+            var card = $(currobj).closest('.dmstree-card');
+            var moretags = card.find('.moretags');
+            moretags.toggle(); // Show/hide the tag list
         }
     </script>
     <style>
@@ -746,6 +851,7 @@ $activepackspace = (float)$activepackspace;
         .modern-btn:hover {
             background: #e0e0e0;
         }
+
         .footer-fixed {
             position: fixed;
             left: 0;
@@ -755,8 +861,17 @@ $activepackspace = (float)$activepackspace;
             background: #fff;
             /* box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
         }
+
         #body-content {
-            padding-bottom: 75px; 
+            padding-bottom: 75px;
+        }
+
+        .btn-custom-add {
+            background-color: #1B5563;
+            color: #fff;
+        }
+        .comment-section, .Dash-tag{
+            margin-left: -15px;
         }
     </style>
 </head>
@@ -768,229 +883,245 @@ $activepackspace = (float)$activepackspace;
             <?php include_once 'dash_menu.php' ?>
         </div>
         <div class="col-md-9 div-padding-left" id="body-content">
-                <!-- Usage Meter Gauge -->
-                <!-- <div id="g1" style="width: 100%; height: 220px; margin-bottom: 20px;"></div> -->
-                <!--This page as to be create dynamically.......-->
-                <div class="row">
-                    <p class="spaceerror col-md-12" style="color:red"> </p>
-                </div>
-                <form name="dashboardform" action="view_document.php" method="post">
-                    <input type="hidden" name="selected_doc" id="selected_doc" value="">
-                    <input type="hidden" name="doc" id="doc" value="">
-                    <input type="hidden" name="revision" id="revision" value="">
-                    <input type="hidden" name="tempname" id="tempname" value="">
-                    <input type="hidden" name="temppath" id="temppath" value="">
-                    <input type="hidden" name="userdepartmentid" id="userdepartmentid" value="<?php echo $userdepartid; ?>">
-                    <input type="hidden" name="usertenant" id="usertenant" value="<?php echo $tenantid; ?>">
-                </form>
+            <!-- Usage Meter Gauge -->
+            <!-- <div id="g1" style="width: 100%; height: 220px; margin-bottom: 20px;"></div> -->
+            <!--This page as to be create dynamically.......-->
+            <div class="row">
+                <p class="spaceerror col-md-12" style="color:red"> </p>
+            </div>
+            <form name="dashboardform" action="view_document.php" method="post">
+                <input type="hidden" name="selected_doc" id="selected_doc" value="">
+                <input type="hidden" name="doc" id="doc" value="">
+                <input type="hidden" name="revision" id="revision" value="">
+                <input type="hidden" name="tempname" id="tempname" value="">
+                <input type="hidden" name="temppath" id="temppath" value="">
+                <input type="hidden" name="userdepartmentid" id="userdepartmentid" value="<?php echo $userdepartid; ?>">
+                <input type="hidden" name="usertenant" id="usertenant" value="<?php echo $tenantid; ?>">
+            </form>
 
-                <form action="upload.php" name="revisionForm" id="revisionForm" method="post">
-                    <input type="hidden" value="" name="docinfo" id="docinfo" />
-                    <input type="hidden" value="" name="templocation" id="templocation" />
-                    <input type="hidden" value="" name="docname" id="docname" />
-                    <input type="hidden" value="" name="filename" id="filename">
-                    <input type="hidden" value="" name="templatename" id="templatename">
-                    <input type="hidden" value="" name="documentprivate" id="documentprivate">
-                </form>
+            <form action="upload.php" name="revisionForm" id="revisionForm" method="post">
+                <input type="hidden" value="" name="docinfo" id="docinfo" />
+                <input type="hidden" value="" name="templocation" id="templocation" />
+                <input type="hidden" value="" name="docname" id="docname" />
+                <input type="hidden" value="" name="filename" id="filename">
+                <input type="hidden" value="" name="templatename" id="templatename">
+                <input type="hidden" value="" name="documentprivate" id="documentprivate">
+            </form>
+
+            <form id="docrevision" method="post" action="document_bouquet.php" style="display:none;">
+                <input type="hidden" id="docform" name="docform" value="1">
+                <input type="hidden" id="docbunch" name="docbunch" value="">
+            </form>
 
 
-                <div class="dashboard_container">
-                    <?php
-                    $companytags = array();
-                    $usertagdata = $g1->get_mongodb->companytagData($tenantid);
-                    //print_r($usertagdata);
-                    if ($usertagdata != 0) {
-                        foreach ($usertagdata as $companytagkey) {
-                            if (array_key_exists('DepartmentId', $companytagkey)) {
-                                if ($companytagkey['DepartmentId'] == $userdepartid) {
-                                    if (array_key_exists('TagList', $companytagkey)) {
-                                        foreach ($companytagkey['TagList'] as $cmptagval) {
-                                            $companytags[] = $cmptagval['Tag'];
-                                        }
-                                    }
-                                }
-                            } else {
+            <div class="dashboard_container">
+                <?php
+                $companytags = array();
+                $usertagdata = $g1->get_mongodb->companytagData($tenantid);
+                //print_r($usertagdata);
+                if ($usertagdata != 0) {
+                    foreach ($usertagdata as $companytagkey) {
+                        if (array_key_exists('DepartmentId', $companytagkey)) {
+                            if ($companytagkey['DepartmentId'] == $userdepartid) {
                                 if (array_key_exists('TagList', $companytagkey)) {
                                     foreach ($companytagkey['TagList'] as $cmptagval) {
                                         $companytags[] = $cmptagval['Tag'];
                                     }
                                 }
                             }
-                        }
-                    }
-
-                    $dashboarddata = $g1->get_mongodb->filterdashboarddata($tenantid, $userdepartid);
-                    //var_dump($dashboarddata);
-                    if ($dashboarddata['result'] != null) {
-                        foreach ($dashboarddata['result'] as $dockey) {
-                            $templatename = '';
-                            $htmltemplate = '';
-                            $htmltemppath = '';
-                            $isprivate = '';
-                            $filetype = '';
-                            $documentid        = $dockey['_id'];
-                            $doclatestrevision = isset($dockey['LatestRevision']) ? $dockey['LatestRevision'] : '';
-                            $documentName      = $dockey['DocumentName'];
-                            if (array_key_exists('IsPrivate', $dockey)) {
-                                $isprivate         = $dockey['IsPrivate'];
-                            }
-                            //echo "private".$isprivate;
-                            $doctemplate = '';
-                            if ($userrole == 'Admin') {
-                                if (array_key_exists('TemplateId', $dockey)) {
-                                    $doctemplate  = $dockey['TemplateId'];
-                                    $templatename_result = $g1->get_mongodb->templatenameData($tenantid, $userdepartid, $doctemplate);
-                                    if ($templatename_result != 0) {
-                                        foreach ($templatename_result as $tempkey) {
-                                            if (array_key_exists('HtmlFileName', $tempkey)) {
-                                                $htmltemplate = $tempkey['HtmlFileName'];
-                                            }
-                                            if (array_key_exists('HtmlFileLocation', $tempkey)) {
-                                                $htmltemppath = $tempkey['HtmlFileLocation'];
-                                            }
-                                            if (array_key_exists('TemplateHeader', $tempkey)) {
-                                                $templatename = $tempkey['TemplateHeader'];
-                                            }
-                                        }
-                                    }
+                        } else {
+                            if (array_key_exists('TagList', $companytagkey)) {
+                                foreach ($companytagkey['TagList'] as $cmptagval) {
+                                    $companytags[] = $cmptagval['Tag'];
                                 }
-                                //echo $doctemplate;
-                                $commentcount = 0;
-                                $commentdate = '';
-                                $totalcomments = 0;
-                                $totaltagcount = 0;
-                                $taglist = '';
-                                $documenttag = array();
-                                if (array_key_exists('TagList', $dockey['DocumentInfo'])) {
-                                    $taglist = $dockey['DocumentInfo']['TagList'];
-                                    foreach ($taglist as $value) {
-                                        $totaltagcount++;
-                                    }
-                                }
-
-                                if (array_key_exists('RevisionNo', $dockey['DocumentInfo'])) {
-                                    $revisionNo = $dockey['DocumentInfo']['RevisionNo'];
-                                } else {
-                                    $revisionNo = '';
-                                }
-
-                                if (array_key_exists('FileName', $dockey['DocumentInfo'])) {
-                                    $filename = $dockey['DocumentInfo']['FileName'];
-                                    $filenametype = explode(".", $filename);
-                                    $filetype     = $filenametype[1];
-                                } else {
-                                    $filetype = '';
-                                }
-
-                                if (array_key_exists('UploadDate', $dockey['DocumentInfo'])) {
-                                    $uploadedDate = $dockey['DocumentInfo']['UploadDate'];
-                                    $docDate = date('Y-M-d', $uploadedDate->sec);
-                                } else {
-                                    $docDate = '';
-                                }
-
-                                if (array_key_exists('CurrentStatus', $dockey['DocumentInfo'])) {
-                                    $currstatus = $dockey['DocumentInfo']['CurrentStatus'];
-                                } else {
-                                    $currstatus = '';
-                                }
-
-                                echo '<div class="dmstree-card">';
-                                echo '<div class="dmstree-card-header">';
-                                echo '<span class="dmstree-card-icon"><img src="img/Document Icon Frame.svg" style="height: 44px; width: 44px; object-fit:contain; border: 1px #e5e5e5;"></span>';
-                                echo '<span class="dmstree-card-title documentname">';
-                                if ($documentName != '') {
-                                    echo '<a onclick=\'dynamicURL("' . $documentName . '","' . $revisionNo . '","' . $htmltemplate . '","' . $documentid . '")\'>' . $documentName . '</a>';
-                                }
-                                echo '<span class="docid" style="display:none">' . $documentid . '</span>';
-                                echo '</span>';
-                                echo '</div>';
-                                echo '<div class="dmstree-card-info">';
-                                echo '<span class="dmstree-badge dmstree-badge-template documenttemp">Template Name: <span class="tempname">' . htmlspecialchars($documentName) . '</span><span class="tempid" style="display:none">' . $doctemplate . '</span><span class="temppath" style="display:none">' . $htmltemppath . '</span></span>';
-                                echo '<span class="dmstree-badge dmstree-badge-revision documentrev">Revision Number: <span>' . htmlspecialchars($revisionNo) . '</span></span>';
-                                echo '<span class="dmstree-badge dmstree-badge-date">Upload Date: <span>' . htmlspecialchars($docDate) . '</span></span>';
-                                echo '<input type="hidden" class="privateflag" value="' . htmlspecialchars($isprivate) . '">';
-                                if ($htmltemplate != '' && $htmltemppath != '') {
-                                    echo '<input type="hidden" class="doctemp" value="' . $htmltemplate . '">';
-                                    echo '<input type="hidden" class="doctemppath" value="' . $htmltemppath . '">';
-                                }
-                                echo '</div>';
-                                echo '<div class="dmstree-card-actions">';
-                                echo '<button class="btn btn-comments revsioncomment comments_tags" type="button" onclick="makefocusComment(this);" value="Comments"><img src="img/Icon.svg" alt="Comments" style="width:16px; height:16px; margin-right:6px;"> Comments</button>';
-                                echo '<button class="btn btn-tags revsiontags comments_tags" type="button" onclick="makefocusTag(this);" value="Tags"><img src="img/Icon (6).svg" alt="Tags" style="width:16px; height:16px; margin-right:6px;"> Tags</button>';
-                                if ($currstatus == 'CheckedIn') {
-                                    echo '<button class="btn btn-checkin revsionstatus comments_tags" type="button" onclick="redirecttoupload(this)" value="' . htmlspecialchars($currstatus) . '">';
-                                    echo '<img src="img/Checkout.svg" alt="" class="img_icon">Check Out</button>';
-                                    echo '<input type="hidden" class="doccumentid" value="' . $dockey['_id'] . '-' . $revisionNo . '-' . $isprivate . '">';
-                                    echo '<button class="btn btn-bouquet add_to_bouquet comments_tags" type="button" onclick="showDialog(this)" value="Add to Bouquet"><img src="img/Icon (3).svg" alt="Add to Bouquet" style="width:16px; height:16px; margin-right:6px;"> Add to Bouquet</button>';
-                                    echo '<button class="btn btn-archive add_to_archive comments_tags" type="button" onclick="addToArchive(this);" value="Add to Archive"><img src="img/Icon (4).svg" alt="Move to Archive" style="width:16px; height:16px; margin-right:6px;"></i> Move to Archive</button>';
-                                }
-                                echo '</div>';
-                                echo '<div class="hide_div" style="display:none;">';
-                                echo '  <div class="row comment div-margin">';
-                                echo '    <div class="col-md-6">';
-                                echo '      <div class="div-padding" id="add-comment1">';
-                                echo '        <a onclick="viewmorecomments(this);">View More Comments(' . $totalcomments . ')</a>';
-                                echo '      </div>';
-                                echo '      <div class="morecomments row col-md-12" style="max-height:230px; overflow-y:auto;">';
-                                echo '      </div>';
-                                echo '      <div class="form-group row add-comment">';
-                                echo '        <div class="col-md-7">';
-                                echo '          <input type="text" class="form-control txt_comment1 border_class document_commentbox" id="txt_comment1" placeholder="Comment" name="" autofocus/>';
-                                echo '        </div>';
-                                echo '        <div class="col-md-2">';
-                                echo '          <input type="button" id="btn_comment" class="save_btn_bg_cancel btn-success" value="Comment" onclick="add_comment(this)">';
-                                echo '        </div>';
-                                echo '      </div>';
-                                echo '    </div>';
-                                echo '    <div class="col-md-6">';
-                                echo '      <div class="row col-md-12">';
-                                echo '        <div class="div-padding" id="add-tag1">';
-                                echo '          <a>View More Tags(' . $totaltagcount . ')</a>';
-                                echo '        </div>';
-                                echo '        <div class="row" style="padding:15px 5px;">';
-                                echo '          <div class="col-md-10" id="tag_diaplay" style="max-width:900px; margin:auto">';
-                                echo '            <select name="colors" class="form-control chosen-select tag_selection" multiple data-placeholder="select tags">';
-                                foreach ($companytags as $comptagvalue) {
-                                    $flagtag = 0;
-                                    foreach ($documenttag as $doctagvalue) {
-                                        if ($comptagvalue == $doctagvalue) {
-                                            $flagtag = 1;
-                                        }
-                                    }
-                                    if ($flagtag == 1) {
-                                        echo '<option value="' . $comptagvalue . '" selected>' . $comptagvalue . '</option>';
-                                    } else {
-                                        echo '<option value="' . $comptagvalue . '">' . $comptagvalue . '</option>';
-                                    }
-                                }
-                                echo '            </select>';
-                                echo '          </div>';
-                                echo '          <div class="col-md-2">';
-                                echo '            <input type="button" id="btn_tag btn_tags" class="save_btn_bg_cancel btn-success" value="Save Tags" onclick="add_tags(this)">';
-                                echo '          </div>';
-                                echo '        </div>';
-                                echo '      </div>';
-                                echo '    </div>';
-                                echo '  </div>';
-                                echo '</div>';
-                                echo '</div>';
                             }
                         }
                     }
+                }
 
-                    ?>
-                </div>
-               
+                $dashboarddata = $g1->get_mongodb->filterdashboarddata($tenantid, $userdepartid);
+                //var_dump($dashboarddata);
+                if ($dashboarddata['result'] != null) {
+                    foreach ($dashboarddata['result'] as $dockey) {
+                        $templatename = '';
+                        $htmltemplate = '';
+                        $htmltemppath = '';
+                        $isprivate = '';
+                        $filetype = '';
+                        $documentid        = $dockey['_id'];
+                        $doclatestrevision = isset($dockey['LatestRevision']) ? $dockey['LatestRevision'] : '';
+                        $documentName      = $dockey['DocumentName'];
+                        if (array_key_exists('IsPrivate', $dockey)) {
+                            $isprivate         = $dockey['IsPrivate'];
+                        }
+                        //echo "private".$isprivate;
+                        $doctemplate = '';
+                        if ($userrole == 'Admin') {
+                            if (array_key_exists('TemplateId', $dockey)) {
+                                $doctemplate  = $dockey['TemplateId'];
+                                $templatename_result = $g1->get_mongodb->templatenameData($tenantid, $userdepartid, $doctemplate);
+                                if ($templatename_result != 0) {
+                                    foreach ($templatename_result as $tempkey) {
+                                        if (array_key_exists('HtmlFileName', $tempkey)) {
+                                            $htmltemplate = $tempkey['HtmlFileName'];
+                                        }
+                                        if (array_key_exists('HtmlFileLocation', $tempkey)) {
+                                            $htmltemppath = $tempkey['HtmlFileLocation'];
+                                        }
+                                        if (array_key_exists('TemplateHeader', $tempkey)) {
+                                            $templatename = $tempkey['TemplateHeader'];
+                                        }
+                                    }
+                                }
+                            }
+                            //echo $doctemplate;
+                            $commentcount = 0;
+                            $commentdate = '';
+                            $totalcomments = 0;
+                            $totaltagcount = 0;
+                            $taglist = '';
+                            $documenttag = array();
+                            if (array_key_exists('TagList', $dockey['DocumentInfo'])) {
+                                $taglist = $dockey['DocumentInfo']['TagList'];
+                                foreach ($taglist as $value) {
+                                    $totaltagcount++;
+                                }
+                            }
+
+                            if (array_key_exists('RevisionNo', $dockey['DocumentInfo'])) {
+                                $revisionNo = $dockey['DocumentInfo']['RevisionNo'];
+                            } else {
+                                $revisionNo = '';
+                            }
+
+                            if (array_key_exists('FileName', $dockey['DocumentInfo'])) {
+                                $filename = $dockey['DocumentInfo']['FileName'];
+                                $filenametype = explode(".", $filename);
+                                $filetype     = $filenametype[1];
+                            } else {
+                                $filetype = '';
+                            }
+
+                            if (array_key_exists('UploadDate', $dockey['DocumentInfo'])) {
+                                $uploadedDate = $dockey['DocumentInfo']['UploadDate'];
+                                $docDate = date('Y-M-d', $uploadedDate->sec);
+                            } else {
+                                $docDate = '';
+                            }
+
+                            if (array_key_exists('CurrentStatus', $dockey['DocumentInfo'])) {
+                                $currstatus = $dockey['DocumentInfo']['CurrentStatus'];
+                            } else {
+                                $currstatus = '';
+                            }
+
+                            echo '<div class="dmstree-card">';
+                            echo '<div class="dmstree-card-header">';
+                            echo '<span class="dmstree-card-icon"><img src="img/Document Icon Frame.svg" style="height: 44px; width: 44px; object-fit:contain; border: 1px #e5e5e5;"></span>';
+                            echo '<span class="dmstree-card-title documentname">';
+                            if ($documentName != '') {
+                                echo '<a onclick=\'dynamicURL("' . $documentName . '","' . $revisionNo . '","' . $htmltemplate . '","' . $documentid . '")\'>' . $documentName . '</a>';
+                            }
+                            echo '<span class="docid" style="display:none">' . $documentid . '</span>';
+                            echo '</span>';
+                            echo '</div>';
+                            echo '<div class="dmstree-card-info">';
+                            echo '<span class="dmstree-badge dmstree-badge-template documenttemp">Template Name: <span class="tempname">' . htmlspecialchars($documentName) . '</span><span class="tempid" style="display:none">' . $doctemplate . '</span><span class="temppath" style="display:none">' . $htmltemppath . '</span></span>';
+                            echo '<span class="dmstree-badge dmstree-badge-revision documentrev">Revision Number: <span>' . htmlspecialchars($revisionNo) . '</span></span>';
+                            echo '<span class="dmstree-badge dmstree-badge-date">Upload Date: <span>' . htmlspecialchars($docDate) . '</span></span>';
+                            echo '<input type="hidden" class="privateflag" value="' . htmlspecialchars($isprivate) . '">';
+                            if ($htmltemplate != '' && $htmltemppath != '') {
+                                echo '<input type="hidden" class="doctemp" value="' . $htmltemplate . '">';
+                                echo '<input type="hidden" class="doctemppath" value="' . $htmltemppath . '">';
+                            }
+                            echo '</div>';
+                            echo '<div class="dmstree-card-actions">';
+                            echo '<button class="btn btn-comments revsioncomment comments_tags" type="button" onclick="makefocusComment(this);" value="Comments"><img src="img/Icon.svg" alt="Comments" style="width:16px; height:16px; margin-right:6px;"> Comments</button>';
+                            echo '<button class="btn btn-tags revsiontags comments_tags" type="button" onclick="makefocusTag(this);" value="Tags"><img src="img/Icon (6).svg" alt="Tags" style="width:16px; height:16px; margin-right:6px;"> Tags</button>';
+                            if ($currstatus == 'CheckedIn') {
+                                echo '<button class="btn btn-checkin revsionstatus comments_tags" type="button" onclick="redirecttoupload(this)" value="' . htmlspecialchars($currstatus) . '">';
+                                echo '<img src="img/Checkout.svg" alt="" class="img_icon">Check Out</button>';
+                                echo '<input type="hidden" class="doccumentid" value="' . $dockey['_id'] . '-' . $revisionNo . '-' . $isprivate . '">';
+                                echo '<button class="btn btn-bouquet add_to_bouquet comments_tags" type="button" onclick="showDialog(this)" value="Add to Bouquet"><img src="img/Icon (3).svg" alt="Add to Bouquet" style="width:16px; height:16px; margin-right:6px;"> Add to Bouquet</button>';
+                                echo '<button class="btn btn-archive add_to_archive comments_tags" type="button" onclick="addToArchive(this);" value="Add to Archive"><img src="img/Icon (4).svg" alt="Move to Archive" style="width:16px; height:16px; margin-right:6px;"></i> Move to Archive</button>';
+                            }
+                            echo '</div>';
+                            echo '<div class="hide_div" style="display:none;">';
+                            echo '  <div class="row comment div-margin">';
+                            echo '    <div class="col-md-6 comment-section">';
+                            echo '      <div class="div-padding" id="add-comment1">';
+                            echo '        <a onclick="viewmorecomments(this);">View More Comments(' . $totalcomments . ')</a>';
+                            echo '      </div>';
+                            echo '      <div class="morecomments row col-md-12" style="max-height:230px; overflow-y:auto;">';
+                            echo '      </div>';
+                            echo '      <div class="form-group row add-comment">';
+                            echo '        <div class="col-md-7">';
+                            echo '          <input type="text" class="form-control txt_comment1 border_class document_commentbox" id="txt_comment1" placeholder="Comment" name="" autofocus/>';
+                            echo '        </div>';
+                            echo '        <div class="col-md-2">';
+                            echo '          <input type="button" id="btn_comment" class="save_btn_bg_cancel btn-success" value="Comment" onclick="add_comment(this)">';
+                            echo '        </div>';
+                            echo '      </div>';
+                            echo '    </div>';
+                            echo '    <div class="col-md-6 tag-section" style="display:none;">';
+                            echo '      <div class="row Dash-tag">';
+                            echo '        <div class="div-padding" id="add-tag1">';
+                            echo '          <a href="javascript:void(0);" onclick="viewmoretags(this);">View More Tags(' . $totaltagcount . ')</a>';
+                            echo '        </div>';
+                            echo '        <div class="moretags row col-md-12" style="max-height:230px; overflow-y:auto; display:none;">';
+                            if ($totaltagcount > 0 && is_array($taglist)) {
+                                foreach ($taglist as $tag) {
+                                    echo '<span class="badge badge-info" style="margin-right:5px;">' . htmlspecialchars($tag) . '</span>';
+                                }
+                            } else {
+                                echo '<span>No tags added yet.</span>';
+                            }
+                            echo '        </div>';
+                            // Restore Add Tags select and button below
+
+                            echo '        <div class="row" style="padding:15px 5px;">';
+                            echo '          <div class="col-md-10" id="tag_diaplay" style="max-width:900px; margin:auto">';
+                            echo '            <select name="colors" class="form-control chosen-select tag_selection" multiple data-placeholder="select tags">';
+                            foreach ($companytags as $comptagvalue) {
+                                $flagtag = 0;
+                                foreach ($documenttag as $doctagvalue) {
+                                    if ($comptagvalue == $doctagvalue) {
+                                        $flagtag = 1;
+                                    }
+                                }
+                                if ($flagtag == 1) {
+                                    echo '<option value="' . $comptagvalue . '" selected>' . $comptagvalue . '</option>';
+                                } else {
+                                    echo '<option value="' . $comptagvalue . '">' . $comptagvalue . '</option>';
+                                }
+                            }
+                            echo '            </select>';
+                            echo '          </div>';
+                            echo '          <div class="col-md-2">';
+                            echo '            <input type="button" id="btn_tag btn_tags" class="save_btn_bg_cancel btn-success" value="Save Tags" onclick="add_tags(this)">';
+                            echo '          </div>';
+                            echo '        </div>';
+                            echo '      </div>';
+                            echo '    </div>';
+                            echo '  </div>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    }
+                }
+
+                ?>
             </div>
-            
-        </div> 
-        <div class="footer-fixed"><?php include_once 'footer.php'?></div>
-        
-        <!--<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>-->
-        <script src="jqueryui/ui/minified/jquery-ui.min.js"></script>
-        <script src="js/dmstree_js/jquery.tag-editor.js"></script>
-        <script type="text/javascript" src="js/dmstree_js/body_dash_page.js"></script>
-    </body>
 
-    </html>
+        </div>
+
+    </div>
+    <div class="footer-fixed"><?php include_once 'footer.php' ?></div>
+
+    <!--<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>-->
+    <script src="jqueryui/ui/minified/jquery-ui.min.js"></script>
+    <script src="js/dmstree_js/jquery.tag-editor.js"></script>
+    <script type="text/javascript" src="js/dmstree_js/body_dash_page.js"></script>
+</body>
+
+</html>

@@ -6,7 +6,7 @@ $docrevision    = $_POST['docrevision'];
 $tenantid       = $_POST['tenantid'];
 $departmentid   = $_POST['departid'];*/
 
-/*require('../CodeIgniter-old/external.php');
+/*require('CodeIgniter-old/external.php');
     $ci =& get_instance();
     $ci->load->library("cimongo/cimongo");
 		$ci->load->model('get_mongodb');

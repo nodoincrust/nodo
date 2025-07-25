@@ -10,7 +10,7 @@
         $_SESSION['timestamp']=time();
     }
     include 'session_config.php';
-    require('../CodeIgniter-old/external.php');
+    require('CodeIgniter-old/external.php');
     $ci = & get_instance();
     $ci->load->library("cimongo/cimongo");
     $ci->load->model('get_mongodb');

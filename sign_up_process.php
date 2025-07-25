@@ -1,6 +1,6 @@
 <?php
 
-	require('../CodeIgniter-old/external.php');
+	require('CodeIgniter-old/external.php');
 	$ci =& get_instance();
 	$ci->load->library("cimongo/cimongo");
 			$ci->load->model('get_mongodb');
@@ -176,7 +176,7 @@
 		$setTenantHistory =  $g1->get_mongodb->setTenantHistory($id);
 		$setPhotoGallary =  $g1->get_mongodb->setPhotoGallery($id,$currDate,$admin_email);
                 $setTag = $g1->get_mongodb->setTagList($id,$currDate,$admin_email);
-                 header('Location: http://localhost/dmstree/dmstree/login.php');
+                 header('Location: http://localhost/nodo/login.php');
                  exit;
 	}
        

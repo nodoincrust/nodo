@@ -16,7 +16,7 @@ if(isset($_SESSION['usertenant'])) {
 if(isset($_SESSION['userid']))
 {
     $userid = $_SESSION['userid'];
-    require('../CodeIgniter-old/external.php');
+    require('CodeIgniter-old/external.php');
     $ci =& get_instance();
     $ci->load->library("cimongo/cimongo");
 		$ci->load->model('get_mongodb');

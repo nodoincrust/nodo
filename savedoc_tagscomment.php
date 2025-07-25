@@ -16,7 +16,7 @@ if(isset($_SESSION['usertenant'])) {
 if(isset($_SESSION['userid']))
 {
     $userid = $_SESSION['userid'];
-    require('../CodeIgniter-old/external.php');
+    require('CodeIgniter-old/external.php');
     $ci =& get_instance();
     $ci->load->library("cimongo/cimongo");
 		$ci->load->model('get_mongodb');
@@ -41,8 +41,32 @@ if(isset($_SESSION['userid']))
         {
                 $taglist            = $_POST['taglistarray'];
                 $tag_data['tagresult'] =$g1->get_mongodb->savetagdata($tenantid,$userdepartid,$documentname,$documentrevision,$taglist,$userid,$documentid);
-                print_r($tag_data['tagresult']);
-               
+                // Fetch updated tag list for this document and revision
+                $updatedTags = array();
+                $wheredoc   = array("_id" => new MongoID($documentid),"DocumentName" => $documentname, "TenantId" =>$tenantid);
+                if($userdepartid != '') {
+                    $wheredoc["DepartmentId"] = $userdepartid;
+                }
+                $selectdoc  = array("DocumentInfo");
+                $documentinfoquery = $ci->get_mongodb->cimongo->select($selectdoc)->where($wheredoc)->get('DocumentMetaData');
+                $documentinfoqueryresult = $documentinfoquery->result_array();
+                $revisionarr = array();
+                foreach ($documentinfoqueryresult as $dockey) {
+                    if(array_key_exists("DocumentInfo",$dockey)) {
+                        foreach ($dockey['DocumentInfo'] as $subdockey) {
+                            if($subdockey['RevisionNo'] == $documentrevision) {
+                                if(array_key_exists('TagList', $subdockey)) {
+                                    foreach($subdockey['TagList'] as $tag) {
+                                        $updatedTags[] = $tag;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                header('Content-Type: application/json');
+                echo json_encode($updatedTags);
+                exit;
         }    
     } 
     else if(isset ($_POST['datatype']))

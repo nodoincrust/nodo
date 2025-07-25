@@ -49,12 +49,12 @@ function getDirectorySize($path)
                 } 
             } 
         }    
-  } 
         closedir ($handle); 
-        $total['size'] = $totalsize; 
-        $total['count'] = $totalcount; 
-        $total['dircount'] = $dircount; 
-        return $total; 
+    } 
+    $total['size'] = $totalsize; 
+    $total['count'] = $totalcount; 
+    $total['dircount'] = $dircount; 
+    return $total; 
 } 
 
 function sizeFormat($size) 

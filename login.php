@@ -479,7 +479,7 @@
         </button>
 
         <p class="signup-link">
-          New to Nodo.ai? <a href="http://localhost/dmstree/dmstree/sign_up.php">Sign up</a>
+          New to Nodo.ai? <a href="http://localhost/nodo/sign_up.php">Sign up</a>
         </p>
       </form>
     </div>
