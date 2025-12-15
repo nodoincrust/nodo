@@ -46,19 +46,25 @@
         else if($type == 'file')
         {
             $temp = $_POST['template_id'];
-            $temparray = explode('-',$temp);
+            $temparray = explode('-', $temp);
             $documentrevision = $temparray[1];
             $id = $temparray[0];
-            $result = $g1->get_mongodb->getFileLocation($id,$documentrevision);
+            $result = $g1->get_mongodb->getFileLocation($id, $documentrevision);
             $filelocation = '';
             foreach($result[0]['DocumentInfo'] as $key)
             {
                 if($key['RevisionNo'] == $documentrevision)
                 {
-                    $filelocation = $key['FileLocation'].'/'.$key['FileName'];
+                    // Fix: Only append FileName if not already present
+                    $fileLoc = $key['FileLocation'];
+                    $fileName = $key['FileName'];
+                    if (substr($fileLoc, -strlen($fileName)) === $fileName) {
+                        $filelocation = $fileLoc;
+                    } else {
+                        $filelocation = rtrim($fileLoc, '/').'/'.$fileName;
+                    }
                     break;
                 }
-                   
             }
             echo $filelocation;
         }

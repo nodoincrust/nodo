@@ -152,6 +152,18 @@ if($docexpirydate != '')               {
             
             $physicallocarr = array();
             $locationtagarr = array();
+            if(isset($_SESSION['usertenant']) && isset($_SESSION['tenantname']) && isset($_SESSION['documentimageurl']) && $_SESSION['documentimageurl'] != '') {
+                $tenantid = $_SESSION['usertenant'];
+                $tenantname = str_replace(' ', '_', $_SESSION['tenantname']);
+                $imagefile = basename($_SESSION['documentimageurl']);
+                $physicallocpath = 'DMSTree_clients/' . $tenantname . '_' . $tenantid . '/Documents/' . $imagefile;
+                if (file_exists($physicallocpath)) {
+                    // Use the constructed path
+                } else {
+                    // Fallback to the session value if file not found (for debugging)
+                    $physicallocpath = $_SESSION['documentimageurl'];
+                }
+            }
             if($physicallocpath != '' && $physicalloctags != null)
             {
                 $physicallocarr['LocationPath'] = $physicallocpath;
@@ -287,11 +299,19 @@ if($docexpirydate != '')               {
                 $documentinfoarr['PhysicalLocation'] = $physicallocarr;
             }
             
-            
              //print_r($_SESSION['documentimageurl']);
             // Ensure filearray is null if empty
             if (empty($filearray)) {
                 $filearray = null;
+            }
+            // Debug: Output the session image path and what will be saved
+            if (isset($_SESSION['documentimageurl'])) {
+                error_log('DEBUG: $_SESSION["documentimageurl"] = ' . $_SESSION['documentimageurl']);
+                echo '<pre>DEBUG: $_SESSION["documentimageurl"] = ' . htmlspecialchars($_SESSION['documentimageurl']) . "</pre>\n";
+            }
+            if (isset($physicallocarr['LocationPath'])) {
+                error_log('DEBUG: LocationPath to be saved = ' . $physicallocarr['LocationPath']);
+                echo '<pre>DEBUG: LocationPath to be saved = ' . htmlspecialchars($physicallocarr['LocationPath']) . "</pre>\n";
             }
             $documentmetadata['docresult'] = $g1->get_mongodb->saveDocumentMetada($tenantid,$departmenid,$filearray,$documentinfoarr,$tempid,$type,$revision,$documentid,$templatename,$currDate,$usermailid,$isPrivate);
             echo $documentmetadata['docresult'];
