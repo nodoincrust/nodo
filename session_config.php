@@ -26,31 +26,40 @@ function getDirectorySize($path)
     $totalsize = 0; 
     $totalcount = 0; 
     $dircount = 0;
-    
-    if ($handle = opendir ($path)) 
-    { 
-        while (false !== ($file = readdir($handle))) 
-        { 
-            $nextpath = $path . '/' . $file; 
-            if ($file != '.' && $file != '..' && !is_link ($nextpath)) 
-            { 
-                if (is_dir ($nextpath)) 
-                { 
-                $dircount++; 
-                $result = getDirectorySize($nextpath); 
-                $totalsize += $result['size']; 
-                $totalcount += $result['count']; 
-                $dircount += $result['dircount']; 
-                } 
-                elseif (is_file ($nextpath)) 
-                { 
-                $totalsize += filesize ($nextpath); 
-                $totalcount++; 
-                } 
-            } 
-        }    
-        closedir ($handle); 
-    } 
+    // Validate path first to avoid PHP warnings when directory is missing
+    if (empty($path) || !is_dir($path)) {
+        return array('size' => 0, 'count' => 0, 'dircount' => 0);
+    }
+
+    // Suppress opendir warnings and handle failure gracefully
+    $handle = @opendir($path);
+    if ($handle === false) {
+        return array('size' => 0, 'count' => 0, 'dircount' => 0);
+    }
+
+    while (false !== ($file = readdir($handle))) {
+        if ($file === '.' || $file === '..') {
+            continue;
+        }
+        $nextpath = rtrim($path, "\/") . DIRECTORY_SEPARATOR . $file;
+        if (is_link($nextpath)) {
+            continue;
+        }
+        if (is_dir($nextpath)) {
+            $dircount++;
+            $result = getDirectorySize($nextpath);
+            $totalsize += $result['size'];
+            $totalcount += $result['count'];
+            $dircount += $result['dircount'];
+        } elseif (is_file($nextpath)) {
+            $filesize = @filesize($nextpath);
+            if ($filesize !== false) {
+                $totalsize += $filesize;
+            }
+            $totalcount++;
+        }
+    }
+    closedir($handle);
     $total['size'] = $totalsize; 
     $total['count'] = $totalcount; 
     $total['dircount'] = $dircount; 
