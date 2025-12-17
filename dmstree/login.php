@@ -66,9 +66,11 @@
     }
 
     .main-container {
-      flex: 1;
       display: flex;
       min-height: calc(100vh - 64px);
+      display: flex;
+  min-height: calc(100vh - 64px);
+  align-items: stretch;
       /* overflow: hidden; */
     }
 
@@ -155,6 +157,7 @@
     }
 
     .right-section {
+        flex: 1;
       width: 575px;
       background: white;
       padding: 60px 60px;
@@ -163,6 +166,7 @@
       justify-content: center;
       box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     }
+
 
     .login-form {
       width: 100%;
@@ -323,6 +327,7 @@
     @media (max-width: 968px) {
       .main-container {
         flex-direction: column;
+         align-items: stretch;
       }
 
       .left-section {
@@ -343,6 +348,7 @@
       } */
     }
 
+
     /* Laptops - 1025px to 1280px */
     @media (min-width: 1025px) and (max-width: 1280px) {
       .header {
@@ -356,14 +362,6 @@
       .header {
         padding: 10px 57px;
       }
-
-      .left-section {
-        height: fit-content;
-      }
-
-      .right-section {
-        height: fit-content;
-      } 
     }
     
 
@@ -433,7 +431,7 @@
     <div class="right-section">
       <form id="loginForm" class="login-form" method="post" action="my_script.php">
         <div class="login-title">
-          <h2 class="welcome-heading">Welcome Back!</h2>
+          <h2 class="welcome-heading">Welcome Back! jasdsajhasdjadsjasdbasdjadsb</h2>
           <p class="welcome-subtitle">Login to continue to your workspace</p>
         </div>
 
@@ -479,7 +477,7 @@
         </button>
 
         <p class="signup-link">
-          New to Nodo.ai? <a href="http://localhost/dmstree/dmstree/sign_up.php">Sign up</a>
+          New to Nodo.ai? <a href="http://13.201.180.131/dmstree/dmstree/sign_up.php">Sign up</a>
         </p>
       </form>
     </div>

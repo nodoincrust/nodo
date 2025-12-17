@@ -875,7 +875,7 @@ $activepackspace = (float)$activepackspace;
         </div>
 
         <!--------- dash board footer------------------------------------------------>
-        <?php include_once 'footer.php' ?>
+        <!-- <?php include_once 'footer.php' ?> -->
         <script src="jqueryui/ui/minified/jquery-ui.min.js"></script>
         <script src="js/dmstree_js/jquery.tag-editor.js"></script>
         <script type="text/javascript" src="js/dmstree_js/body_dash_page.js"></script>

@@ -258,27 +258,38 @@
 </style>
 <form name="doc_template" id="doc_template" class="doc_template" style="width:800px; margin:10px auto;"><legend><div class="row row-fluid"><div class="col-md-2 span2">
                                     <img src="img/Document Icon Frame.svg" alt="logo-image" class="logo_image" id="logo_image" width="100%" heigth="100%">
-                                </div><div class="col-md-10 span10"><p class="  temp_title">vbn</p></div></div></legend>
-                                <div class="row row-fluid" style="z-index: 96;">
-                                    <div class="col-md-6 span6 droppedFields" style="background-color: rgb(250, 250, 250); border: 1px solid rgb(224, 224, 224); z-index: 97;"><div class="droppedField row row-fluid" style="z-index: 40;" id="CTRL-DIV-1001">
-                                <div class="col-md-3 span3" style="z-index: 41;">
-                                    <label class="control-label label_req">Textarea</label><label class="label_req requiredcls">*</label>
+                                </div><div class="col-md-10 span10"><p class="  temp_title">test</p></div></div></legend><p>testing</p>
+                                <div class="row row-fluid" style="z-index: 101;">
+                                    <div class="col-md-6 span6 droppedFields" style="background-color: rgb(250, 250, 250); border: 1px solid rgb(224, 224, 224); z-index: 102;"><div class="droppedField row row-fluid" style="z-index: 36;" id="CTRL-DIV-1001">
+                                <div class="col-md-3 span3" style="z-index: 38;">
+                                    <div class="row row-fluid" style="z-index: 40;"><label class="control-label label_req">Textbox</label><label class="label_req requiredcls">*</label></div>
                                 </div>
                                 <div class="col-md-9 span9" style="z-index: 42;">
-                                    <span class="ctrl-text">
-                                        <textarea class="cntrol_comp template_txtarea" rows="4" minlength="" maxlength="" onkeyup="display_minmaxlen_err(this)" name="Textarea"></textarea><span class="textbox_err_msg"></span>
-                                        <p class="required_msg"></p>
-                                        <input type="hidden" class="hiddenObligatoire" value="false">
-                                        <input type="hidden" class="min_length" value="">
-                                        <input type="hidden" class="max_length" value="">
-                                    </span>
+                                    <input type="text" placeholder="write text here..." class="ctrl-textbox cntrol_comp" minlength="" maxlength="" onkeyup="display_minmaxlen_err(this)" name="Textbox"><span class="textbox_err_msg"></span>
+                                    <p class="required_msg"></p>
+                                    <p class="control_help">hiii</p>
+                                    <input type="hidden" class="hiddenObligatoire" value="false">
+                                    <input type="hidden" class="min_length" value="">
+                                    <input type="hidden" class="max_length" value="">
                                 </div>
                             </div></div>
-                                    <div class="col-md-6 span6 droppedFields" style="background-color: rgb(250, 250, 250); border: 1px solid rgb(224, 224, 224); z-index: 98;"></div>
+                                    <div class="col-md-6 span6 droppedFields" style="background-color: rgb(250, 250, 250); border: 1px solid rgb(224, 224, 224); z-index: 103;"></div>
                                 </div>
                                 <!-- Action bar - Suited for buttons on form -->
-                                <div class="row row-fluid" style="z-index: 99;">
-                                    <div class="col-md-12 span12 action-bar droppedFields border_class" style="min-height: 80px; background-color: rgb(250, 250, 250); z-index: 100;"></div>
+                                <div class="row row-fluid" style="z-index: 104;">
+                                    <div class="col-md-12 span12 action-bar droppedFields border_class" style="min-height: 80px; background-color: rgb(250, 250, 250); z-index: 105;"><div class="droppedField row row-fluid" style="z-index: 59;" id="CTRL-DIV-1002">
+                                <div class="col-md-3 span3" style="z-index: 61;">
+                                    <div class="row" style="z-index: 63;"><label class="label_req control-label" style="vertical-align:top">Multiple Checkbox</label><label class="label_req requiredcls">*</label></div>
+                                </div>
+                                <div style="display: inline-block; z-index: 65;" class="ctrl-checkboxgroup cntrol_comp col-md-9 span9">
+                                    <span style="display:block;"><input type="checkbox" name="checkboxField" value="option1">Option 1</span>
+                                    <span style="display:block;"><input type="checkbox" name="checkboxField" value="option2">Option 2</span>
+                                    <span style="display:block;"><input type="checkbox" name="checkboxField" value="option3">Option 3</span>
+                                    <p class="required_msg"></p>
+                                </div>
+                                <input type="hidden" class="hiddenObligatoire">
+                                <input type="hidden" class="chk_display" value="">
+                            </div></div>
                                 </div>
                             <div class="row form_btn"><input type="reset" class="btn" value="Reset"></div><div class="row bottom_note"><p><b>Note:</b></p><p>The fields with <span class="manditory_fields"> * </span>are required/manditory fields.</p></div>
 </form></body></html>

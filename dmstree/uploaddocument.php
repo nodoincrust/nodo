@@ -71,7 +71,7 @@ for ($fileindex = 1; $fileindex <= 5 ; $fileindex++) {
                 $collection->insert($fileInfo);
                 $fileId = $fileInfo['_id']; // Get the inserted file's _id
                 // Generate download URL
-                $downloadUrl = 'http://localhost/dmstree/download.php?id=' . (string)$fileId;
+                $downloadUrl = 'http://13.201.180.131/dmstree/download.php?id=' . (string)$fileId;
                 // Update the document with DownloadUrl
                 $collection->update(
                     array('_id' => $fileId),

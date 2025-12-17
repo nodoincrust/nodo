@@ -4,7 +4,7 @@
     <div class="col-md-12">
        <div class="footer">
             <div class="container">
-                <p class="text-muted"> &copy Place sticky footer content here.</p>
+                <p class="text-muted"> &copy Incrust Software Pvt Ltd 2025</p>
             </div>
        </div>
     </div>

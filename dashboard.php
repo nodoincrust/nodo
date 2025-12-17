@@ -878,11 +878,11 @@ $activepackspace = (float)$activepackspace;
 
 <body>
     <?php include_once 'header.php'; ?>
-    <div class="row row-margin">
-        <div class="col-md-3" style="background-color: #FFFFFF;">
+    <div class="row-margin" style="display:flex">
+ <div style="background-color: #FFFFFF; max-width: 250px;">
             <?php include_once 'dash_menu.php' ?>
         </div>
-        <div class="col-md-9 div-padding-left" id="body-content">
+        <div class="div-padding-left" style="width: 100%;padding:0px 20px " id="body-content">
             <!-- Usage Meter Gauge -->
             <!-- <div id="g1" style="width: 100%; height: 220px; margin-bottom: 20px;"></div> -->
             <!--This page as to be create dynamically.......-->
@@ -1116,7 +1116,7 @@ $activepackspace = (float)$activepackspace;
         </div>
 
     </div>
-    <div class="footer-fixed"><?php include_once 'footer.php' ?></div>
+    <!-- <div class="footer-fixed"><?php include_once 'footer.php' ?></div> -->
 
     <!--<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>-->
     <script src="jqueryui/ui/minified/jquery-ui.min.js"></script>

@@ -176,7 +176,7 @@
 		$setTenantHistory =  $g1->get_mongodb->setTenantHistory($id);
 		$setPhotoGallary =  $g1->get_mongodb->setPhotoGallery($id,$currDate,$admin_email);
                 $setTag = $g1->get_mongodb->setTagList($id,$currDate,$admin_email);
-                 header('Location: http://localhost/nodo/login.php');
+                 header('Location: http://13.201.180.131/nodo/login.php');
                  exit;
 	}
        

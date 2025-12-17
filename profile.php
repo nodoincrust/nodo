@@ -476,18 +476,16 @@ $activepackspace = (float) $activepackspace;
 
 <body>
 	<!----------- Header page--------------------------------------------->
-	<div id="header">
 		<?php include_once 'header.php'; ?>
-	</div>
-	<!-- <div class="row row-margin"> -->
-	<!-- <div class="row row-margin  div-padding-top"> -->
-	<div class="col-md-3" style="background-color: #FFFFFF;height: 100vh;">
-		<!--------- dash board side menu------------------------------------------------>
+	
+<div class="row-margin" style="display:flex">
+	<!-- <div class="row row-margi  div-padding-top"> -->
+	<div style="background-color: #FFFFFF; max-width:250px;height:100vh">
 		<?php include_once 'dash_menu.php' ?>
 	</div>
 
-	<div class="main-container" style="max-height: calc(100vh - 115px);
-    overflow-y: auto;">
+	<div class="main-container" style="max-height:calc(100vh - 115px);
+          overflow-y:auto;width:100%;">
 		<div class="heading">
 			<h2>Profile</h2>
 			<!-- <div> -->
@@ -639,11 +637,10 @@ $activepackspace = (float) $activepackspace;
 			<!-- </div> -->
 		</div>
 	</div>
+</div>
 	<!-- </div> -->
 	<!-- </div> -->
-	<!-- </div> -->
-	<!--------- dash board footer------------------------------------------------>
-	<div class="footer-fixed"><?php include_once 'footer.php' ?></div>
+
 	<script type="text/javascript" src="js/dmstree_js/profile_page.js"></script>
 </body>
 

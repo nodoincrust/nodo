@@ -28,11 +28,11 @@ if (isset($_SESSION['usertenant'])) {
     <div class="header-container ">
         <div class="row row-margin row_class_img">
             <!------ Company logo --------------------------------->
-            <div class="col-md-3 logo_cls">
+            <!-- <div class="col-md-3 logo_cls">
 
-            </div>
-            <div class="col-md-9 txt-padding ">
-                <div class="row row_class">
+            </div> -->
+            <div class="header-main-content" style="padding:0 10px;  transition: transition: width 0.1s ease;">
+                <div class="row row_class" style="border">
                     <nav class="navbar">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
@@ -53,7 +53,7 @@ if (isset($_SESSION['usertenant'])) {
                                     <div class="li_div">
                                         <li class="list1 <?= ($current_page == 'dashboard.php') ? 'active-nav' : '' ?>">
                                             <a href="dashboard.php" class="list_of_nav2">
-                                                <img src="img/Dashboard.svg" alt="">
+                                                <img src="img/Dashboard.svg" alt=""  style="cursor:pointer">
                                                 <span>Dashboard</span>
                                             </a>
                                         </li>
@@ -107,3 +107,21 @@ if (isset($_SESSION['usertenant'])) {
 
     </div>
 </div>
+<script>
+setTimeout(() => {
+       
+
+      const sidebar = document.getElementById('sidebar');
+        
+
+        if (sidebar.classList.contains('collapsed')) {
+            document.getElementsByClassName("header-main-content")[0].classList.remove('open');
+            document.getElementsByClassName("header-main-content")[0].classList.add('closed');
+        }else{
+            document.getElementsByClassName("header-main-content")[0].classList.remove('closed');
+            document.getElementsByClassName("header-main-content")[0].classList.add('open');
+        }
+
+}, 1000);
+</script>
+

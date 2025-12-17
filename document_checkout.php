@@ -568,9 +568,9 @@ foreach ($taglist[0]['TagList'] as $key) {
 
     <?php include_once 'header.php'; ?>
 
-    <div class="row row-margin">
+    <div class="row-margin" style="display:flex">
 
-        <div class="col-md-3 col-sm-3" style="background-color: #FFFFFF;" id="body1">
+        <div class style="background-color: #FFFFFF; max-width 250px;" id="body1">
 
             <!-- <div class="col-md-3 col-sm-3 div-padding-top" id="body1"> -->
 
@@ -578,7 +578,7 @@ foreach ($taglist[0]['TagList'] as $key) {
 
         </div>
 
-        <div class="col-md-9 col-sm-9 div-padding-left" id="body-content1">
+        <div class="div-padding-left" id="body-content1" style="width:100%;padding:0 20px">
 
             <!-- <div class="row">
 
@@ -985,7 +985,7 @@ foreach ($taglist[0]['TagList'] as $key) {
 
     <!--------- dash board footer------------------------------------------------>
 
-    <div class="footer-fixed"><?php include_once 'footer.php' ?></div>
+    
     <script type="text/javascript" src="js/dmstree_js/document_checkout_page.js"></script>
 
 

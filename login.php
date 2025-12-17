@@ -68,8 +68,9 @@
     .main-container {
       flex: 1;
       display: flex;
-      min-height: calc(100vh - 64px);
+    min-height: calc(100vh - var(--header-height));
       /* overflow: hidden; */
+	   align-items: stretch;
     }
 
     .left-section {
@@ -80,6 +81,7 @@
       display: flex;
       flex-direction: column;
       position: relative;
+	  justify-content:center
     }
 
     .content-wrapper {
@@ -94,6 +96,7 @@
       color: #1B5563;
       line-height: 1.2;
       margin-bottom: 16px;
+      margin-top:20px
     }
 
     .subtitle {
@@ -155,12 +158,13 @@
     }
 
     .right-section {
-      width: 575px;
+      width: 50%;
       background: white;
       padding: 60px 60px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     }
 
@@ -358,11 +362,11 @@
       }
 
       .left-section {
-        height: fit-content;
+     
       }
 
       .right-section {
-        height: fit-content;
+        flex:1 0 0;
       } 
     }
     
@@ -449,6 +453,7 @@
               placeholder="Enter your Email"
               autocomplete="email" />
           </div>
+
         </div>
 
         <div class="form-group">
@@ -479,7 +484,7 @@
         </button>
 
         <p class="signup-link">
-          New to Nodo.ai? <a href="http://localhost/nodo/sign_up.php">Sign up</a>
+          New to Nodo.ai? <a href="http://13.201.180.131/nodo/sign_up.php">Sign up</a>
         </p>
       </form>
     </div>

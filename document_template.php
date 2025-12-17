@@ -311,9 +311,8 @@ $activepackspace = (float)$activepackspace;
         .Template-main-left {
             background: #F4F4F4;
         }
-        div.left-container {
-            margin-left: -23px;
-        }
+        
+        
     </style>
     <script>
         window.onload = function() {
@@ -346,13 +345,12 @@ $activepackspace = (float)$activepackspace;
 
 <body>
     <?php include_once 'header.php'; ?>
-    <div class="row row-margin bottom_cls" style="padding:9px;
-">
-        <div class="col-md-3 div-padding-menu">
+    <div class="row-margin bottom_cls" style="padding:9px; display:flex">
+        <div class=" div-padding-menu" style="max-width:250px">
             <!--------- dash board side menu------------------------------------------------>
             <?php include_once 'dash_menu.php' ?>
         </div>
-        <div class="col-md-9 div-padding-menu div-padding-left">
+        <div class="div-padding-menu div-padding-left" style="width:100%;padding:0 20px">
             <div class="checkout_doc">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 form_title ">
@@ -663,7 +661,7 @@ $activepackspace = (float)$activepackspace;
                     </div><!--form container close here -->
 
                 </div>
-                <div class="footer-fixed"><?php include_once 'footer.php' ?></div>
+            
 
             </div><!-- main container close here -->
 

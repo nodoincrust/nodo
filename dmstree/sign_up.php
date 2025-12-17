@@ -665,7 +665,7 @@ $g1 = new Get_mongodb();
 								<div class="container" style="width: 100%;">
 									<div class="row" style="display: flex;">
 										<div class="col-md-6 form-group packgsize">
-											<label for="" class="package-size">Package Size</label>
+											<label for="" class="package-size">Package Size fgdfgdfggfddf</label>
 											<select name="listbox_size[]" class="form-control select_size" style="background:#FAFAFA;border-radius: 8px;width: 270px;" required>
 												<option value="" disabled selected>-Select Package Size-</option>
 											</select>
@@ -697,7 +697,7 @@ $g1 = new Get_mongodb();
 									</div>
 								</div>
 								<p class="signin-link">
-									Alreday a user? <a href="http://localhost/nodo/login.php" style="text-decoration: underline;color: #1B5563;font-weight: 600;margin-left: 5px;">Login</a>
+									Alreday a user? <a href="http://13.201.180.131/nodo/login.php" style="text-decoration: underline;color: #1B5563;font-weight: 600;margin-left: 5px;">Login</a>
 								</p>
 							</div>
 

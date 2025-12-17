@@ -398,13 +398,13 @@ $activepackspace = (float)$activepackspace;
     <!----------- Header page--------------------------------------------->
     <?php include_once 'header.php'; ?>
 
-    <div class="row row-margin">
-        <div class="col-md-3 col-sm-3" style="background-color: #FFFFFF;">
+    <div class="row-margin" style="display:flex">
+        <div class style="background-color: #FFFFFF; max-with:250px">
             <!--------- dash board side menu------------------------------------------------>
             <?php include_once 'dash_menu.php' ?>
         </div>
 
-        <div class="col-md-9 col-sm-9 main-bouquet">
+        <div class="main-bouquet" style=" width:100%; padding:0 20px">
             <!-- <div class="col-md-9 col-sm-9 div-padding-left"> -->
             <!-- <div class="row">
                 <p class="spaceerror col-md-12" style="color:red"> </p>
@@ -556,7 +556,7 @@ $activepackspace = (float)$activepackspace;
         </div>
     </div>
     <!--------- dash board footer------------------------------------------------>
-    <div class="footer-fixed"><?php include_once 'footer.php' ?></div>
+    
     <script src="jqueryui/ui/minified/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/dmstree_js/document_bouquet_page.js"></script>
 </body>

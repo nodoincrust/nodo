@@ -215,6 +215,8 @@ $g1 = new Get_mongodb();
 		flex: 1;
 		display: flex;
 		min-height: calc(100vh - 64px);
+		
+        /* align-items: stretch; */
 		/* overflow: hidden; */
 	}
 
@@ -223,7 +225,7 @@ $g1 = new Get_mongodb();
 		flex: 1;
 		/* background: rgba(255, 218, 121, 0.3); */
 		background: linear-gradient(to bottom right, #FCF5E5, #FFFDE6);
-		padding: 5px 55px;
+	padding: 25px 60px;
 		display: flex;
 		flex-direction: column;
 		position: relative;
@@ -303,6 +305,7 @@ $g1 = new Get_mongodb();
 
 	.right-section {
 		/* height: 100vh; */
+		width:50%;
 		overflow-y: scroll;
 		/* width: 575px; */
 		background: white;
@@ -469,32 +472,32 @@ $g1 = new Get_mongodb();
 		color: #1B5563;
 	}
 
-	.container-narrow {
-		/* margin-top: 150px; */
-	}
 
 	@media (max-width: 968px) {
-		.main-container {
-			flex-direction: column;
-		}
+  .main-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-		.left-section {
-			padding: 30px 20px;
-			justify-content: center;
-			align-items: center;
-		}
+  .left-section,
+  .right-section {
+    flex-grow: 1;
+  }
 
-		.right-section {
-			width: 100%;
-			padding: 40px 20px;
-			justify-content: center;
-			align-items: center;
-		}
+  .left-section {
+    padding: 30px 20px;
+    justify-content: center;
+    align-items: center;
+  }
 
-		/* .features-grid {
-        grid-template-columns: 1fr;
-      } */
-	}
+  .right-section {
+    width: 100%;
+    padding: 40px 20px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 
 	/* Laptops - 1025px to 1280px */
 	@media (min-width: 1025px) and (max-width: 1280px) {
@@ -511,11 +514,11 @@ $g1 = new Get_mongodb();
 		}
 
 		.left-section {
-			height: fit-content;
+			
 		}
 
 		.right-section {
-			height: fit-content;
+			  flex:1 0 0;
 		}
 	}
 
@@ -697,7 +700,7 @@ $g1 = new Get_mongodb();
 									</div>
 								</div>
 								<p class="signin-link">
-									Alreday a user? <a href="http://localhost/nodo/login.php" style="text-decoration: underline;color: #1B5563;font-weight: 600;margin-left: 5px;">Login</a>
+									Alreday a user? <a href="http://13.201.180.131/nodo/login.php" style="text-decoration: underline;color: #1B5563;font-weight: 600;margin-left: 5px;">Login</a>
 								</p>
 							</div>
 

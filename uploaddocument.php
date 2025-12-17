@@ -55,16 +55,6 @@ for ($fileindex = 1; $fileindex <= 5 ; $fileindex++) {
                 $fileData = file_get_contents($targetPath);
                 $base64   = base64_encode($fileData);
                 // Insert file document directly (no file path)
-                // $detectedMime = '';
-                // if (function_exists('finfo_open')) {
-                //     $finfo = finfo_open(FILEINFO_MIME_TYPE);
-                //     $detectedMime = finfo_file($finfo, $targetPath);
-                //     finfo_close($finfo);
-                // } else if (function_exists('mime_content_type')) {
-                //     $detectedMime = mime_content_type($targetPath);
-                // } else {
-                //     $detectedMime = $_FILES[$filename]["type"];
-                // }
                 $fileInfo = array(
                     'tenant_id'      => $session_tenantid,
                     'tenant_name'    => $session_tenantname,
@@ -81,7 +71,7 @@ for ($fileindex = 1; $fileindex <= 5 ; $fileindex++) {
                 $collection->insert($fileInfo);
                 $fileId = $fileInfo['_id']; // Get the inserted file's _id
                 // Generate download URL
-                $downloadUrl = 'http://localhost/dmstree/download.php?id=' . (string)$fileId;
+                $downloadUrl = 'http://13.201.180.131/dmstree/download.php?id=' . (string)$fileId;
                 // Update the document with DownloadUrl
                 $collection->update(
                     array('_id' => $fileId),

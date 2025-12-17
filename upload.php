@@ -672,12 +672,12 @@ foreach ($usertagdata as $companytagkey) {
 
 
     <?php include_once 'header.php'; ?>
-    <div class="row row-margin">
+    <div class="row-margin" style="display:flex">
         <!-- <div class="col-md-3 col-sm-3 div-padding-top" id="body1"> -->
-        <div class="col-md-3 col-sm-3" id="body1" style="background-color: #FFFFFF;">
+        <div class style="background-color: #FFFFFF;max-width:250px">
             <?php include_once 'dash_menu.php' ?>
         </div>
-        <div class="col-md-9 col-sm-9 div-padding-left upload-main-cont" id="body-content">
+        <div class="div-padding-left upload-main-cont" id="body-content" style="width:100%; padding:0 20px">
             <!-- <div class="row">
                 <p class="spaceerror col-md-12 " style="color:red"> </p>
             </div>  -->
@@ -939,7 +939,7 @@ foreach ($usertagdata as $companytagkey) {
     </div>
 
     <!--------- dash board footer------------------------------------------------>
-    <div class="footer-fixed"><?php include_once 'footer.php' ?></div>
+    <!-- <div class="footer-fixed"><?php include_once 'footer.php' ?></div> -->
     <script type="text/javascript" src="js/dmstree_js/doc_temp_valid.js"></script>
     <script type="text/javascript" src="js/dmstree_js/uplaod_page.js"></script>
     <script type="text/javascript">

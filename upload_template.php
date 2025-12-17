@@ -217,11 +217,11 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
 
     <!----------- Header page--------------------------------------------->
     <?php include_once 'header.php'; ?>
-    <div class="row row-margin">
-        <div class="col-md-3 col-sm-3" style="background-color: #FFFFFF;" id="body1">
+    <div class="row-margin" style="display:flex">
+        <div  style="background-color: #FFFFFF;max-width:250px" id="body1">
             <?php include_once 'dash_menu.php' ?>
         </div>
-        <div class="col-md-9 col-sm-9" style="height: 100vh;overflow-y: scroll;" id="body-content">
+        <div  style="height: 100vh;overflow-y: scroll;width:100%;padding:0 20px" id="body-content">
             <div class="well div-padding-top" style="margin-bottom: 18px;width: 100%;">
                 <h2 class="text-muted upload_doc_cls" style="font-size: 22px; font-weight: bold; margin: 0;font-family: 'Space Grotesk', Arial, sans-serif;">Upload Template</h2>
             </div>
@@ -310,7 +310,7 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
         </div>
     </div>
     <!--------- dash board footer------------------------------------------------>
-    <div class="footer-fixed"><?php include_once 'footer.php' ?></div>
+    <!-- <div class="footer-fixed"><?php include_once 'footer.php' ?></div> -->
     <script type="text/javascript" src="js/dmstree_js/doc_temp_valid.js"></script>
     <script type="text/javascript" src="js/dmstree_js/upload_template_page.js"></script>
     <script type="text/javascript">

@@ -346,7 +346,6 @@ top: 98px;
 
 .navbar {
     margin-bottom: 0px !important;
-    margin-left: 7px;
     white-space: nowrap;
     background-color: #FFFFFF;
     display: grid;
@@ -659,7 +658,7 @@ iframe {
 
 .navbar .navbar_cont_div {
     width: 100%;
-    margin-left: 80px;
+ 
     /* min-height: 100%; */
     height: 30px !important;
     display: flex !important;
@@ -708,7 +707,7 @@ iframe {
     /* text-align: center !important; */
     /* background-color: #009347; */
     color: white;
-    /* padding: 0px 11px; */
+    padding: 0px 11px;
 }
 
 .list1 img {

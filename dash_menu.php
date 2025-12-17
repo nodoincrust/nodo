@@ -83,27 +83,24 @@
     }
 
     .left-container {
-        /* height: 873px;
-    width: 280px;
-    display: flex;
-    flex-direction: column;
-    background: #ffffff;
-    margin-top: -8px; */
-        /* height: 873px; */
+        
         height: 100%;
         /* width: 250px; */
         display: flex;
+        justify-content: space-between;
         flex-direction: column;
-        background: #ffffff;
+        background:#ffff;
         /* margin-top: -18px; */
         position: relative;
         bottom: 71px;
-        margin-left: -13px;
+        
+        /* margin-left: -13px; */
     }
+    
 
     .logo-container {
         /* width: 230px; */
-        height: 30px;
+        /* height: 30px; */
         display: flex;
         justify-content: space-between;
         flex-direction: row;
@@ -402,18 +399,24 @@
     /* for colapus functioanlity on toggle  */
     /* COLLAPSED SIDEBAR STYLE */
     .left-container.collapsed {
-        width: 95px;
+        width: 100px;
         transition: width 0.3s ease;
     }
 
     /* Hide all text and secondary logos when collapsed */
-    .left-container.collapsed span,
+    /* .left-container.collapsed span,
     .left-container.collapsed li,
     .left-container.collapsed .nodo_ai,
     .left-container.collapsed .template-menu li,
     .left-container.collapsed .master-management span {
         display: none;
-    }
+    } */
+
+    .left-container.collapsed span,
+.left-container.collapsed a,
+.left-container.collapsed .nodo_ai {
+    display: none;
+}
 
     /* Completely hide the logo-container when collapsed */
     /* Position the toggle button */
@@ -433,29 +436,70 @@
 
     /* When sidebar is collapsed, move button to left */
     .left-container.collapsed+#sidebarToggleBtn {
-        left: 80px;
+        left: 100px;
         /* aligned with collapsed sidebar width */
     }
 
 
     /* Optional: Center only the icon when collapsed */
-    .left-container.collapsed .logo_img,
+    /* .left-container.collapsed .logo_img,
     .left-container.collapsed .template_logo,
     .left-container.collapsed .template-menu img,
     .left-container.collapsed .master-management img {
         justify-content: center;
-    }
+    } */
 
     /* Adjust logo container alignment in collapsed */
-    .left-container.collapsed .logo-container {
+    /* .left-container.collapsed .logo-container {
         justify-content: center;
-    }
+    } */
+/* .left-container.collapsed .logo-container,
+.left-container.collapsed .template-container,
+.left-container.collapsed .master-container {
+    align-items: center;
+} */
+
+.left-container.collapsed .template_logo img,
+.left-container.collapsed .master-management img,
+.left-container.collapsed .profile-logo img,
+.left-container.collapsed .logout-logo img {
+    margin-left: 32px;
+}
+
+.left-container.collapsed ..master-management img
+{
+    padding-bottom:8px;
+}
+
+.left-container.collapsed .template-container {
+   
+    height: 74px;
+    width: 100px;
+}
+
+
+.left-container.collapsed .logo_img {
+    width: 32.42px;
+}
+
+
+
 
     /* Hide the toggle button if needed */
     .left-container.collapsed .close-layout-img {
         /* margin-left: auto; */
         /* margin-left: -44px !important; */
         margin-left:-215px;
+    }
+
+    .header-main-content.open{
+        padding-left: 250px !important;
+        width: 100%;
+    }
+
+    .header-main-content.closed{
+        padding-left: 100px !important;
+          width: 100%;
     }
 </style>
 <!-- <div class="div-padding-right div-padding">
@@ -468,6 +512,7 @@
 
 
     <!-- template  -->
+<div>
     <div class="logo-container" id="toggleSidebar">
         <div class="logo_img">
             <img src="img/Group 1.svg" alt="Logo Icon" onclick="toggleSidebar()" style="cursor:pointer" />
@@ -524,9 +569,11 @@
             </li>
         </ul>
     </div>
+</div>
 
     <!-- bottom section  -->
     <!-- Profile  -->
+<div>  
     <div class="profile-container">
         <div class="profile-logo">
             <img src="img/user-profile-square.svg" alt="">
@@ -541,6 +588,7 @@
 
         </div>
     </div>
+</div>  
 
 </div>
 
@@ -558,8 +606,16 @@
     function toggleSidebar() {
         const sidebar = document.getElementById('sidebar');
         sidebar.classList.toggle('collapsed');
+
+        if (sidebar.classList.contains('collapsed')) {
+            document.getElementsByClassName("header-main-content")[0].classList.remove('open');
+            document.getElementsByClassName("header-main-content")[0].classList.add('closed');
+        }else{
+            document.getElementsByClassName("header-main-content")[0].classList.remove('closed');
+            document.getElementsByClassName("header-main-content")[0].classList.add('open');
+        }
+        
     }
-   
 
 </script>
 
