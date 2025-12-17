@@ -94,12 +94,11 @@
     <body >
 
     <?php include_once 'header.php'; ?> 
-    <div class="row row-margin">
-        <div class="col-md-3 div-padding-top">
-            <!---------  Side Menu     ------------------------------------------>
-            <?php include_once'dash_menu.php'?>  
+    <div class="row-margin" style="display:flex;height: calc(100vh - 57px);">
+        <div  style="max-width:250px;background-color: #ffff;">
+              <?php include_once 'dash_menu.php'; ?> 
         </div>
-        <div class="col-md-9 div-padding-left div-padding-top" id="">
+        <div id="" style="width:100%;padding:0 20px">
             <div class="main">
                  <ul class="cbp_tmtimeline">
             <?php
@@ -265,7 +264,7 @@
        </div>
     </div>
     <!---      Footer      ----------------->
-    <?php include_once 'footer.php'?>
+
 
     <script src="jqueryui/ui/minified/jquery-ui.min.js"></script>
     </body>

@@ -246,7 +246,7 @@ $activepackspace = (float)$activepackspace;
             /* padding: 24px; */
             padding: 24px 20px 10px 24px;
             margin-top: 15px;
-            width: 70%;
+            width: 100%;
         }
 
         .bouquet-desc {
@@ -398,13 +398,13 @@ $activepackspace = (float)$activepackspace;
     <!----------- Header page--------------------------------------------->
     <?php include_once 'header.php'; ?>
 
-    <div class="row-margin" style="display:flex">
-        <div class style="background-color: #FFFFFF; max-with:250px">
+    <div class="row-margin" style="display:flex;height:calc(100vh - 57px);">
+        <div class style="background-color: #FFFFFF; max-width:250px">
             <!--------- dash board side menu------------------------------------------------>
             <?php include_once 'dash_menu.php' ?>
         </div>
 
-        <div class="main-bouquet" style=" width:100%; padding:0 20px">
+        <div class="main-bouquet" style=" width:100%; padding:0 20px;height:fit-content">
             <!-- <div class="col-md-9 col-sm-9 div-padding-left"> -->
             <!-- <div class="row">
                 <p class="spaceerror col-md-12" style="color:red"> </p>

@@ -93,7 +93,7 @@
         /* margin-top: -18px; */
         position: relative;
         bottom: 71px;
-        
+        margin-left: 0px !important;
         /* margin-left: -13px; */
     }
     
@@ -403,6 +403,10 @@
         transition: width 0.3s ease;
     }
 
+    .template-menu{
+        padding-left:40px;
+        margin:0px
+    }
     /* Hide all text and secondary logos when collapsed */
     /* .left-container.collapsed span,
     .left-container.collapsed li,

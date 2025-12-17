@@ -311,6 +311,53 @@ foreach ($usertagdata as $companytagkey) {
         .form_title h2 {
             font-size: 22px;
         }
+        /* Force form rows to align horizontally */
+.form-group.row,
+.row {
+    display: flex;
+    align-items: center;
+}
+
+/* Fix label alignment */
+.control-label,
+.form-group label {
+    text-align: right;
+    padding-right: 10px;
+    white-space: nowrap;
+}
+
+/* Standard label width (important) */
+.col-md-3.control-label,
+.form-group .col-md-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+/* Input container alignment */
+.form-group .col-md-6,
+.form-group .col-md-9,
+.form-group .col-md-12 {
+    flex: 1;
+}
+
+/* Radio & checkbox alignment */
+.radio label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Prevent label jumping */
+label {
+    margin-bottom: 0;
+}
+
+/* Fix select + input vertical alignment */
+.form-control,
+.input-group {
+    width: 100%;
+}
+
     </style>
     <script>
         window.onload = function() {
@@ -684,7 +731,7 @@ foreach ($usertagdata as $companytagkey) {
             <div class="test" style="width: 100%;">
                 <div class="upload_temp div-padding-top">
                     <div class="row">
-                        <div class="col-md-12 col-sm-12 form_title ">
+                        <div class="col-md-12 col-sm-12 form_title " style="margin-left:12px">
                             <h2 class="text-muted upload_doc_cls"><b>Upload Document</b></h2>
                         </div>
                     </div>
@@ -738,7 +785,7 @@ foreach ($usertagdata as $companytagkey) {
                                     
                                     <div class="input-group col-md-9 col-md" id="browse_file_group">
                                         <div class="row" id="file_record1">
-                                            <span class="col-md-10"><input type="file" name="sfile1" id="doc_file1" class="form-control upload_control " /></span>
+                                            <span class="col-md-10"><input type="file" name="sfile1" id="doc_file1" class="upload_control " /></span>
                                         </div>
                                     </div>
                                 </div>
@@ -753,7 +800,7 @@ foreach ($usertagdata as $companytagkey) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row" id="mulitiple_add" style="display:none">
+                            <div class="form-group " id="mulitiple_add" style="display:none">
                                 <div class=" col-md-9 col-md-offset-3">
                                     <span><img src="img/add-icon.png" alt="add-icon" onclick="add_browse_control()" class="add_browse_btn"></span><input type="button" onclick="add_browse_control()" value="    Add Document">
 

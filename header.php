@@ -26,7 +26,7 @@ if (isset($_SESSION['usertenant'])) {
 </script>
 <div class="header_nav">
     <div class="header-container ">
-        <div class="row row-margin row_class_img">
+        <div class="row-margin row_class_img">
             <!------ Company logo --------------------------------->
             <!-- <div class="col-md-3 logo_cls">
 
