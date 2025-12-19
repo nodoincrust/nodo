@@ -180,6 +180,10 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
             /* overflow-y: auto; */
             padding-bottom: 100px;
         }
+        .form_btn .btn{
+            margin-top:10px;
+            margin-right: 19px;
+        }
     </style>
     <script>
         window.onload = function() {
@@ -209,6 +213,7 @@ $tag = $g1->get_mongodb->getTagList($tenantId);
                 $('.spaceerror').text('');
             }
         });
+       
     </script>
 
 </head>

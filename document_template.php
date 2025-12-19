@@ -109,7 +109,7 @@ $activepackspace = (float)$activepackspace;
         }
 
         .row_content {
-            margin-left: 15px !important;
+     
             padding: 9px;
         }
 
@@ -149,9 +149,13 @@ $activepackspace = (float)$activepackspace;
             margin-left: 5px;
         }
 
+        th{
+            text-align:center;
+        }
         .requiredcls {
             display: none;
-            float: left;
+              position: absolute;
+               left: 65px;
             color: red;
         }
 
@@ -159,8 +163,7 @@ $activepackspace = (float)$activepackspace;
             color: red;
         }
 
-        .bottom_note {
-            border: 1px solid #ccc;
+        .bottom_note{
             padding: 5px;
             margin-top: 10px;
         }
@@ -182,28 +185,28 @@ $activepackspace = (float)$activepackspace;
             padding-top: 40px;
         }
 
-        .form_table {
-            border: 1px solid #ccc;
-            border-collapse: collapse;
-            width: auto;
-            padding: 0 !important;
-        }
+       .form_table {
+    border-collapse: collapse;
+    min-width: 200px;
+}
 
-        .tbl_td {
-            border: none !important;
-            box-shadow: none !important;
-            transition: 0 !important;
-            margin-bottom: 0 !important;
-            padding: 4px 6px;
-            height: 20px;
-            min-height: 20px !important;
-            width: 120px;
-        }
+.form_table td {
+    border: 1px solid rgb(231, 231, 231) !important;
+    padding: 4px;
+}
 
-        .table_div {
-            overflow-x: auto;
-            overflow-y: auto;
-        }
+.tbl_td {
+    border: 1px solid rgb(231, 231, 231) !important;
+    padding: 4px 6px;
+    height: 20px;
+    width: 120px;
+}
+
+.table_div {
+    overflow-x: auto;
+    overflow-y: auto;
+    width: 100%;
+}
 
         .tbl_btn {
             display: none;
@@ -312,6 +315,10 @@ $activepackspace = (float)$activepackspace;
             background: #F4F4F4;
         }
         
+        .tblBorder{
+     border: 1px solid rgb(231, 231, 231);
+    border-radius: 0;
+        }
         
     </style>
     <script>
@@ -554,7 +561,7 @@ $activepackspace = (float)$activepackspace;
                                 <div class="col-md-12 span12">
                                     <label class="row row-fluid col-md-12 span12 control-label tbl_label">Table:</label>
                                     <div class="row row-fluid col-md-12 span12 table_div">
-                                        <table class="ctrl-table form_table" id="" border="1px solid #ccc"></table>
+                                        <table class="ctrl-table form_table" id="" style="border:1px solid #ccc"></table>
                                         <span><input type="hidden" class="table_rows" value=""></span>
                                         <span><input type="hidden" class="table_cols" value=""></span>
                                         <span><input type="hidden" class="tbl_rows" value=""></span>
@@ -624,12 +631,12 @@ $activepackspace = (float)$activepackspace;
                             <!-- first row with form logo and title 120px 75px-->
                             <div class="row row-fluid" id="form-title-div">
                                 <div class="col-md-10 span10" onclick="open_title_popup()">
-                                    <input type="text" class="input-large col-md-12 span12 border_class" style="margin-left:10px;" placeholder="Type form title here" value="" id="form-title" />
+                                    <input type="text" class="input-large col-md-12 span12 border_class" placeholder="Type form title here" value="" id="form-title" />
                                     <input type="hidden" value="" class="titlelabel_font" />
                                     <input type="hidden" value="" class="titlelabel_size">
                                 </div>
                                 <div class="col-md-10 span10 ">
-                                    <textarea class="input-large col-md-12 span12" style="width:100%;border: 1px solid #ccc !important;background-color: #FAFAFA !important;margin-left: 10px;" placeholder="Type form description here" name="form_description" id="form-description"></textarea>
+                                    <textarea class="input-large col-md-12 span12" style="width:100%;border: 1px solid #ccc !important;background-color: #FAFAFA !important;" placeholder="Type form description here" name="form_description" id="form-description"></textarea>
                                 </div>
                                 <div class="col-md-2 span2" onclick="open_logoimage_popup()">
                                     <img src="img/Document Icon Frame.svg" alt="logo-image" class="logo_image" id="logo_image" width="100%" heigth="100%" />
@@ -639,13 +646,13 @@ $activepackspace = (float)$activepackspace;
                             <!-- <div class="row row-fluid" id="form-description_div">
                         <textarea class="input-large col-md-12 span12" style="width:100%" placeholder="Type form description here" name="form_description" id="form-description"></textarea>
                     </div> -->
-                            <div class="row row-fluid row_content" id="selected-content">
-                                <div class="row row-fluid">
+                            <div class="row row-fluid row_content" id="selected-content" style="margin-left:0px">
+                                <div class="row row-fluid"style="display:flex;gap:5px">
                                     <div class="col-md-6 span6 well droppedFields" style="background-color: #FAFAFA;border: 1px solid #E0E0E0;"></div>
                                     <div class="col-md-6 span6 well droppedFields" style="background-color: #FAFAFA;border: 1px solid #E0E0E0;"></div>
                                 </div>
                                 <!-- Action bar - Suited for buttons on form -->
-                                <div class="row row-fluid">
+                                <div class="row row-fluid" >
                                     <div class="col-md-12 span12 well action-bar droppedFields border_class" style="min-height:80px;background-color: #FAFAFA;border: 1px solid #E0E0E0cdcdc;"></div>
                                 </div>
                             </div>

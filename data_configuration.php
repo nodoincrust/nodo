@@ -382,7 +382,7 @@ $photo = $g1->get_mongodb->getPhotoList($tenantId);
 ">Data Configuration</b></h3></div> -->
             <!-- </div> -->
             <!-- </div> -->
-            <div class="div-padding-top">
+            <div class="div-padding-top" style="display:flex;flex-direction:column;gap:5px">
                 <fieldset style="padding:24px">
                     <div class="row form-group">
                         <label for="sel_std_list" class="col-md-3 control-label text-muted">Manage STD List</label>
@@ -565,7 +565,7 @@ $photo = $g1->get_mongodb->getPhotoList($tenantId);
                     </div>
                 </fieldset>
 
-                <fieldset class="fieldset-none" style="padding:24px">
+                <fieldset  style="padding:24px">
                     <div class="row form-group">
                         <label for="sel_tags" class="col-md-3 control-label text-muted">Manage Tags</label>
                     </div>
@@ -612,7 +612,7 @@ $photo = $g1->get_mongodb->getPhotoList($tenantId);
                     </div>
                 </fieldset>
 
-                <fieldset class="fieldset-none" style="padding:24px">
+                <fieldset  style="padding:24px">
                     <div class="row form-group">
                         <label for="sel_photo_gallary" class="col-md-3 control-label text-muted">Manage Photo Gallary</label>
                     </div>

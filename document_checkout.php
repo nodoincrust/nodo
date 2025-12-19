@@ -578,7 +578,8 @@ foreach ($taglist[0]['TagList'] as $key) {
 
         </div>
 
-        <div class="div-padding-left" id="body-content1" style="width:100%;padding:0 20px">
+        <div class="div-padding-left" id="body-content1" style="width:100%;padding:0 20px ;overflow: auto;
+height: calc(100vh - 57px);">
 
             <!-- <div class="row">
 

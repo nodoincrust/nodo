@@ -109,6 +109,8 @@
 
         // Ajout de tableau  ADD table
         function ajouterTableau() {
+            
+       
                 var bValid = true;          
                 if (bValid) {
                 var nbColonne = $("#sliderNbColonne").slider("value");
@@ -119,12 +121,12 @@
                 for (var i = 0; i < nbColonne; i++) {
                     if($('#framebox').is(':checked'))
                     {
-                        contentToAdd += "<div class=\"span" + largeurSpan + " col-md-"+largeurSpan+" framebox well droppedFields\"></div>";
+                        contentToAdd += "<div class=\"span" + largeurSpan + " col-md-"+largeurSpan+" framebox well droppedFields tblBorder\"></div>";
                         $("#framebox").attr('checked', false); 
                     }
                     else
                     {
-                        contentToAdd += "<div class=\"span" + largeurSpan + " col-md-"+largeurSpan+" well droppedFields\"></div>";   
+                        contentToAdd += "<div class=\"span" + largeurSpan + " col-md-"+largeurSpan+" well droppedFields tblBorder\"></div>";   
                     }
                 }
                 contentToAdd += "</div>";

@@ -218,6 +218,15 @@ if ($templatedata['tempresult'] != 0) {
             background: #fff;
             /* box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
         }
+        input[type="checkbox"]
+         {
+              margin: 4px 2px 0;
+         }
+
+         input[type="radio"]
+         {
+             margin: 4px 2px 0;
+         }
 
         body {
             /* height: 100vh; */
@@ -326,7 +335,8 @@ if ($templatedata['tempresult'] != 0) {
         <div  id="side-menu" style="background-color: #FFFFFF; max-width:250px">
             <?php include_once 'dash_menu.php' ?>
         </div>
-        <div class="div-padding-left" id="body-content" style="width:100%;padding:0 20px">
+        <div class="div-padding-left" id="body-content" style="width:100%;padding:0 20px;overflow:auto;
+    height: calc(100vh - 57px);">
             <!-- <div class="row row-fluid">
                 <p class="spaceerror col-md-12 span12" style="color:red"> </p>
         </div> 

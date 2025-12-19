@@ -113,7 +113,7 @@ Modified Date:
         }
         .bottom_note
         {
-            border: 1px solid #ccc;
+         
             padding: 5px;
             margin-top: 10px;
         }

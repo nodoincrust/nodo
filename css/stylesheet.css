@@ -350,6 +350,7 @@ top: 98px;
     background-color: #FFFFFF;
     display: grid;
     font-family: 'Inter', Arial, sans-serif;
+    width:100%
 }
 
 .navbar-nav li a {
@@ -666,7 +667,7 @@ iframe {
     align-items: center !important;
     margin-top: 25px;
     border-bottom: 2px solid #ccc;
-    padding-left: 0;
+ 
     /* position: relative;
     z-index: 1; */
 }

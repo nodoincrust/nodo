@@ -504,6 +504,7 @@ $result = $g1->get_mongodb->getNoticeInfo($userId);
 		background: #fff;
 		/* box-shadow: 0 -1px 6px rgba(0,0,0,0.07); */
 	}
+	
 </style>
 
 <body>
@@ -517,7 +518,7 @@ $result = $g1->get_mongodb->getNoticeInfo($userId);
 			<?php include_once 'dash_menu.php' ?>
 		</div>
 		<!-- <div class="col-md-9 col-sm-9" id=""> -->
-		<div class="div-padding-left" id="body-content3" style="width:100%;padding:0 20px">
+		<div class="div-padding-left" id="body-content3" style="width:100%;padding:0 20px;width: 100%;padding: 0 20px;overflow: auto;height: calc(100vh - 57px);">
 			<div class="row">
 				<p class="spaceerror col-md-12" style="color:red"> </p>
 			</div>
